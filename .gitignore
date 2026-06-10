@@ -1,8 +1,5 @@
 telegram.json
-journal.json
-seen_signals.json
 scanner.log
-data/
-universe.json
-spy.json
 report.log
+data/
+spy.json

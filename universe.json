@@ -1,0 +1,4006 @@
+{
+  "generatedAt": "2026-06-10T14:20:38.975Z",
+  "totalCount": 1088,
+  "universe": [
+    {
+      "tv": "NASDAQ:NVDA",
+      "ticker": "NVDA",
+      "close": 205.36,
+      "avgVol90d": 172563244.82222086,
+      "mcap": 4969712058278.878,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:GOOG",
+      "ticker": "GOOG",
+      "close": 364.42,
+      "avgVol90d": 21128071.777777784,
+      "mcap": 4428551810045.426,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:AAPL",
+      "ticker": "AAPL",
+      "close": 290.135,
+      "avgVol90d": 46532897.355555445,
+      "mcap": 4261315983228.278,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:MSFT",
+      "ticker": "MSFT",
+      "close": 403.55,
+      "avgVol90d": 35840659.322222225,
+      "mcap": 2997744798063.2847,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:AMZN",
+      "ticker": "AMZN",
+      "close": 241.105,
+      "avgVol90d": 49038788.588888966,
+      "mcap": 2593592881790.332,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:AVGO",
+      "ticker": "AVGO",
+      "close": 374.02,
+      "avgVol90d": 25598274.366666667,
+      "mcap": 1770860530208.831,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:META",
+      "ticker": "META",
+      "close": 587.6,
+      "avgVol90d": 15643353.844444444,
+      "mcap": 1491577497450.733,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:TSLA",
+      "ticker": "TSLA",
+      "close": 391.2699,
+      "avgVol90d": 58869485.02222212,
+      "mcap": 1469501583105.2883,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NYSE:LLY",
+      "ticker": "LLY",
+      "close": 1155.21,
+      "avgVol90d": 3253484.9777777777,
+      "mcap": 1087909126859.5793,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:MU",
+      "ticker": "MU",
+      "close": 914.9599,
+      "avgVol90d": 45449596.97777778,
+      "mcap": 1031831412058.2065,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:WMT",
+      "ticker": "WMT",
+      "close": 118.875,
+      "avgVol90d": 21895846.088888895,
+      "mcap": 946016631341.4115,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:JPM",
+      "ticker": "JPM",
+      "close": 314.265,
+      "avgVol90d": 9477463.688888889,
+      "mcap": 842076706440.4637,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:AMD",
+      "ticker": "AMD",
+      "close": 468.45,
+      "avgVol90d": 38203971.37777778,
+      "mcap": 763854852326.0831,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:XOM",
+      "ticker": "XOM",
+      "close": 150.42,
+      "avgVol90d": 20500787.922222223,
+      "mcap": 623482983028.0118,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:V",
+      "ticker": "V",
+      "close": 324.52,
+      "avgVol90d": 7578668.022222222,
+      "mcap": 611436177811.7305,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:ORCL",
+      "ticker": "ORCL",
+      "close": 208.31,
+      "avgVol90d": 27507715.48888889,
+      "mcap": 599109113996.8036,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:JNJ",
+      "ticker": "JNJ",
+      "close": 239.625,
+      "avgVol90d": 7982291.744444445,
+      "mcap": 576829383453.6692,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:INTC",
+      "ticker": "INTC",
+      "close": 108.11,
+      "avgVol90d": 113490713.22222222,
+      "mcap": 543360850780.7975,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:CSCO",
+      "ticker": "CSCO",
+      "close": 119.99,
+      "avgVol90d": 24603866.066666666,
+      "mcap": 472932765784.2579,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:MA",
+      "ticker": "MA",
+      "close": 493.61,
+      "avgVol90d": 3644509.4111111034,
+      "mcap": 436145830348.19244,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:COST",
+      "ticker": "COST",
+      "close": 973.375,
+      "avgVol90d": 2025227.4333333333,
+      "mcap": 431671209165.36707,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:LRCX",
+      "ticker": "LRCX",
+      "close": 341.6,
+      "avgVol90d": 9973393.666666657,
+      "mcap": 427195073726.79297,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:AMAT",
+      "ticker": "AMAT",
+      "close": 525.27,
+      "avgVol90d": 7317476.166666667,
+      "mcap": 417043053003.685,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:CAT",
+      "ticker": "CAT",
+      "close": 892.35,
+      "avgVol90d": 2723546.688888889,
+      "mcap": 411049453785.8629,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:ABBV",
+      "ticker": "ABBV",
+      "close": 226.49,
+      "avgVol90d": 6643898.933333334,
+      "mcap": 400160908593.58923,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:BAC",
+      "ticker": "BAC",
+      "close": 54.985,
+      "avgVol90d": 39126556.58888889,
+      "mcap": 390206006277.6897,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:CVX",
+      "ticker": "CVX",
+      "close": 189.31,
+      "avgVol90d": 11433808.955555556,
+      "mcap": 377029364324.34186,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:UNH",
+      "ticker": "UNH",
+      "close": 411.07,
+      "avgVol90d": 8304000.4,
+      "mcap": 373310897192.07965,
+      "sector": "Health Services"
+    },
+    {
+      "tv": "NYSE:KO",
+      "ticker": "KO",
+      "close": 83.14,
+      "avgVol90d": 16351470.433333334,
+      "mcap": 357708372449.69836,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:PG",
+      "ticker": "PG",
+      "close": 149.12,
+      "avgVol90d": 9854924.077777777,
+      "mcap": 347240696660.58575,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NASDAQ:NFLX",
+      "ticker": "NFLX",
+      "close": 82.155,
+      "avgVol90d": 42196554.97777778,
+      "mcap": 345938153171.2982,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:GE",
+      "ticker": "GE",
+      "close": 327.4931,
+      "avgVol90d": 5616826.044444443,
+      "mcap": 341685762787.0438,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:MS",
+      "ticker": "MS",
+      "close": 207.715,
+      "avgVol90d": 6652390.844444444,
+      "mcap": 327625735518.8027,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:HD",
+      "ticker": "HD",
+      "close": 320.89,
+      "avgVol90d": 4349878.744444445,
+      "mcap": 319964764241.67737,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:PLTR",
+      "ticker": "PLTR",
+      "close": 131.82,
+      "avgVol90d": 49452815.88888889,
+      "mcap": 316013723469.49725,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:GS",
+      "ticker": "GS",
+      "close": 1024.025,
+      "avgVol90d": 2244157.7,
+      "mcap": 302094971793.77606,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:KLAC",
+      "ticker": "KLAC",
+      "close": 2266.77,
+      "avgVol90d": 1021773.1111111111,
+      "mcap": 296102554516.58405,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:MRK",
+      "ticker": "MRK",
+      "close": 118.815,
+      "avgVol90d": 10445624.577777809,
+      "mcap": 293452189814.367,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:PM",
+      "ticker": "PM",
+      "close": 180.9381,
+      "avgVol90d": 4957570.577777778,
+      "mcap": 282002683545.4718,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NASDAQ:TXN",
+      "ticker": "TXN",
+      "close": 288.87,
+      "avgVol90d": 7603312.322222223,
+      "mcap": 262898521541.9688,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:IBM",
+      "ticker": "IBM",
+      "close": 278.5,
+      "avgVol90d": 7637726.444444444,
+      "mcap": 261758034001.03787,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:DELL",
+      "ticker": "DELL",
+      "close": 392.59,
+      "avgVol90d": 9035022.7,
+      "mcap": 256135331942.8271,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:WFC",
+      "ticker": "WFC",
+      "close": 82.985,
+      "avgVol90d": 16934131.433333334,
+      "mcap": 253949821767.32516,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:SNDK",
+      "ticker": "SNDK",
+      "close": 1678.5765,
+      "avgVol90d": 17050716.366666667,
+      "mcap": 248580009439.66205,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:RTX",
+      "ticker": "RTX",
+      "close": 180.505,
+      "avgVol90d": 5785502.366666702,
+      "mcap": 243083074752.2683,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:GEV",
+      "ticker": "GEV",
+      "close": 895.86,
+      "avgVol90d": 2553231.3,
+      "mcap": 240735506681.15878,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:LIN",
+      "ticker": "LIN",
+      "close": 519.45,
+      "avgVol90d": 2452884.2666666666,
+      "mcap": 240297332048.7997,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:C",
+      "ticker": "C",
+      "close": 135.075,
+      "avgVol90d": 13164529.322222222,
+      "mcap": 231641119259.63092,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:MRVL",
+      "ticker": "MRVL",
+      "close": 262.89,
+      "avgVol90d": 28934105.366666667,
+      "mcap": 229976172998.84015,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:AXP",
+      "ticker": "AXP",
+      "close": 319.6,
+      "avgVol90d": 3463042.466666667,
+      "mcap": 218071525903.30676,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:PANW",
+      "ticker": "PANW",
+      "close": 264.78,
+      "avgVol90d": 10234293.377777781,
+      "mcap": 215795690899.585,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:QCOM",
+      "ticker": "QCOM",
+      "close": 199.045,
+      "avgVol90d": 17612334.366666667,
+      "mcap": 209793428129.8956,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:MCD",
+      "ticker": "MCD",
+      "close": 284.08,
+      "avgVol90d": 3637622.322222222,
+      "mcap": 201840504531.65887,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NASDAQ:TMUS",
+      "ticker": "TMUS",
+      "close": 182.55,
+      "avgVol90d": 5852707.877777775,
+      "mcap": 197556477550.92108,
+      "sector": "Communications"
+    },
+    {
+      "tv": "NASDAQ:ADI",
+      "ticker": "ADI",
+      "close": 405.52,
+      "avgVol90d": 4152649.722222222,
+      "mcap": 197523532509.22998,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:PEP",
+      "ticker": "PEP",
+      "close": 143.92,
+      "avgVol90d": 7215102.955555555,
+      "mcap": 196705311140.86508,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:APH",
+      "ticker": "APH",
+      "close": 158.52,
+      "avgVol90d": 9785171.944444451,
+      "mcap": 195016781746.20938,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:VZ",
+      "ticker": "VZ",
+      "close": 46.34,
+      "avgVol90d": 26751552.86666667,
+      "mcap": 193495402701.58414,
+      "sector": "Communications"
+    },
+    {
+      "tv": "NYSE:ANET",
+      "ticker": "ANET",
+      "close": 152.64,
+      "avgVol90d": 8875934.366666667,
+      "mcap": 192204695094.17032,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:AMGN",
+      "ticker": "AMGN",
+      "close": 346.17,
+      "avgVol90d": 2678877.9111111113,
+      "mcap": 186830806902.52304,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:STX",
+      "ticker": "STX",
+      "close": 829.83,
+      "avgVol90d": 3865035.311111111,
+      "mcap": 186071943796.81238,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:TJX",
+      "ticker": "TJX",
+      "close": 166.15,
+      "avgVol90d": 5159972.5,
+      "mcap": 183546641884.87418,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:TMO",
+      "ticker": "TMO",
+      "close": 489.02,
+      "avgVol90d": 2265462.1,
+      "mcap": 181730329044.37408,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:NEE",
+      "ticker": "NEE",
+      "close": 84.77,
+      "avgVol90d": 10302416.211111112,
+      "mcap": 176774407241.13507,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:APP",
+      "ticker": "APP",
+      "close": 515.79,
+      "avgVol90d": 5394689.322222223,
+      "mcap": 173274498763.65286,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:WDC",
+      "ticker": "WDC",
+      "close": 501.09,
+      "avgVol90d": 8425152.233333346,
+      "mcap": 172716758199.6641,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:DIS",
+      "ticker": "DIS",
+      "close": 99.22,
+      "avgVol90d": 10334890,
+      "mcap": 172296659574.6999,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:BA",
+      "ticker": "BA",
+      "close": 212.61,
+      "avgVol90d": 6664261.311111111,
+      "mcap": 167600949226.80957,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:CRWD",
+      "ticker": "CRWD",
+      "close": 658.075,
+      "avgVol90d": 3934137.2555555557,
+      "mcap": 167522741582.17212,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:UNP",
+      "ticker": "UNP",
+      "close": 270.17,
+      "avgVol90d": 3177438.722222222,
+      "mcap": 160403493387.62698,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NYSE:T",
+      "ticker": "T",
+      "close": 22.905,
+      "avgVol90d": 41188126.02222221,
+      "mcap": 159151695336.47556,
+      "sector": "Communications"
+    },
+    {
+      "tv": "NYSE:ABT",
+      "ticker": "ABT",
+      "close": 90.215,
+      "avgVol90d": 11769551.133333312,
+      "mcap": 157137603674.84375,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:SCHW",
+      "ticker": "SCHW",
+      "close": 89.44,
+      "avgVol90d": 11258381.222222222,
+      "mcap": 155548273062.6239,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:DE",
+      "ticker": "DE",
+      "close": 572.125,
+      "avgVol90d": 1477458.0777777778,
+      "mcap": 154437961839.59497,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:ETN",
+      "ticker": "ETN",
+      "close": 394.79,
+      "avgVol90d": 2685812.2,
+      "mcap": 153296952646.4211,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:GILD",
+      "ticker": "GILD",
+      "close": 123.46,
+      "avgVol90d": 6724071.522222222,
+      "mcap": 153284210497.60114,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:GLW",
+      "ticker": "GLW",
+      "close": 175.57,
+      "avgVol90d": 13012340.577777777,
+      "mcap": 151102183719.0266,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:ISRG",
+      "ticker": "ISRG",
+      "close": 422.94,
+      "avgVol90d": 2096336.8888888871,
+      "mcap": 149789627166.236,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:BX",
+      "ticker": "BX",
+      "close": 121.91,
+      "avgVol90d": 7853247.366666666,
+      "mcap": 148914793083.62457,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:WELL",
+      "ticker": "WELL",
+      "close": 210.55,
+      "avgVol90d": 3226356.577777778,
+      "mcap": 148630286036.67142,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:IBKR",
+      "ticker": "IBKR",
+      "close": 87.59,
+      "avgVol90d": 4928848.133333334,
+      "mcap": 148571219152.84998,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:PFE",
+      "ticker": "PFE",
+      "close": 25.66,
+      "avgVol90d": 38834347.34444444,
+      "mcap": 146247733472.32608,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:COP",
+      "ticker": "COP",
+      "close": 119.64,
+      "avgVol90d": 8817832.67777776,
+      "mcap": 145756688759.34857,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:SCCO",
+      "ticker": "SCCO",
+      "close": 171.19,
+      "avgVol90d": 1659826.7340921802,
+      "mcap": 142828212281.0169,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:CRM",
+      "ticker": "CRM",
+      "close": 174.29,
+      "avgVol90d": 14181626.9,
+      "mcap": 142743514968.7808,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:UBER",
+      "ticker": "UBER",
+      "close": 70.03,
+      "avgVol90d": 18956852.71111111,
+      "mcap": 142552992338.14722,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NASDAQ:SHOP",
+      "ticker": "SHOP",
+      "close": 109.565,
+      "avgVol90d": 11802617.777777778,
+      "mcap": 142177536197.49918,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NYSE:PLD",
+      "ticker": "PLD",
+      "close": 146.86,
+      "avgVol90d": 3419814.3333333335,
+      "mcap": 139815278573.42462,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:HON",
+      "ticker": "HON",
+      "close": 212.4,
+      "avgVol90d": 4066654.9222222227,
+      "mcap": 134587924438.79834,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:DHR",
+      "ticker": "DHR",
+      "close": 186.28,
+      "avgVol90d": 4431626.511111084,
+      "mcap": 131843515497.04921,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:CB",
+      "ticker": "CB",
+      "close": 329.28,
+      "avgVol90d": 1709957.8777777778,
+      "mcap": 127714578089.97507,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:SPGI",
+      "ticker": "SPGI",
+      "close": 427.7,
+      "avgVol90d": 2485627.6,
+      "mcap": 126599202182.69762,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NASDAQ:BKNG",
+      "ticker": "BKNG",
+      "close": 162.7601,
+      "avgVol90d": 9694438.377777778,
+      "mcap": 126119293020.81859,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:CVS",
+      "ticker": "CVS",
+      "close": 97.19,
+      "avgVol90d": 8032323.366666666,
+      "mcap": 124007365928.8202,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:LMT",
+      "ticker": "LMT",
+      "close": 529.925,
+      "avgVol90d": 1491253.088888889,
+      "mcap": 122181424216.71692,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:LOW",
+      "ticker": "LOW",
+      "close": 215.79,
+      "avgVol90d": 2776247.611111111,
+      "mcap": 120994980726.09137,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:SYK",
+      "ticker": "SYK",
+      "close": 314.52,
+      "avgVol90d": 2352257.033333333,
+      "mcap": 120574626302.70947,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:MO",
+      "ticker": "MO",
+      "close": 72.19,
+      "avgVol90d": 9153209.144444436,
+      "mcap": 120549444167.38051,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:PGR",
+      "ticker": "PGR",
+      "close": 202.1,
+      "avgVol90d": 3028377.188888889,
+      "mcap": 118094394531.8768,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:BMY",
+      "ticker": "BMY",
+      "close": 56.35,
+      "avgVol90d": 12023297.966666667,
+      "mcap": 115070716205.57455,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:COF",
+      "ticker": "COF",
+      "close": 183.42,
+      "avgVol90d": 4889410.888888889,
+      "mcap": 114140946542.44514,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:VRTX",
+      "ticker": "VRTX",
+      "close": 442.5,
+      "avgVol90d": 1328604.1222222222,
+      "mcap": 112308895547.31142,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:SBUX",
+      "ticker": "SBUX",
+      "close": 98.5283,
+      "avgVol90d": 7746099.866666666,
+      "mcap": 112292702920.30696,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:NOW",
+      "ticker": "NOW",
+      "close": 108.45,
+      "avgVol90d": 25560280.911111113,
+      "mcap": 111845352075.84697,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:VRT",
+      "ticker": "VRT",
+      "close": 290.92,
+      "avgVol90d": 7279338.766666667,
+      "mcap": 111744935327.55127,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:CDNS",
+      "ticker": "CDNS",
+      "close": 396.935,
+      "avgVol90d": 2609451.6,
+      "mcap": 109481026030.4796,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:ACN",
+      "ticker": "ACN",
+      "close": 172.12,
+      "avgVol90d": 6457651.077777778,
+      "mcap": 105671227899.63913,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:SO",
+      "ticker": "SO",
+      "close": 93.22,
+      "avgVol90d": 5722787.577777778,
+      "mcap": 105087009515.82056,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:MDT",
+      "ticker": "MDT",
+      "close": 81.76,
+      "avgVol90d": 9534823.888888888,
+      "mcap": 104970442697.28421,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:MAR",
+      "ticker": "MAR",
+      "close": 396.63,
+      "avgVol90d": 1545870.822222222,
+      "mcap": 104586817087.39592,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:TT",
+      "ticker": "TT",
+      "close": 470.49,
+      "avgVol90d": 1343032.955555574,
+      "mcap": 104004395392.90352,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:SPOT",
+      "ticker": "SPOT",
+      "close": 499.39,
+      "avgVol90d": 2591733.066666667,
+      "mcap": 102790709801.89099,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:NEM",
+      "ticker": "NEM",
+      "close": 96.26,
+      "avgVol90d": 9102422.58888889,
+      "mcap": 102762627166.00346,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NASDAQ:FTNT",
+      "ticker": "FTNT",
+      "close": 139.58,
+      "avgVol90d": 6519589.333333322,
+      "mcap": 102263059936.14973,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:BN",
+      "ticker": "BN",
+      "close": 45.6051,
+      "avgVol90d": 5871270.377777778,
+      "mcap": 102028357518.59967,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:PWR",
+      "ticker": "PWR",
+      "close": 679.145,
+      "avgVol90d": 1136333,
+      "mcap": 101912602469.46928,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:HWM",
+      "ticker": "HWM",
+      "close": 254.055,
+      "avgVol90d": 2484313.2444444443,
+      "mcap": 101649308017.87738,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:BNY",
+      "ticker": "BNY",
+      "close": 143.89,
+      "avgVol90d": 3685961.7333333334,
+      "mcap": 98763087167.18672,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:DUK",
+      "ticker": "DUK",
+      "close": 123.915,
+      "avgVol90d": 3910099.2444444443,
+      "mcap": 96603661820.00105,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:ADBE",
+      "ticker": "ADBE",
+      "close": 236.79,
+      "avgVol90d": 5628689.1,
+      "mcap": 95710522854.6529,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:CME",
+      "ticker": "CME",
+      "close": 261.66,
+      "avgVol90d": 2597692.488888889,
+      "mcap": 94814953577.39542,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:PNC",
+      "ticker": "PNC",
+      "close": 234.46,
+      "avgVol90d": 2252434.422222222,
+      "mcap": 94150841640.72504,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:GD",
+      "ticker": "GD",
+      "close": 345.34,
+      "avgVol90d": 1301287.4555555556,
+      "mcap": 93390354925.18289,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:ADP",
+      "ticker": "ADP",
+      "close": 232.29,
+      "avgVol90d": 3457190.8666666667,
+      "mcap": 92854275966.91685,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:FCX",
+      "ticker": "FCX",
+      "close": 64.04,
+      "avgVol90d": 16545008.58888889,
+      "mcap": 92061330517.9636,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:JCI",
+      "ticker": "JCI",
+      "close": 147.74,
+      "avgVol90d": 4064048.2000000146,
+      "mcap": 90138478830.99413,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:SNPS",
+      "ticker": "SNPS",
+      "close": 468.1976,
+      "avgVol90d": 2066699.5333333334,
+      "mcap": 89650157988.70093,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:UPS",
+      "ticker": "UPS",
+      "close": 105.345,
+      "avgVol90d": 6193568.022222222,
+      "mcap": 89543910697.82358,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NYSE:ELV",
+      "ticker": "ELV",
+      "close": 411.68,
+      "avgVol90d": 1827068.0444444444,
+      "mcap": 89401402433.91806,
+      "sector": "Health Services"
+    },
+    {
+      "tv": "NYSE:WM",
+      "ticker": "WM",
+      "close": 222.26,
+      "avgVol90d": 2152748.9555555554,
+      "mcap": 89254226232.1605,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:USB",
+      "ticker": "USB",
+      "close": 57.42,
+      "avgVol90d": 9627585.811111111,
+      "mcap": 89133055513.31631,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:CEG",
+      "ticker": "CEG",
+      "close": 245.465,
+      "avgVol90d": 3516418.811111111,
+      "mcap": 88659516780.58844,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:MNST",
+      "ticker": "MNST",
+      "close": 90.62,
+      "avgVol90d": 5782256.011111116,
+      "mcap": 88627097124.08896,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:WMB",
+      "ticker": "WMB",
+      "close": 72.155,
+      "avgVol90d": 6762761.777777778,
+      "mcap": 88245437174.07634,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:AMT",
+      "ticker": "AMT",
+      "close": 189.2,
+      "avgVol90d": 3134731.966666667,
+      "mcap": 88146969009.47438,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:CSX",
+      "ticker": "CSX",
+      "close": 46.99,
+      "avgVol90d": 12721688.022222228,
+      "mcap": 87313945409.26797,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NYSE:KKR",
+      "ticker": "KKR",
+      "close": 96.6,
+      "avgVol90d": 6835102.8,
+      "mcap": 86734521221.77586,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:CMCSA",
+      "ticker": "CMCSA",
+      "close": 23.895,
+      "avgVol90d": 31580668.211111106,
+      "mcap": 85358402679.53207,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:SNOW",
+      "ticker": "SNOW",
+      "close": 245.88,
+      "avgVol90d": 8098503.833333333,
+      "mcap": 85222010802.90479,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:SLB",
+      "ticker": "SLB",
+      "close": 56.355,
+      "avgVol90d": 16355747.2,
+      "mcap": 84253969715.0554,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:HCA",
+      "ticker": "HCA",
+      "close": 376.705,
+      "avgVol90d": 1246421.0777777778,
+      "mcap": 83568159734.82188,
+      "sector": "Health Services"
+    },
+    {
+      "tv": "NYSE:MMM",
+      "ticker": "MMM",
+      "close": 159.52,
+      "avgVol90d": 3894748.611111113,
+      "mcap": 83200409108.74916,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:DDOG",
+      "ticker": "DDOG",
+      "close": 231.28,
+      "avgVol90d": 5944014.888888889,
+      "mcap": 82326472958.26375,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:EPD",
+      "ticker": "EPD",
+      "close": 37.77,
+      "avgVol90d": 4520093.955555555,
+      "mcap": 81716083251.31084,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NASDAQ:MDLZ",
+      "ticker": "MDLZ",
+      "close": 63.64,
+      "avgVol90d": 9156241.544444429,
+      "mcap": 81691472412.40997,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NASDAQ:HOOD",
+      "ticker": "HOOD",
+      "close": 90.46,
+      "avgVol90d": 31380743.48888889,
+      "mcap": 81532075291.23528,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:NET",
+      "ticker": "NET",
+      "close": 228.36,
+      "avgVol90d": 4747114.777777778,
+      "mcap": 80717560992.4513,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:MRSH",
+      "ticker": "MRSH",
+      "close": 167.24,
+      "avgVol90d": 3053815.7333333334,
+      "mcap": 80575313361.14766,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:EMR",
+      "ticker": "EMR",
+      "close": 143.2,
+      "avgVol90d": 3196054.8666666667,
+      "mcap": 80206315472.33817,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:ICE",
+      "ticker": "ICE",
+      "close": 141.6,
+      "avgVol90d": 3901308.888888889,
+      "mcap": 80076570347.09805,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:INTU",
+      "ticker": "INTU",
+      "close": 288.46,
+      "avgVol90d": 4508752.333333333,
+      "mcap": 78904479029.59412,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:ABNB",
+      "ticker": "ABNB",
+      "close": 130.75,
+      "avgVol90d": 4206338.433333334,
+      "mcap": 78803668852.41913,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:MCO",
+      "ticker": "MCO",
+      "close": 450.235,
+      "avgVol90d": 1314775.0333333334,
+      "mcap": 78656053552.37912,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NYSE:HLT",
+      "ticker": "HLT",
+      "close": 343.48,
+      "avgVol90d": 1780918.1222222222,
+      "mcap": 78192666020.01237,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:CI",
+      "ticker": "CI",
+      "close": 294.46,
+      "avgVol90d": 1713763.6555555908,
+      "mcap": 77894213350.77937,
+      "sector": "Health Services"
+    },
+    {
+      "tv": "NYSE:APO",
+      "ticker": "APO",
+      "close": 135.07,
+      "avgVol90d": 4982610.711111112,
+      "mcap": 77870219242.0728,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:FDX",
+      "ticker": "FDX",
+      "close": 325.8951,
+      "avgVol90d": 2229741.118103101,
+      "mcap": 77760773099.87108,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NYSE:MPC",
+      "ticker": "MPC",
+      "close": 262.65,
+      "avgVol90d": 2511156.1555555556,
+      "mcap": 76677150114.39743,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:CVNA",
+      "ticker": "CVNA",
+      "close": 69.825,
+      "avgVol90d": 15214336.6,
+      "mcap": 76586556643.4808,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:SHW",
+      "ticker": "SHW",
+      "close": 308.66,
+      "avgVol90d": 1871965.911111104,
+      "mcap": 76126547513.2997,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:VLO",
+      "ticker": "VLO",
+      "close": 256.34,
+      "avgVol90d": 3403333.9333333387,
+      "mcap": 76115745837.96729,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:BAM",
+      "ticker": "BAM",
+      "close": 47.455,
+      "avgVol90d": 3738834.8777777776,
+      "mcap": 75775495537.56248,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:ORLY",
+      "ticker": "ORLY",
+      "close": 90.8,
+      "avgVol90d": 6095810.711111112,
+      "mcap": 75247328184.2217,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:ROST",
+      "ticker": "ROST",
+      "close": 232.66,
+      "avgVol90d": 2752388,
+      "mcap": 74632922031.03595,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:EOG",
+      "ticker": "EOG",
+      "close": 139.905,
+      "avgVol90d": 4597543.811111111,
+      "mcap": 74517388348.72412,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:GM",
+      "ticker": "GM",
+      "close": 82.4,
+      "avgVol90d": 7500660.955555555,
+      "mcap": 74297211172.5788,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NASDAQ:NXPI",
+      "ticker": "NXPI",
+      "close": 294.075,
+      "avgVol90d": 3408828.322222222,
+      "mcap": 74245435116.50768,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:RCL",
+      "ticker": "RCL",
+      "close": 275.985,
+      "avgVol90d": 2643236.177777778,
+      "mcap": 74017793235.30222,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:ITW",
+      "ticker": "ITW",
+      "close": 256.31,
+      "avgVol90d": 1407819.288888889,
+      "mcap": 73740386620.3555,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:ECL",
+      "ticker": "ECL",
+      "close": 261.625,
+      "avgVol90d": 1559976.3777777778,
+      "mcap": 73631086617.18678,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:PSX",
+      "ticker": "PSX",
+      "close": 182.02,
+      "avgVol90d": 2903762.8666666667,
+      "mcap": 72978193810.7962,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:BSX",
+      "ticker": "BSX",
+      "close": 48.68,
+      "avgVol90d": 18684134.5,
+      "mcap": 72355765039.06862,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:COHR",
+      "ticker": "COHR",
+      "close": 368.81,
+      "avgVol90d": 7164579.888888889,
+      "mcap": 72153741055.668,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:CTAS",
+      "ticker": "CTAS",
+      "close": 179.875,
+      "avgVol90d": 2204583.533333333,
+      "mcap": 71965670138.58412,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NYSE:BE",
+      "ticker": "BE",
+      "close": 251.57,
+      "avgVol90d": 10630814.9,
+      "mcap": 71557542394.5234,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:AON",
+      "ticker": "AON",
+      "close": 334.96,
+      "avgVol90d": 1499419.4666666666,
+      "mcap": 71539734406.8014,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:CL",
+      "ticker": "CL",
+      "close": 88.6,
+      "avgVol90d": 5995233.288888888,
+      "mcap": 70896777196.09796,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:KMI",
+      "ticker": "KMI",
+      "close": 31.65,
+      "avgVol90d": 12299108.522222223,
+      "mcap": 70415733228.26897,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:NSC",
+      "ticker": "NSC",
+      "close": 311.18,
+      "avgVol90d": 1298632.1888888888,
+      "mcap": 69889160735.67528,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NYSE:MSI",
+      "ticker": "MSI",
+      "close": 417.655,
+      "avgVol90d": 1108609.2444444445,
+      "mcap": 69328883082.72774,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:AEP",
+      "ticker": "AEP",
+      "close": 127.34,
+      "avgVol90d": 3791248.722222222,
+      "mcap": 69286337143.74686,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:CRH",
+      "ticker": "CRH",
+      "close": 103.515,
+      "avgVol90d": 5056338.311111111,
+      "mcap": 69168741182.50458,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:SPG",
+      "ticker": "SPG",
+      "close": 212.73,
+      "avgVol90d": 1595393.4333333333,
+      "mcap": 68984492938.18135,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:LITE",
+      "ticker": "LITE",
+      "close": 878.02,
+      "avgVol90d": 6324013.944444444,
+      "mcap": 68309959491.73647,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:DASH",
+      "ticker": "DASH",
+      "close": 154.32,
+      "avgVol90d": 5066735.577777778,
+      "mcap": 67240116925.525536,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NASDAQ:WBD",
+      "ticker": "WBD",
+      "close": 26.525,
+      "avgVol90d": 22928386.844444446,
+      "mcap": 66501800127.60823,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:ET",
+      "ticker": "ET",
+      "close": 19.2101,
+      "avgVol90d": 14980559.277777778,
+      "mcap": 66105010105.39784,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:NKE",
+      "ticker": "NKE",
+      "close": 44.2601,
+      "avgVol90d": 20543892.355555557,
+      "mcap": 65544220791.63932,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:RSG",
+      "ticker": "RSG",
+      "close": 210.84,
+      "avgVol90d": 1599139.288888889,
+      "mcap": 64867895111.31544,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:DLR",
+      "ticker": "DLR",
+      "close": 183.635,
+      "avgVol90d": 2046257.4555555556,
+      "mcap": 64530450538.39503,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:TRV",
+      "ticker": "TRV",
+      "close": 302.31,
+      "avgVol90d": 1470468.3777777778,
+      "mcap": 64284614370.70381,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:RKLB",
+      "ticker": "RKLB",
+      "close": 109.715,
+      "avgVol90d": 23220043.6,
+      "mcap": 63510448929.2926,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:BKR",
+      "ticker": "BKR",
+      "close": 63.97,
+      "avgVol90d": 8877783.08888889,
+      "mcap": 63462631709.107,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:APD",
+      "ticker": "APD",
+      "close": 283.81,
+      "avgVol90d": 1269038.9777777777,
+      "mcap": 63199010382.67789,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:CIEN",
+      "ticker": "CIEN",
+      "close": 444.235,
+      "avgVol90d": 3219459.577777778,
+      "mcap": 62882759772.285805,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:TFC",
+      "ticker": "TFC",
+      "close": 49.96,
+      "avgVol90d": 8851518.322222222,
+      "mcap": 62244128836.48149,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:HPE",
+      "ticker": "HPE",
+      "close": 46.95,
+      "avgVol90d": 21959269.3222222,
+      "mcap": 62171354502.022995,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:PCAR",
+      "ticker": "PCAR",
+      "close": 117.34,
+      "avgVol90d": 2982354.933333333,
+      "mcap": 61754430407.79414,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:TEL",
+      "ticker": "TEL",
+      "close": 211.47,
+      "avgVol90d": 2514036.1333333333,
+      "mcap": 61727208644.110855,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:ALAB",
+      "ticker": "ALAB",
+      "close": 350.98,
+      "avgVol90d": 5653570.266666667,
+      "mcap": 60160762237.587776,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:SRE",
+      "ticker": "SRE",
+      "close": 90.66,
+      "avgVol90d": 3560658.9,
+      "mcap": 59263542946.51964,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:AFL",
+      "ticker": "AFL",
+      "close": 116.26,
+      "avgVol90d": 2382778.811111111,
+      "mcap": 59174584065.71733,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:CARR",
+      "ticker": "CARR",
+      "close": 70.865,
+      "avgVol90d": 6973946.244444445,
+      "mcap": 58859081422.71477,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:F",
+      "ticker": "F",
+      "close": 14.72,
+      "avgVol90d": 62309390.68888889,
+      "mcap": 58654675091.692314,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NYSE:D",
+      "ticker": "D",
+      "close": 66.4101,
+      "avgVol90d": 6119427.144444444,
+      "mcap": 58408513887.20503,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:NU",
+      "ticker": "NU",
+      "close": 12.0086,
+      "avgVol90d": 55035124.51111111,
+      "mcap": 58368992513.40366,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:NUE",
+      "ticker": "NUE",
+      "close": 255.59,
+      "avgVol90d": 1542368.2777777778,
+      "mcap": 58208311479.78205,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:TRGP",
+      "ticker": "TRGP",
+      "close": 268.475,
+      "avgVol90d": 1364590.4555555556,
+      "mcap": 57626525495.747536,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:PSA",
+      "ticker": "PSA",
+      "close": 328.21,
+      "avgVol90d": 1097398.6333333333,
+      "mcap": 57615866631.692184,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:O",
+      "ticker": "O",
+      "close": 61.78,
+      "avgVol90d": 6104536.788888888,
+      "mcap": 57609386197.11478,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:MPLX",
+      "ticker": "MPLX",
+      "close": 56.745,
+      "avgVol90d": 1979875.677777778,
+      "mcap": 57581067475.34044,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:TGT",
+      "ticker": "TGT",
+      "close": 126.66,
+      "avgVol90d": 5763582.333333333,
+      "mcap": 57527849004.68905,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:LHX",
+      "ticker": "LHX",
+      "close": 307.97,
+      "avgVol90d": 1330078.7222222222,
+      "mcap": 57373258987.89823,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:NBIS",
+      "ticker": "NBIS",
+      "close": 226.88,
+      "avgVol90d": 16671373.366666667,
+      "mcap": 57094449897.916046,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:TER",
+      "ticker": "TER",
+      "close": 364.7201,
+      "avgVol90d": 3679273.6222222224,
+      "mcap": 57094070940.92424,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:AJG",
+      "ticker": "AJG",
+      "close": 222.15,
+      "avgVol90d": 2184421.066666667,
+      "mcap": 57070334446.288185,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:KEYS",
+      "ticker": "KEYS",
+      "close": 333.33,
+      "avgVol90d": 1547513.6888888888,
+      "mcap": 56964552584.74502,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:OXY",
+      "ticker": "OXY",
+      "close": 57.16,
+      "avgVol90d": 15173193.777777778,
+      "mcap": 56853318947.61733,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:ALL",
+      "ticker": "ALL",
+      "close": 220.3,
+      "avgVol90d": 1569046.3111111112,
+      "mcap": 56709828736.25334,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:OKE",
+      "ticker": "OKE",
+      "close": 89.395,
+      "avgVol90d": 4600049.522222222,
+      "mcap": 56321791499.75806,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:MET",
+      "ticker": "MET",
+      "close": 87.31,
+      "avgVol90d": 3740091.4222222706,
+      "mcap": 56178463976.587006,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:FANG",
+      "ticker": "FANG",
+      "close": 197.58,
+      "avgVol90d": 2972687.2444444443,
+      "mcap": 55581888122.64477,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:COR",
+      "ticker": "COR",
+      "close": 281.8199,
+      "avgVol90d": 1612580.5111111111,
+      "mcap": 54831181508.12407,
+      "sector": "Distribution Services"
+    },
+    {
+      "tv": "NASDAQ:CRWV",
+      "ticker": "CRWV",
+      "close": 99.45,
+      "avgVol90d": 27614853.033333335,
+      "mcap": 54256969734.1798,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:FLEX",
+      "ticker": "FLEX",
+      "close": 146.89,
+      "avgVol90d": 4695434.466666668,
+      "mcap": 53817256546.153175,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:FAST",
+      "ticker": "FAST",
+      "close": 46.715,
+      "avgVol90d": 7620918.322222252,
+      "mcap": 53630458729.70611,
+      "sector": "Distribution Services"
+    },
+    {
+      "tv": "NYSE:DVN",
+      "ticker": "DVN",
+      "close": 46.105,
+      "avgVol90d": 14742088.322222222,
+      "mcap": 53177648458.76049,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:AME",
+      "ticker": "AME",
+      "close": 228.355,
+      "avgVol90d": 1318053.5444444444,
+      "mcap": 52339652429.36646,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:DAL",
+      "ticker": "DAL",
+      "close": 79.36,
+      "avgVol90d": 10303670.977777777,
+      "mcap": 52139068354.87791,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NASDAQ:EA",
+      "ticker": "EA",
+      "close": 203.65,
+      "avgVol90d": 2281712.311111111,
+      "mcap": 51065537845.530426,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:CAH",
+      "ticker": "CAH",
+      "close": 217.44,
+      "avgVol90d": 1927160.0222222148,
+      "mcap": 50925720960.03386,
+      "sector": "Distribution Services"
+    },
+    {
+      "tv": "NYSE:ETR",
+      "ticker": "ETR",
+      "close": 110.66,
+      "avgVol90d": 3260026.677777778,
+      "mcap": 50669759497.109795,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:LNG",
+      "ticker": "LNG",
+      "close": 240.36,
+      "avgVol90d": 2754330.3444444444,
+      "mcap": 50367888564.5589,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:CTVA",
+      "ticker": "CTVA",
+      "close": 74.765,
+      "avgVol90d": 3905282.855555556,
+      "mcap": 50004329271.53939,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:EW",
+      "ticker": "EW",
+      "close": 86.405,
+      "avgVol90d": 5086958.58888891,
+      "mcap": 49751998466.014336,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:NDAQ",
+      "ticker": "NDAQ",
+      "close": 87.4,
+      "avgVol90d": 3977623.4444444464,
+      "mcap": 49428266866.70019,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:MCHP",
+      "ticker": "MCHP",
+      "close": 90.42,
+      "avgVol90d": 10073515.688888889,
+      "mcap": 49014804054.5943,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:ODFL",
+      "ticker": "ODFL",
+      "close": 235.36,
+      "avgVol90d": 2226769.4111111113,
+      "mcap": 48947412828.57653,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NASDAQ:FITB",
+      "ticker": "FITB",
+      "close": 53.73,
+      "avgVol90d": 8768012.288888888,
+      "mcap": 48696120588.10927,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:XEL",
+      "ticker": "XEL",
+      "close": 77.77,
+      "avgVol90d": 4983654.644444444,
+      "mcap": 48549447904.569405,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:MDLN",
+      "ticker": "MDLN",
+      "close": 36.65,
+      "avgVol90d": 7723245.088888889,
+      "mcap": 48146669485.84143,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:EBAY",
+      "ticker": "EBAY",
+      "close": 108.22,
+      "avgVol90d": 5762668.366666688,
+      "mcap": 48049681619.415794,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:VST",
+      "ticker": "VST",
+      "close": 141.53,
+      "avgVol90d": 4848353.311111111,
+      "mcap": 47721434612.837166,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:CRDO",
+      "ticker": "CRDO",
+      "close": 256.44,
+      "avgVol90d": 7634496.444444444,
+      "mcap": 47300343043.91841,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:ADSK",
+      "ticker": "ADSK",
+      "close": 223.375,
+      "avgVol90d": 2215149.788888889,
+      "mcap": 47132125384.78557,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:EXC",
+      "ticker": "EXC",
+      "close": 45.175,
+      "avgVol90d": 8715265.388888888,
+      "mcap": 46223429134.46228,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:STT",
+      "ticker": "STT",
+      "close": 162.935,
+      "avgVol90d": 2015758.4777777777,
+      "mcap": 45095035838.9253,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:FERG",
+      "ticker": "FERG",
+      "close": 231.42,
+      "avgVol90d": 1419346.6,
+      "mcap": 44881094401.43043,
+      "sector": "Distribution Services"
+    },
+    {
+      "tv": "NASDAQ:ON",
+      "ticker": "ON",
+      "close": 113.535,
+      "avgVol90d": 10254790.822222222,
+      "mcap": 44494729612.10077,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:KDP",
+      "ticker": "KDP",
+      "close": 32.15,
+      "avgVol90d": 10806016.344444431,
+      "mcap": 43741985625.069885,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:HUM",
+      "ticker": "HUM",
+      "close": 364.025,
+      "avgVol90d": 1847291.9222222222,
+      "mcap": 43705386855.91786,
+      "sector": "Health Services"
+    },
+    {
+      "tv": "NASDAQ:CCEP",
+      "ticker": "CCEP",
+      "close": 97.93,
+      "avgVol90d": 1894947.4444444445,
+      "mcap": 43404302840.420876,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:DHI",
+      "ticker": "DHI",
+      "close": 148.72,
+      "avgVol90d": 2585903.3444444444,
+      "mcap": 42173963184.84147,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NASDAQ:COIN",
+      "ticker": "COIN",
+      "close": 159.555,
+      "avgVol90d": 11689484.033333333,
+      "mcap": 42036519855,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:MSTR",
+      "ticker": "MSTR",
+      "close": 119.79,
+      "avgVol90d": 20265135.933333334,
+      "mcap": 41980118858.76543,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:YUM",
+      "ticker": "YUM",
+      "close": 152.22,
+      "avgVol90d": 1854131.322222222,
+      "mcap": 41955058177.56421,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:VTR",
+      "ticker": "VTR",
+      "close": 83.96,
+      "avgVol90d": 3745021.5888888887,
+      "mcap": 41775953323.27052,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:GFS",
+      "ticker": "GFS",
+      "close": 76.04,
+      "avgVol90d": 4659755.411111111,
+      "mcap": 41701587499.58118,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:BDX",
+      "ticker": "BDX",
+      "close": 150.53,
+      "avgVol90d": 2948899.188702397,
+      "mcap": 41477099968.32571,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:AU",
+      "ticker": "AU",
+      "close": 80.819,
+      "avgVol90d": 2755641.599999991,
+      "mcap": 40814199415.655556,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:XYZ",
+      "ticker": "XYZ",
+      "close": 68.23,
+      "avgVol90d": 7458462.588888889,
+      "mcap": 40609387760.56202,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NYSE:VIK",
+      "ticker": "VIK",
+      "close": 90.33,
+      "avgVol90d": 2995881.033333333,
+      "mcap": 40267849789.090576,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:CCI",
+      "ticker": "CCI",
+      "close": 92,
+      "avgVol90d": 3517647.7,
+      "mcap": 40153580678.57838,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:ALNY",
+      "ticker": "ALNY",
+      "close": 297.9301,
+      "avgVol90d": 1186419.322222222,
+      "mcap": 39777414623.098,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:CBRE",
+      "ticker": "CBRE",
+      "close": 135.27,
+      "avgVol90d": 2499473.611111111,
+      "mcap": 39609301817.93873,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:TKO",
+      "ticker": "TKO",
+      "close": 207.01,
+      "avgVol90d": 1264904.9555555556,
+      "mcap": 39565053611.2523,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NASDAQ:TTWO",
+      "ticker": "TTWO",
+      "close": 212.79,
+      "avgVol90d": 2279400.422222222,
+      "mcap": 39508008403.78232,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:ED",
+      "ticker": "ED",
+      "close": 106.96,
+      "avgVol90d": 2276351.3666666667,
+      "mcap": 39417939857.468414,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:STLD",
+      "ticker": "STLD",
+      "close": 272.3,
+      "avgVol90d": 1184998.5222222223,
+      "mcap": 39269139255.2172,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:AIG",
+      "ticker": "AIG",
+      "close": 73.89,
+      "avgVol90d": 4170867.433333356,
+      "mcap": 39176937940.26014,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:CMG",
+      "ticker": "CMG",
+      "close": 30.52,
+      "avgVol90d": 17710471.955555554,
+      "mcap": 39149040848.564926,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:LYV",
+      "ticker": "LYV",
+      "close": 168.075,
+      "avgVol90d": 2889328.4777777777,
+      "mcap": 39113204584.336494,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:PEG",
+      "ticker": "PEG",
+      "close": 78.47,
+      "avgVol90d": 2774387.4555555554,
+      "mcap": 39103279309.45057,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:KR",
+      "ticker": "KR",
+      "close": 63.4,
+      "avgVol90d": 6334419.733333333,
+      "mcap": 39089947453.00523,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:ADM",
+      "ticker": "ADM",
+      "close": 80.895,
+      "avgVol90d": 3887668.533333333,
+      "mcap": 38987875879.60147,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:JBL",
+      "ticker": "JBL",
+      "close": 369,
+      "avgVol90d": 1178052.3444444444,
+      "mcap": 38930468969.68376,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:A",
+      "ticker": "A",
+      "close": 135.08,
+      "avgVol90d": 2312514.3333333335,
+      "mcap": 38150906035.24359,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:SYY",
+      "ticker": "SYY",
+      "close": 78.705,
+      "avgVol90d": 4372903.577777778,
+      "mcap": 37635361965.34468,
+      "sector": "Distribution Services"
+    },
+    {
+      "tv": "NYSE:CCL",
+      "ticker": "CCL",
+      "close": 27.095,
+      "avgVol90d": 26788844.144444443,
+      "mcap": 37479915547.64623,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:IRM",
+      "ticker": "IRM",
+      "close": 125.83,
+      "avgVol90d": 1659997.888888889,
+      "mcap": 37437531400.94196,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:WEC",
+      "ticker": "WEC",
+      "close": 113.71,
+      "avgVol90d": 2100438.888888889,
+      "mcap": 37038266287.58771,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:AXON",
+      "ticker": "AXON",
+      "close": 457.045,
+      "avgVol90d": 1164985.888888889,
+      "mcap": 36838779042.58209,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:PCG",
+      "ticker": "PCG",
+      "close": 16.705,
+      "avgVol90d": 21400502.166666668,
+      "mcap": 36788166008.42069,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:RKT",
+      "ticker": "RKT",
+      "close": 12.99,
+      "avgVol90d": 26158619.71111111,
+      "mcap": 36754292484.0387,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:PRU",
+      "ticker": "PRU",
+      "close": 105.555,
+      "avgVol90d": 2316083.3333333335,
+      "mcap": 36627583922.05646,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:WAT",
+      "ticker": "WAT",
+      "close": 371.88,
+      "avgVol90d": 1191086.8333333333,
+      "mcap": 36513354059.81765,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:VMC",
+      "ticker": "VMC",
+      "close": 280.77,
+      "avgVol90d": 1247967.6666666667,
+      "mcap": 36431278447.58011,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NASDAQ:PAYX",
+      "ticker": "PAYX",
+      "close": 101.215,
+      "avgVol90d": 3792592.4444444445,
+      "mcap": 36264409260.861786,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:PYPL",
+      "ticker": "PYPL",
+      "close": 41.07,
+      "avgVol90d": 20666946.777777776,
+      "mcap": 36228073307.98336,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NYSE:HIG",
+      "ticker": "HIG",
+      "close": 130.39,
+      "avgVol90d": 1621168.2444444445,
+      "mcap": 35743915134.332245,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:ASTS",
+      "ticker": "ASTS",
+      "close": 92.01,
+      "avgVol90d": 17605806.255555555,
+      "mcap": 35711340158.21577,
+      "sector": "Communications"
+    },
+    {
+      "tv": "NYSE:HSY",
+      "ticker": "HSY",
+      "close": 175.395,
+      "avgVol90d": 1997927.177777778,
+      "mcap": 35577758690.12664,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NASDAQ:HBAN",
+      "ticker": "HBAN",
+      "close": 17.095,
+      "avgVol90d": 25743617.17777778,
+      "mcap": 34653797239.08144,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:WDAY",
+      "ticker": "WDAY",
+      "close": 139.83,
+      "avgVol90d": 5496768.066666666,
+      "mcap": 34538008948.009346,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:UAL",
+      "ticker": "UAL",
+      "close": 106.27,
+      "avgVol90d": 7133455.411111111,
+      "mcap": 34492024626.55542,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NYSE:KVUE",
+      "ticker": "KVUE",
+      "close": 17.955,
+      "avgVol90d": 27750604.833333332,
+      "mcap": 34473755762.63085,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:RDDT",
+      "ticker": "RDDT",
+      "close": 178.815,
+      "avgVol90d": 5505758.2,
+      "mcap": 34423503248.28516,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:ZTS",
+      "ticker": "ZTS",
+      "close": 81.89,
+      "avgVol90d": 5482157.088888889,
+      "mcap": 34330589381.966667,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:ROP",
+      "ticker": "ROP",
+      "close": 337.07,
+      "avgVol90d": 1393643.4888888889,
+      "mcap": 34016213499.77789,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:LVS",
+      "ticker": "LVS",
+      "close": 51.3,
+      "avgVol90d": 4322463.711111112,
+      "mcap": 33993295986.964184,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:HAL",
+      "ticker": "HAL",
+      "close": 40.14,
+      "avgVol90d": 13631876.055555556,
+      "mcap": 33532865427.666332,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:QSR",
+      "ticker": "QSR",
+      "close": 73.455,
+      "avgVol90d": 3512144.6666666665,
+      "mcap": 33520492365.524494,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NASDAQ:KMB",
+      "ticker": "KMB",
+      "close": 100.835,
+      "avgVol90d": 4897652.655555555,
+      "mcap": 33471202878.020542,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:MTB",
+      "ticker": "MTB",
+      "close": 227.775,
+      "avgVol90d": 1121340.0777777778,
+      "mcap": 33356524362.148785,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:EQT",
+      "ticker": "EQT",
+      "close": 53.11,
+      "avgVol90d": 7972986.3,
+      "mcap": 33219137166.639206,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NASDAQ:SATS",
+      "ticker": "SATS",
+      "close": 113.9,
+      "avgVol90d": 6118127.044444445,
+      "mcap": 33009754490.60889,
+      "sector": "Communications"
+    },
+    {
+      "tv": "NASDAQ:NTAP",
+      "ticker": "NTAP",
+      "close": 164.75,
+      "avgVol90d": 2699887.311111111,
+      "mcap": 32277807128.53182,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:RPRX",
+      "ticker": "RPRX",
+      "close": 55.91,
+      "avgVol90d": 3643317.611111111,
+      "mcap": 32197574916.581875,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:CNC",
+      "ticker": "CNC",
+      "close": 64.67,
+      "avgVol90d": 6251929.733333337,
+      "mcap": 31933851359.025528,
+      "sector": "Health Services"
+    },
+    {
+      "tv": "NASDAQ:ACGL",
+      "ticker": "ACGL",
+      "close": 90.9,
+      "avgVol90d": 2112843.255555559,
+      "mcap": 31759514781.76419,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:EXR",
+      "ticker": "EXR",
+      "close": 150.285,
+      "avgVol90d": 1208638.177777778,
+      "mcap": 31749349535.31522,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:VG",
+      "ticker": "VG",
+      "close": 12.7357,
+      "avgVol90d": 22338996.8,
+      "mcap": 31640038833.215256,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:TWLO",
+      "ticker": "TWLO",
+      "close": 208.44,
+      "avgVol90d": 2661883.2444444443,
+      "mcap": 31635744744.57863,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:EL",
+      "ticker": "EL",
+      "close": 86.975,
+      "avgVol90d": 4565603.111111111,
+      "mcap": 31467112836.221695,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NASDAQ:NTRA",
+      "ticker": "NTRA",
+      "close": 219.315,
+      "avgVol90d": 1360142.5222222223,
+      "mcap": 31409281616.284805,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:NTRS",
+      "ticker": "NTRS",
+      "close": 169.13,
+      "avgVol90d": 1099898.7222222222,
+      "mcap": 31297046186.8299,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:IQV",
+      "ticker": "IQV",
+      "close": 185.81,
+      "avgVol90d": 2020307.822222222,
+      "mcap": 31011687865.686066,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:RVMD",
+      "ticker": "RVMD",
+      "close": 145.59,
+      "avgVol90d": 2795303.388888889,
+      "mcap": 30951920126.19799,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:RBLX",
+      "ticker": "RBLX",
+      "close": 42.795,
+      "avgVol90d": 11260877.566666666,
+      "mcap": 30640311812.47186,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:DTE",
+      "ticker": "DTE",
+      "close": 146.73,
+      "avgVol90d": 1426797.6444444444,
+      "mcap": 30523992562.550465,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "CBOE:CBOE",
+      "ticker": "CBOE",
+      "close": 291.59,
+      "avgVol90d": 1040719.2666666667,
+      "mcap": 30515995790.472534,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:DXCM",
+      "ticker": "DXCM",
+      "close": 78.355,
+      "avgVol90d": 5163080.144444444,
+      "mcap": 30235076358.61677,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:Q",
+      "ticker": "Q",
+      "close": 144.125,
+      "avgVol90d": 2093451.0666666667,
+      "mcap": 30171011978.882168,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:VICI",
+      "ticker": "VICI",
+      "close": 28.11,
+      "avgVol90d": 8649299.077777777,
+      "mcap": 30050438046.195934,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:AEE",
+      "ticker": "AEE",
+      "close": 108.505,
+      "avgVol90d": 1782859.3666666667,
+      "mcap": 30028933655.156727,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:GEHC",
+      "ticker": "GEHC",
+      "close": 65.69,
+      "avgVol90d": 4432719.988888889,
+      "mcap": 29881842302.193905,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:RJF",
+      "ticker": "RJF",
+      "close": 152.95,
+      "avgVol90d": 1418342.2222222222,
+      "mcap": 29807357884.345314,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:BIIB",
+      "ticker": "BIIB",
+      "close": 201.67,
+      "avgVol90d": 1187984.4,
+      "mcap": 29773977991.41291,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:DOV",
+      "ticker": "DOV",
+      "close": 220.405,
+      "avgVol90d": 1084204.7666666666,
+      "mcap": 29680047677.359215,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:ARES",
+      "ticker": "ARES",
+      "close": 132.61,
+      "avgVol90d": 3751991.3444444444,
+      "mcap": 29443189858.320343,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:TPR",
+      "ticker": "TPR",
+      "close": 145.29,
+      "avgVol90d": 2291861.3777777776,
+      "mcap": 29355076894.477333,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:AMRZ",
+      "ticker": "AMRZ",
+      "close": 52.62,
+      "avgVol90d": 3271704.466666667,
+      "mcap": 29084965557.6747,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:IR",
+      "ticker": "IR",
+      "close": 73.55,
+      "avgVol90d": 3945798.4444444445,
+      "mcap": 28782826965.931538,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:CPRT",
+      "ticker": "CPRT",
+      "close": 31.065,
+      "avgVol90d": 9343212.722222203,
+      "mcap": 28760334484.629833,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:FISV",
+      "ticker": "FISV",
+      "close": 53.79,
+      "avgVol90d": 7149709.344444444,
+      "mcap": 28683733535.095505,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NASDAQ:MDB",
+      "ticker": "MDB",
+      "close": 356.46,
+      "avgVol90d": 2145622.4,
+      "mcap": 28670765858.51775,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:RMD",
+      "ticker": "RMD",
+      "close": 196.33,
+      "avgVol90d": 1246795.8111111112,
+      "mcap": 28478922675.046917,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:KHC",
+      "ticker": "KHC",
+      "close": 23.85,
+      "avgVol90d": 15343922.888888888,
+      "mcap": 28280795839.39821,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:ATO",
+      "ticker": "ATO",
+      "close": 169.149,
+      "avgVol90d": 1257285.0222222223,
+      "mcap": 28234321557.131943,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:CFG",
+      "ticker": "CFG",
+      "close": 66.72,
+      "avgVol90d": 4751344.388888889,
+      "mcap": 28214681415.4847,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:CPNG",
+      "ticker": "CPNG",
+      "close": 15.685,
+      "avgVol90d": 23376996.166666668,
+      "mcap": 28155582028.264614,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:ZM",
+      "ticker": "ZM",
+      "close": 95.905,
+      "avgVol90d": 4649470.855555556,
+      "mcap": 28122437972.049675,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:CNP",
+      "ticker": "CNP",
+      "close": 42.57,
+      "avgVol90d": 5281532.322222223,
+      "mcap": 27847994985.337578,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:MTSI",
+      "ticker": "MTSI",
+      "close": 364.74,
+      "avgVol90d": 1346349.677777778,
+      "mcap": 27828121567.300625,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:FTI",
+      "ticker": "FTI",
+      "close": 69.68,
+      "avgVol90d": 4502915.711111084,
+      "mcap": 27781548443.961983,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:MTZ",
+      "ticker": "MTZ",
+      "close": 349.49,
+      "avgVol90d": 1016082.0111111111,
+      "mcap": 27616193627.460407,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NASDAQ:FSLR",
+      "ticker": "FSLR",
+      "close": 256.51,
+      "avgVol90d": 2475852.5222222223,
+      "mcap": 27562862017.9323,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:EIX",
+      "ticker": "EIX",
+      "close": 71.36,
+      "avgVol90d": 3105221.2555555557,
+      "mcap": 27458896760.684814,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:VEEV",
+      "ticker": "VEEV",
+      "close": 168.46,
+      "avgVol90d": 2852646.777777778,
+      "mcap": 27365196843.17128,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:FOX",
+      "ticker": "FOX",
+      "close": 61.535,
+      "avgVol90d": 1527699.3,
+      "mcap": 27351748790.49195,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NASDAQ:EXPE",
+      "ticker": "EXPE",
+      "close": 227.395,
+      "avgVol90d": 2335875.466666667,
+      "mcap": 27292317516.76504,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:OTIS",
+      "ticker": "OTIS",
+      "close": 70.72,
+      "avgVol90d": 3801519.7,
+      "mcap": 27136398799.49488,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:PPL",
+      "ticker": "PPL",
+      "close": 35.37,
+      "avgVol90d": 9114658.533333333,
+      "mcap": 26610633747.926434,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:AVB",
+      "ticker": "AVB",
+      "close": 187.28,
+      "avgVol90d": 1072316.5555555555,
+      "mcap": 26569799338.666527,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:FE",
+      "ticker": "FE",
+      "close": 45.765,
+      "avgVol90d": 5006166.122222222,
+      "mcap": 26471904392.338707,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:NVT",
+      "ticker": "NVT",
+      "close": 163.565,
+      "avgVol90d": 2309011.566666667,
+      "mcap": 26451807366.430855,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:TSEM",
+      "ticker": "TSEM",
+      "close": 235.5,
+      "avgVol90d": 2725835.711111111,
+      "mcap": 26318684766.226765,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:XYL",
+      "ticker": "XYL",
+      "close": 109.89,
+      "avgVol90d": 2146365.3,
+      "mcap": 26120138999.463154,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:NRG",
+      "ticker": "NRG",
+      "close": 123.74,
+      "avgVol90d": 2731056.722222222,
+      "mcap": 26107466584.07648,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:ATI",
+      "ticker": "ATI",
+      "close": 189.71,
+      "avgVol90d": 2019632.0555555555,
+      "mcap": 25889805659.626728,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:ES",
+      "ticker": "ES",
+      "close": 68.835,
+      "avgVol90d": 2551721.988888889,
+      "mcap": 25887469341.767826,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:PPG",
+      "ticker": "PPG",
+      "close": 116.005,
+      "avgVol90d": 2063749.4,
+      "mcap": 25857513927.751198,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NASDAQ:SYM",
+      "ticker": "SYM",
+      "close": 42.47,
+      "avgVol90d": 1873488.2777777778,
+      "mcap": 25596958918.678265,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:XPO",
+      "ticker": "XPO",
+      "close": 217.53,
+      "avgVol90d": 1740191.1555555463,
+      "mcap": 25540193323.706825,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NYSE:EQR",
+      "ticker": "EQR",
+      "close": 67.875,
+      "avgVol90d": 2777664.777777778,
+      "mcap": 25430845458.344383,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:WRB",
+      "ticker": "WRB",
+      "close": 68.05,
+      "avgVol90d": 2144448.944444445,
+      "mcap": 25333432167.325943,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:CTSH",
+      "ticker": "CTSH",
+      "close": 53,
+      "avgVol90d": 7520137.633333301,
+      "mcap": 25115081593.842087,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:WSM",
+      "ticker": "WSM",
+      "close": 212.68,
+      "avgVol90d": 1183984.611111111,
+      "mcap": 25042349341.34766,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:ILMN",
+      "ticker": "ILMN",
+      "close": 164.57,
+      "avgVol90d": 1831368.1222222233,
+      "mcap": 24899441312.624386,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:RF",
+      "ticker": "RF",
+      "close": 29,
+      "avgVol90d": 12444318.41111111,
+      "mcap": 24748008081.60839,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:AWK",
+      "ticker": "AWK",
+      "close": 126.63,
+      "avgVol90d": 1933677,
+      "mcap": 24728371700.245277,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:BG",
+      "ticker": "BG",
+      "close": 126.935,
+      "avgVol90d": 1728402.3444444444,
+      "mcap": 24627689129.72675,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:KEY",
+      "ticker": "KEY",
+      "close": 22.415,
+      "avgVol90d": 14167367.244444445,
+      "mcap": 24302919664.923756,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:TEAM",
+      "ticker": "TEAM",
+      "close": 95.52,
+      "avgVol90d": 7421816.533333333,
+      "mcap": 24239906507.110134,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:SYF",
+      "ticker": "SYF",
+      "close": 71.98,
+      "avgVol90d": 4079313.1666666665,
+      "mcap": 24211930434.28149,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:DG",
+      "ticker": "DG",
+      "close": 109.76,
+      "avgVol90d": 3406617.822222222,
+      "mcap": 24211588932.868168,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NYSE:DOW",
+      "ticker": "DOW",
+      "close": 33.43,
+      "avgVol90d": 13610286.41111111,
+      "mcap": 24094387729.131245,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:STZ",
+      "ticker": "STZ",
+      "close": 140.485,
+      "avgVol90d": 2061411.5222222223,
+      "mcap": 24091802804.78586,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NASDAQ:VRSK",
+      "ticker": "VRSK",
+      "close": 181.68,
+      "avgVol90d": 2148439.322222222,
+      "mcap": 23804050212.086113,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:TW",
+      "ticker": "TW",
+      "close": 100.5,
+      "avgVol90d": 1606515.4,
+      "mcap": 23720614814.80738,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:FTAI",
+      "ticker": "FTAI",
+      "close": 229.16,
+      "avgVol90d": 1470049.4111111104,
+      "mcap": 23507913328.24145,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:LPLA",
+      "ticker": "LPLA",
+      "close": 293.21,
+      "avgVol90d": 1049889,
+      "mcap": 23451773328.10344,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:PFG",
+      "ticker": "PFG",
+      "close": 108.49,
+      "avgVol90d": 1482315.7777777778,
+      "mcap": 23435185010.52194,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:DRI",
+      "ticker": "DRI",
+      "close": 203.82,
+      "avgVol90d": 1258468.411111111,
+      "mcap": 23344524871.729134,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NASDAQ:TROW",
+      "ticker": "TROW",
+      "close": 108.725,
+      "avgVol90d": 2305001.6666666665,
+      "mcap": 23296138719.202152,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:CHD",
+      "ticker": "CHD",
+      "close": 97.95,
+      "avgVol90d": 2053986.9666666666,
+      "mcap": 23208625672.493042,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:ROL",
+      "ticker": "ROL",
+      "close": 47.97,
+      "avgVol90d": 3499701.4,
+      "mcap": 23095810868.125813,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NYSE:PHM",
+      "ticker": "PHM",
+      "close": 120.82,
+      "avgVol90d": 1817277.1333333333,
+      "mcap": 23014561622.766247,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NYSE:P",
+      "ticker": "P",
+      "close": 69.205,
+      "avgVol90d": 3349437.011111111,
+      "mcap": 23004083716.49443,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:HPQ",
+      "ticker": "HPQ",
+      "close": 25.02,
+      "avgVol90d": 20204981.766666673,
+      "mcap": 22881358570.972736,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:CMS",
+      "ticker": "CMS",
+      "close": 72.745,
+      "avgVol90d": 3053601.7333333334,
+      "mcap": 22472354447.067604,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:IONQ",
+      "ticker": "IONQ",
+      "close": 59.97,
+      "avgVol90d": 27975673.388888888,
+      "mcap": 22384997038.0822,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:CHRW",
+      "ticker": "CHRW",
+      "close": 189.59,
+      "avgVol90d": 2096326.5222222223,
+      "mcap": 22347548798.88693,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NYSE:LEN",
+      "ticker": "LEN",
+      "close": 90.84,
+      "avgVol90d": 2808681.1666666665,
+      "mcap": 22322534306.603283,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NASDAQ:MKSI",
+      "ticker": "MKSI",
+      "close": 329.2,
+      "avgVol90d": 1328433.5555555555,
+      "mcap": 22235528995.223076,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:NI",
+      "ticker": "NI",
+      "close": 46.36,
+      "avgVol90d": 4257875.655555556,
+      "mcap": 22226804021.75351,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NASDAQ:AFRM",
+      "ticker": "AFRM",
+      "close": 65.755,
+      "avgVol90d": 5950414.144444444,
+      "mcap": 22021256505.80694,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:SBAC",
+      "ticker": "SBAC",
+      "close": 205.47,
+      "avgVol90d": 1105828.3111111112,
+      "mcap": 21792768342.534424,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:AER",
+      "ticker": "AER",
+      "close": 137.82,
+      "avgVol90d": 1399509.3555555556,
+      "mcap": 21732159649.25075,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:OMC",
+      "ticker": "OMC",
+      "close": 75.58,
+      "avgVol90d": 4783239.122222222,
+      "mcap": 21540767440.764248,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NYSE:EXPD",
+      "ticker": "EXPD",
+      "close": 164.615,
+      "avgVol90d": 1364583.6666666667,
+      "mcap": 21530182657.445442,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NASDAQ:DLTR",
+      "ticker": "DLTR",
+      "close": 111.99,
+      "avgVol90d": 3453356.188888889,
+      "mcap": 21521632746.011497,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:EXE",
+      "ticker": "EXE",
+      "close": 89.695,
+      "avgVol90d": 3626664.188888889,
+      "mcap": 21457631523.946384,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NASDAQ:INCY",
+      "ticker": "INCY",
+      "close": 107.335,
+      "avgVol90d": 1621126.911111111,
+      "mcap": 21443617796.52625,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:SMCI",
+      "ticker": "SMCI",
+      "close": 35.47,
+      "avgVol90d": 39284963.6,
+      "mcap": 21332314515.312256,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:SOFI",
+      "ticker": "SOFI",
+      "close": 16.615,
+      "avgVol90d": 67292293.81111111,
+      "mcap": 21312744330.828472,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:VLTO",
+      "ticker": "VLTO",
+      "close": 85.72,
+      "avgVol90d": 2206976.433333333,
+      "mcap": 21052769326.70149,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:ROIV",
+      "ticker": "ROIV",
+      "close": 29.21,
+      "avgVol90d": 6058262.633333334,
+      "mcap": 21009887415.69604,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:SW",
+      "ticker": "SW",
+      "close": 40.12,
+      "avgVol90d": 5831029.344444445,
+      "mcap": 20975952838.823982,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NASDAQ:ENTG",
+      "ticker": "ENTG",
+      "close": 136.8375,
+      "avgVol90d": 2844388.177777778,
+      "mcap": 20867719698.237534,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:INSM",
+      "ticker": "INSM",
+      "close": 95.99,
+      "avgVol90d": 2845671.822222222,
+      "mcap": 20806068508.046547,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:LUV",
+      "ticker": "LUV",
+      "close": 42.42,
+      "avgVol90d": 8329001.644444444,
+      "mcap": 20733779990.428074,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NASDAQ:ZS",
+      "ticker": "ZS",
+      "close": 127.905,
+      "avgVol90d": 3966744.2333333334,
+      "mcap": 20683457305.362682,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:CRCL",
+      "ticker": "CRCL",
+      "close": 83.15,
+      "avgVol90d": 16522365.566666666,
+      "mcap": 20669096866.817513,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:FLUT",
+      "ticker": "FLUT",
+      "close": 118.42,
+      "avgVol90d": 3687551.6222222224,
+      "mcap": 20601787293.121735,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NASDAQ:OKTA",
+      "ticker": "OKTA",
+      "close": 118.21,
+      "avgVol90d": 3918381.066666667,
+      "mcap": 20545767786.539097,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:LYB",
+      "ticker": "LYB",
+      "close": 63.515,
+      "avgVol90d": 7229077.522222222,
+      "mcap": 20501675742.63223,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:BRO",
+      "ticker": "BRO",
+      "close": 60.385,
+      "avgVol90d": 3361181.8777777776,
+      "mcap": 20467365859.42345,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:FIS",
+      "ticker": "FIS",
+      "close": 39.53,
+      "avgVol90d": 6376995.466666667,
+      "mcap": 20432232580.987495,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:EFX",
+      "ticker": "EFX",
+      "close": 167.73,
+      "avgVol90d": 1766700.9333333333,
+      "mcap": 19972013568.319294,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NASDAQ:AKAM",
+      "ticker": "AKAM",
+      "close": 137.03,
+      "avgVol90d": 5348150.888888889,
+      "mcap": 19922168171.240547,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:IOT",
+      "ticker": "IOT",
+      "close": 34.08,
+      "avgVol90d": 7493417.955555555,
+      "mcap": 19920218045.53956,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:AS",
+      "ticker": "AS",
+      "close": 34.44,
+      "avgVol90d": 4788157.844444444,
+      "mcap": 19915680432.238274,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NYSE:USFD",
+      "ticker": "USFD",
+      "close": 89.97,
+      "avgVol90d": 2711569.3333333335,
+      "mcap": 19813341775.398994,
+      "sector": "Distribution Services"
+    },
+    {
+      "tv": "NASDAQ:IREN",
+      "ticker": "IREN",
+      "close": 55.3018,
+      "avgVol90d": 41836733.61111111,
+      "mcap": 19734861426.029182,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:DKS",
+      "ticker": "DKS",
+      "close": 219.535,
+      "avgVol90d": 1194887.2555555555,
+      "mcap": 19649020996.12189,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:RIVN",
+      "ticker": "RIVN",
+      "close": 15.505,
+      "avgVol90d": 30080985.01111111,
+      "mcap": 19542776629.72505,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NYSE:TSN",
+      "ticker": "TSN",
+      "close": 56.455,
+      "avgVol90d": 3034024.9,
+      "mcap": 19484229682.44289,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:IFF",
+      "ticker": "IFF",
+      "close": 75.66,
+      "avgVol90d": 1864252.0222222223,
+      "mcap": 19316259986.47822,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:APG",
+      "ticker": "APG",
+      "close": 43.755,
+      "avgVol90d": 2887652.033333333,
+      "mcap": 19130911134.991417,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:FTV",
+      "ticker": "FTV",
+      "close": 62.6,
+      "avgVol90d": 3602645.7,
+      "mcap": 19084299665.93501,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:TTMI",
+      "ticker": "TTMI",
+      "close": 183.59,
+      "avgVol90d": 2209577.888888889,
+      "mcap": 19065832492.591164,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:EVRG",
+      "ticker": "EVRG",
+      "close": 82.62,
+      "avgVol90d": 2030239.1666666667,
+      "mcap": 19044985844.559864,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:DD",
+      "ticker": "DD",
+      "close": 46.35,
+      "avgVol90d": 3991445.944444437,
+      "mcap": 18999854000.26562,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NASDAQ:LSCC",
+      "ticker": "LSCC",
+      "close": 138.06,
+      "avgVol90d": 2097301.5444444446,
+      "mcap": 18915304577.92236,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:MRNA",
+      "ticker": "MRNA",
+      "close": 47.535,
+      "avgVol90d": 7807136.733333333,
+      "mcap": 18861234445.039597,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:LNT",
+      "ticker": "LNT",
+      "close": 72.77,
+      "avgVol90d": 2495957.855555556,
+      "mcap": 18794820810.350555,
+      "sector": "Utilities"
+    },
+    {
+      "tv": "NYSE:SN",
+      "ticker": "SN",
+      "close": 132.575,
+      "avgVol90d": 2040339.0333333334,
+      "mcap": 18762062492.855892,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NASDAQ:CHTR",
+      "ticker": "CHTR",
+      "close": 135.3775,
+      "avgVol90d": 2502257.7444444443,
+      "mcap": 18747690658.041367,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NASDAQ:VTRS",
+      "ticker": "VTRS",
+      "close": 16.085,
+      "avgVol90d": 10998278.055555556,
+      "mcap": 18731829651.27654,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:AMKR",
+      "ticker": "AMKR",
+      "close": 75.22,
+      "avgVol90d": 4673581.788888888,
+      "mcap": 18644971377.43957,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:DOCN",
+      "ticker": "DOCN",
+      "close": 177,
+      "avgVol90d": 4137483.188888889,
+      "mcap": 18472460329.602566,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:AA",
+      "ticker": "AA",
+      "close": 69.665,
+      "avgVol90d": 5684418.633333298,
+      "mcap": 18383888170.01616,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NYSE:GIS",
+      "ticker": "GIS",
+      "close": 34.24,
+      "avgVol90d": 9269558.3,
+      "mcap": 18273245408.009495,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:AMCR",
+      "ticker": "AMCR",
+      "close": 38.77,
+      "avgVol90d": 5323612.888888888,
+      "mcap": 17925142572.335308,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:INVH",
+      "ticker": "INVH",
+      "close": 29.855,
+      "avgVol90d": 6167176.522222222,
+      "mcap": 17735121400.376675,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:ROKU",
+      "ticker": "ROKU",
+      "close": 120.03,
+      "avgVol90d": 3049473.933333333,
+      "mcap": 17714458815.080143,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:WY",
+      "ticker": "WY",
+      "close": 24.525,
+      "avgVol90d": 5472430.955555555,
+      "mcap": 17683580031.672413,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:ALB",
+      "ticker": "ALB",
+      "close": 149.1701,
+      "avgVol90d": 2206211.8333333335,
+      "mcap": 17592322254.51336,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:IP",
+      "ticker": "IP",
+      "close": 33.14,
+      "avgVol90d": 6835626.433333334,
+      "mcap": 17548193785.022865,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NASDAQ:GH",
+      "ticker": "GH",
+      "close": 131.98,
+      "avgVol90d": 2148915.3777777776,
+      "mcap": 17500536065.81094,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NYSE:WES",
+      "ticker": "WES",
+      "close": 44.4,
+      "avgVol90d": 1476126.6333333333,
+      "mcap": 17483891565.406895,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NYSE:GPN",
+      "ticker": "GPN",
+      "close": 63.73,
+      "avgVol90d": 3711429.8666666667,
+      "mcap": 17432926836.525307,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NYSE:ZBH",
+      "ticker": "ZBH",
+      "close": 90.04,
+      "avgVol90d": 2279359.488888889,
+      "mcap": 17419361042.811115,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:NXT",
+      "ticker": "NXT",
+      "close": 115.77,
+      "avgVol90d": 2046604,
+      "mcap": 17397275491.974514,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:BR",
+      "ticker": "BR",
+      "close": 148.96,
+      "avgVol90d": 1590869.677777778,
+      "mcap": 17228458804.33698,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:KIM",
+      "ticker": "KIM",
+      "close": 25.43,
+      "avgVol90d": 5184324.888888889,
+      "mcap": 17149733780.004368,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:CDW",
+      "ticker": "CDW",
+      "close": 132.97,
+      "avgVol90d": 1920955.0444444444,
+      "mcap": 16987377293.166277,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:WPC",
+      "ticker": "WPC",
+      "close": 76.1151,
+      "avgVol90d": 1349020.9444444445,
+      "mcap": 16953808788.739275,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:NBIX",
+      "ticker": "NBIX",
+      "close": 167.93,
+      "avgVol90d": 1181235.0111111111,
+      "mcap": 16885360011.150751,
+      "sector": "Health Technology"
+    },
+    {
+      "tv": "NASDAQ:TPG",
+      "ticker": "TPG",
+      "close": 43.64,
+      "avgVol90d": 3531997.644444444,
+      "mcap": 16771389791.985174,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:HST",
+      "ticker": "HST",
+      "close": 24.435,
+      "avgVol90d": 8650410.788888888,
+      "mcap": 16735024553.13629,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:CF",
+      "ticker": "CF",
+      "close": 108.03,
+      "avgVol90d": 4050563.255555576,
+      "mcap": 16596572232.32879,
+      "sector": "Process Industries"
+    },
+    {
+      "tv": "NYSE:BEN",
+      "ticker": "BEN",
+      "close": 31.855,
+      "avgVol90d": 5102560.7,
+      "mcap": 16553040888.343712,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:SSNC",
+      "ticker": "SSNC",
+      "close": 68.55,
+      "avgVol90d": 2719972.388888889,
+      "mcap": 16509173353.58058,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:PR",
+      "ticker": "PR",
+      "close": 19.635,
+      "avgVol90d": 12601742.544444444,
+      "mcap": 16440153419.413282,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:TXT",
+      "ticker": "TXT",
+      "close": 94.46,
+      "avgVol90d": 1474836.1555555556,
+      "mcap": 16425552933.142672,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NASDAQ:CG",
+      "ticker": "CG",
+      "close": 45.62,
+      "avgVol90d": 3474875.4444444445,
+      "mcap": 16422033104.272041,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:CDE",
+      "ticker": "CDE",
+      "close": 15.87,
+      "avgVol90d": 24814424.144444443,
+      "mcap": 16417685634.555622,
+      "sector": "Non-Energy Minerals"
+    },
+    {
+      "tv": "NASDAQ:VNOM",
+      "ticker": "VNOM",
+      "close": 45.42,
+      "avgVol90d": 2658623.511111111,
+      "mcap": 16306940485.026596,
+      "sector": "Miscellaneous"
+    },
+    {
+      "tv": "NYSE:OVV",
+      "ticker": "OVV",
+      "close": 57.655,
+      "avgVol90d": 4461536.433333334,
+      "mcap": 16202126574.057255,
+      "sector": "Energy Minerals"
+    },
+    {
+      "tv": "NYSE:BBY",
+      "ticker": "BBY",
+      "close": 75.7614,
+      "avgVol90d": 4501671.033333333,
+      "mcap": 15968012695.938818,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:TSCO",
+      "ticker": "TSCO",
+      "close": 30.44,
+      "avgVol90d": 9029232.022222223,
+      "mcap": 15964246736.387184,
+      "sector": "Retail Trade"
+    },
+    {
+      "tv": "NASDAQ:PAA",
+      "ticker": "PAA",
+      "close": 22.61,
+      "avgVol90d": 3246253.0555555555,
+      "mcap": 15952070734.79439,
+      "sector": "Industrial Services"
+    },
+    {
+      "tv": "NASDAQ:RMBS",
+      "ticker": "RMBS",
+      "close": 146.81,
+      "avgVol90d": 2489138.288888889,
+      "mcap": 15875588245.965336,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:NLY",
+      "ticker": "NLY",
+      "close": 21.615,
+      "avgVol90d": 7166977.455555555,
+      "mcap": 15838957870.647854,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:PFGC",
+      "ticker": "PFGC",
+      "close": 100.66,
+      "avgVol90d": 2030064.411111111,
+      "mcap": 15812664010.401762,
+      "sector": "Transportation"
+    },
+    {
+      "tv": "NASDAQ:NWS",
+      "ticker": "NWS",
+      "close": 31.435,
+      "avgVol90d": 1504979.8555555556,
+      "mcap": 15783489401.520123,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:CPT",
+      "ticker": "CPT",
+      "close": 116.1,
+      "avgVol90d": 1187778.2,
+      "mcap": 15699011701.320621,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NASDAQ:PTC",
+      "ticker": "PTC",
+      "close": 135.9025,
+      "avgVol90d": 1327257.1555555556,
+      "mcap": 15697525862.314648,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:LDOS",
+      "ticker": "LDOS",
+      "close": 124.035,
+      "avgVol90d": 1184897.5222222223,
+      "mcap": 15601800229.801044,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:DECK",
+      "ticker": "DECK",
+      "close": 112,
+      "avgVol90d": 2127317.5888888887,
+      "mcap": 15554666968.563301,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:BWA",
+      "ticker": "BWA",
+      "close": 74.62,
+      "avgVol90d": 3201360.3777777776,
+      "mcap": 15305676454.333834,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:WMG",
+      "ticker": "WMG",
+      "close": 29.33,
+      "avgVol90d": 2599386.8777777776,
+      "mcap": 15298983731.857628,
+      "sector": "Commercial Services"
+    },
+    {
+      "tv": "NASDAQ:SMTC",
+      "ticker": "SMTC",
+      "close": 164.215,
+      "avgVol90d": 2645019.677777778,
+      "mcap": 15296819603.186039,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:YUMC",
+      "ticker": "YUMC",
+      "close": 43.665,
+      "avgVol90d": 1668485.211111111,
+      "mcap": 15245520319.489468,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NYSE:RBRK",
+      "ticker": "RBRK",
+      "close": 73.77,
+      "avgVol90d": 3978868.966666667,
+      "mcap": 15182568285.464176,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:GEN",
+      "ticker": "GEN",
+      "close": 24.93,
+      "avgVol90d": 7580457.444444444,
+      "mcap": 15018676687.704845,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:J",
+      "ticker": "J",
+      "close": 126.84,
+      "avgVol90d": 1105750.0222222225,
+      "mcap": 14977379011.118303,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NYSE:SGI",
+      "ticker": "SGI",
+      "close": 70.25,
+      "avgVol90d": 2820103.7333333334,
+      "mcap": 14776428501.342308,
+      "sector": "Consumer Durables"
+    },
+    {
+      "tv": "NASDAQ:DKNG",
+      "ticker": "DKNG",
+      "close": 29.755,
+      "avgVol90d": 14175714.955555556,
+      "mcap": 14762312962.744291,
+      "sector": "Consumer Services"
+    },
+    {
+      "tv": "NASDAQ:TIGO",
+      "ticker": "TIGO",
+      "close": 87.89,
+      "avgVol90d": 1573229.411111111,
+      "mcap": 14725163872.854738,
+      "sector": "Communications"
+    },
+    {
+      "tv": "NASDAQ:REG",
+      "ticker": "REG",
+      "close": 80.015,
+      "avgVol90d": 1415044.6666666667,
+      "mcap": 14650491155.08592,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:DOC",
+      "ticker": "DOC",
+      "close": 20.715,
+      "avgVol90d": 9178075.566666666,
+      "mcap": 14633483624.71756,
+      "sector": "Finance"
+    },
+    {
+      "tv": "NYSE:GNRC",
+      "ticker": "GNRC",
+      "close": 248.51,
+      "avgVol90d": 1010347.7666666667,
+      "mcap": 14629454882.011534,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NYSE:TOST",
+      "ticker": "TOST",
+      "close": 25.15,
+      "avgVol90d": 12070954.644444445,
+      "mcap": 14587000000,
+      "sector": "Technology Services"
+    },
+    {
+      "tv": "NASDAQ:LULU",
+      "ticker": "LULU",
+      "close": 122.815,
+      "avgVol90d": 3103336.888888889,
+      "mcap": 14574449999.317032,
+      "sector": "Consumer Non-Durables"
+    },
+    {
+      "tv": "NYSE:MAS",
+      "ticker": "MAS",
+      "close": 72.16,
+      "avgVol90d": 2881620.288888889,
+      "mcap": 14557156596.962543,
+      "sector": "Producer Manufacturing"
+    },
+    {
+      "tv": "NASDAQ:AAOI",
+      "ticker": "AAOI",
+      "close": 181.245,
+      "avgVol90d": 11383574.533333333,
+      "mcap": 14543600801.246778,
+      "sector": "Electronic Technology"
+    },
+    {
+      "tv": "NYSE:PNFP",
+      "ticker": "PNFP",
+      "close": 95.98,
+      "avgVol90d": 1385163.7333333334,
+      "mcap": 14503231305.210924,
+      "sector": "Finance"
+    }
+  ]
+}
