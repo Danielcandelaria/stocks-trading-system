@@ -213,7 +213,7 @@ saveJson('seen_signals.json', seen);
 // commit local automático tras cada scan — historial completo del journal.
 try {
   const { execSync } = await import('child_process');
-  execSync('git add journal.json seen_signals.json universe.json 2>/dev/null; git diff --cached --quiet || git commit -q -m "journal: scan ' + new Date().toISOString().slice(0, 10) + '"', { cwd: ROOT, shell: '/bin/zsh' });
+  execSync('git add journal.json seen_signals.json universe.json 2>/dev/null; git diff --cached --quiet || git commit -q -m "journal: scan ' + new Date().toISOString().slice(0, 10) + '"; git push -q origin main 2>/dev/null || true', { cwd: ROOT, shell: '/bin/zsh' });
 } catch (e) { log('git backup skip:', e.message.slice(0, 80)); }
 
 const open = journal.filter(p => p.status === 'open').length;
