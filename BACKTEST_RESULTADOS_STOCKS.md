@@ -71,3 +71,11 @@ Scripts: `fetch_universe.mjs`, `download_history.mjs`, `backtest_ema_demark.mjs`
 **Momentum mensual top-10 (6m skip 1m) — FORWARD-ONLY**: el backtest da +120% CAGR = artefacto del sesgo de supervivencia (rankea a los ganadores de hoy); literatura real: +3-8%/año vs índice. NO validable en backtest con datos gratuitos → validación 100% forward: foto mensual a Telegram + `momentum_state.json`, comparar vs SPY mes a mes. Primer portfolio 2026-06 registrado.
 
 Pipeline diario: `run_daily.sh` (scanner DeMark-9 + RSI2 → momentum mensual) a las 9:00 vía `com.stocks.scanner`.
+
+## Estrategia intradía "motion/liquidaciones" (vídeo 2 de Mariel) — RECHAZADA (2026-06-11)
+
+Formalización mecánica de sus dos setups (reversal-rechazo del "daily hold" y ruptura de extremos con volumen), 5m, top-100 líquidos, 60 días (límite Yahoo intradía), grid de 24 variantes (SL 0.3/0.5% × TP 1/2/3% × filtro rango): **las 24 pierden** (PF 0.62-0.88, WF 0/4 casi todas, R/tr −0.08 a −0.33).
+
+Diagnóstico: con stops de 0.3-0.5%, los costes (0.1% ida+vuelta) consumen 0.2-0.3R por trade — el intradía con stop fino vive o muere de la ejecución. Bruto de costes la estrategia ronda breakeven: no hay edge mecánico que pagar. El edge que ella reporta (WR 61%, ratio 1:3 ≈ +1.4R/tr — sería élite mundial) reside, si existe, en su lectura discrecional de niveles y selección de trades — exactamente lo que un test mecánico no puede capturar ni nosotros replicar con un scanner.
+
+Caveats declarados: solo 60 días (régimen reciente), y la formalización es una aproximación (la original es parcialmente discrecional). Aun así: 24/24 variantes en negativo en 4.100+ trades no deja espacio razonable para un edge robusto mecanizable. Script: `backtest_intradia_mariel.mjs` (datos en /tmp/intraday5m, re-descargables).
