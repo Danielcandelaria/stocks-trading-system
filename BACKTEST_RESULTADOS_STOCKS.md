@@ -45,6 +45,10 @@ Top (todas WF 4/4):
 El filtro EMA50>EMA200 tiene lag: tras una caída fuerte el precio queda bajo ambas EMAs pero las medias tardan semanas en cruzar → se compraban tendencias ya muertas (caso HCA 2026-04-24, −1R, hoy −14%). Fix: exigir además **precio > EMA200** en la vela de la señal.
 Backtest (TP2, perf, ms3%): n 129→83, WR 54.3→55.4%, R/trade 0.56→**0.61**, WF 4/4 se mantiene. Precio > ambas EMAs es demasiado restrictivo (28 trades). Aplicado a `scanner_forward.mjs`.
 
+## Ampliación a 1000 tickers — RECHAZADA (2026-06-11)
+
+Probado ampliar el universo de 500 a 1000 (mcap $2B+ las nuevas): las 500 medianas NO tienen edge con esta spec — WR 32.8%, −0.08 R/tr, WF 1/4 — y diluyen la mezcla (0.63→0.34 R/tr, WF 3/4). El patrón DeMark de agotamiento solo paga en large-caps muy seguidas. **Universo se queda en top-500 por mcap. No re-ampliar sin evidencia nueva.** La cadencia baja (~1 señal/1-2 semanas) ES el edge, no un defecto.
+
 ## Filtro de mercado SPY — RECHAZADO (2026-06-10)
 
 Probado SPY>EMA200 como gate adicional: R/trade 0.61→0.46, WF 4/4→3/4. Las mejores compras de agotamiento ocurren en los sustos del índice y el filtro por acción (px>EMA200) ya cubre el régimen. **No re-proponer sin evidencia nueva.**
