@@ -31,6 +31,16 @@ const saveJson = (f, v) => writeFileSync(F(f), JSON.stringify(v, null, 2));
 const log = (...a) => console.log(new Date().toISOString(), ...a);
 
 function ema(cl, p) { const k = 2 / (p + 1); let e = null; return cl.map((c, i) => { e = e === null ? c : c * k + e * (1 - k); return i >= p - 1 ? e : null; }); }
+function sma(cl, p) { const out = new Array(cl.length).fill(null); let s = 0; for (let i = 0; i < cl.length; i++) { s += cl[i]; if (i >= p) s -= cl[i - p]; if (i >= p - 1) out[i] = s / p; } return out; }
+function rsi(cl, p) {
+  const out = new Array(cl.length).fill(null); let ag = 0, al = 0;
+  for (let i = 1; i < cl.length; i++) {
+    const ch = cl[i] - cl[i - 1], g = Math.max(ch, 0), l = Math.max(-ch, 0);
+    if (i <= p) { ag += g / p; al += l / p; if (i === p) out[i] = al === 0 ? 100 : 100 - 100 / (1 + ag / al); }
+    else { ag = (ag * (p - 1) + g) / p; al = (al * (p - 1) + l) / p; out[i] = al === 0 ? 100 : 100 - 100 / (1 + ag / al); }
+  }
+  return out;
+}
 
 // ---------- Telegram (opcional hasta tener token) ----------
 const tg = loadJson('telegram.json', null);
@@ -100,8 +110,29 @@ async function getBars(ticker) {
 }
 
 // ---------- gestión de posiciones paper abiertas ----------
+// RSI2 (mean reversion, estilo Connors validado 2026-06-11: PF 1.36, WF 4/4):
+// SIN stop — salida al cierre sobre SMA5 o time-stop 5 velas.
+function manageOpenRSI2(journal, ticker, bars, s5) {
+  for (const pos of journal.filter(p => p.ticker === ticker && p.status === 'open' && p.strategy === 'RSI2')) {
+    const startIdx = bars.findIndex(b => b.t > pos.entryT);
+    if (startIdx < 0) continue;
+    for (let i = Math.max(startIdx, bars.length - 15); i < bars.length; i++) {
+      const b = bars[i];
+      if ((s5[i] != null && b.c > s5[i]) || i - startIdx >= 5) {
+        const px = b.c * (1 - COST);
+        pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
+        pos.exitReason = i - startIdx >= 5 ? 'TIME' : 'SMA5';
+        pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
+        notify(`📘 <b>CIERRE RSI2</b> ${ticker} ${pos.exitReason} → ${pos.retPct > 0 ? '+' : ''}${pos.retPct}%` +
+          `\nEntrada ${pos.entryPx} → salida ${pos.exitPx} (${i - startIdx} días)`);
+        break;
+      }
+    }
+  }
+}
+
 function manageOpen(journal, ticker, bars) {
-  for (const pos of journal.filter(p => p.ticker === ticker && p.status === 'open')) {
+  for (const pos of journal.filter(p => p.ticker === ticker && p.status === 'open' && p.strategy !== 'RSI2')) {
     const startIdx = bars.findIndex(b => b.t > pos.entryT);
     if (startIdx < 0) continue;
     for (let i = Math.max(startIdx, bars.length - 30); i < bars.length; i++) {
@@ -134,11 +165,40 @@ for (const u of universe) {
   catch (e) { errors++; await sleep(400); continue; }
   if (bars.length < 250) continue;
 
-  manageOpen(journal, u.ticker, bars);
-
   const cl = bars.map(b => b.c);
   const e50 = ema(cl, 50), e200 = ema(cl, 200);
+  const s5 = sma(cl, 5), r2 = rsi(cl, 2);
   const td = computeTDSetup(bars);
+
+  manageOpen(journal, u.ticker, bars);
+  manageOpenRSI2(journal, u.ticker, bars, s5);
+
+  // --- Sistema RSI2 (mean reversion): RSI(2)<10 + precio>EMA200, vela cerrada.
+  // Paper SIN stop (spec Connors validada). Máx 5 posiciones abiertas a la vez.
+  {
+    const i = bars.length - 1;
+    const openRSI2 = journal.filter(p => p.status === 'open' && p.strategy === 'RSI2');
+    const rKey = `RSI2:${u.ticker}:${bars[i].t}`;
+    if (r2[i] != null && e200[i] != null && r2[i] < 10 && bars[i].c > e200[i] && !seen[rKey]) {
+      seen[rKey] = true;
+      if (openRSI2.length >= 5) {
+        log(`RSI2 ${u.ticker}: señal válida pero ya hay 5 abiertas — descartada`);
+      } else {
+        const entryPx = +(bars[i].c * (1 + COST)).toFixed(4);
+        journal.push({
+          id: rKey, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'RSI2', variant: 'RSI2',
+          status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
+          rsi2: +r2[i].toFixed(1),
+        });
+        signals++;
+        await notify(`🔵 <b>SEÑAL RSI2 (paper)</b> — ${u.ticker} (${u.sector})` +
+          `\nMean reversion: RSI(2)=${r2[i].toFixed(1)} + precio>EMA200 (diario)` +
+          `\nEntrada ~${entryPx.toFixed(2)} | SIN stop | salida: cierre>SMA5 o 5 días` +
+          `\nSistema independiente del DeMark-9 — paper, tamaño máx 1% de cuenta en riesgo equivalente` +
+          `\nTV: ${u.tv}`);
+      }
+    }
+  }
 
   // Revisa las últimas 3 velas CERRADAS (no solo la última): si una noche el Mac
   // estuvo apagado a las 22:30, la señal de ese día se recupera en el siguiente

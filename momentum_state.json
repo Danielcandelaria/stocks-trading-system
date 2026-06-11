@@ -1,0 +1,81 @@
+{
+  "months": [
+    {
+      "month": "2026-06",
+      "date": "2026-06-11",
+      "ranked": 499,
+      "portfolio": [
+        {
+          "ticker": "SNDK",
+          "tv": "NASDAQ:SNDK",
+          "sector": "Electronic Technology",
+          "mom": 5.863707146029189,
+          "last": 1643.22998046875
+        },
+        {
+          "ticker": "DOCN",
+          "tv": "NYSE:DOCN",
+          "sector": "Technology Services",
+          "mom": 2.287936870115382,
+          "last": 171.47000122070312
+        },
+        {
+          "ticker": "MU",
+          "tv": "NASDAQ:MU",
+          "sector": "Electronic Technology",
+          "mom": 2.2210028470260657,
+          "last": 891.8800048828125
+        },
+        {
+          "ticker": "INTC",
+          "tv": "NASDAQ:INTC",
+          "sector": "Electronic Technology",
+          "mom": 2.2119107913622758,
+          "last": 107.04000091552734
+        },
+        {
+          "ticker": "LITE",
+          "tv": "NASDAQ:LITE",
+          "sector": "Producer Manufacturing",
+          "mom": 2.0741767086806013,
+          "last": 853.260009765625
+        },
+        {
+          "ticker": "WDC",
+          "tv": "NASDAQ:WDC",
+          "sector": "Electronic Technology",
+          "mom": 2.038226061954387,
+          "last": 490.0899963378906
+        },
+        {
+          "ticker": "STX",
+          "tv": "NASDAQ:STX",
+          "sector": "Electronic Technology",
+          "mom": 1.922147083369198,
+          "last": 815.989990234375
+        },
+        {
+          "ticker": "CIEN",
+          "tv": "NYSE:CIEN",
+          "sector": "Electronic Technology",
+          "mom": 1.730803506805651,
+          "last": 434.6499938964844
+        },
+        {
+          "ticker": "BE",
+          "tv": "NYSE:BE",
+          "sector": "Electronic Technology",
+          "mom": 1.5397621531667651,
+          "last": 234.22999572753906
+        },
+        {
+          "ticker": "GLW",
+          "tv": "NYSE:GLW",
+          "sector": "Electronic Technology",
+          "mom": 1.3494959473971941,
+          "last": 168.1699981689453
+        }
+      ]
+    }
+  ]
+}

@@ -61,3 +61,13 @@ Probado SPY>EMA200 como gate adicional: R/trade 0.61→0.46, WF 4/4→3/4. Las m
 - Playbook de ejecución humano: `STOCKS_PLAYBOOK.md` (sizing 1%, stop intocable, criterio 30 trades paper → real).
 
 Scripts: `fetch_universe.mjs`, `download_history.mjs`, `backtest_ema_demark.mjs`, `sweep_variants.mjs`, `scanner_forward.mjs`, `weekly_report.mjs`.
+
+## Expansión multi-sistema (2026-06-11)
+
+**SHORT DeMark (espejo del largo) — RECHAZADO**: las 12 variantes pierden (R/tr −0.17 a −0.39, WF 1/4 todas). La deriva alcista estructural de las large-caps mata el lado corto. El edge largo = DeMark + deriva alcista, no DeMark solo. No reintentar sin evidencia nueva.
+
+**RSI-2 mean reversion (Connors) — VALIDADO**: RSI(2)<10 + precio>EMA200, salida cierre>SMA5 o 5 días. n=7988 (3yr), WR 64.8%, PF 1.36, +0.41%/trade, 2.5d medios, WF 4/4 (meseta: 3 de 4 variantes pasan). SIN stop por spec; riesgo gestionado por cap de 5 posiciones simultáneas y salida temporal. EN PAPER desde 2026-06-11 (journal strategy='RSI2', señales 🔵).
+
+**Momentum mensual top-10 (6m skip 1m) — FORWARD-ONLY**: el backtest da +120% CAGR = artefacto del sesgo de supervivencia (rankea a los ganadores de hoy); literatura real: +3-8%/año vs índice. NO validable en backtest con datos gratuitos → validación 100% forward: foto mensual a Telegram + `momentum_state.json`, comparar vs SPY mes a mes. Primer portfolio 2026-06 registrado.
+
+Pipeline diario: `run_daily.sh` (scanner DeMark-9 + RSI2 → momentum mensual) a las 9:00 vía `com.stocks.scanner`.
