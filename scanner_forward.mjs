@@ -136,15 +136,20 @@ for (const u of universe) {
 
   manageOpen(journal, u.ticker, bars);
 
-  const i = bars.length - 1; // última vela CERRADA
   const cl = bars.map(b => b.c);
   const e50 = ema(cl, 50), e200 = ema(cl, 200);
+  const td = computeTDSetup(bars);
+
+  // Revisa las últimas 3 velas CERRADAS (no solo la última): si una noche el Mac
+  // estuvo apagado a las 22:30, la señal de ese día se recupera en el siguiente
+  // scan. El dedup (seen) evita avisos duplicados.
+  for (let i = Math.max(0, bars.length - 3); i < bars.length; i++) {
+  const isCatchUp = i < bars.length - 1;
   if (e200[i] == null || e50[i] <= e200[i]) continue;
   if (bars[i].c <= e200[i]) continue; // precio debe estar SOBRE la EMA200 (filtro anti-HCA)
-  // contraste con TV cuando el screener trae las EMAs (fuente de verdad)
-  if (u.ema50_tv != null && u.ema200_tv != null && u.ema50_tv <= u.ema200_tv) continue;
+  // contraste con TV cuando el screener trae las EMAs (fuente de verdad) — solo vela actual
+  if (!isCatchUp && u.ema50_tv != null && u.ema200_tv != null && u.ema50_tv <= u.ema200_tv) continue;
 
-  const td = computeTDSetup(bars);
   if (td.bullSetup[i] !== 9 || !td.bullSetupBars[i]) continue;
   if (!isPerfected(bars, td.bullSetupBars[i], 'bull')) continue;
 
@@ -165,7 +170,9 @@ for (const u of universe) {
   }
 
   const sl = Math.min(...td.bullSetupBars[i].map(k => bars[k].l));
-  const ref = bars[i].c; // entrada estimada: open de mañana ≈ close de hoy
+  // entrada: open real del día siguiente si ya existe (señal recuperada);
+  // si la señal es de la última vela, estimación open de mañana ≈ close de hoy
+  const ref = isCatchUp ? bars[i + 1].o : bars[i].c;
   const entryPx = ref * (1 + COST);
   const risk = entryPx - sl;
   if (risk <= 0 || risk / entryPx > MAX_STOP) continue;
@@ -174,7 +181,7 @@ for (const u of universe) {
   for (const [variant, mult] of [['TP2', 2], ['TP3', 3]]) {
     journal.push({
       id: `${key}:${variant}`, ticker: u.ticker, tv: u.tv, sector: u.sector, variant,
-      status: 'open', signalT: bars[i].t, entryT: bars[i].t,
+      status: 'open', signalT: bars[i].t, entryT: isCatchUp ? bars[i + 1].t : bars[i].t,
       entryPx: +entryPx.toFixed(4), sl: +sl.toFixed(4), tp: +(entryPx + mult * risk).toFixed(4),
       risk: +risk.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(2),
     });
@@ -189,12 +196,14 @@ for (const u of universe) {
     : openTP2.filter(p => p.sector === u.sector).length >= 2 ? `\n🔥 <b>CALOR: ya hay 2 abiertas en ${u.sector} — NO concentrar sector</b>` : '';
 
   await notify(`🟢 <b>SEÑAL STOCKS (paper)</b> — ${u.ticker} (${u.sector})` +
+    (isCatchUp ? `\n♻️ <i>Señal RECUPERADA del ${new Date(bars[i].t * 1000).toISOString().slice(0, 10)} (scan perdido) — entrada al open real siguiente</i>` : '') +
     `\nDeMark setup-9 BUY perfeccionado + EMA50>200 + precio>EMA200 (diario)` +
     `\nEntrada ~${entryPx.toFixed(2)} | SL ${sl.toFixed(2)} (${(risk / entryPx * 100).toFixed(1)}%)` +
     `\nTP2 ${(entryPx + 2 * risk).toFixed(2)} | TP3 ${(entryPx + 3 * risk).toFixed(2)}` +
     `\nTamaño: riesgo fijo 1% de cuenta / distancia al SL` +
     heatWarn +
     `\nConfirmar a ojo en TV: ${u.tv}`);
+  } // fin bucle últimas 3 velas
 }
 
 saveJson('journal.json', journal);
