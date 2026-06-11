@@ -1,1 +1,67 @@
-[]
+[
+  {
+    "id": "RSI2:AMZN:1781098200",
+    "ticker": "AMZN",
+    "tv": "NASDAQ:AMZN",
+    "sector": "Retail Trade",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781098200,
+    "entryT": 1781098200,
+    "entryPx": 238.119,
+    "rsi2": 2.9
+  },
+  {
+    "id": "RSI2:AVGO:1781098200",
+    "ticker": "AVGO",
+    "tv": "NASDAQ:AVGO",
+    "sector": "Electronic Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781098200,
+    "entryT": 1781098200,
+    "entryPx": 372.2861,
+    "rsi2": 9.7
+  },
+  {
+    "id": "RSI2:ORCL:1781098200",
+    "ticker": "ORCL",
+    "tv": "NYSE:ORCL",
+    "sector": "Technology Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781098200,
+    "entryT": 1781098200,
+    "entryPx": 201.3606,
+    "rsi2": 5.5
+  },
+  {
+    "id": "RSI2:CAT:1781098200",
+    "ticker": "CAT",
+    "tv": "NYSE:CAT",
+    "sector": "Producer Manufacturing",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781098200,
+    "entryT": 1781098200,
+    "entryPx": 856.5881,
+    "rsi2": 7.2
+  },
+  {
+    "id": "RSI2:IBM:1781098200",
+    "ticker": "IBM",
+    "tv": "NYSE:IBM",
+    "sector": "Technology Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781098200,
+    "entryT": 1781098200,
+    "entryPx": 272.4962,
+    "rsi2": 4.1
+  }
+]
