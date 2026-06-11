@@ -42,6 +42,19 @@ const lines = [
   ``,
   variantStats('TP2').line,
   variantStats('TP3').line,
+  (() => {
+    const c = journal.filter(p => p.strategy === 'RSI2' && p.status === 'closed');
+    if (!c.length) return '<b>RSI2</b>: sin trades cerrados aún';
+    const sum = c.reduce((s, p) => s + p.retPct, 0);
+    const wr = c.filter(p => p.retPct > 0).length / c.length;
+    const open = journal.filter(p => p.strategy === 'RSI2' && p.status === 'open').length;
+    return `<b>RSI2</b>: ${c.length}tr | WR ${(wr * 100).toFixed(0)}% | Σ ${sum >= 0 ? '+' : ''}${sum.toFixed(1)}% | ${open}/5 abiertas`;
+  })(),
+  (() => {
+    const ms = load('momentum_state.json') ?? { months: [] };
+    const last = ms.months?.[ms.months.length - 1];
+    return last ? `<b>MOMENTUM</b>: portfolio ${last.month}: ${last.portfolio.map(p => p.ticker).join(', ')}` : '<b>MOMENTUM</b>: sin portfolio aún';
+  })(),
   ``,
   open.length
     ? `<b>Abiertas (${open.length}/4):</b>\n` + open.map(p => `· ${p.ticker} @${p.entryPx} SL ${p.sl} (${p.riskPct}%) — ${p.sector}`).join('\n')
