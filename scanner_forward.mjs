@@ -123,8 +123,10 @@ function manageOpenRSI2(journal, ticker, bars, s5) {
         pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
         pos.exitReason = i - startIdx >= 5 ? 'TIME' : 'SMA5';
         pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
-        notify(`📘 <b>CIERRE RSI2</b> ${ticker} ${pos.exitReason} → ${pos.retPct > 0 ? '+' : ''}${pos.retPct}%` +
-          `\nEntrada ${pos.entryPx} → salida ${pos.exitPx} (${i - startIdx} días)`);
+        const motivoR = pos.exitReason === 'SMA5' ? '🎯 cierre sobre SMA5 (reversión completada)' : '⏱ 5º día — salida obligatoria';
+        notify(`📘 <b>CIERRE LONG RSI2</b> — ${ticker}` +
+          `\n${motivoR} → <b>${pos.retPct > 0 ? '+' : ''}${pos.retPct}%</b>` +
+          `\nVENDER al cierre: entrada $${pos.entryPx} → salida $${pos.exitPx} (${i - startIdx} días)`);
         break;
       }
     }
@@ -145,8 +147,10 @@ function manageOpen(journal, ticker, bars) {
         const px = exit * (1 - COST);
         pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
         pos.exitReason = reason; pos.r = +((px - pos.entryPx) / pos.risk).toFixed(2);
-        notify(`📕 <b>CIERRE ${pos.variant}</b> ${ticker} ${reason} → ${pos.r > 0 ? '+' : ''}${pos.r}R` +
-          `\nEntrada ${pos.entryPx} → salida ${pos.exitPx}`);
+        const motivo = reason === 'SL' ? '🛑 stop loss tocado' : reason === 'TP' ? '🎯 take profit alcanzado' : '⏱ time-stop (40 sesiones)';
+        notify(`📕 <b>CIERRE LONG DeMark (${pos.variant})</b> — ${ticker}` +
+          `\n${motivo} → <b>${pos.r > 0 ? '+' : ''}${pos.r}R</b>` +
+          `\nVENDER: entrada $${pos.entryPx} → salida $${pos.exitPx}`);
         break;
       }
     }
@@ -191,11 +195,14 @@ for (const u of universe) {
           rsi2: +r2[i].toFixed(1),
         });
         signals++;
-        await notify(`🔵 <b>SEÑAL RSI2 (paper)</b> — ${u.ticker} (${u.sector})` +
-          `\nMean reversion: RSI(2)=${r2[i].toFixed(1)} + precio>EMA200 (diario)` +
-          `\nEntrada ~${entryPx.toFixed(2)} | SIN stop | salida: cierre>SMA5 o 5 días` +
-          `\nSistema independiente del DeMark-9 — paper, tamaño máx 1% de cuenta en riesgo equivalente` +
-          `\nTV: ${u.tv}`);
+        await notify(`🔵 <b>SEÑAL RSI2 — COMPRA (LONG)</b>\n<b>${u.ticker}</b> — ${u.sector}` +
+          `\n` +
+          `\n📍 <b>ENTRADA</b>: comprar a mercado en la apertura US (15:30) ~$${entryPx.toFixed(2)}` +
+          `\n🛑 <b>STOP</b>: NO lleva (spec validada) — el riesgo se controla con tamaño PEQUEÑO y salida en 5 días máx` +
+          `\n🎯 <b>SALIDA</b>: vender al PRIMER cierre diario por encima de la SMA5 (hoy en $${s5[i].toFixed(2)}) — suele ser en 2-3 días` +
+          `\n⏱ Si al 5º día no salió: vender a mercado al cierre SÍ o SÍ` +
+          `\n📐 <b>Tamaño</b>: máx 2-3% de la cuenta por posición (sin stop ⇒ posición chica)` +
+          `\n\nSetup: pánico de corto plazo (RSI2=${r2[i].toFixed(1)}) en valor sobre su EMA200 (D). TV: ${u.tv}`);
       }
     }
   }
@@ -255,14 +262,17 @@ for (const u of universe) {
   const heatWarn = openTP2.length >= 4 ? `\n🔥 <b>CALOR: ya hay ${openTP2.length} posiciones abiertas (límite 4) — NO añadir riesgo real</b>`
     : openTP2.filter(p => p.sector === u.sector).length >= 2 ? `\n🔥 <b>CALOR: ya hay 2 abiertas en ${u.sector} — NO concentrar sector</b>` : '';
 
-  await notify(`🟢 <b>SEÑAL STOCKS (paper)</b> — ${u.ticker} (${u.sector})` +
-    (isCatchUp ? `\n♻️ <i>Señal RECUPERADA del ${new Date(bars[i].t * 1000).toISOString().slice(0, 10)} (scan perdido) — entrada al open real siguiente</i>` : '') +
-    `\nDeMark setup-9 BUY perfeccionado + EMA50>200 + precio>EMA200 (diario)` +
-    `\nEntrada ~${entryPx.toFixed(2)} | SL ${sl.toFixed(2)} (${(risk / entryPx * 100).toFixed(1)}%)` +
-    `\nTP2 ${(entryPx + 2 * risk).toFixed(2)} | TP3 ${(entryPx + 3 * risk).toFixed(2)}` +
-    `\nTamaño: riesgo fijo 1% de cuenta / distancia al SL` +
+  const shares10k = Math.floor(100 / risk * 100) / 100; // acciones para cuenta $10k @1% riesgo
+  await notify(`🟢 <b>SEÑAL DEMARK-9 — COMPRA (LONG)</b>\n<b>${u.ticker}</b> — ${u.sector}` +
+    (isCatchUp ? `\n♻️ <i>Recuperada del ${new Date(bars[i].t * 1000).toISOString().slice(0, 10)} (scan perdido)</i>` : '') +
+    `\n` +
+    `\n📍 <b>ENTRADA</b>: comprar a mercado en la apertura US (15:30) ~$${entryPx.toFixed(2)}` +
+    `\n🛑 <b>STOP LOSS</b>: $${sl.toFixed(2)} (−${(risk / entryPx * 100).toFixed(1)}% | −1R) — orden stop puesta NADA MÁS entrar` +
+    `\n🎯 <b>TAKE PROFIT</b>: TP2 $${(entryPx + 2 * risk).toFixed(2)} (+${(2 * risk / entryPx * 100).toFixed(1)}% | +2R) · TP3 $${(entryPx + 3 * risk).toFixed(2)} (+3R)` +
+    `\n⏱ Time-stop: cerrar a mercado si en 40 sesiones no tocó SL ni TP` +
+    `\n📐 <b>Tamaño</b> (1% riesgo): cuenta $10k → ${shares10k} acciones (~$${(shares10k * entryPx).toFixed(0)})` +
     heatWarn +
-    `\nConfirmar a ojo en TV: ${u.tv}`);
+    `\n\nSetup: DeMark 9 perfeccionado + EMA50>200 + px>EMA200 (D). Confirmar el "9" en TV: ${u.tv}`);
   } // fin bucle últimas 3 velas
 }
 
