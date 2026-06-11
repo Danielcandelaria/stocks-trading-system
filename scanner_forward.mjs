@@ -266,6 +266,21 @@ for (const u of universe) {
   } // fin bucle últimas 3 velas
 }
 
+// TRADES ZOMBI: posiciones abiertas cuyo ticker ya NO está en el universo
+// (cayó del top-500 en un refresh). Sin esto quedarían sin desenlace y el
+// forward dejaría de ser un backtest realista. Se gestionan siempre.
+const scanned = new Set(universe.map(u => u.ticker));
+const orphans = [...new Set(journal.filter(p => p.status === 'open' && !scanned.has(p.ticker)).map(p => p.ticker))];
+for (const tk of orphans) {
+  try {
+    const bars = await getBars(tk); await sleep(200);
+    const s5 = sma(bars.map(b => b.c), 5);
+    manageOpen(journal, tk, bars);
+    manageOpenRSI2(journal, tk, bars, s5);
+    log(`huérfano ${tk}: posiciones abiertas gestionadas fuera de universo`);
+  } catch (e) { log(`huérfano ${tk}: sin datos (${e.message}) — revisar a mano si persiste`); }
+}
+
 saveJson('journal.json', journal);
 saveJson('seen_signals.json', seen);
 

@@ -24,6 +24,35 @@ if (state.months.some(m => m.month === month)) { log(`mes ${month} ya registrado
 const { universe } = load('universe.json', { universe: [] });
 if (!universe.length) { log('sin universe.json'); process.exit(1); }
 
+async function lastClose(ticker) {
+  const y = ticker.replace('.', '-');
+  const res = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${y}?range=5d&interval=1d`, { headers: UA });
+  const r = (await res.json()).chart?.result?.[0];
+  const cl = (r?.indicators?.quote?.[0]?.close ?? []).filter(c => c != null);
+  return cl[cl.length - 1];
+}
+
+// DESENLACE del mes anterior (la validación real del momentum es esta):
+// rendimiento equal-weight del portfolio registrado vs SPY en el mismo periodo.
+let closePrevText = '';
+const prevMonth = state.months[state.months.length - 1];
+if (prevMonth && !prevMonth.result) {
+  try {
+    const rets = [];
+    for (const p of prevMonth.portfolio) {
+      const px = await lastClose(p.ticker); await sleep(150);
+      if (px) rets.push(px / p.last - 1);
+    }
+    const portRet = rets.reduce((s, r) => s + r, 0) / rets.length * 100;
+    const spyNow = await lastClose('SPY');
+    const spyRet = prevMonth.spyRef ? (spyNow / prevMonth.spyRef - 1) * 100 : null;
+    prevMonth.result = { portRetPct: +portRet.toFixed(2), spyRetPct: spyRet != null ? +spyRet.toFixed(2) : null, closedAt: new Date().toISOString().slice(0, 10) };
+    closePrevText = `\n\n📕 <b>Desenlace ${prevMonth.month}</b>: portfolio ${portRet >= 0 ? '+' : ''}${portRet.toFixed(1)}%` +
+      (spyRet != null ? ` vs SPY ${spyRet >= 0 ? '+' : ''}${spyRet.toFixed(1)}% → ${portRet > spyRet ? '✅ BATE' : '❌ no bate'}` : '');
+    log(`desenlace ${prevMonth.month}: port ${portRet.toFixed(1)}% vs SPY ${spyRet?.toFixed(1)}%`);
+  } catch (e) { log('no pude cerrar el mes anterior:', e.message); }
+}
+
 log(`rebalanceo de ${month}: rankeando ${universe.length} tickers...`);
 const ranked = [];
 for (const u of universe) {
@@ -43,7 +72,8 @@ ranked.sort((a, b) => b.mom - a.mom);
 const top = ranked.slice(0, 10);
 const prev = state.months.length ? new Set(state.months[state.months.length - 1].portfolio.map(p => p.ticker)) : new Set();
 
-state.months.push({ month, date: new Date().toISOString().slice(0, 10), ranked: ranked.length, portfolio: top });
+const spyRef = await lastClose('SPY').catch(() => null);
+state.months.push({ month, date: new Date().toISOString().slice(0, 10), ranked: ranked.length, portfolio: top, spyRef });
 writeFileSync(F('momentum_state.json'), JSON.stringify(state, null, 2));
 
 const lines = top.map((p, i) => {
@@ -53,7 +83,7 @@ const lines = top.map((p, i) => {
 const out = [...prev].filter(t => !top.some(p => p.ticker === t));
 const tg = load('telegram.json', null);
 const text = `📈 <b>MOMENTUM mensual ${month} (paper)</b>\nTop-10 por retorno 6m (rebalanceo equal-weight):\n\n${lines.join('\n')}` +
-  (out.length ? `\n\nSalen: ${out.join(', ')}` : '') +
+  (out.length ? `\n\nSalen: ${out.join(', ')}` : '') + closePrevText +
   `\n\n⚠️ Forward-only: el backtest de momentum no es fiable (sesgo supervivencia). Validación: comparar vs SPY mes a mes.`;
 console.log(text.replace(/<[^>]+>/g, ''));
 if (tg?.token && tg?.chatId) {
