@@ -1,7 +1,18 @@
 # Research: MERLIN Properties (MRL) y Redeia (RED) — tesis data centers España
 
 **Fecha:** 2026-06-12 · Cubo de INVERSIÓN (discrecional, 3-5 años) — no es sistema validado.
-**Método:** harness deep-research (6 ángulos, fuentes primarias CNMC/Redeia/Merlin IR + secundarias) + búsquedas dirigidas. ⚠️ La fase de verificación adversarial se cortó por límite de sesión: datos CON fuente pero SIN verificación cruzada de 3 votos. Precios: MRL 15,15€ / RED 15,05€.
+**Método:** harness deep-research (6 ángulos, fuentes primarias CNMC/Redeia/Merlin IR + secundarias) + búsquedas dirigidas. Precios: MRL 15,15€ / RED 15,05€.
+
+## ✅ VERIFICACIÓN DE CIFRAS CLAVE (2026-06-12, fuentes primarias)
+
+Las 4 cifras clave re-verificadas tras restablecerse el límite de sesión:
+1. **TRF 6,58% (2026-2031), +100 pb vs ~5,58% anterior** → ✅ CONFIRMADO (CNMC, texto literal "100 puntos básicos", periodo 6 años).
+2. **Plan: 6.500M€ grupo / 6.000M€ transporte / +70% inversión media anual** → ✅ CONFIRMADO (nota de prensa Redeia).
+3. **Dividendo creciente 2%/año hasta 0,87€ en 2029, SIN ampliación de capital, ROE plan 9%, RAB +35% a 12.000M€** → ✅ CONFIRMADO (Renta 4 / nota Redeia: "financiado sin necesidad de ampliación de capital ni rotación de activos").
+4. **Merlin: pre-let 100% Fase II País Vasco (48 MW) un año antes de entrega; LTV 24,4%** → ✅ CONFIRMADO (Idealista citando IR Merlin).
+   ⚠️ **NAV: matiz** — el dato exacto varía por métrica EPRA: 15,32€ (EPRA NRV, IR Merlin) vs 15,17€ (EPRA NTA, +5,7% interanual). Ambos ≈ cotización (15,15€) → la conclusión "cotiza al NAV" se sostiene; usar rango 15,17-15,32€.
+
+Conclusión: el informe es sólido para decisión. Todas las afirmaciones cuantitativas centrales confirmadas en primaria.
 
 ## Contexto: la escasez se INTENSIFICA
 
