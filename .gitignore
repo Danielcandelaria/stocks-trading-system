@@ -4,3 +4,4 @@ report.log
 data/
 spy.json
 watchlist.log
+circuit_breaker.json

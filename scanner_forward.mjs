@@ -167,10 +167,18 @@ function manageOpen(journal, ticker, bars) {
 }
 
 // ---------- main ----------
+import { evaluateBreaker, isPaused } from './circuit_breaker.mjs';
 const universe = await getUniverse();
 const journal = loadJson('journal.json', []);
 const seen = loadJson('seen_signals.json', {});
 let signals = 0, errors = 0;
+
+// CIRCUIT-BREAKER: evalúa drawdown contra bandas MC y pausa estrategias degradadas.
+// Las entradas nuevas de una estrategia pausada se bloquean (las abiertas siguen).
+evaluateBreaker(journal);
+const demarkPaused = isPaused('DeMark'), rsi2Paused = isPaused('RSI2');
+if (demarkPaused) log('⛔ DeMark PAUSADO por circuit-breaker — no se abren entradas nuevas');
+if (rsi2Paused) log('⛔ RSI2 PAUSADO por circuit-breaker — no se abren entradas nuevas');
 
 for (const u of universe) {
   let bars;
@@ -192,7 +200,7 @@ for (const u of universe) {
     const i = bars.length - 1;
     const openRSI2 = journal.filter(p => p.status === 'open' && p.strategy === 'RSI2');
     const rKey = `RSI2:${u.ticker}:${bars[i].t}`;
-    if (r2[i] != null && e200[i] != null && r2[i] < 10 && bars[i].c > e200[i] && !seen[rKey]) {
+    if (!rsi2Paused && r2[i] != null && e200[i] != null && r2[i] < 10 && bars[i].c > e200[i] && !seen[rKey]) {
       seen[rKey] = true;
       if (openRSI2.length >= 5) {
         log(`RSI2 ${u.ticker}: señal válida pero ya hay 5 abiertas — descartada`);
@@ -226,6 +234,7 @@ for (const u of universe) {
   // contraste con TV cuando el screener trae las EMAs (fuente de verdad) — solo vela actual
   if (!isCatchUp && u.ema50_tv != null && u.ema200_tv != null && u.ema50_tv <= u.ema200_tv) continue;
 
+  if (demarkPaused) continue; // circuit-breaker: DeMark pausado, no abrir
   if (td.bullSetup[i] !== 9 || !td.bullSetupBars[i]) continue;
   if (!isPerfected(bars, td.bullSetupBars[i], 'bull')) continue;
 
