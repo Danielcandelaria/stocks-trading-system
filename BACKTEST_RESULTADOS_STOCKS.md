@@ -79,3 +79,12 @@ Formalización mecánica de sus dos setups (reversal-rechazo del "daily hold" y 
 Diagnóstico: con stops de 0.3-0.5%, los costes (0.1% ida+vuelta) consumen 0.2-0.3R por trade — el intradía con stop fino vive o muere de la ejecución. Bruto de costes la estrategia ronda breakeven: no hay edge mecánico que pagar. El edge que ella reporta (WR 61%, ratio 1:3 ≈ +1.4R/tr — sería élite mundial) reside, si existe, en su lectura discrecional de niveles y selección de trades — exactamente lo que un test mecánico no puede capturar ni nosotros replicar con un scanner.
 
 Caveats declarados: solo 60 días (régimen reciente), y la formalización es una aproximación (la original es parcialmente discrecional). Aun así: 24/24 variantes en negativo en 4.100+ trades no deja espacio razonable para un edge robusto mecanizable. Script: `backtest_intradia_mariel.mjs` (datos en /tmp/intraday5m, re-descargables).
+
+## Análisis de decay + monitor de salud forward (2026-06-16, Citadel Alpha Lab #4)
+
+**Decay in-sample (¿cuánto vive el edge tras la señal?):**
+- **DeMark-9**: R medio acumulado sube de +0.15R (día 1) a pico +0.72R (día 13), luego se aplana/cae (día 15 = 0.63R). Edge de construcción LENTA → estructural, no artefacto de microestructura. El time-stop de 40 velas es generoso; la acción real está en días 6-14. Confirma que las salidas por TP capturan el grueso.
+- **RSI-2**: % medio sube monótono de +0.03% (día 1) a +0.66% (día 7), sin decaer. El rebote de mean-reversion persiste → edge robusto. Nuestra salida (cierre>SMA5, ~día 2-3) deja algo sobre la mesa pero a cambio de menos riesgo de path (el backtest ya validó hold≤5 con SMA5 > hold≤10 en WF).
+- **Conclusión**: ninguna señal se degrada rápido. Las que mueren en horas son ruido; estas se construyen en días = bandera verde de robustez.
+
+**Monitor de salud (`monitor_health.mjs`, integrado en reporte semanal):** compara el forward real (journal) vs backtest + bandas Monte Carlo. Veredicto por estrategia: 🟢 dentro / 🟡 muestra pequeña / 🔴 cruzó banda de alarma (racha>p95=6, DeMark maxDD>7R, WR<<backtest, o expectativa real negativa con n≥15). Alerta a Telegram solo si 🔴. Es la herramienta objetiva de la decisión paper→real: si el forward cae fuera de las bandas que el propio backtest predice, el edge era espejismo.

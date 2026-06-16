@@ -8,6 +8,8 @@ import { readFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
+import { healthLines } from './monitor_health.mjs';
+
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const load = f => existsSync(join(ROOT, f)) ? JSON.parse(readFileSync(join(ROOT, f))) : null;
 
@@ -59,6 +61,8 @@ const lines = [
   open.length
     ? `<b>Abiertas (${open.length}/4):</b>\n` + open.map(p => `· ${p.ticker} @${p.entryPx} SL ${p.sl} (${p.riskPct}%) — ${p.sector}`).join('\n')
     : `<b>Abiertas:</b> ninguna`,
+  ``,
+  ...healthLines,
   ``,
   `Sistema: setup-9 perf + EMA50>200 + px>EMA200 | guardia ER 7d | calor máx 4 pos / 2 sector`,
 ];
