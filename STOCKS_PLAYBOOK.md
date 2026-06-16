@@ -38,3 +38,7 @@ Como con DVA: **mínimo 30 trades cerrados en paper** y expectancy positiva sost
 - Scanner diario 22:30: `com.stocks.scanner` → `scanner_forward.mjs` → señales Telegram + `journal.json`
 - Reporte domingos 20:00: `com.stocks.report` → `weekly_report.mjs`
 - Todo paralelo al sistema forex: HTTP puro, sin chart/CDP/mutex.
+
+## Exclusión de MLPs (2026-06-12)
+
+El universo excluye Master Limited Partnerships (nombre acaba en "L.P."/"LP": EPD, ET, MPLX, WES, PAA y similares). Motivo: retención fiscal US de hasta 37% sobre distribuciones a no residentes, formularios K-1, y muchos brokers EU (Trading 212) no las permiten → no operables en real para un inversor español. Filtro en `scanner_forward.mjs` y `fetch_universe.mjs`. Las posiciones MLP ya abiertas en paper (p.ej. EPD del 2026-06-12) se gestionan hasta su cierre vía el código de huérfanos; no se abren nuevas.

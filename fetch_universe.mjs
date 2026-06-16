@@ -14,7 +14,7 @@ const BODY = {
     { left: 'type', operation: 'equal', right: 'stock' },
     { left: 'is_primary', operation: 'equal', right: true },
   ],
-  columns: ['name', 'close', 'average_volume_90d_calc', 'market_cap_basic', 'sector'],
+  columns: ['name', 'close', 'average_volume_90d_calc', 'market_cap_basic', 'sector', 'description'],
   sort: { sortBy: 'market_cap_basic', sortOrder: 'desc' },
   range: [0, 500],
 };
@@ -27,7 +27,10 @@ const res = await fetch('https://scanner.tradingview.com/america/scan', {
 if (!res.ok) { console.error('HTTP', res.status); process.exit(1); }
 const json = await res.json();
 
-const universe = json.data.map(r => ({
+// excluir MLPs (Master Limited Partnerships): fiscalidad US (ret. ~37% a no
+// residentes, K-1) + no operables en muchos brokers EU. Mismo filtro que scanner_forward.
+const isMLP = name => /L\.?\s*P\.?$| LP$/.test(name || '');
+const universe = json.data.filter(r => !isMLP(r.d[5])).map(r => ({
   tv: r.s,                      // p.ej. NASDAQ:AAPL
   ticker: r.d[0],
   close: r.d[1],

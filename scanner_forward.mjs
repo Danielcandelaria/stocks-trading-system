@@ -71,12 +71,21 @@ async function getUniverse() {
           { left: 'type', operation: 'equal', right: 'stock' },
           { left: 'is_primary', operation: 'equal', right: true },
         ],
-        columns: ['name', 'close', 'average_volume_90d_calc', 'market_cap_basic', 'sector', 'EMA50', 'EMA200', 'earnings_release_next_date'],
+        columns: ['name', 'close', 'average_volume_90d_calc', 'market_cap_basic', 'sector', 'EMA50', 'EMA200', 'earnings_release_next_date', 'description'],
         sort: { sortBy: 'market_cap_basic', sortOrder: 'desc' }, range: [0, 500],
       }),
     });
     const j = await res.json();
-    const universe = j.data.map(r => ({ tv: r.s, ticker: r.d[0], sector: r.d[4], ema50_tv: r.d[5], ema200_tv: r.d[6], nextEarnings: r.d[7] ?? null }));
+    // EXCLUIR MLPs (Master Limited Partnerships, nombre acaba en "L.P."/"LP"):
+    // retención fiscal US de hasta 37% sobre distribuciones a no residentes +
+    // formularios K-1 + muchos brokers EU (T212) no las permiten. No operables
+    // en real para un inversor español → fuera del universo desde ya.
+    const isMLP = name => /L\.?\s*P\.?$| LP$/.test(name || '');
+    const universe = j.data
+      .filter(r => !isMLP(r.d[8]))
+      .map(r => ({ tv: r.s, ticker: r.d[0], sector: r.d[4], ema50_tv: r.d[5], ema200_tv: r.d[6], nextEarnings: r.d[7] ?? null }));
+    const excluded = j.data.length - universe.length;
+    if (excluded) log(`excluidas ${excluded} MLPs del universo (fiscalidad/no operables en EU)`);
     saveJson('universe.json', { generatedAt: new Date().toISOString(), totalCount: j.totalCount, universe });
     log(`universo refrescado: ${universe.length} tickers`);
     return universe;
