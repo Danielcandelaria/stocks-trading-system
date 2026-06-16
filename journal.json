@@ -45,11 +45,15 @@
     "sector": "Producer Manufacturing",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781098200,
     "entryT": 1781098200,
     "entryPx": 856.5881,
-    "rsi2": 7.2
+    "rsi2": 7.2,
+    "exitT": 1781271000,
+    "exitPx": 910.1147,
+    "exitReason": "SMA5",
+    "retPct": 6.25
   },
   {
     "id": "RSI2:IBM:1781098200",
@@ -63,5 +67,18 @@
     "entryT": 1781098200,
     "entryPx": 272.4962,
     "rsi2": 4.1
+  },
+  {
+    "id": "RSI2:EPD:1781530200",
+    "ticker": "EPD",
+    "tv": "NYSE:EPD",
+    "sector": "Industrial Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781530200,
+    "entryT": 1781530200,
+    "entryPx": 36.5182,
+    "rsi2": 6.8
   }
 ]
