@@ -6,11 +6,15 @@
     "sector": "Retail Trade",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781098200,
     "entryT": 1781098200,
     "entryPx": 238.119,
-    "rsi2": 2.9
+    "rsi2": 2.9,
+    "exitT": 1781530200,
+    "exitPx": 245.897,
+    "exitReason": "SMA5",
+    "retPct": 3.27
   },
   {
     "id": "RSI2:AVGO:1781098200",
@@ -19,11 +23,15 @@
     "sector": "Electronic Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781098200,
     "entryT": 1781098200,
     "entryPx": 372.2861,
-    "rsi2": 9.7
+    "rsi2": 9.7,
+    "exitT": 1781530200,
+    "exitPx": 393.743,
+    "exitReason": "SMA5",
+    "retPct": 5.76
   },
   {
     "id": "RSI2:ORCL:1781098200",
@@ -80,5 +88,61 @@
     "entryT": 1781530200,
     "entryPx": 36.5182,
     "rsi2": 6.8
+  },
+  {
+    "id": "RSI2:SLB:1781616600",
+    "ticker": "SLB",
+    "tv": "NYSE:SLB",
+    "sector": "Industrial Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781616600,
+    "entryT": 1781616600,
+    "entryPx": 53.0965,
+    "rsi2": 6.7
+  },
+  {
+    "id": "RSI2:PSX:1781616600",
+    "ticker": "PSX",
+    "tv": "NYSE:PSX",
+    "sector": "Energy Minerals",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781616600,
+    "entryT": 1781616600,
+    "entryPx": 172.086,
+    "rsi2": 9.5
+  },
+  {
+    "id": "F:1781530200:TP2",
+    "ticker": "F",
+    "tv": "NYSE:F",
+    "sector": "Consumer Durables",
+    "variant": "TP2",
+    "status": "open",
+    "signalT": 1781530200,
+    "entryT": 1781616600,
+    "entryPx": 14.7974,
+    "sl": 14.1,
+    "tp": 16.1922,
+    "risk": 0.6974,
+    "riskPct": 4.71
+  },
+  {
+    "id": "F:1781530200:TP3",
+    "ticker": "F",
+    "tv": "NYSE:F",
+    "sector": "Consumer Durables",
+    "variant": "TP3",
+    "status": "open",
+    "signalT": 1781530200,
+    "entryT": 1781616600,
+    "entryPx": 14.7974,
+    "sl": 14.1,
+    "tp": 16.8896,
+    "risk": 0.6974,
+    "riskPct": 4.71
   }
 ]
