@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 import { healthLines } from './monitor_health.mjs';
+import { tgSend } from './tg.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const load = f => existsSync(join(ROOT, f)) ? JSON.parse(readFileSync(join(ROOT, f))) : null;
@@ -69,10 +70,4 @@ const lines = [
 
 const text = lines.join('\n');
 console.log(text.replace(/<[^>]+>/g, ''));
-if (tg?.token && tg?.chatId) {
-  const res = await fetch(`https://api.telegram.org/bot${tg.token}/sendMessage`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: tg.chatId, text, parse_mode: 'HTML' }),
-  });
-  console.log('telegram:', (await res.json()).ok ? 'OK' : 'ERROR');
-}
+await tgSend(text);

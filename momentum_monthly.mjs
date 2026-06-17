@@ -81,15 +81,10 @@ const lines = top.map((p, i) => {
   return `${i + 1}. <b>${p.ticker}</b> +${(p.mom * 100).toFixed(0)}% (6m) @${p.last.toFixed(2)}${tag}`;
 });
 const out = [...prev].filter(t => !top.some(p => p.ticker === t));
-const tg = load('telegram.json', null);
 const text = `📈 <b>MOMENTUM mensual ${month} (paper)</b>\nTop-10 por retorno 6m (rebalanceo equal-weight):\n\n${lines.join('\n')}` +
   (out.length ? `\n\nSalen: ${out.join(', ')}` : '') + closePrevText +
   `\n\n⚠️ Forward-only: el backtest de momentum no es fiable (sesgo supervivencia). Validación: comparar vs SPY mes a mes.`;
 console.log(text.replace(/<[^>]+>/g, ''));
-if (tg?.token && tg?.chatId) {
-  await fetch(`https://api.telegram.org/bot${tg.token}/sendMessage`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: tg.chatId, text, parse_mode: 'HTML' }),
-  });
-}
+const { tgSend } = await import('./tg.mjs');
+await tgSend(text);
 log(`portfolio ${month} registrado (${top.map(p => p.ticker).join(', ')})`);

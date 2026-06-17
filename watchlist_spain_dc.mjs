@@ -59,11 +59,5 @@ const text = `🇪🇸 <b>WATCHLIST DATA CENTERS ESPAÑA</b> — repaso ${new Da
   `4. ¿Avances del plan Redeia 2026-29 / refuerzos post-apagón?`;
 
 console.log(text.replace(/<[^>]+>/g, ''));
-const tg = load('telegram.json', null);
-if (tg?.token && tg?.chatId) {
-  const r = await fetch(`https://api.telegram.org/bot${tg.token}/sendMessage`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: tg.chatId, text, parse_mode: 'HTML' }),
-  });
-  console.log('telegram:', (await r.json()).ok ? 'OK' : 'ERROR');
-}
+const { tgSend } = await import('./tg.mjs');
+await tgSend(text);

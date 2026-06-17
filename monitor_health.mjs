@@ -86,12 +86,5 @@ export const anyRed = results.some(r => r.verdict === '🔴');
 
 // si se ejecuta directo y hay 🔴, alerta a Telegram
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const tg = load('telegram.json', null);
-  if (anyRed && tg?.token && tg?.chatId) {
-    await fetch(`https://api.telegram.org/bot${tg.token}/sendMessage`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: tg.chatId, text: body, parse_mode: 'HTML' }),
-    });
-    console.log('🔴 alerta enviada a Telegram');
-  }
+  if (anyRed) { const { tgSend } = await import('./tg.mjs'); await tgSend(body); console.log('🔴 alerta enviada a Telegram'); }
 }

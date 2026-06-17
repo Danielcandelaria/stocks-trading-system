@@ -42,17 +42,11 @@ function rsi(cl, p) {
   return out;
 }
 
-// ---------- Telegram (opcional hasta tener token) ----------
-const tg = loadJson('telegram.json', null);
+// ---------- Telegram (multi-destinatario vía helper compartido) ----------
+import { tgSend } from './tg.mjs';
 async function notify(text) {
   log('SEÑAL/AVISO:', text.replace(/\n/g, ' | '));
-  if (!tg?.token || !tg?.chatId) return;
-  try {
-    await fetch(`https://api.telegram.org/bot${tg.token}/sendMessage`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: tg.chatId, text, parse_mode: 'HTML' }),
-    });
-  } catch (e) { log('telegram error:', e.message); }
+  await tgSend(text);
 }
 
 // ---------- universo (refresco semanal vía screener TV) ----------

@@ -14,6 +14,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { tgSend } from './tg.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
@@ -52,15 +53,7 @@ export function evaluateBreaker(journal, { alert = true } = {}) {
     } // si ya estaba pausado, se queda pausado hasta reset manual
   }
   save('circuit_breaker.json', state);
-  if (alert && messages.length) {
-    const tg = load('telegram.json', null);
-    if (tg?.token && tg?.chatId) {
-      fetch(`https://api.telegram.org/bot${tg.token}/sendMessage`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: tg.chatId, text: messages.join('\n\n'), parse_mode: 'HTML' }),
-      }).catch(() => {});
-    }
-  }
+  if (alert && messages.length) tgSend(messages.join('\n\n')); // fire-and-forget
   return state;
 }
 
