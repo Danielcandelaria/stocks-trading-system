@@ -200,10 +200,15 @@ for (const u of universe) {
         log(`RSI2 ${u.ticker}: señal válida pero ya hay 5 abiertas — descartada`);
       } else {
         const entryPx = +(bars[i].c * (1 + COST)).toFixed(4);
+        // volumen relativo de la vela de pánico (research 2026-06-17: relVol≥1.5
+        // sube el PF de 1.38 a 1.62 en backtest). Se REGISTRA (no filtra) para
+        // confirmar el hallazgo en forward sin cambiar la spec en validación.
+        const vAvg = bars.slice(Math.max(0, i - 20), i).reduce((s, x) => s + x.v, 0) / Math.min(i, 20);
+        const relVol = vAvg ? +(bars[i].v / vAvg).toFixed(2) : null;
         journal.push({
           id: rKey, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'RSI2', variant: 'RSI2',
           status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
-          rsi2: +r2[i].toFixed(1),
+          rsi2: +r2[i].toFixed(1), relVol,
         });
         signals++;
         await notify(`🔵 <b>SEÑAL RSI2 — COMPRA (LONG)</b>\n<b>${u.ticker}</b> — ${u.sector}` +

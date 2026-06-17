@@ -88,3 +88,18 @@ Caveats declarados: solo 60 días (régimen reciente), y la formalización es un
 - **Conclusión**: ninguna señal se degrada rápido. Las que mueren en horas son ruido; estas se construyen en días = bandera verde de robustez.
 
 **Monitor de salud (`monitor_health.mjs`, integrado en reporte semanal):** compara el forward real (journal) vs backtest + bandas Monte Carlo. Veredicto por estrategia: 🟢 dentro / 🟡 muestra pequeña / 🔴 cruzó banda de alarma (racha>p95=6, DeMark maxDD>7R, WR<<backtest, o expectativa real negativa con n≥15). Alerta a Telegram solo si 🔴. Es la herramienta objetiva de la decisión paper→real: si el forward cae fuera de las bandas que el propio backtest predice, el edge era espejismo.
+
+## Búsqueda de edge adicional en RSI-2 (2026-06-17) — volumen ✅ / calidad ❌
+
+Testeadas dos hipótesis con respaldo económico, como research separado del sistema vivo (no se tocó la spec en validación).
+
+**Volumen — VALIDADO.** relVol = vol(día pánico)/media 20d. Mejora MONÓTONA y robusta:
+| relVol≥ | n | WR | PF | avg% | WF |
+|---|---|---|---|---|---|
+| 0 (base) | 7886 | 65% | 1.38 | 0.44 | 4/4 |
+| 1.5 | 1980 | 65% | 1.62 | 0.73 | 4/4 |
+| 2.0 | 909 | 65% | 1.77 | 0.92 | 4/4 |
+Gradiente suave + WF 4/4 en todos los niveles + sin sesgo (volumen del propio día de señal) = edge real, no overfit. Lógica: pánico con volumen alto = capitulación verdadera = mejor rebote.
+**Acción disciplinada:** NO se cambia la spec (reiniciaría el contador 3/30). Se REGISTRA `relVol` en cada señal RSI-2 forward (`scanner_forward.mjs`) para confirmar el hallazgo con datos en vivo antes de adoptarlo.
+
+**Calidad — RECHAZADA.** Overlay de ROE/deuda. La baja calidad (ROE<15%) rebotó IGUAL o mejor (PF 1.42) que la alta (PF 1.38) → contradice la tesis. El único combo con mejora (ROE≥20%+D/E<1, PF 1.48) está contaminado por look-ahead/supervivencia (fundamentales de hoy sobre trades pasados). No es edge fiable. Al cementerio.
