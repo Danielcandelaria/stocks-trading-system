@@ -1,19 +1,5 @@
 [
   {
-    "id": "B:GE:1779681600",
-    "ticker": "GE",
-    "tv": "NYSE:GE",
-    "sector": "Electronic Technology",
-    "strategy": "BreakoutRetest",
-    "status": "pending",
-    "signalT": 1779681600,
-    "entryPx": 319.14,
-    "stop": 293.6088,
-    "tp": 370.2024,
-    "breakClose": 323.76,
-    "riskPct": 8
-  },
-  {
     "id": "B:APP:1779681600",
     "ticker": "APP",
     "tv": "NASDAQ:APP",
@@ -28,34 +14,6 @@
     "riskPct": 8
   },
   {
-    "id": "B:GD:1780891200",
-    "ticker": "GD",
-    "tv": "NYSE:GD",
-    "sector": "Electronic Technology",
-    "strategy": "BreakoutRetest",
-    "status": "pending",
-    "signalT": 1780891200,
-    "entryPx": 353.57,
-    "stop": 325.2844,
-    "tp": 410.1412,
-    "breakClose": 360.22,
-    "riskPct": 8
-  },
-  {
-    "id": "B:AMT:1780286400",
-    "ticker": "AMT",
-    "tv": "NYSE:AMT",
-    "sector": "Finance",
-    "strategy": "BreakoutRetest",
-    "status": "pending",
-    "signalT": 1780286400,
-    "entryPx": 188.59,
-    "stop": 173.5028,
-    "tp": 218.7644,
-    "breakClose": 194.12,
-    "riskPct": 8
-  },
-  {
     "id": "B:SNOW:1779681600",
     "ticker": "SNOW",
     "tv": "NYSE:SNOW",
@@ -67,6 +25,48 @@
     "stop": 162.8216,
     "tp": 205.2968,
     "breakClose": 255.55,
+    "riskPct": 8
+  },
+  {
+    "id": "B:UAL:1779681600",
+    "ticker": "UAL",
+    "tv": "NASDAQ:UAL",
+    "sector": "Transportation",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1779681600,
+    "entryPx": 105.98,
+    "stop": 97.5016,
+    "tp": 122.9368,
+    "breakClose": 114.8,
+    "riskPct": 8
+  },
+  {
+    "id": "B:PRU:1780891200",
+    "ticker": "PRU",
+    "tv": "NYSE:PRU",
+    "sector": "Finance",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1780891200,
+    "entryPx": 105.18,
+    "stop": 96.7656,
+    "tp": 122.0088,
+    "breakClose": 108.5,
+    "riskPct": 8
+  },
+  {
+    "id": "B:WAT:1779681600",
+    "ticker": "WAT",
+    "tv": "NYSE:WAT",
+    "sector": "Health Technology",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1779681600,
+    "entryPx": 357.45,
+    "stop": 328.854,
+    "tp": 414.642,
+    "breakClose": 383.57,
     "riskPct": 8
   }
 ]
