@@ -50,46 +50,73 @@ async function getWeekly(ticker) {
   return bars;
 }
 
-// pending → fill (si retesta) o cancel (si caduca); open → cierre
-function managePositions(journal, ticker, bars, e8, e21) {
-  for (const pos of journal.filter(p => p.ticker === ticker && (p.status === 'pending' || p.status === 'open'))) {
-    const startIdx = bars.findIndex(b => b.t > pos.signalT);
-    if (startIdx < 0) continue;
+async function getDaily(ticker) {
+  const y = ticker.replace('.', '-');
+  const res = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${y}?range=3mo&interval=1d`, { headers: UA });
+  const r = (await res.json()).chart?.result?.[0];
+  const q = r?.indicators?.quote?.[0];
+  if (!r?.timestamp || !q) return [];
+  const bars = [];
+  for (let i = 0; i < r.timestamp.length; i++) {
+    if (q.close[i] == null) continue;
+    bars.push({ t: r.timestamp[i], o: q.open[i], h: q.high[i], l: q.low[i], c: q.close[i] });
+  }
+  return bars;
+}
 
+// Gestión de posiciones a resolución DIARIA (para avisar del retest A TIEMPO):
+//   pending → vigila en diario; el día que el precio TOCA el nivel → 🟠 ENTRA AHORA
+//   open    → vigila stop/target en diario; cruce 8<21 y time en semanal
+async function managePositions(journal, ticker, weekly, e8, e21) {
+  const active = journal.filter(p => p.ticker === ticker && (p.status === 'pending' || p.status === 'open'));
+  if (!active.length) return;
+  let daily; try { daily = await getDaily(ticker); await sleep(120); } catch { daily = []; }
+
+  for (const pos of active) {
     if (pos.status === 'pending') {
-      // ¿retestó el nivel dentro de la ventana? (low ≤ límite) → orden ejecutada
-      for (let i = startIdx; i < bars.length && i - startIdx <= RETEST_W; i++) {
-        if (bars[i].l <= pos.entryPx) {
-          pos.status = 'open'; pos.entryT = bars[i].t; pos.filledWeek = i - startIdx;
-          tgSend(`🟠 <b>EJECUTADA</b> — ${ticker}: tu límite en $${pos.entryPx} se llenó (retest). Trade ACTIVO. Stop $${pos.stop}, target $${pos.tp}.`);
-          break;
+      // el retest se busca DESPUÉS de cerrar la semana de ruptura (signalT = lunes
+      // de esa semana → +7 días = lunes siguiente). Si no, la propia vela de ruptura
+      // cuenta como retest (bug: su rango intra-semana baja del nivel antes de romper).
+      const ds = daily.filter(b => b.t >= pos.signalT + 7 * 86400);
+      const hit = ds.find(b => b.l <= pos.entryPx);              // retest a nivel diario
+      if (hit) {
+        pos.status = 'open'; pos.entryT = hit.t;
+        // solo alerta "ENTRA AHORA" si el retest es RECIENTE (≤4 días); los
+        // históricos (backfill) se registran en silencio para no dar urgencia falsa.
+        if (NOW - hit.t < 4 * 86400) {
+          await tgSend(`🟢🟠 <b>RETEST AHORA — ENTRA</b> — ${ticker}\n` +
+            `El precio tocó tu nivel de retest: <b>COMPRA ~$${pos.entryPx}</b>\n` +
+            `🛑 Stop $${pos.stop} (−${pos.riskPct}%) · 🎯 Target $${pos.tp} (+2R)\n` +
+            `Aguante: semanas a meses. Esta es tu entrada — tomas el movimiento completo desde aquí.`);
+        } else {
+          log(`${ticker}: retest histórico ${new Date(hit.t * 1000).toISOString().slice(0, 10)} — registrado sin alerta`);
         }
-      }
-      // caducó sin retest → cancelada (la ruptura se fue sin retroceso)
-      if (pos.status === 'pending') {
-        const wksSince = bars.length - 1 - startIdx;
-        if (wksSince > RETEST_W) { pos.status = 'cancelled'; pos.exitT = bars[bars.length - 1].t; log(`${ticker}: orden caducada sin retest`); }
+      } else if (NOW - pos.signalT > RETEST_W * 7 * 86400) {
+        pos.status = 'cancelled'; pos.exitT = NOW;
+        log(`${ticker}: ruptura caducada sin retest (${RETEST_W} sem)`);
       }
     }
-
     if (pos.status === 'open') {
-      const fi = bars.findIndex(b => b.t > pos.entryT);
-      if (fi < 0) continue;
-      for (let i = fi; i < bars.length; i++) {
-        const b = bars[i];
-        let exit = null, reason = null;
-        if (b.l <= pos.stop) { exit = Math.min(b.o, pos.stop); reason = 'STOP'; }
-        else if (b.h >= pos.tp) { exit = Math.max(b.o, pos.tp); reason = 'TARGET 2R'; }
-        else if (e8[i] < e21[i]) { exit = b.c; reason = 'cruce 8<21 (tendencia gira)'; }
-        else if (i - fi >= TIME_W) { exit = b.c; reason = 'TIME 52sem'; }
-        if (exit != null) {
-          const px = exit * (1 - COST);
-          pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
-          pos.exitReason = reason; pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
-          pos.r = +((px - pos.entryPx) / (pos.entryPx - pos.stop)).toFixed(2); pos.weeksHeld = i - fi;
-          tgSend(`🟠 <b>CIERRE BREAKOUT RETEST</b> — ${ticker}\n${reason} → <b>${pos.retPct > 0 ? '+' : ''}${pos.retPct}% (${pos.r > 0 ? '+' : ''}${pos.r}R)</b> en ${pos.weeksHeld} semanas\nEntrada $${pos.entryPx} → salida $${pos.exitPx}`);
-          break;
-        }
+      // stop/target en diario
+      const ds = daily.filter(b => b.t >= pos.entryT);
+      let exit = null, reason = null;
+      for (const b of ds) {
+        if (b.l <= pos.stop) { exit = Math.min(b.o, pos.stop); reason = 'STOP'; break; }
+        if (b.h >= pos.tp) { exit = Math.max(b.o, pos.tp); reason = 'TARGET 2R'; break; }
+      }
+      // salida por giro de tendencia (cruce 8<21) o time-stop, en semanal
+      if (!exit) {
+        const wi = weekly.length - 1;
+        const wksHeld = weekly.filter(b => b.t >= pos.entryT).length;
+        if (e8[wi] != null && e8[wi] < e21[wi]) { exit = weekly[wi].c; reason = 'cruce 8<21 (tendencia gira)'; }
+        else if (wksHeld >= TIME_W) { exit = weekly[wi].c; reason = 'TIME 52sem'; }
+      }
+      if (exit != null) {
+        const px = exit * (1 - COST);
+        pos.status = 'closed'; pos.exitT = NOW; pos.exitPx = +px.toFixed(4);
+        pos.exitReason = reason; pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
+        pos.r = +((px - pos.entryPx) / (pos.entryPx - pos.stop)).toFixed(2);
+        await tgSend(`🟠 <b>CIERRE BREAKOUT RETEST</b> — ${ticker}\n${reason} → <b>${pos.retPct > 0 ? '+' : ''}${pos.retPct}% (${pos.r > 0 ? '+' : ''}${pos.r}R)</b>\nEntrada $${pos.entryPx} → salida $${pos.exitPx}`);
       }
     }
   }
@@ -109,7 +136,7 @@ for (const u of universe) {
 
   const cl = bars.map(b => b.c);
   const e8 = ema(cl, 8), e21 = ema(cl, 21);
-  managePositions(journal, u.ticker, bars, e8, e21);
+  await managePositions(journal, u.ticker, bars, e8, e21);
 
   // ¿RUPTURA en la última vela semanal cerrada (+ catch-up de 2 semanas)?
   for (let i = Math.max(RES_LB, bars.length - 3); i < bars.length; i++) {
@@ -136,13 +163,12 @@ for (const u of universe) {
       breakClose: +bars[i].c.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
     });
     signals++;
-    await tgSend(`🟠 <b>RUPTURA — PREPARA ORDEN LÍMITE</b>\n<b>${u.ticker}</b> — ${u.sector}` +
+    await tgSend(`🔭 <b>PREAVISO — VIGILAR RETEST</b>\n<b>${u.ticker}</b> — ${u.sector}` +
       `\n` +
-      `\n⚡ Acaba de romper resistencia (cierre semanal $${bars[i].c.toFixed(2)}, cruce 8/21 EMA).` +
-      `\n📍 <b>COLOCA ORDEN LÍMITE DE COMPRA</b> en $${entryPx.toFixed(2)} (el nivel de ruptura)` +
-      `\n🛑 <b>STOP</b>: $${stop.toFixed(2)} (−${(risk / entryPx * 100).toFixed(1)}%)` +
-      `\n🎯 <b>TARGET</b>: $${tp.toFixed(2)} (+2R)` +
-      `\n⏳ La orden se ejecuta cuando el precio RETROCEDE al nivel (próximas ~6 semanas). Si no retrocede, se cancela sola.` +
+      `\n⚡ Rompió resistencia (cierre semanal $${bars[i].c.toFixed(2)}, cruce 8/21 EMA). Setup armado.` +
+      `\n👀 <b>Espera a que el precio RETROCEDA a $${entryPx.toFixed(2)}</b> (el nivel de ruptura) — te avisaré 🟢 ENTRA AHORA el día que lo toque.` +
+      `\n🛑 Stop previsto $${stop.toFixed(2)} (−${(risk / entryPx * 100).toFixed(1)}%) · 🎯 Target $${tp.toFixed(2)} (+2R)` +
+      `\n⏳ Si no retrocede en ~6 semanas, se descarta. NO entres aún — espera la señal de entrada.` +
       `\n\nConfirmar en TV (semanal): ${u.tv}`);
   }
 }
