@@ -40,32 +40,28 @@ if breakBar
     breakoutLvl := resist
     breakoutBar := bar_index
 
-// --- Paso 3: retest del nivel (dentro de la ventana, low toca el nivel, sigue 8>21) ---
-inWindow  = not na(breakoutBar) and (bar_index - breakoutBar) <= retestW and (bar_index - breakoutBar) >= 0
-retestHit = inWindow and low <= breakoutLvl * (1 + retestBnd) and ef > es
-
-// disparo de la señal (una vez por ruptura)
-var float lastSignalLvl = na
-fireSignal = retestHit and (na(lastSignalLvl) or lastSignalLvl != breakoutLvl)
-if fireSignal
-    lastSignalLvl := breakoutLvl
-
-// --- niveles del trade ---
+// --- niveles del trade (el límite = nivel de ruptura) ---
 entry  = breakoutLvl
 stopL  = breakoutLvl * (1 - stopBuf)
 target = entry + tpR * (entry - stopL)
 
-// --- Dibujo ---
-plotshape(breakBar, "Ruptura", shape.triangleup, location.belowbar, color.new(color.teal, 0), size=size.small, text="BRK")
-plotshape(fireSignal, "RETEST — COMPRA", shape.labelup, location.belowbar, color.new(color.orange, 0), text="🟠 RETEST", textcolor=color.white, size=size.normal)
+// --- LA SEÑAL ES LA RUPTURA: aquí colocas la orden límite (a tiempo) ---
+// Avisar en el retest llega tarde (en semanal el retest+rebote ocurren en la
+// misma vela). En la ruptura colocas el límite y el retroceso lo ejecuta solo.
+plotshape(breakBar, "RUPTURA — coloca límite", shape.labelup, location.belowbar, color.new(color.orange, 0), text="🟠 RUPTURA\nlímite ↓", textcolor=color.white, size=size.normal)
 
-// líneas de entrada/stop/target tras la señal
-if fireSignal
-    line.new(bar_index, entry,  bar_index + 10, entry,  color=color.new(color.blue, 0),  style=line.style_dashed, width=2)
-    line.new(bar_index, stopL,  bar_index + 10, stopL,  color=color.new(color.red, 0),   style=line.style_dashed, width=2)
-    line.new(bar_index, target, bar_index + 10, target, color=color.new(color.green, 0), style=line.style_dashed, width=2)
-    label.new(bar_index, target, "TP +2R " + str.tostring(target, "#.##"), style=label.style_label_left, color=color.new(color.green, 80), textcolor=color.green, size=size.small)
+if breakBar
+    line.new(bar_index, entry,  bar_index + 12, entry,  color=color.new(color.blue, 0),  style=line.style_solid,  width=2)   // límite de compra
+    line.new(bar_index, stopL,  bar_index + 12, stopL,  color=color.new(color.red, 0),   style=line.style_dashed, width=2)
+    line.new(bar_index, target, bar_index + 12, target, color=color.new(color.green, 0), style=line.style_dashed, width=2)
+    label.new(bar_index, entry,  "LÍMITE COMPRA " + str.tostring(entry, "#.##"), style=label.style_label_left, color=color.new(color.blue, 80),  textcolor=color.blue,  size=size.small)
+    label.new(bar_index, target, "TP +2R " + str.tostring(target, "#.##"),       style=label.style_label_left, color=color.new(color.green, 80), textcolor=color.green, size=size.small)
     label.new(bar_index, stopL,  "STOP -" + str.tostring(stopBuf*100,"#") + "% " + str.tostring(stopL, "#.##"), style=label.style_label_left, color=color.new(color.red, 80), textcolor=color.red, size=size.small)
 
-// --- Alerta (para crear avisos en TV) ---
-alertcondition(fireSignal, "Señal Breakout Retest", "Retest de ruptura confirmado — COMPRA LONG semanal")
+// marca informativa cuando el precio retesta y llenaría la orden
+inWindow  = not na(breakoutBar) and (bar_index - breakoutBar) <= retestW and (bar_index - breakoutBar) > 0
+retestHit = inWindow and low <= breakoutLvl * (1 + retestBnd) and ef > es
+plotshape(retestHit, "Retest (orden ejecutada)", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.tiny, text="fill")
+
+// --- Alerta: salta en la RUPTURA, para que coloques el límite a tiempo ---
+alertcondition(breakBar, "Ruptura Breakout Retest", "RUPTURA semanal — coloca orden LÍMITE de compra en el nivel de ruptura")

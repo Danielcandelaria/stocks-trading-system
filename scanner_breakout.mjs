@@ -1,17 +1,21 @@
 // stocks/scanner_breakout.mjs
 // 5º SISTEMA (paper) — BREAKOUT RETEST SEMANAL (idea Justin Banks @RealUGBanks).
-// Backtest 10y semanal: PF 2.65 vs azar 1.37 (bate al azar), meseta robusta
-// (18/18 variantes WF 4/4), correlación 0.04 con el swing de Carlos (diversifica).
+// Backtest 10y semanal: PF 2.65 vs azar 1.37, meseta robusta (18/18 WF 4/4),
+// correlación 0.04 con el swing de Carlos (diversifica).
 //
-// Los 4 pasos del tweet, mecanizados:
-//   1. Cruce semanal 8 EMA por encima de 21 EMA (fresco)
-//   2. Ruptura de resistencia = cierre > máximo de las 20 semanas previas
-//   3. Entrada en el RETEST del nivel de ruptura (límite, ≤6 semanas tras romper)
-//   4. Salida "en la siguiente resistencia" → target 2R, o cruce 8<21, o 52 sem
+// TIMING CORRECTO (fix 2026-06-18): la alerta sale en la RUPTURA, no en el retest.
+// Se coloca una orden LÍMITE en el nivel de ruptura; el retroceso la ejecuta sola.
+// Avisar en el retest ya confirmado llega tarde (en semanal, retest+rebote ocurren
+// en la misma vela → al cerrar el viernes el precio ya se fue).
+//
+// Flujo de estados del journal:
+//   1. RUPTURA detectada (cierre semanal > máx 20sem + cruce 8>21) → 'pending' +
+//      ALERTA "coloca límite en $X". Caduca a las 6 semanas sin retest.
+//   2. RETEST (una semana baja a tocar el nivel) → 'open' (orden ejecutada).
+//   3. Salida: target 2R / cruce 8<21 / time-stop 52sem / stop → 'closed'.
 //   Stop: 8% bajo el nivel de ruptura.
 //
-// ⚠️ Absolutos inflados por supervivencia; el edge REAL es el relativo al azar.
-//    El retest asume fill límite en el nivel. Validación que manda: forward.
+// ⚠️ Absolutos inflados por supervivencia; edge real = el relativo al azar. Forward manda.
 // Paralelo total: HTTP puro (Yahoo semanal), sin chart/CDP. Journal propio.
 
 import { readFileSync, writeFileSync, existsSync } from 'fs';
@@ -46,24 +50,46 @@ async function getWeekly(ticker) {
   return bars;
 }
 
-function manageOpen(journal, ticker, bars, e8, e21) {
-  for (const pos of journal.filter(p => p.ticker === ticker && p.status === 'open')) {
-    const startIdx = bars.findIndex(b => b.t > pos.entryT);
+// pending → fill (si retesta) o cancel (si caduca); open → cierre
+function managePositions(journal, ticker, bars, e8, e21) {
+  for (const pos of journal.filter(p => p.ticker === ticker && (p.status === 'pending' || p.status === 'open'))) {
+    const startIdx = bars.findIndex(b => b.t > pos.signalT);
     if (startIdx < 0) continue;
-    for (let i = startIdx; i < bars.length; i++) {
-      const b = bars[i];
-      let exit = null, reason = null;
-      if (b.l <= pos.stop) { exit = Math.min(b.o, pos.stop); reason = 'STOP'; }
-      else if (b.h >= pos.tp) { exit = Math.max(b.o, pos.tp); reason = 'TARGET 2R'; }
-      else if (e8[i] < e21[i]) { exit = b.c; reason = 'cruce 8<21 (tendencia gira)'; }
-      else if (i - startIdx >= TIME_W) { exit = b.c; reason = 'TIME 52sem'; }
-      if (exit != null) {
-        const px = exit * (1 - COST);
-        pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
-        pos.exitReason = reason; pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
-        pos.r = +((px - pos.entryPx) / (pos.entryPx - pos.stop)).toFixed(2); pos.weeksHeld = i - startIdx;
-        tgSend(`🟠 <b>CIERRE BREAKOUT RETEST</b> — ${ticker}\n${reason} → <b>${pos.retPct > 0 ? '+' : ''}${pos.retPct}% (${pos.r > 0 ? '+' : ''}${pos.r}R)</b> en ${pos.weeksHeld} semanas\nEntrada $${pos.entryPx} → salida $${pos.exitPx}`);
-        break;
+
+    if (pos.status === 'pending') {
+      // ¿retestó el nivel dentro de la ventana? (low ≤ límite) → orden ejecutada
+      for (let i = startIdx; i < bars.length && i - startIdx <= RETEST_W; i++) {
+        if (bars[i].l <= pos.entryPx) {
+          pos.status = 'open'; pos.entryT = bars[i].t; pos.filledWeek = i - startIdx;
+          tgSend(`🟠 <b>EJECUTADA</b> — ${ticker}: tu límite en $${pos.entryPx} se llenó (retest). Trade ACTIVO. Stop $${pos.stop}, target $${pos.tp}.`);
+          break;
+        }
+      }
+      // caducó sin retest → cancelada (la ruptura se fue sin retroceso)
+      if (pos.status === 'pending') {
+        const wksSince = bars.length - 1 - startIdx;
+        if (wksSince > RETEST_W) { pos.status = 'cancelled'; pos.exitT = bars[bars.length - 1].t; log(`${ticker}: orden caducada sin retest`); }
+      }
+    }
+
+    if (pos.status === 'open') {
+      const fi = bars.findIndex(b => b.t > pos.entryT);
+      if (fi < 0) continue;
+      for (let i = fi; i < bars.length; i++) {
+        const b = bars[i];
+        let exit = null, reason = null;
+        if (b.l <= pos.stop) { exit = Math.min(b.o, pos.stop); reason = 'STOP'; }
+        else if (b.h >= pos.tp) { exit = Math.max(b.o, pos.tp); reason = 'TARGET 2R'; }
+        else if (e8[i] < e21[i]) { exit = b.c; reason = 'cruce 8<21 (tendencia gira)'; }
+        else if (i - fi >= TIME_W) { exit = b.c; reason = 'TIME 52sem'; }
+        if (exit != null) {
+          const px = exit * (1 - COST);
+          pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
+          pos.exitReason = reason; pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
+          pos.r = +((px - pos.entryPx) / (pos.entryPx - pos.stop)).toFixed(2); pos.weeksHeld = i - fi;
+          tgSend(`🟠 <b>CIERRE BREAKOUT RETEST</b> — ${ticker}\n${reason} → <b>${pos.retPct > 0 ? '+' : ''}${pos.retPct}% (${pos.r > 0 ? '+' : ''}${pos.r}R)</b> en ${pos.weeksHeld} semanas\nEntrada $${pos.entryPx} → salida $${pos.exitPx}`);
+          break;
+        }
       }
     }
   }
@@ -83,50 +109,42 @@ for (const u of universe) {
 
   const cl = bars.map(b => b.c);
   const e8 = ema(cl, 8), e21 = ema(cl, 21);
-  manageOpen(journal, u.ticker, bars, e8, e21);
+  managePositions(journal, u.ticker, bars, e8, e21);
 
-  // detectar: en alguna de las últimas ~8 semanas hubo cruce+ruptura, y AHORA estamos
-  // en zona de retest (la última vela cerrada toca el nivel de ruptura por arriba).
-  const i = bars.length - 1; // última semana cerrada
-  if (e8[i] == null || e21[i] == null) continue;
-  // buscar la ruptura más reciente dentro de la ventana de retest
-  let breakout = null;
-  for (let k = i; k >= Math.max(RES_LB, i - RETEST_W); k--) {
-    const cross = e8[k - 1] != null && e8[k - 1] <= e21[k - 1] && e8[k] > e21[k];
-    const res = Math.max(...bars.slice(k - RES_LB, k).map(b => b.h));
-    if (cross && bars[k].c > res) { breakout = res; break; }
+  // ¿RUPTURA en la última vela semanal cerrada (+ catch-up de 2 semanas)?
+  for (let i = Math.max(RES_LB, bars.length - 3); i < bars.length; i++) {
+    if (e8[i] == null || e21[i] == null) continue;
+    const cross = e8[i - 1] != null && e8[i - 1] <= e21[i - 1] && e8[i] > e21[i];
+    const resist = Math.max(...bars.slice(i - RES_LB, i).map(b => b.h));
+    if (!(cross && bars[i].c > resist)) continue;
+
+    const key = `B:${u.ticker}:${bars[i].t}`;
+    if (seen[key]) continue;
+    seen[key] = true;
+
+    const entryPx = +resist.toFixed(4);           // límite = nivel de ruptura
+    const stop = +(resist * (1 - STOP_BUF)).toFixed(4);
+    const risk = entryPx - stop;
+    const tp = +(entryPx + TP_R * risk).toFixed(4);
+
+    const active = journal.filter(p => p.status === 'pending' || p.status === 'open');
+    if (active.length >= CAP) { log(`${u.ticker}: ruptura válida pero ya hay ${CAP} activas — descartada`); continue; }
+
+    journal.push({
+      id: key, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'BreakoutRetest',
+      status: 'pending', signalT: bars[i].t, entryPx, stop, tp,
+      breakClose: +bars[i].c.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
+    });
+    signals++;
+    await tgSend(`🟠 <b>RUPTURA — PREPARA ORDEN LÍMITE</b>\n<b>${u.ticker}</b> — ${u.sector}` +
+      `\n` +
+      `\n⚡ Acaba de romper resistencia (cierre semanal $${bars[i].c.toFixed(2)}, cruce 8/21 EMA).` +
+      `\n📍 <b>COLOCA ORDEN LÍMITE DE COMPRA</b> en $${entryPx.toFixed(2)} (el nivel de ruptura)` +
+      `\n🛑 <b>STOP</b>: $${stop.toFixed(2)} (−${(risk / entryPx * 100).toFixed(1)}%)` +
+      `\n🎯 <b>TARGET</b>: $${tp.toFixed(2)} (+2R)` +
+      `\n⏳ La orden se ejecuta cuando el precio RETROCEDE al nivel (próximas ~6 semanas). Si no retrocede, se cancela sola.` +
+      `\n\nConfirmar en TV (semanal): ${u.tv}`);
   }
-  if (breakout == null) continue;
-  // retest: la última vela cerrada bajó a tocar el nivel (low ≤ nivel*(1+band)) y sigue 8>21
-  if (bars[i].l > breakout * (1 + RETEST_BAND) || e8[i] <= e21[i]) continue;
-
-  const key = `B:${u.ticker}:${breakout.toFixed(2)}`;
-  if (seen[key]) continue;
-  seen[key] = true;
-
-  const entryPx = +(breakout * (1 + COST)).toFixed(4);
-  const stop = +(breakout * (1 - STOP_BUF)).toFixed(4);
-  const risk = entryPx - stop;
-  if (risk <= 0) continue;
-  const tp = +(entryPx + TP_R * risk).toFixed(4);
-
-  const open = journal.filter(p => p.status === 'open');
-  if (open.length >= CAP) { log(`${u.ticker}: retest válido pero ya hay ${CAP} abiertas — descartado`); continue; }
-
-  journal.push({
-    id: key, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'BreakoutRetest',
-    status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx, stop, tp,
-    breakout: +breakout.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
-  });
-  signals++;
-  await tgSend(`🟠 <b>SEÑAL BREAKOUT RETEST — COMPRA (LONG)</b>\n<b>${u.ticker}</b> — ${u.sector}` +
-    `\n` +
-    `\n📍 <b>ENTRADA</b>: límite en el retest del nivel de ruptura ~$${entryPx.toFixed(2)}` +
-    `\n🛑 <b>STOP</b>: $${stop.toFixed(2)} (−${(risk / entryPx * 100).toFixed(1)}%, bajo la ruptura)` +
-    `\n🎯 <b>TARGET</b>: $${tp.toFixed(2)} (+2R) — la siguiente resistencia` +
-    `\n⏳ <b>Horizonte</b>: semanas a meses · salida también si 8EMA cruza bajo 21EMA` +
-    `\n📐 <b>Tamaño</b>: 1% de riesgo / distancia al stop` +
-    `\n\nSetup: cruce semanal 8/21 EMA + ruptura de 20 sem + retest. TV (semanal): ${u.tv}`);
 }
 
 save('journal_breakout.json', journal);
@@ -136,5 +154,6 @@ try {
   execSync('git add journal_breakout.json seen_breakout.json 2>/dev/null; git diff --cached --quiet || git commit -q -m "journal breakout: scan ' + new Date().toISOString().slice(0, 10) + '"; git push -q origin main 2>/dev/null || true', { cwd: ROOT, shell: '/bin/zsh' });
 } catch {}
 
-const open = journal.filter(p => p.status === 'open');
-log(`scan: ${universe.length} tickers, ${signals} señales nuevas, ${errors} errores | abiertas ${open.length}/${CAP}`);
+const pending = journal.filter(p => p.status === 'pending').length;
+const open = journal.filter(p => p.status === 'open').length;
+log(`scan: ${universe.length} tickers, ${signals} rupturas nuevas, ${errors} errores | pending ${pending}, abiertas ${open} (cap ${CAP})`);
