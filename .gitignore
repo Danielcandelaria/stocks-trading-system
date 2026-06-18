@@ -7,3 +7,4 @@ watchlist.log
 circuit_breaker.json
 data_weekly/
 seen_weekly.json
+seen_breakout.json

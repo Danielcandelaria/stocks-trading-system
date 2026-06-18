@@ -1,0 +1,71 @@
+//@version=5
+indicator("Breakout Retest Semanal (Justin Banks) — validado", overlay=true, max_labels_count=500, max_lines_count=500)
+
+// =============================================================================
+// ESTRATEGIA BREAKOUT RETEST SEMANAL (idea Justin Banks @RealUGBanks)
+// Validada por backtest: PF 2.65 vs azar 1.37, meseta robusta (18/18 WF 4/4),
+// correlación 0.04 con el swing DeMark (diversifica). Usar en gráfico SEMANAL.
+//
+// Los 4 pasos:
+//   1. Cruce 8 EMA por encima de 21 EMA
+//   2. Ruptura de resistencia = cierre > máximo de las N semanas previas
+//   3. Entrada en el RETEST del nivel de ruptura (orden límite)
+//   4. Target +2R / salida si 8 cruza bajo 21 / stop 8% bajo la ruptura
+// =============================================================================
+
+// --- Inputs ---
+emaFast   = input.int(8,  "EMA rápida")
+emaSlow   = input.int(21, "EMA lenta")
+resLB     = input.int(20, "Lookback resistencia (semanas)")
+retestW   = input.int(6,  "Ventana de retest (semanas)")
+retestBnd = input.float(2.0, "Banda de retest (%)") / 100.0
+stopBuf   = input.float(8.0, "Stop bajo ruptura (%)") / 100.0
+tpR       = input.float(2.0, "Target (R)")
+
+// --- EMAs ---
+ef = ta.ema(close, emaFast)
+es = ta.ema(close, emaSlow)
+plot(ef, "EMA 8",  color.new(color.orange, 0), 2)
+plot(es, "EMA 21", color.new(color.blue,   0), 2)
+
+// --- Paso 1+2: cruce alcista fresco + ruptura de resistencia ---
+cross    = ta.crossover(ef, es)
+resist   = ta.highest(high[1], resLB)          // máx de las N velas PREVIAS
+breakBar = cross and close > resist
+
+// guardar el nivel de ruptura y la barra en que ocurrió
+var float breakoutLvl = na
+var int   breakoutBar = na
+if breakBar
+    breakoutLvl := resist
+    breakoutBar := bar_index
+
+// --- Paso 3: retest del nivel (dentro de la ventana, low toca el nivel, sigue 8>21) ---
+inWindow  = not na(breakoutBar) and (bar_index - breakoutBar) <= retestW and (bar_index - breakoutBar) >= 0
+retestHit = inWindow and low <= breakoutLvl * (1 + retestBnd) and ef > es
+
+// disparo de la señal (una vez por ruptura)
+var float lastSignalLvl = na
+fireSignal = retestHit and (na(lastSignalLvl) or lastSignalLvl != breakoutLvl)
+if fireSignal
+    lastSignalLvl := breakoutLvl
+
+// --- niveles del trade ---
+entry  = breakoutLvl
+stopL  = breakoutLvl * (1 - stopBuf)
+target = entry + tpR * (entry - stopL)
+
+// --- Dibujo ---
+plotshape(breakBar, "Ruptura", shape.triangleup, location.belowbar, color.new(color.teal, 0), size=size.small, text="BRK")
+plotshape(fireSignal, "RETEST — COMPRA", shape.labelup, location.belowbar, color.new(color.orange, 0), text="🟠 RETEST", textcolor=color.white, size=size.normal)
+
+// líneas de entrada/stop/target tras la señal
+if fireSignal
+    line.new(bar_index, entry,  bar_index + 10, entry,  color=color.new(color.blue, 0),  style=line.style_dashed, width=2)
+    line.new(bar_index, stopL,  bar_index + 10, stopL,  color=color.new(color.red, 0),   style=line.style_dashed, width=2)
+    line.new(bar_index, target, bar_index + 10, target, color=color.new(color.green, 0), style=line.style_dashed, width=2)
+    label.new(bar_index, target, "TP +2R " + str.tostring(target, "#.##"), style=label.style_label_left, color=color.new(color.green, 80), textcolor=color.green, size=size.small)
+    label.new(bar_index, stopL,  "STOP -" + str.tostring(stopBuf*100,"#") + "% " + str.tostring(stopL, "#.##"), style=label.style_label_left, color=color.new(color.red, 80), textcolor=color.red, size=size.small)
+
+// --- Alerta (para crear avisos en TV) ---
+alertcondition(fireSignal, "Señal Breakout Retest", "Retest de ruptura confirmado — COMPRA LONG semanal")

@@ -122,3 +122,14 @@ Con la entrada correcta (comprar el 9) + suelo de stop 8% (~2.5× el 3% diario, 
 
 ### Filtro EMA200 en el swing semanal — RECHAZADO (2026-06-18)
 Probado precio>EMA200(semanal) sobre el swing: sube WR (42→46%) pero BAJA el edge — PF 6.95→6.35, avgRet 41.8→33.5%, recorta 70% de señales. EMA40 lo destroza (PF 1.63, WF 3/4). Prueba concreta: el filtro habría ELIMINADO NVDA oct-2022 (+223%, precio bajo EMA200) y CRDO abr-2025 (+293%). Razón: el diario compra pullbacks (filtro ayuda, lección HCA); el SEMANAL compra capitulación profunda (los suelos bajo EMA200 dan las mayores recuperaciones → filtro hace daño). Sistemas opuestos, efecto opuesto. NO añadir.
+
+## 5º SISTEMA: BREAKOUT RETEST semanal (2026-06-18) — idea Justin Banks @RealUGBanks
+
+Tweet: cruce semanal 8/21 EMA + ruptura de resistencia + entrada en retest + venta en siguiente resistencia ("100% en HOOD"). Mecanizado y testeado:
+- Entrada en la RUPTURA: PF 1.50 (≈ azar 1.37) → casi beta, sin edge.
+- **Entrada en el RETEST: PF 2.65 vs azar 1.37, WR 56%, +5.5%/trade, WF 4/4** → edge real, en la paciencia del retroceso (justo lo que el tweet enfatiza).
+- Robustez: 18/18 variantes (resLB 15/20/26 × retest 4/6/8 × tp 2/3R) dan PF 2.25-2.65, todas WF 4/4 → meseta.
+- Correlación 0.04 con el swing DeMark de Carlos → DIVERSIFICA (Carlos compra suelos, Justin compra rupturas).
+
+Spec paper (`scanner_breakout.mjs`, en `run_daily.sh`, journal `journal_breakout.json`, Telegram 🟠): semanal, cruce 8>21 + cierre>máx(20sem) + retest del nivel (≤6sem, banda 2%), stop 8% bajo ruptura, target 2R / cruce 8<21 / time 52sem. Cap 5. Pine para TV: `breakout_retest.pine`.
+⚠️ Absolutos inflados por supervivencia; el retest asume fill límite. Edge real = el relativo al azar. Valida la forward.
