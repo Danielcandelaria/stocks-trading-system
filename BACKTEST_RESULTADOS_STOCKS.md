@@ -103,3 +103,19 @@ Gradiente suave + WF 4/4 en todos los niveles + sin sesgo (volumen del propio d�
 **Acción disciplinada:** NO se cambia la spec (reiniciaría el contador 3/30). Se REGISTRA `relVol` en cada señal RSI-2 forward (`scanner_forward.mjs`) para confirmar el hallazgo con datos en vivo antes de adoptarlo.
 
 **Calidad — RECHAZADA.** Overlay de ROE/deuda. La baja calidad (ROE<15%) rebotó IGUAL o mejor (PF 1.42) que la alta (PF 1.38) → contradice la tesis. El único combo con mejora (ROE≥20%+D/E<1, PF 1.48) está contaminado por look-ahead/supervivencia (fundamentales de hoy sobre trades pasados). No es edge fiable. Al cementerio.
+
+## 4º SISTEMA: DeMark-9 SEMANAL swing largo (2026-06-18) — idea Carlos + corrección usuario
+
+Origen: Carlos Mantilla propuso "operar del 1 al 13" en semanal/mensual para tendencias largas (+20-100%). Primera mecanización (entrada en bearSetup==1) NO batía al azar = supervivencia pura → habría ido al cementerio. **El usuario corrigió visualmente (chart CRDO): se compra el 9-SUELO, no el 13-TECHO.** Re-test con entrada correcta + suelo de stop:
+
+| Versión (hold 52sem, salida en bearCD-13) | n | WR | PF | avgRet | vs AZAR |
+|---|---|---|---|---|---|
+| entrada bearSetup==1 (mi bug) | 15491 | 29% | 1.91 | +3.5% | azar 1.79 → SIN edge |
+| entrada bullSetup==9, sin suelo stop | 1806 | 20% | 3.98 | +11.9% | azar 2.31 → bate |
+| **bullSetup==9 + suelo stop 8%** | **417** | **42%** | **6.95** | **+41.8%** | **azar 2.42 → CRUSHEA** |
+
+Con la entrada correcta (comprar el 9) + suelo de stop 8% (~2.5× el 3% diario, por el mayor ruido semanal), el edge sobre el azar es contundente (PF 6.95 vs 2.42, +41.8% vs +10.2%/trade). WF 4/4. ⚠️ Absolutos inflados por supervivencia; el edge REAL es el relativo al azar. WR 42% pero ganadores enormes.
+
+**Spec paper (`scanner_weekly.mjs`, en `run_daily.sh`):** semanal, LONG en bullSetup==9, stop=setupLow (mín 8%, máx 30%), salida en bearCountdown==13 / time-stop 52sem / stop. Cap 5 abiertas. Journal propio `journal_weekly.json`, Telegram 🟣, horizonte semanas-meses.
+
+**2 bugs cazados en montaje (paper hace su trabajo):** (1) faltaba el suelo de stop → señales con stop 0.3% que se noisean al instante; (2) la vela de la semana en curso no se descartaba del todo. Ambos corregidos antes de emitir nada real.
