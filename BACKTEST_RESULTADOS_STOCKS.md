@@ -133,3 +133,6 @@ Tweet: cruce semanal 8/21 EMA + ruptura de resistencia + entrada en retest + ven
 
 Spec paper (`scanner_breakout.mjs`, en `run_daily.sh`, journal `journal_breakout.json`, Telegram 🟠): semanal, cruce 8>21 + cierre>máx(20sem) + retest del nivel (≤6sem, banda 2%), stop 8% bajo ruptura, target 2R / cruce 8<21 / time 52sem. Cap 5. Pine para TV: `breakout_retest.pine`.
 ⚠️ Absolutos inflados por supervivencia; el retest asume fill límite. Edge real = el relativo al azar. Valida la forward.
+
+### Fix nivel de resistencia: 20→8 semanas (2026-06-18, detectado por usuario)
+El usuario observó (chart SNOW) que el retest debía ser ~$175, no $236. Causa: "resistencia = máx 20 semanas" captura máximos OBSOLETOS cuando la acción cayó meses y luego explotó (SNOW pasó de $172 a $255 en una vela; el sistema usaba el máx de $236 de hace 5 meses en vez del nivel real de ruptura ~$177, la cima de la base reciente). Re-test de lookbacks: 6/8/10/12/15 sem todos validan (PF 1.78-1.84, WF 4/4, baten azar 1.37). Elegido **8 semanas**: da el nivel reciente correcto (SNOW $176.98) a coste mínimo de PF (1.84 vs 1.93 del 20sem) y más operable. Aplicado a `scanner_breakout.mjs` y `breakout_retest.pine`.

@@ -9,7 +9,11 @@
 // en la misma vela → al cerrar el viernes el precio ya se fue).
 //
 // Flujo de estados del journal:
-//   1. RUPTURA detectada (cierre semanal > máx 20sem + cruce 8>21) → 'pending' +
+//   1. RUPTURA detectada (cierre semanal > máx 8sem RECIENTES + cruce 8>21) → 'pending' +
+//      (fix 2026-06-18: 8sem no 20 — el máx de 20sem captura resistencias OBSOLETAS
+//       cuando la acción cayó meses y luego explotó; SNOW daba $236 de hace 5 meses en
+//       vez del nivel real de ruptura $177. Detectado por el usuario. 8sem valida igual:
+//       PF 1.84 vs azar 1.37, WF 4/4, y da el nivel correcto y operable.)
 //      ALERTA "coloca límite en $X". Caduca a las 6 semanas sin retest.
 //   2. RETEST (una semana baja a tocar el nivel) → 'open' (orden ejecutada).
 //   3. Salida: target 2R / cruce 8<21 / time-stop 52sem / stop → 'closed'.
@@ -25,7 +29,7 @@ import { tgSend } from './tg.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
-const COST = 0.0005, RES_LB = 20, RETEST_W = 6, RETEST_BAND = 0.02, STOP_BUF = 0.08, TP_R = 2, TIME_W = 52, CAP = 5;
+const COST = 0.0005, RES_LB = 8, RETEST_W = 6, RETEST_BAND = 0.02, STOP_BUF = 0.08, TP_R = 2, TIME_W = 52, CAP = 5;
 const UA = { 'User-Agent': 'Mozilla/5.0' };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f))) : d;

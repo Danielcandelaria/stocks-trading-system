@@ -16,7 +16,7 @@ indicator("Breakout Retest Semanal (Justin Banks) — validado", overlay=true, m
 // --- Inputs ---
 emaFast   = input.int(8,  "EMA rápida")
 emaSlow   = input.int(21, "EMA lenta")
-resLB     = input.int(20, "Lookback resistencia (semanas)")
+resLB     = input.int(8, "Lookback resistencia (semanas)")
 retestW   = input.int(6,  "Ventana de retest (semanas)")
 retestBnd = input.float(2.0, "Banda de retest (%)") / 100.0
 stopBuf   = input.float(8.0, "Stop bajo ruptura (%)") / 100.0
