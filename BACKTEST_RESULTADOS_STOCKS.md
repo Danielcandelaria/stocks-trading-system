@@ -119,3 +119,6 @@ Con la entrada correcta (comprar el 9) + suelo de stop 8% (~2.5× el 3% diario, 
 **Spec paper (`scanner_weekly.mjs`, en `run_daily.sh`):** semanal, LONG en bullSetup==9, stop=setupLow (mín 8%, máx 30%), salida en bearCountdown==13 / time-stop 52sem / stop. Cap 5 abiertas. Journal propio `journal_weekly.json`, Telegram 🟣, horizonte semanas-meses.
 
 **2 bugs cazados en montaje (paper hace su trabajo):** (1) faltaba el suelo de stop → señales con stop 0.3% que se noisean al instante; (2) la vela de la semana en curso no se descartaba del todo. Ambos corregidos antes de emitir nada real.
+
+### Filtro EMA200 en el swing semanal — RECHAZADO (2026-06-18)
+Probado precio>EMA200(semanal) sobre el swing: sube WR (42→46%) pero BAJA el edge — PF 6.95→6.35, avgRet 41.8→33.5%, recorta 70% de señales. EMA40 lo destroza (PF 1.63, WF 3/4). Prueba concreta: el filtro habría ELIMINADO NVDA oct-2022 (+223%, precio bajo EMA200) y CRDO abr-2025 (+293%). Razón: el diario compra pullbacks (filtro ayuda, lección HCA); el SEMANAL compra capitulación profunda (los suelos bajo EMA200 dan las mayores recuperaciones → filtro hace daño). Sistemas opuestos, efecto opuesto. NO añadir.
