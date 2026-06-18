@@ -5,13 +5,14 @@
     "tv": "NYSE:SNOW",
     "sector": "Technology Services",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "open",
     "signalT": 1779681600,
     "entryPx": 236.31,
     "stop": 217.4052,
     "tp": 274.1196,
     "breakClose": 255.55,
-    "riskPct": 8
+    "riskPct": 8,
+    "entryT": 1780666200
   },
   {
     "id": "B:SMCI:1779681600",
@@ -19,13 +20,19 @@
     "tv": "NASDAQ:SMCI",
     "sector": "Electronic Technology",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "closed",
     "signalT": 1779681600,
     "entryPx": 36.37,
     "stop": 33.4604,
     "tp": 42.1892,
     "breakClose": 46.09,
-    "riskPct": 8
+    "riskPct": 8,
+    "entryT": 1781098200,
+    "exitT": 1781790896.121,
+    "exitPx": 33.4437,
+    "exitReason": "STOP",
+    "retPct": -8.05,
+    "r": -1.01
   },
   {
     "id": "B:CPT:1780286400",
@@ -33,12 +40,13 @@
     "tv": "NYSE:CPT",
     "sector": "Finance",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "open",
     "signalT": 1780286400,
     "entryPx": 112.5,
     "stop": 103.5,
     "tp": 130.5,
     "breakClose": 112.6,
-    "riskPct": 8
+    "riskPct": 8,
+    "entryT": 1780925400
   }
 ]
