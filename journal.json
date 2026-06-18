@@ -121,14 +121,18 @@
     "tv": "NYSE:F",
     "sector": "Consumer Durables",
     "variant": "TP2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781530200,
     "entryT": 1781616600,
     "entryPx": 14.7974,
     "sl": 14.1,
     "tp": 16.1922,
     "risk": 0.6974,
-    "riskPct": 4.71
+    "riskPct": 4.71,
+    "exitT": 1781703000,
+    "exitPx": 14.093,
+    "exitReason": "SL",
+    "r": -1.01
   },
   {
     "id": "F:1781530200:TP3",
@@ -136,13 +140,17 @@
     "tv": "NYSE:F",
     "sector": "Consumer Durables",
     "variant": "TP3",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781530200,
     "entryT": 1781616600,
     "entryPx": 14.7974,
     "sl": 14.1,
     "tp": 16.8896,
     "risk": 0.6974,
-    "riskPct": 4.71
+    "riskPct": 4.71,
+    "exitT": 1781703000,
+    "exitPx": 14.093,
+    "exitReason": "SL",
+    "r": -1.01
   }
 ]
