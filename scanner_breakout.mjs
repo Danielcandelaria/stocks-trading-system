@@ -29,7 +29,7 @@ import { tgSend } from './tg.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
-const COST = 0.0005, RES_LB = 8, RETEST_W = 6, RETEST_BAND = 0.02, STOP_BUF = 0.08, TP_R = 2, TIME_W = 52, CAP = 5;
+const COST = 0.0005, RES_LB = 8, BREAK_MIN = 1.03, RETEST_W = 6, RETEST_BAND = 0.02, STOP_BUF = 0.08, TP_R = 2, TIME_W = 52, CAP = 5;
 const UA = { 'User-Agent': 'Mozilla/5.0' };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f))) : d;
@@ -147,7 +147,10 @@ for (const u of universe) {
     if (e8[i] == null || e21[i] == null) continue;
     const cross = e8[i - 1] != null && e8[i - 1] <= e21[i - 1] && e8[i] > e21[i];
     const resist = Math.max(...bars.slice(i - RES_LB, i).map(b => b.h));
-    if (!(cross && bars[i].c > resist)) continue;
+    // ruptura DECISIVA: cierre ≥3% sobre la resistencia (filtra blips marginales
+    // en tendencia bajista como AMT +2.93% que fallan. Mejora PF 1.84→2.01, WF 4/4,
+    // robusto 2-4%. Detectado por el usuario en AMT.)
+    if (!(cross && bars[i].c > resist * BREAK_MIN)) continue;
 
     const key = `B:${u.ticker}:${bars[i].t}`;
     if (seen[key]) continue;

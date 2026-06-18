@@ -17,6 +17,7 @@ indicator("Breakout Retest Semanal (Justin Banks) — validado", overlay=true, m
 emaFast   = input.int(8,  "EMA rápida")
 emaSlow   = input.int(21, "EMA lenta")
 resLB     = input.int(8, "Lookback resistencia (semanas)")
+breakMin  = input.float(3.0, "Ruptura decisiva mínima (%)") / 100.0
 retestW   = input.int(6,  "Ventana de retest (semanas)")
 retestBnd = input.float(2.0, "Banda de retest (%)") / 100.0
 stopBuf   = input.float(8.0, "Stop bajo ruptura (%)") / 100.0
@@ -31,7 +32,7 @@ plot(es, "EMA 21", color.new(color.blue,   0), 2)
 // --- Paso 1+2: cruce alcista fresco + ruptura de resistencia ---
 cross    = ta.crossover(ef, es)
 resist   = ta.highest(high[1], resLB)          // máx de las N velas PREVIAS
-breakBar = cross and close > resist
+breakBar = cross and close > resist * (1 + breakMin)   // ruptura DECISIVA (≥3% sobre resistencia)
 
 // guardar el nivel de ruptura y la barra en que ocurrió
 var float breakoutLvl = na
