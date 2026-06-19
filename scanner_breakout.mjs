@@ -82,14 +82,19 @@ async function managePositions(journal, ticker, weekly, e8, e21) {
       // de esa semana → +7 días = lunes siguiente). Si no, la propia vela de ruptura
       // cuenta como retest (bug: su rango intra-semana baja del nivel antes de romper).
       const ds = daily.filter(b => b.t >= pos.signalT + 7 * 86400);
-      const hit = ds.find(b => b.l <= pos.entryPx);              // retest a nivel diario
+      // RETEST = el precio entra en la ZONA (dentro del 2% del nivel), no el toque
+      // exacto. El edge está aquí: el backtest exacto da PF 1.42, la zona 2.11.
+      const level = pos.level ?? pos.entryPx;
+      const hit = ds.find(b => b.l <= level * (1 + RETEST_BAND));
       if (hit) {
         pos.status = 'open'; pos.entryT = hit.t;
-        // solo alerta "ENTRA AHORA" si el retest es RECIENTE (≤4 días); los
-        // históricos (backfill) se registran en silencio para no dar urgencia falsa.
+        // entrada a MERCADO al entrar en la zona (no el nivel idealizado más barato)
+        pos.entryPx = +Math.min(hit.c, level * (1 + RETEST_BAND)).toFixed(4);
+        pos.tp = +(pos.entryPx + TP_R * (pos.entryPx - pos.stop)).toFixed(4);
+        pos.riskPct = +((pos.entryPx - pos.stop) / pos.entryPx * 100).toFixed(1);
         if (NOW - hit.t < 4 * 86400) {
           await tgSend(`🟢🟠 <b>RETEST AHORA — ENTRA</b> — ${ticker}\n` +
-            `El precio tocó tu nivel de retest: <b>COMPRA ~$${pos.entryPx}</b>\n` +
+            `El precio entró en la zona de retest: <b>COMPRA a mercado ~$${pos.entryPx}</b>\n` +
             `🛑 Stop $${pos.stop} (−${pos.riskPct}%) · 🎯 Target $${pos.tp} (+2R)\n` +
             `Aguante: semanas a meses. Esta es tu entrada — tomas el movimiento completo desde aquí.`);
         } else {
@@ -167,17 +172,18 @@ for (const u of universe) {
     const active = journal.filter(p => p.status === 'pending' || p.status === 'open');
     if (active.length >= CAP) { log(`${u.ticker}: ruptura válida pero ya hay ${CAP} activas — descartada`); continue; }
 
+    const zoneTop = +(resist * (1 + RETEST_BAND)).toFixed(2); // borde superior de la zona
     journal.push({
       id: key, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'BreakoutRetest',
-      status: 'pending', signalT: bars[i].t, entryPx, stop, tp,
+      status: 'pending', signalT: bars[i].t, level: entryPx, entryPx, stop, tp,
       breakClose: +bars[i].c.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
     });
     signals++;
     await tgSend(`🔭 <b>PREAVISO — VIGILAR RETEST</b>\n<b>${u.ticker}</b> — ${u.sector}` +
       `\n` +
       `\n⚡ Rompió resistencia (cierre semanal $${bars[i].c.toFixed(2)}, cruce 8/21 EMA). Setup armado.` +
-      `\n👀 <b>Espera a que el precio RETROCEDA a $${entryPx.toFixed(2)}</b> (el nivel de ruptura) — te avisaré 🟢 ENTRA AHORA el día que lo toque.` +
-      `\n🛑 Stop previsto $${stop.toFixed(2)} (−${(risk / entryPx * 100).toFixed(1)}%) · 🎯 Target $${tp.toFixed(2)} (+2R)` +
+      `\n👀 <b>Espera a que el precio RETROCEDA a la zona $${resist.toFixed(2)}–$${zoneTop}</b> — te avisaré 🟢 ENTRA AHORA el día que entre en ella (compra a mercado).` +
+      `\n🛑 Stop previsto $${stop.toFixed(2)} (~−8%) · 🎯 Target ~$${tp.toFixed(2)} (+2R)` +
       `\n⏳ Si no retrocede en ~6 semanas, se descarta. NO entres aún — espera la señal de entrada.` +
       `\n\nConfirmar en TV (semanal): ${u.tv}`);
   }

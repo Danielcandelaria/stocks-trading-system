@@ -48,7 +48,7 @@ if breakBar
     line.new(bar_index, entry,  bar_index + 12, entry,  color=color.new(color.blue, 0),  style=line.style_solid,  width=2)
     line.new(bar_index, stopL,  bar_index + 12, stopL,  color=color.new(color.red, 0),   style=line.style_dashed, width=2)
     line.new(bar_index, target, bar_index + 12, target, color=color.new(color.green, 0), style=line.style_dashed, width=2)
-    label.new(bar_index, entry,  "LÍMITE COMPRA " + str.tostring(entry, "#.##"), style=label.style_label_left, color=color.new(color.blue, 80),  textcolor=color.blue,  size=size.small)
+    label.new(bar_index, entry,  "ZONA ENTRADA " + str.tostring(entry, "#.##") + "–" + str.tostring(entry*(1+retestBnd), "#.##"), style=label.style_label_left, color=color.new(color.blue, 80),  textcolor=color.blue,  size=size.small)
     label.new(bar_index, target, "TP +2R " + str.tostring(target, "#.##"),        style=label.style_label_left, color=color.new(color.green, 80), textcolor=color.green, size=size.small)
     label.new(bar_index, stopL,  "STOP -" + str.tostring(stopBuf*100,"#") + "% " + str.tostring(stopL, "#.##"), style=label.style_label_left, color=color.new(color.red, 80), textcolor=color.red, size=size.small)
 
