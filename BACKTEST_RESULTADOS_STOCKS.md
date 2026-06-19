@@ -145,3 +145,8 @@ Usuario: "compra en $176.98 cuando SNOW está a $232 no tiene sentido". Causa: S
 
 ### Entrada en ZONA de retest, no toque exacto (2026-06-19, detectado por usuario en PRU)
 Usuario preguntó si entrar en PRU (Pine marcaba ENTRA, scanner decía pending). Causa: inconsistencia — Pine usaba banda 2%, scanner exigía toque exacto del nivel. Backtest decisivo: entrada EXACTA (low≤nivel) da PF 1.42; entrada en ZONA (low≤nivel×1.02, a MERCADO) da PF 2.11. El edge está en entrar cuando el precio llega a la zona, no en esperar el toque exacto (que suele ser un breakout ya fallido). Fix: scanner detecta retest en la zona y entra a precio de mercado (no el nivel idealizado), stop 8% bajo el nivel, target 2R desde entrada real. Pine ya usaba la zona (consistente). PRU entró 06-17 @107.01.
+
+## Núcleo "8 EMA pullback" de Justin Banks (PDF Grok) — RECHAZADO (2026-06-19)
+Guía Grok del enfoque amplio de Justin Banks (8 EMA + price action + supply/demand). Núcleo mecanizable testeado: en tendencia (close>EMA200 & 8>21), comprar pullback+reclaim de la 8 EMA, salir al perder la 8 EMA. Diario: PF 1.13 vs azar 1.12 (mismo filtro tendencia+stop+salida) → SIN edge, es beta. El poco PF viene del filtro de tendencia y la salida, no del timing de entrada. Misma trampa que los cruces de EMA. 
+Lo NO mecanizable (supply/demand a mano, BOS/CHOCH/liquidity grabs): subjetivo, sin edge probado, descartado. Intradía 5min: costes lo matan (ver Mariel). 
+Lo positivo: su gestión de riesgo (1%, stop bajo swing, RR 1:2-3, máx 3-4) coincide con la nuestra (cross-check). Su ÚNICO edge mecanizable es el breakout retest semanal, que ya tenemos (PF 2.11). Patrón repetido: el edge del trader discrecional está en el juicio, no en las reglas mecánicas.
