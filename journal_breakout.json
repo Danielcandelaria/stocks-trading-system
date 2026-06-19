@@ -5,14 +5,20 @@
     "tv": "NASDAQ:UAL",
     "sector": "Transportation",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "closed",
     "signalT": 1779681600,
     "level": 105.98,
-    "entryPx": 105.98,
+    "entryPx": 105.14,
     "stop": 97.5016,
-    "tp": 122.9368,
+    "tp": 120.4168,
     "breakClose": 114.8,
-    "riskPct": 8
+    "riskPct": 7.3,
+    "entryT": 1780493400,
+    "exitT": 1781871978.642,
+    "exitPx": 120.8396,
+    "exitReason": "TARGET 2R",
+    "retPct": 14.93,
+    "r": 2.06
   },
   {
     "id": "B:PRU:1780891200",
@@ -20,14 +26,15 @@
     "tv": "NYSE:PRU",
     "sector": "Finance",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "open",
     "signalT": 1780891200,
     "level": 105.18,
-    "entryPx": 105.18,
+    "entryPx": 107.01,
     "stop": 96.7656,
-    "tp": 122.0088,
+    "tp": 127.4988,
     "breakClose": 108.5,
-    "riskPct": 8
+    "riskPct": 9.6,
+    "entryT": 1781703000
   },
   {
     "id": "B:WAT:1779681600",
@@ -35,14 +42,15 @@
     "tv": "NYSE:WAT",
     "sector": "Health Technology",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "open",
     "signalT": 1779681600,
     "level": 357.45,
-    "entryPx": 357.45,
+    "entryPx": 364.599,
     "stop": 328.854,
-    "tp": 414.642,
+    "tp": 436.089,
     "breakClose": 383.57,
-    "riskPct": 8
+    "riskPct": 9.8,
+    "entryT": 1780493400
   },
   {
     "id": "B:CPT:1780286400",
@@ -50,13 +58,14 @@
     "tv": "NYSE:CPT",
     "sector": "Finance",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "open",
     "signalT": 1780286400,
     "level": 109.11,
-    "entryPx": 109.11,
+    "entryPx": 109.35,
     "stop": 100.3812,
-    "tp": 126.5676,
+    "tp": 127.2876,
     "breakClose": 112.6,
-    "riskPct": 8
+    "riskPct": 8.2,
+    "entryT": 1781703000
   }
 ]
