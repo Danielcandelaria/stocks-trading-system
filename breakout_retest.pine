@@ -3,66 +3,65 @@ indicator("Breakout Retest Semanal (Justin Banks) — validado", overlay=true, m
 
 // =============================================================================
 // ESTRATEGIA BREAKOUT RETEST SEMANAL (idea Justin Banks @RealUGBanks)
-// Validada por backtest: PF 2.65 vs azar 1.37, meseta robusta (18/18 WF 4/4),
-// correlación 0.04 con el swing DeMark (diversifica). Usar en gráfico SEMANAL.
+// Validada: PF 2.04 vs azar 1.37, correlación 0.04 con el swing DeMark.
 //
-// Los 4 pasos:
-//   1. Cruce 8 EMA por encima de 21 EMA
-//   2. Ruptura de resistencia = cierre > máximo de las N semanas previas
-//   3. Entrada en el RETEST del nivel de ruptura (orden límite)
+// ⭐ CALCULA SIEMPRE EN SEMANAL (request.security), así puedes tener el chart en
+//    DIARIO para ver la entrada con detalle y los niveles siguen siendo los del
+//    sistema. Coincide exactamente con las señales del bot de Telegram.
+//
+// Los pasos:
+//   1. Cruce 8 EMA por encima de 21 EMA (semanal)
+//   2. Ruptura DECISIVA pero no fugitiva: cierre +3% a +15% sobre el máx de 8 sem
+//   3. Entrada en el RETEST del nivel de ruptura
 //   4. Target +2R / salida si 8 cruza bajo 21 / stop 8% bajo la ruptura
 // =============================================================================
 
-// --- Inputs ---
-emaFast   = input.int(8,  "EMA rápida")
-emaSlow   = input.int(21, "EMA lenta")
-resLB     = input.int(8, "Lookback resistencia (semanas)")
-breakMin  = input.float(3.0, "Ruptura decisiva mínima (%)") / 100.0
-retestW   = input.int(6,  "Ventana de retest (semanas)")
-retestBnd = input.float(2.0, "Banda de retest (%)") / 100.0
-stopBuf   = input.float(8.0, "Stop bajo ruptura (%)") / 100.0
-tpR       = input.float(2.0, "Target (R)")
+resLB     = input.int(8,   "Lookback resistencia (semanas)")
+breakMin  = input.float(3.0,  "Ruptura decisiva mín (%)") / 100.0
+breakMax  = input.float(15.0, "Ruptura máx — anti-gap (%)") / 100.0
+retestW   = input.int(6,   "Ventana de retest (semanas)")
+retestBnd = input.float(2.0,  "Banda de retest (%)") / 100.0
+stopBuf   = input.float(8.0,  "Stop bajo ruptura (%)") / 100.0
+tpR       = input.float(2.0,  "Target (R)")
 
-// --- EMAs ---
-ef = ta.ema(close, emaFast)
-es = ta.ema(close, emaSlow)
-plot(ef, "EMA 8",  color.new(color.orange, 0), 2)
-plot(es, "EMA 21", color.new(color.blue,   0), 2)
+// --- TODO calculado en SEMANAL (independiente del timeframe del gráfico) ---
+ef    = request.security(syminfo.tickerid, "W", ta.ema(close, 8))
+es    = request.security(syminfo.tickerid, "W", ta.ema(close, 21))
+wClose= request.security(syminfo.tickerid, "W", close)
+resW  = request.security(syminfo.tickerid, "W", ta.highest(high[1], resLB))
+crossW= request.security(syminfo.tickerid, "W", ta.crossover(ta.ema(close,8), ta.ema(close,21)))
 
-// --- Paso 1+2: cruce alcista fresco + ruptura de resistencia ---
-cross    = ta.crossover(ef, es)
-resist   = ta.highest(high[1], resLB)          // máx de las N velas PREVIAS
-breakBar = cross and close > resist * (1 + breakMin)   // ruptura DECISIVA (≥3% sobre resistencia)
+plot(ef, "EMA 8 sem",  color.new(color.orange, 0), 2)
+plot(es, "EMA 21 sem", color.new(color.blue,   0), 2)
 
-// guardar el nivel de ruptura y la barra en que ocurrió
+// --- Ruptura decisiva NO fugitiva ---
+dist     = wClose / resW
+breakBar = crossW and dist > (1 + breakMin) and dist < (1 + breakMax)
+
 var float breakoutLvl = na
 var int   breakoutBar = na
 if breakBar
-    breakoutLvl := resist
+    breakoutLvl := resW
     breakoutBar := bar_index
 
-// --- niveles del trade (el límite = nivel de ruptura) ---
 entry  = breakoutLvl
 stopL  = breakoutLvl * (1 - stopBuf)
 target = entry + tpR * (entry - stopL)
 
-// --- LA SEÑAL ES LA RUPTURA: aquí colocas la orden límite (a tiempo) ---
-// Avisar en el retest llega tarde (en semanal el retest+rebote ocurren en la
-// misma vela). En la ruptura colocas el límite y el retroceso lo ejecuta solo.
-plotshape(breakBar, "RUPTURA — coloca límite", shape.labelup, location.belowbar, color.new(color.orange, 0), text="🟠 RUPTURA\nlímite ↓", textcolor=color.white, size=size.normal)
-
+// --- LA SEÑAL ES LA RUPTURA: aquí pones la alerta de precio en el nivel límite ---
+plotshape(breakBar, "RUPTURA", shape.labelup, location.belowbar, color.new(color.orange, 0), text="🟠 RUPTURA\nlímite ↓", textcolor=color.white, size=size.normal)
 if breakBar
-    line.new(bar_index, entry,  bar_index + 12, entry,  color=color.new(color.blue, 0),  style=line.style_solid,  width=2)   // límite de compra
-    line.new(bar_index, stopL,  bar_index + 12, stopL,  color=color.new(color.red, 0),   style=line.style_dashed, width=2)
-    line.new(bar_index, target, bar_index + 12, target, color=color.new(color.green, 0), style=line.style_dashed, width=2)
+    line.new(bar_index, entry,  bar_index + 15, entry,  color=color.new(color.blue, 0),  style=line.style_solid,  width=2)
+    line.new(bar_index, stopL,  bar_index + 15, stopL,  color=color.new(color.red, 0),   style=line.style_dashed, width=2)
+    line.new(bar_index, target, bar_index + 15, target, color=color.new(color.green, 0), style=line.style_dashed, width=2)
     label.new(bar_index, entry,  "LÍMITE COMPRA " + str.tostring(entry, "#.##"), style=label.style_label_left, color=color.new(color.blue, 80),  textcolor=color.blue,  size=size.small)
-    label.new(bar_index, target, "TP +2R " + str.tostring(target, "#.##"),       style=label.style_label_left, color=color.new(color.green, 80), textcolor=color.green, size=size.small)
+    label.new(bar_index, target, "TP +2R " + str.tostring(target, "#.##"),        style=label.style_label_left, color=color.new(color.green, 80), textcolor=color.green, size=size.small)
     label.new(bar_index, stopL,  "STOP -" + str.tostring(stopBuf*100,"#") + "% " + str.tostring(stopL, "#.##"), style=label.style_label_left, color=color.new(color.red, 80), textcolor=color.red, size=size.small)
 
-// marca informativa cuando el precio retesta y llenaría la orden
-inWindow  = not na(breakoutBar) and (bar_index - breakoutBar) <= retestW and (bar_index - breakoutBar) > 0
-retestHit = inWindow and low <= breakoutLvl * (1 + retestBnd) and ef > es
-plotshape(retestHit, "Retest (orden ejecutada)", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.tiny, text="fill")
+// marca cuando el precio retesta el nivel (= tu entrada se ejecuta)
+inWindow  = not na(breakoutBar) and (bar_index - breakoutBar) <= retestW*7 and (bar_index - breakoutBar) > 0
+retestHit = inWindow and not na(breakoutLvl) and low <= breakoutLvl * (1 + retestBnd) and ef > es
+plotshape(retestHit, "RETEST — ENTRA", shape.triangleup, location.belowbar, color.new(color.green, 0), size=size.small, text="ENTRA")
 
-// --- Alerta: salta en la RUPTURA, para que coloques el límite a tiempo ---
-alertcondition(breakBar, "Ruptura Breakout Retest", "RUPTURA semanal — coloca orden LÍMITE de compra en el nivel de ruptura")
+alertcondition(breakBar,  "Ruptura (pon alerta en el límite)", "RUPTURA semanal — pon alerta de compra en el nivel de ruptura")
+alertcondition(retestHit, "RETEST — ENTRA AHORA", "El precio retestó el nivel — ENTRA (compra)")

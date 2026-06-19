@@ -139,3 +139,6 @@ El usuario observó (chart SNOW) que el retest debía ser ~$175, no $236. Causa:
 
 ### Filtro de ruptura decisiva ≥3% (2026-06-18, detectado por usuario en AMT)
 Usuario marcó AMT como señal sin sentido (breakout marginal en tendencia bajista que falló). Análisis: AMT cerró solo +2.93% sobre la resistencia. Filtros de tendencia (EMA40, EMA21 subiendo) NO ayudan (PF ~1.8). Pero exigir ruptura DECISIVA (cierre ≥X% sobre resistencia) sí: robusto y monótono — 2% PF 2.05, 3% PF 2.01, 4% PF 2.21, todos WF 4/4 (5% rompe WF). Elegido 3% (excluye AMT, PF 1.84→2.01, 596 señales, no reaching). Aplicado a `scanner_breakout.mjs` (BREAK_MIN) y `breakout_retest.pine`.
+
+### Filtro anti-gap (tope ruptura 15%) + Pine en semanal (2026-06-18, detectado por usuario en SNOW)
+Usuario: "compra en $176.98 cuando SNOW está a $232 no tiene sentido". Causa: SNOW rompió con gap explosivo (+44% sobre la resistencia), el retest al nivel quedaba 24% bajo el precio = entrada irreal. Fix: tope de ruptura — cierre entre +3% y +15% sobre resistencia (descarta gaps fugitivos). Backtest: PF 2.01→2.04, WF 4/4. SNOW excluido. También: Pine reescrito con request.security para calcular SIEMPRE en semanal (el usuario lo tenía en chart diario → niveles erróneos). `BREAK_MAX=1.15` en scanner.
