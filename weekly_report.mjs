@@ -68,6 +68,7 @@ const lines = [
   `Sistema: setup-9 perf + EMA50>200 + px>EMA200 | guardia ER 7d | calor máx 4 pos / 2 sector`,
 ];
 
-const text = lines.join('\n');
+const { equityText } = await import('./equity_curve.mjs');
+const text = lines.join('\n') + '\n\n———\n' + equityText;
 console.log(text.replace(/<[^>]+>/g, ''));
 await tgSend(text);
