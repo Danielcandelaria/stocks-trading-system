@@ -40,11 +40,15 @@
     "sector": "Technology Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781098200,
     "entryT": 1781098200,
     "entryPx": 201.3606,
-    "rsi2": 5.5
+    "rsi2": 5.5,
+    "exitT": 1781789400,
+    "exitPx": 184.1978,
+    "exitReason": "TIME",
+    "retPct": -8.52
   },
   {
     "id": "RSI2:CAT:1781098200",
@@ -70,11 +74,15 @@
     "sector": "Technology Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781098200,
     "entryT": 1781098200,
     "entryPx": 272.4962,
-    "rsi2": 4.1
+    "rsi2": 4.1,
+    "exitT": 1781789400,
+    "exitPx": 248.9755,
+    "exitReason": "TIME",
+    "retPct": -8.63
   },
   {
     "id": "RSI2:EPD:1781530200",
@@ -152,5 +160,33 @@
     "exitPx": 14.093,
     "exitReason": "SL",
     "r": -1.01
+  },
+  {
+    "id": "RSI2:ABBV:1781789400",
+    "ticker": "ABBV",
+    "tv": "NYSE:ABBV",
+    "sector": "Health Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781789400,
+    "entryT": 1781789400,
+    "entryPx": 216.5983,
+    "rsi2": 6.6,
+    "relVol": 1.84
+  },
+  {
+    "id": "RSI2:AMGN:1781789400",
+    "ticker": "AMGN",
+    "tv": "NASDAQ:AMGN",
+    "sector": "Health Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1781789400,
+    "entryT": 1781789400,
+    "entryPx": 337.7688,
+    "rsi2": 6.6,
+    "relVol": 2.88
   }
 ]
