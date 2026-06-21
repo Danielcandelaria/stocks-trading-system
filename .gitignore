@@ -1,10 +1,18 @@
+# credenciales — NUNCA subir
 telegram.json
-scanner.log
-report.log
+
+# datos OHLCV descargados (regenerables con download_history.mjs)
 data/
-spy.json
-watchlist.log
-circuit_breaker.json
 data_weekly/
-seen_weekly.json
+
+# estado local (se regenera en vivo)
+circuit_breaker.json
+*.log
+
+# estado de tracking (contiene datos live)
+seen_signals.json
 seen_breakout.json
+seen_weekly.json
+momentum_state.json
+spy.json
+watchlist_spain_dc_state.json
