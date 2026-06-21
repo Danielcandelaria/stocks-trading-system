@@ -7,4 +7,5 @@ cd "$(dirname "$0")"
 /usr/local/bin/node scanner_weekly.mjs
 /usr/local/bin/node scanner_breakout.mjs
 /usr/local/bin/node momentum_monthly.mjs
+/usr/local/bin/node scanner_ema200.mjs
 /usr/local/bin/node watchlist_daily.mjs
