@@ -67,5 +67,35 @@
     "breakClose": 112.6,
     "riskPct": 8.2,
     "entryT": 1781703000
+  },
+  {
+    "id": "B:HOOD:1781496000",
+    "ticker": "HOOD",
+    "tv": "NASDAQ:HOOD",
+    "sector": "Finance",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1781496000,
+    "level": 96.1,
+    "entryPx": 96.1,
+    "stop": 88.412,
+    "tp": 111.476,
+    "breakClose": 108.15,
+    "riskPct": 8
+  },
+  {
+    "id": "B:RCL:1781496000",
+    "ticker": "RCL",
+    "tv": "NYSE:RCL",
+    "sector": "Consumer Services",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1781496000,
+    "level": 298.83,
+    "entryPx": 298.83,
+    "stop": 274.9236,
+    "tp": 346.6428,
+    "breakClose": 312.51,
+    "riskPct": 8
   }
 ]
