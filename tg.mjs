@@ -1,4 +1,7 @@
 // stocks/tg.mjs
+// ⚠️ POLÍTICA (todos los sistemas): Telegram = SOLO SEÑALES de trade (entradas/
+// cierres accionables). Status, reportes (mensual/equity), avisos de no-señal y
+// análisis NO van a Telegram → van al DASHBOARD. tgSend solo para señales.
 // Helper compartido de Telegram con soporte MULTI-DESTINATARIO.
 // Lee telegram.json: { token, chatId, chatIds:[...] }. Envía a todos los
 // destinatarios (chatId + chatIds, deduplicados). Un fallo a un chat no
@@ -18,6 +21,7 @@ function recipients(tg) {
 }
 
 export async function tgSend(text) {
+  if (process.env.STOCKS_NO_TG === '1') return;   // run silencioso (catch-up sin avisar al grupo)
   if (!existsSync(CFG)) return;
   const tg = JSON.parse(readFileSync(CFG));
   if (!tg?.token) return;
