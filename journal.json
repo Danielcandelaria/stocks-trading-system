@@ -91,11 +91,15 @@
     "sector": "Industrial Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781530200,
     "entryT": 1781530200,
     "entryPx": 36.5182,
-    "rsi2": 6.8
+    "rsi2": 6.8,
+    "exitT": 1782221400,
+    "exitPx": 37.1114,
+    "exitReason": "SMA5",
+    "retPct": 1.62
   },
   {
     "id": "RSI2:SLB:1781616600",
@@ -117,11 +121,15 @@
     "sector": "Energy Minerals",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781616600,
     "entryT": 1781616600,
     "entryPx": 172.086,
-    "rsi2": 9.5
+    "rsi2": 9.5,
+    "exitT": 1782221400,
+    "exitPx": 170.2548,
+    "exitReason": "SMA5",
+    "retPct": -1.06
   },
   {
     "id": "F:1781530200:TP2",
@@ -224,5 +232,19 @@
     "entryPx": 384.3821,
     "rsi2": 7.9,
     "relVol": 1.05
+  },
+  {
+    "id": "RSI2:RKLB:1782221400",
+    "ticker": "RKLB",
+    "tv": "NASDAQ:RKLB",
+    "sector": "Electronic Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782221400,
+    "entryT": 1782221400,
+    "entryPx": 95.1676,
+    "rsi2": 7.1,
+    "relVol": 0.74
   }
 ]
