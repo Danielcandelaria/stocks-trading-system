@@ -89,13 +89,14 @@
     "tv": "NYSE:RCL",
     "sector": "Consumer Services",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "open",
     "signalT": 1781496000,
     "level": 298.83,
-    "entryPx": 298.83,
+    "entryPx": 304.8066,
     "stop": 274.9236,
-    "tp": 346.6428,
+    "tp": 364.5726,
     "breakClose": 312.51,
-    "riskPct": 8
+    "riskPct": 9.8,
+    "entryT": 1782221400
   }
 ]
