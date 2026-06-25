@@ -74,14 +74,15 @@
     "tv": "NASDAQ:HOOD",
     "sector": "Finance",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "open",
     "signalT": 1781496000,
     "level": 96.1,
-    "entryPx": 96.1,
+    "entryPx": 97.19,
     "stop": 88.412,
-    "tp": 111.476,
+    "tp": 114.746,
     "breakClose": 108.15,
-    "riskPct": 8
+    "riskPct": 9,
+    "entryT": 1782307800
   },
   {
     "id": "B:RCL:1781496000",
