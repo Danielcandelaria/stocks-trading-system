@@ -212,12 +212,16 @@
     "sector": "Consumer Non-Durables",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782135000,
     "entryT": 1782135000,
     "entryPx": 173.2566,
     "rsi2": 5.8,
-    "relVol": 0.93
+    "relVol": 0.93,
+    "exitT": 1782307800,
+    "exitPx": 178.6906,
+    "exitReason": "SMA5",
+    "retPct": 3.14
   },
   {
     "id": "RSI2:MAR:1782135000",
@@ -246,5 +250,33 @@
     "entryPx": 95.1676,
     "rsi2": 7.1,
     "relVol": 0.74
+  },
+  {
+    "id": "RSI2:SCCO:1782307800",
+    "ticker": "SCCO",
+    "tv": "NYSE:SCCO",
+    "sector": "Non-Energy Minerals",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782307800,
+    "entryT": 1782307800,
+    "entryPx": 171.9259,
+    "rsi2": 2.7,
+    "relVol": 1.31
+  },
+  {
+    "id": "RSI2:CDNS:1782307800",
+    "ticker": "CDNS",
+    "tv": "NASDAQ:CDNS",
+    "sector": "Technology Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782307800,
+    "entryT": 1782307800,
+    "entryPx": 372.5862,
+    "rsi2": 5.4,
+    "relVol": 0.7
   }
 ]
