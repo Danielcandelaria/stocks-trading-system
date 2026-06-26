@@ -108,11 +108,15 @@
     "sector": "Industrial Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1781616600,
     "entryT": 1781616600,
     "entryPx": 53.0965,
-    "rsi2": 6.7
+    "rsi2": 6.7,
+    "exitT": 1782394200,
+    "exitPx": 47.3963,
+    "exitReason": "TIME",
+    "retPct": -10.74
   },
   {
     "id": "RSI2:PSX:1781616600",
@@ -277,6 +281,20 @@
     "entryT": 1782307800,
     "entryPx": 372.5862,
     "rsi2": 5.4,
+    "relVol": 0.7
+  },
+  {
+    "id": "RSI2:CRWV:1782394200",
+    "ticker": "CRWV",
+    "tv": "NASDAQ:CRWV",
+    "sector": "Technology Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782394200,
+    "entryT": 1782394200,
+    "entryPx": 98.8094,
+    "rsi2": 5.5,
     "relVol": 0.7
   }
 ]
