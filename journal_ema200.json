@@ -5,7 +5,7 @@
     "tv": "NASDAQ:MSFT",
     "sector": "Technology Services",
     "strategy": "EMA200Bounce",
-    "status": "open",
+    "status": "closed",
     "signalT": 1780286400,
     "entryT": 1780286400,
     "entryPx": 414.14,
@@ -13,7 +13,11 @@
     "tp": 522.4208,
     "riskPct": 13.1,
     "ema200AtSignal": 391.3039,
-    "distPct": 6.5
+    "distPct": 6.5,
+    "exitT": 1782100800,
+    "exitPx": 359.8196,
+    "exitReason": "STOP",
+    "retPct": -13.12
   },
   {
     "id": "EMA200:MA:1780286400",
@@ -37,7 +41,7 @@
     "tv": "NASDAQ:NFLX",
     "sector": "Technology Services",
     "strategy": "EMA200Bounce",
-    "status": "open",
+    "status": "closed",
     "signalT": 1780286400,
     "entryT": 1780286400,
     "entryPx": 81.66,
@@ -45,7 +49,11 @@
     "tp": 101.94,
     "riskPct": 12.4,
     "ema200AtSignal": 77.7392,
-    "distPct": 5.7
+    "distPct": 5.7,
+    "exitT": 1782100800,
+    "exitPx": 71.4842,
+    "exitReason": "STOP",
+    "retPct": -12.46
   },
   {
     "id": "EMA200:TMUS:1780891200",
@@ -78,5 +86,37 @@
     "riskPct": 8.1,
     "ema200AtSignal": 284.595,
     "distPct": 0.1
+  },
+  {
+    "id": "EMA200:META:1782100800",
+    "ticker": "META",
+    "tv": "NASDAQ:META",
+    "sector": "Technology Services",
+    "strategy": "EMA200Bounce",
+    "status": "open",
+    "signalT": 1782100800,
+    "entryT": 1782100800,
+    "entryPx": 550.25,
+    "stop": 472.1652,
+    "tp": 706.4196,
+    "riskPct": 14.2,
+    "ema200AtSignal": 513.223,
+    "distPct": 7.2
+  },
+  {
+    "id": "EMA200:VZ:1782100800",
+    "ticker": "VZ",
+    "tv": "NYSE:VZ",
+    "sector": "Communications",
+    "strategy": "EMA200Bounce",
+    "status": "open",
+    "signalT": 1782100800,
+    "entryT": 1782100800,
+    "entryPx": 46.54,
+    "stop": 40.404,
+    "tp": 58.812,
+    "riskPct": 13.2,
+    "ema200AtSignal": 43.9174,
+    "distPct": 6
   }
 ]
