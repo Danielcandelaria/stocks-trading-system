@@ -276,12 +276,16 @@
     "sector": "Technology Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782307800,
     "entryT": 1782307800,
     "entryPx": 372.5862,
     "rsi2": 5.4,
-    "relVol": 0.7
+    "relVol": 0.7,
+    "exitT": 1782480600,
+    "exitPx": 377.0814,
+    "exitReason": "SMA5",
+    "retPct": 1.21
   },
   {
     "id": "RSI2:CRWV:1782394200",
@@ -296,5 +300,19 @@
     "entryPx": 98.8094,
     "rsi2": 5.5,
     "relVol": 0.7
+  },
+  {
+    "id": "RSI2:GM:1782480600",
+    "ticker": "GM",
+    "tv": "NYSE:GM",
+    "sector": "Consumer Durables",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782480600,
+    "entryT": 1782480600,
+    "entryPx": 78.139,
+    "rsi2": 8.6,
+    "relVol": 1.34
   }
 ]
