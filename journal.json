@@ -248,12 +248,16 @@
     "sector": "Electronic Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782221400,
     "entryT": 1782221400,
     "entryPx": 95.1676,
     "rsi2": 7.1,
-    "relVol": 0.74
+    "relVol": 0.74,
+    "exitT": 1782739800,
+    "exitPx": 97.961,
+    "exitReason": "SMA5",
+    "retPct": 2.94
   },
   {
     "id": "RSI2:SCCO:1782307800",
@@ -294,12 +298,16 @@
     "sector": "Technology Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782394200,
     "entryT": 1782394200,
     "entryPx": 98.8094,
     "rsi2": 5.5,
-    "relVol": 0.7
+    "relVol": 0.7,
+    "exitT": 1782826200,
+    "exitPx": 99.4902,
+    "exitReason": "SMA5",
+    "retPct": 0.69
   },
   {
     "id": "RSI2:GM:1782480600",
@@ -314,5 +322,33 @@
     "entryPx": 78.139,
     "rsi2": 8.6,
     "relVol": 1.34
+  },
+  {
+    "id": "RSI2:NUE:1782826200",
+    "ticker": "NUE",
+    "tv": "NYSE:NUE",
+    "sector": "Non-Energy Minerals",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782826200,
+    "entryT": 1782826200,
+    "entryPx": 222.8614,
+    "rsi2": 7.4,
+    "relVol": 1.11
+  },
+  {
+    "id": "RSI2:FANG:1782826200",
+    "ticker": "FANG",
+    "tv": "NASDAQ:FANG",
+    "sector": "Energy Minerals",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782826200,
+    "entryT": 1782826200,
+    "entryPx": 175.8679,
+    "rsi2": 6.2,
+    "relVol": 1.14
   }
 ]
