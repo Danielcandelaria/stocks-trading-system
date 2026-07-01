@@ -234,12 +234,16 @@
     "sector": "Consumer Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782135000,
     "entryT": 1782135000,
     "entryPx": 384.3821,
     "rsi2": 7.9,
-    "relVol": 1.05
+    "relVol": 1.05,
+    "exitT": 1782826200,
+    "exitPx": 370.4047,
+    "exitReason": "TIME",
+    "retPct": -3.64
   },
   {
     "id": "RSI2:RKLB:1782221400",
@@ -266,12 +270,16 @@
     "sector": "Non-Energy Minerals",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782307800,
     "entryT": 1782307800,
     "entryPx": 171.9259,
     "rsi2": 2.7,
-    "relVol": 1.31
+    "relVol": 1.31,
+    "exitT": 1782826200,
+    "exitPx": 174.1729,
+    "exitReason": "SMA5",
+    "retPct": 1.31
   },
   {
     "id": "RSI2:CDNS:1782307800",
@@ -350,5 +358,33 @@
     "entryPx": 175.8679,
     "rsi2": 6.2,
     "relVol": 1.14
+  },
+  {
+    "id": "RSI2:PLD:1782826200",
+    "ticker": "PLD",
+    "tv": "NYSE:PLD",
+    "sector": "Finance",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782826200,
+    "entryT": 1782826200,
+    "entryPx": 135.5377,
+    "rsi2": 2.1,
+    "relVol": 1.35
+  },
+  {
+    "id": "RSI2:MAR:1782826200",
+    "ticker": "MAR",
+    "tv": "NASDAQ:MAR",
+    "sector": "Consumer Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782826200,
+    "entryT": 1782826200,
+    "entryPx": 370.7753,
+    "rsi2": 1.4,
+    "relVol": 1.19
   }
 ]
