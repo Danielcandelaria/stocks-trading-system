@@ -1,0 +1,18 @@
+{
+  "updated": "2026-07-01",
+  "note": "p95 del drawdown máx anual (Monte Carlo, analysis_mc_corr.mjs). DD en vivo > p95 = alarma.",
+  "DeMark": {
+    "dd_p95": 7.8,
+    "dd_med": 4,
+    "streak_p95": 7,
+    "losing_years_pct": 2,
+    "unit": "R"
+  },
+  "RSI2": {
+    "dd_p95": 65.3,
+    "dd_med": 35.2,
+    "streak_p95": 6,
+    "losing_years_pct": 13,
+    "unit": "%"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "updated": "2026-07-01",
+  "source": "Justin Banks @RealJGBanks — resumen de posts",
+  "regime": {
+    "label": "Midterm year 2026 — choppy hasta ~octubre",
+    "long_term_bias": "bullish (nuevos ATH esperados antes de fin de ciclo)",
+    "expect": "choppy price action, failed breakouts, mechas largas, rotaciones sectoriales violentas",
+    "tactics": "proteger capital, paciencia, NO forzar trades emocionales. Reducir tamaño en agresivos, aumentar defensivos.",
+    "allocation": { "core_AI_leaders": "50-60%", "tactical_swing": "20-30%", "defensive_healthcare_staples": "10-20%" },
+    "risk_per_trade": "1-2%"
+  },
+  "themes": {
+    "Quantum": {
+      "strength": "strong",
+      "catalyst": "tweet White House sobre quantum",
+      "tickers": [
+        { "ticker": "IONQ", "tv": "NYSE:IONQ", "sector": "Electronic Technology" },
+        { "ticker": "QBTS", "tv": "NYSE:QBTS", "sector": "Electronic Technology" },
+        { "ticker": "QUBT", "tv": "NASDAQ:QUBT", "sector": "Electronic Technology" },
+        { "ticker": "RGTI", "tv": "NASDAQ:RGTI", "sector": "Electronic Technology" }
+      ]
+    },
+    "Photonics/Optics": {
+      "strength": "strong",
+      "catalyst": "breakout semanal, objetivo ~250",
+      "tickers": [
+        { "ticker": "GLW", "tv": "NYSE:GLW", "sector": "Producer Manufacturing" }
+      ]
+    },
+    "Semis/AI Compute": {
+      "strength": "strong",
+      "catalyst": "momentum AI compute; INTC apuntando a 150+",
+      "tickers": [
+        { "ticker": "NVDA", "tv": "NASDAQ:NVDA", "sector": "Electronic Technology" },
+        { "ticker": "AMD", "tv": "NASDAQ:AMD", "sector": "Electronic Technology" },
+        { "ticker": "AVGO", "tv": "NASDAQ:AVGO", "sector": "Electronic Technology" },
+        { "ticker": "MU", "tv": "NASDAQ:MU", "sector": "Electronic Technology" },
+        { "ticker": "INTC", "tv": "NASDAQ:INTC", "sector": "Electronic Technology" }
+      ]
+    },
+    "Miners/HPC": {
+      "strength": "strong",
+      "catalyst": "proxy de compute HPC",
+      "tickers": [
+        { "ticker": "RIOT", "tv": "NASDAQ:RIOT", "sector": "Finance" },
+        { "ticker": "MARA", "tv": "NASDAQ:MARA", "sector": "Finance" },
+        { "ticker": "IREN", "tv": "NASDAQ:IREN", "sector": "Technology Services" },
+        { "ticker": "CORZ", "tv": "NASDAQ:CORZ", "sector": "Technology Services" }
+      ]
+    },
+    "Infra/Power/Nuclear": {
+      "strength": "strong",
+      "catalyst": "power para AI datacenters",
+      "tickers": [
+        { "ticker": "VRT", "tv": "NYSE:VRT", "sector": "Producer Manufacturing" },
+        { "ticker": "OKLO", "tv": "NYSE:OKLO", "sector": "Utilities" },
+        { "ticker": "SMR", "tv": "NYSE:SMR", "sector": "Producer Manufacturing" }
+      ]
+    },
+    "Healthcare (defensivo)": {
+      "strength": "defensive",
+      "catalyst": "rotación defensiva en entorno choppy",
+      "tickers": [
+        { "ticker": "UNH", "tv": "NYSE:UNH", "sector": "Health Services" },
+        { "ticker": "MRK", "tv": "NYSE:MRK", "sector": "Health Technology" },
+        { "ticker": "LLY", "tv": "NYSE:LLY", "sector": "Health Technology" }
+      ]
+    }
+  }
+}

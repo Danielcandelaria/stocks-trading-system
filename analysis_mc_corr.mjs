@@ -5,7 +5,7 @@
 // 2) MONTE CARLO sobre los R/retornos del backtest: bandas de normalidad
 //    para juzgar el forward (peor racha esperable, drawdown p95, etc.).
 
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync, writeFileSync } from 'fs';
 import { computeTDSetup, isPerfected } from '../scanner/demark_calc.mjs';
 
 const COST = 0.0005;
@@ -111,6 +111,18 @@ function monteCarlo(vals, perYear, label, unit) {
   console.log(`  drawdown máx anual: mediana ${pct(dds, 0.5).toFixed(1)}${unit}, p95 ${pct(dds, 0.95).toFixed(1)}${unit} ← ALARMA si se supera`);
   console.log(`  resultado anual: p5 ${pct(yearRets, 0.05).toFixed(1)}${unit}, mediana ${pct(yearRets, 0.5).toFixed(1)}${unit}, p95 ${pct(yearRets, 0.95).toFixed(1)}${unit}`);
   console.log(`  años perdedores: ${(yearRets.filter(r => r < 0).length / SIMS * 100).toFixed(0)}%\n`);
+  return { dd_p95: +pct(dds, 0.95).toFixed(1), dd_med: +pct(dds, 0.5).toFixed(1),
+           streak_p95: pct(streaks, 0.95), losing_years_pct: +(yearRets.filter(r => r < 0).length / SIMS * 100).toFixed(0), unit };
 }
-monteCarlo(dmTrades.map(t => t.r), Math.round(dmTrades.length / 3), 'DeMark-9 (en R)', 'R');
-monteCarlo(rsTrades.map(t => t.ret * 100), Math.round(rsTrades.length / 3 / 20), 'RSI2 cap5 (en %, ~1/20 del flujo total por el cap)', '%');
+const mcDM = monteCarlo(dmTrades.map(t => t.r), Math.round(dmTrades.length / 3), 'DeMark-9 (en R)', 'R');
+const mcRS = monteCarlo(rsTrades.map(t => t.ret * 100), Math.round(rsTrades.length / 3 / 20), 'RSI2 cap5 (en %, ~1/20 del flujo total por el cap)', '%');
+
+// ── persistir umbrales para el GUARDARRAÍL de drawdown (report_card.mjs) ──
+// Si el drawdown en VIVO supera el p95 del Monte Carlo, la estrategia se comporta
+// peor que el 95% de escenarios simulados → algo va mal (alarma de robustez).
+writeFileSync(new URL('./mc_thresholds.json', import.meta.url), JSON.stringify({
+  updated: new Date().toISOString().slice(0, 10),
+  note: 'p95 del drawdown máx anual (Monte Carlo, analysis_mc_corr.mjs). DD en vivo > p95 = alarma.',
+  DeMark: mcDM, RSI2: mcRS,
+}, null, 2));
+console.log('📄 umbrales → stocks/mc_thresholds.json');

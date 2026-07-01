@@ -1,12 +1,15 @@
 // stocks/watchlist_daily.mjs
-// Manda al Telegram la watchlist diaria: las pocas acciones con señal activa en
-// alguno de los 5 sistemas, + los niveles de alerta de los breakout pendientes.
+// Calcula la watchlist diaria: las pocas acciones con señal activa en alguno de
+// los 5 sistemas, + los niveles de alerta de los breakout pendientes.
 // Corre en run_daily.sh tras los scanners.
+//
+// ⚠️ YA NO SE ENVÍA A TELEGRAM (2026-06-25): la watchlist vive en el DASHBOARD
+// (lee los journals directamente). Telegram = solo señales accionables, no
+// resúmenes. Aquí solo se imprime a consola (queda en el log del run diario).
 
 import { readFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { tgSend } from './tg.mjs';
 import { sizeWithStop, sizeNoStop, ACCOUNT_EUR, RISK_PCT } from './sizing.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
@@ -43,4 +46,5 @@ const text = `📋 <b>WATCHLIST DEL DÍA</b> — ${new Date().toISOString().slic
   `\n<b>Para importar a TV</b> (pega en una watchlist nueva):\n<code>${[...all].join(',')}</code>`;
 
 console.log(text.replace(/<[^>]+>/g, ''));
-await tgSend(text);
+// Telegram ELIMINADO (2026-06-25): la watchlist está en el dashboard, no aporta
+// nada como mensaje de Telegram. Antes: await tgSend(text);

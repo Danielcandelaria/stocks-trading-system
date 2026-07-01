@@ -135,9 +135,27 @@ async function managePositions(journal, ticker, weekly, e8, e21) {
 const universe = load('universe.json', { universe: [] }).universe;
 const journal = load('journal_breakout.json', []);
 const seen = load('seen_breakout.json', {});
+
+// ── Overlay temático de Justin Banks (themes.json) ──────────────────────────
+// Feed del doc de Banks: (1) TAG de tema en cada señal (Banks opera "temas fuertes"),
+// (2) añade al scan los nombres temáticos que caen bajo el corte de market cap del
+// universo (quantum/nuclear/miners small-cap: QBTS/QUBT/RGTI/RIOT/MARA/CORZ/OKLO/SMR).
+// NO filtra: el edge validado (PF 2.65, WF 4/4) es sobre el universo amplio; el tema se
+// ANOTA para priorizar, no para descartar (cambiar el set de señales rompería el backtest).
+const themesRaw = load('themes.json', { themes: {} });
+const themeOf = {};
+const curated = [];
+for (const [name, t] of Object.entries(themesRaw.themes || {})) for (const it of (t.tickers || [])) {
+  themeOf[it.ticker] = { theme: name, strength: t.strength };
+  curated.push({ tv: it.tv, ticker: it.ticker, sector: it.sector });
+}
+const haveU = new Set(universe.map(u => u.ticker));
+const scanList = [...universe, ...curated.filter(c => !haveU.has(c.ticker))];
+log(`overlay Banks: ${Object.keys(themeOf).length} tickers temáticos (${scanList.length - universe.length} añadidos bajo el corte)`);
+
 let signals = 0, errors = 0;
 
-for (const u of universe) {
+for (const u of scanList) {
   let bars;
   try { bars = await getWeekly(u.ticker); await sleep(150); }
   catch { errors++; await sleep(300); continue; }
@@ -173,13 +191,16 @@ for (const u of universe) {
     if (active.length >= CAP) { log(`${u.ticker}: ruptura válida pero ya hay ${CAP} activas — descartada`); continue; }
 
     const zoneTop = +(resist * (1 + RETEST_BAND)).toFixed(2); // borde superior de la zona
+    const th = themeOf[u.ticker] || null;
     journal.push({
       id: key, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'BreakoutRetest',
       status: 'pending', signalT: bars[i].t, level: entryPx, entryPx, stop, tp,
       breakClose: +bars[i].c.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
+      theme: th?.theme || null, themeStrength: th?.strength || null,
     });
     signals++;
     await tgSend(`🔭 <b>PREAVISO — VIGILAR RETEST</b>\n<b>${u.ticker}</b> — ${u.sector}` +
+      (th ? `\n🔥 <b>TEMA ${th.strength === 'strong' ? 'FUERTE' : 'DEFENSIVO'}: ${th.theme}</b> (Banks prioriza temas activos)` : '') +
       `\n` +
       `\n⚡ Rompió resistencia (cierre semanal $${bars[i].c.toFixed(2)}, cruce 8/21 EMA). Setup armado.` +
       `\n👀 <b>Espera a que el precio RETROCEDA a la zona $${resist.toFixed(2)}–$${zoneTop}</b> — te avisaré 🟢 ENTRA AHORA el día que entre en ella (compra a mercado).` +
