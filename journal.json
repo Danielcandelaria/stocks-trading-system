@@ -366,12 +366,16 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782826200,
     "entryT": 1782826200,
     "entryPx": 135.5377,
     "rsi2": 2.1,
-    "relVol": 1.35
+    "relVol": 1.35,
+    "exitT": 1782999000,
+    "exitPx": 139.3603,
+    "exitReason": "SMA5",
+    "retPct": 2.82
   },
   {
     "id": "RSI2:MAR:1782826200",
@@ -380,11 +384,43 @@
     "sector": "Consumer Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782826200,
     "entryT": 1782826200,
     "entryPx": 370.7753,
     "rsi2": 1.4,
-    "relVol": 1.19
+    "relVol": 1.19,
+    "exitT": 1782999000,
+    "exitPx": 372.7635,
+    "exitReason": "SMA5",
+    "retPct": 0.54
+  },
+  {
+    "id": "RSI2:RCL:1782999000",
+    "ticker": "RCL",
+    "tv": "NYSE:RCL",
+    "sector": "Consumer Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782999000,
+    "entryT": 1782999000,
+    "entryPx": 296.4481,
+    "rsi2": 3.8,
+    "relVol": 0.79
+  },
+  {
+    "id": "RSI2:EMR:1782999000",
+    "ticker": "EMR",
+    "tv": "NYSE:EMR",
+    "sector": "Electronic Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1782999000,
+    "entryT": 1782999000,
+    "entryPx": 139.1195,
+    "rsi2": 7.6,
+    "relVol": 0.92
   }
 ]
