@@ -104,5 +104,22 @@
     "breakClose": 312.51,
     "riskPct": 9.8,
     "entryT": 1782221400
+  },
+  {
+    "id": "B:MCO:1782705600",
+    "ticker": "MCO",
+    "tv": "NYSE:MCO",
+    "sector": "Commercial Services",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1782705600,
+    "level": 472.43,
+    "entryPx": 472.43,
+    "stop": 434.6356,
+    "tp": 548.0188,
+    "breakClose": 490.51,
+    "riskPct": 8,
+    "theme": null,
+    "themeStrength": null
   }
 ]
