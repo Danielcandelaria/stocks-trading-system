@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "id": "W:SYM:1782705600",
+    "ticker": "SYM",
+    "tv": "NASDAQ:SYM",
+    "sector": "Producer Manufacturing",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1782705600,
+    "entryT": 1782705600,
+    "entryPx": 42.7614,
+    "stop": 38.185,
+    "riskPct": 10.7
+  },
+  {
+    "id": "W:FISV:1782705600",
+    "ticker": "FISV",
+    "tv": "NASDAQ:FISV",
+    "sector": "Commercial Services",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1782705600,
+    "entryT": 1782705600,
+    "entryPx": 52.3562,
+    "stop": 47.04,
+    "riskPct": 10.2
+  }
+]
