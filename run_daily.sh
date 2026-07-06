@@ -24,7 +24,10 @@ echo "[$(date '+%Y-%m-%d %H:%M')] ▶ run diario de acciones (recuperación robu
 /usr/local/bin/node scanner_weekly.mjs
 /usr/local/bin/node scanner_breakout.mjs
 /usr/local/bin/node momentum_monthly.mjs
-/usr/local/bin/node scanner_ema200.mjs
+# EMA200Bounce ELIMINADA 2026-07-03: validada (WF 3/4) pero regime-dependent —
+# sangra en choppy (fwd −25.6%, 0% WR) y estamos en midterm choppy. Reversible:
+# descomentar cuando el regimen gire a bull (+ restaurar journal_ema200.json.off).
+# /usr/local/bin/node scanner_ema200.mjs
 /usr/local/bin/node watchlist_daily.mjs
 
 # marcar como corrido hoy (al final → si el Mac se duerme a media ejecución, reintenta)
