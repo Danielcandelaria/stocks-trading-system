@@ -245,7 +245,7 @@ for (const u of universe) {
     const daysToER = (u.nextEarnings - bars[i].t) / 86400;
     if (daysToER >= 0 && daysToER <= 7) {
       log(`${u.ticker}: señal válida pero earnings en ${daysToER.toFixed(0)} días — DESCARTADA (guardia ER)`);
-      await notify(`⚠️ Señal en ${u.ticker} descartada: earnings en ${daysToER.toFixed(0)} días (riesgo de gap).`);
+      // descarte por earnings = RUIDO en Telegram → solo log interno (2026-07-06).
       continue;
     }
   }
