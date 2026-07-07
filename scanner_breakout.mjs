@@ -125,7 +125,8 @@ async function managePositions(journal, ticker, weekly, e8, e21) {
         pos.status = 'closed'; pos.exitT = NOW; pos.exitPx = +px.toFixed(4);
         pos.exitReason = reason; pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
         pos.r = +((px - pos.entryPx) / (pos.entryPx - pos.stop)).toFixed(2);
-        await tgSend(`🟠 <b>CIERRE BREAKOUT RETEST</b> — ${ticker}\n${reason} → <b>${pos.retPct > 0 ? '+' : ''}${pos.retPct}% (${pos.r > 0 ? '+' : ''}${pos.r}R)</b>\nEntrada $${pos.entryPx} → salida $${pos.exitPx}`);
+        // CIERRE: solo INTERNO (log + journal → dashboard), NO a Telegram (solo compras).
+        log(`CIERRE Breakout ${ticker}: ${pos.retPct > 0 ? '+' : ''}${pos.retPct}% (${pos.r}R, ${reason}) — no Telegram`);
       }
     }
   }

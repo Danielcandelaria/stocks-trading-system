@@ -66,7 +66,8 @@ function manageOpen(journal, ticker, bars, cd) {
         pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
         pos.exitReason = reason; pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
         pos.weeksHeld = i - startIdx;
-        tgSend(`🟣 <b>CIERRE SWING SEMANAL</b> — ${ticker}\n${reason} → <b>${pos.retPct > 0 ? '+' : ''}${pos.retPct}%</b> en ${pos.weeksHeld} semanas\nEntrada $${pos.entryPx} → salida $${pos.exitPx}`);
+        // CIERRE: solo INTERNO (log + journal → dashboard), NO a Telegram (solo compras).
+        log(`CIERRE SwingSemanal ${ticker}: ${pos.retPct > 0 ? '+' : ''}${pos.retPct}% en ${pos.weeksHeld}sem (${reason}) — no Telegram`);
         break;
       }
     }

@@ -126,10 +126,9 @@ function manageOpenRSI2(journal, ticker, bars, s5) {
         pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
         pos.exitReason = i - startIdx >= 5 ? 'TIME' : 'SMA5';
         pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
-        const motivoR = pos.exitReason === 'SMA5' ? '🎯 cierre sobre SMA5 (reversión completada)' : '⏱ 5º día — salida obligatoria';
-        notify(`📘 <b>CIERRE LONG RSI2</b> — ${ticker}` +
-          `\n${motivoR} → <b>${pos.retPct > 0 ? '+' : ''}${pos.retPct}%</b>` +
-          `\nVENDER al cierre: entrada $${pos.entryPx} → salida $${pos.exitPx} (${i - startIdx} días)`);
+        // CIERRE: solo INTERNO (log + journal → dashboard), NO a Telegram.
+        // El usuario solo quiere señales de COMPRA en Telegram (2026-07-06).
+        log(`CIERRE RSI2 ${ticker}: ${pos.retPct > 0 ? '+' : ''}${pos.retPct}% en ${i - startIdx}d (${pos.exitReason}) — no Telegram`);
         break;
       }
     }
@@ -150,10 +149,8 @@ function manageOpen(journal, ticker, bars) {
         const px = exit * (1 - COST);
         pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
         pos.exitReason = reason; pos.r = +((px - pos.entryPx) / pos.risk).toFixed(2);
-        const motivo = reason === 'SL' ? '🛑 stop loss tocado' : reason === 'TP' ? '🎯 take profit alcanzado' : '⏱ time-stop (40 sesiones)';
-        notify(`📕 <b>CIERRE LONG DeMark (${pos.variant})</b> — ${ticker}` +
-          `\n${motivo} → <b>${pos.r > 0 ? '+' : ''}${pos.r}R</b>` +
-          `\nVENDER: entrada $${pos.entryPx} → salida $${pos.exitPx}`);
+        // CIERRE: solo INTERNO (log + journal → dashboard), NO a Telegram.
+        log(`CIERRE DeMark ${pos.variant} ${ticker}: ${pos.r > 0 ? '+' : ''}${pos.r}R (${reason}) — no Telegram`);
         break;
       }
     }
