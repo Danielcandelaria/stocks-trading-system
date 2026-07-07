@@ -111,15 +111,16 @@
     "tv": "NYSE:MCO",
     "sector": "Commercial Services",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "open",
     "signalT": 1782705600,
     "level": 472.43,
-    "entryPx": 472.43,
+    "entryPx": 481.8786,
     "stop": 434.6356,
-    "tp": 548.0188,
+    "tp": 576.3646,
     "breakClose": 490.51,
-    "riskPct": 8,
+    "riskPct": 9.8,
     "theme": null,
-    "themeStrength": null
+    "themeStrength": null,
+    "entryT": 1783344600
   }
 ]
