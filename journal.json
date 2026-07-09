@@ -488,11 +488,29 @@
     "sector": "Technology Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1783431000,
     "entryT": 1783431000,
     "entryPx": 195.2876,
     "rsi2": 5.3,
-    "relVol": 0.91
+    "relVol": 0.91,
+    "exitT": 1783517400,
+    "exitPx": 216.3718,
+    "exitReason": "SMA5",
+    "retPct": 10.8
+  },
+  {
+    "id": "RSI2:VIK:1783517400",
+    "ticker": "VIK",
+    "tv": "NYSE:VIK",
+    "sector": "Consumer Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1783517400,
+    "entryT": 1783517400,
+    "entryPx": 98.019,
+    "rsi2": 1.3,
+    "relVol": 0.98
   }
 ]
