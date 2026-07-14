@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-01",
-  "source": "Justin Banks @RealJGBanks — resumen de posts",
+  "updated": "2026-07-14",
+  "source": "Justin Banks @RealJGBanks — actualización Julio 2026",
   "regime": {
     "label": "Midterm year 2026 — choppy hasta ~octubre",
     "long_term_bias": "bullish (nuevos ATH esperados antes de fin de ciclo)",
@@ -40,15 +40,23 @@
     },
     "Miners/HPC": {
       "strength": "strong",
-      "catalyst": "proxy de compute HPC",
+      "catalyst": "proxy de compute HPC (setup swing clásico RIOT/MARA)",
       "tickers": [
         { "ticker": "RIOT", "tv": "NASDAQ:RIOT", "sector": "Finance" },
-        { "ticker": "MARA", "tv": "NASDAQ:MARA", "sector": "Finance" },
-        { "ticker": "IREN", "tv": "NASDAQ:IREN", "sector": "Technology Services" },
-        { "ticker": "CORZ", "tv": "NASDAQ:CORZ", "sector": "Technology Services" }
+        { "ticker": "MARA", "tv": "NASDAQ:MARA", "sector": "Finance" }
       ]
     },
-    "Infra/Power/Nuclear": {
+    "Infra/Data Centers": {
+      "strength": "strong",
+      "catalyst": "infraestructura de data centers para AI (actualización jul-2026)",
+      "tickers": [
+        { "ticker": "IREN", "tv": "NASDAQ:IREN", "sector": "Technology Services" },
+        { "ticker": "CORZ", "tv": "NASDAQ:CORZ", "sector": "Technology Services" },
+        { "ticker": "CIFR", "tv": "NASDAQ:CIFR", "sector": "Technology Services" },
+        { "ticker": "KEEL", "tv": "NASDAQ:KEEL", "sector": "Technology Services" }
+      ]
+    },
+    "Power/Nuclear": {
       "strength": "strong",
       "catalyst": "power para AI datacenters",
       "tickers": [
