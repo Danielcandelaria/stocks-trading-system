@@ -24,5 +24,44 @@
     "entryPx": 52.3562,
     "stop": 47.04,
     "riskPct": 10.2
+  },
+  {
+    "id": "W:CEG:1783310400",
+    "ticker": "CEG",
+    "tv": "NASDAQ:CEG",
+    "sector": "Utilities",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1783310400,
+    "entryT": 1783310400,
+    "entryPx": 251.5057,
+    "stop": 228.63,
+    "riskPct": 9.1
+  },
+  {
+    "id": "W:INTU:1783310400",
+    "ticker": "INTU",
+    "tv": "NASDAQ:INTU",
+    "sector": "Technology Services",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1783310400,
+    "entryT": 1783310400,
+    "entryPx": 275.0975,
+    "stop": 252.84,
+    "riskPct": 8.1
+  },
+  {
+    "id": "W:CG:1783310400",
+    "ticker": "CG",
+    "tv": "NASDAQ:CG",
+    "sector": "Finance",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1783310400,
+    "entryT": 1783310400,
+    "entryPx": 44.7324,
+    "stop": 39.6,
+    "riskPct": 11.5
   }
 ]
