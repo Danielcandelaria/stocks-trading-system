@@ -23,6 +23,7 @@ echo "[$(date '+%Y-%m-%d %H:%M')] ▶ run diario de acciones (recuperación robu
 /usr/local/bin/node scanner_forward.mjs
 /usr/local/bin/node scanner_weekly.mjs
 /usr/local/bin/node scanner_breakout.mjs
+/usr/local/bin/node scanner_banks_swing.mjs
 /usr/local/bin/node momentum_monthly.mjs
 # EMA200Bounce ELIMINADA 2026-07-03: validada (WF 3/4) pero regime-dependent —
 # sangra en choppy (fwd −25.6%, 0% WR) y estamos en midterm choppy. Reversible:
