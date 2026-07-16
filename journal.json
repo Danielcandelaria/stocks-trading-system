@@ -486,12 +486,16 @@
     "sector": "Electronic Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1783431000,
     "entryT": 1783431000,
     "entryPx": 83.4517,
     "rsi2": 5.6,
-    "relVol": 0.87
+    "relVol": 0.87,
+    "exitT": 1784122200,
+    "exitPx": 76.1619,
+    "exitReason": "TIME",
+    "retPct": -8.74
   },
   {
     "id": "RSI2:NBIS:1783431000",
@@ -550,12 +554,16 @@
     "sector": "Technology Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1783690200,
     "entryT": 1783690200,
     "entryPx": 243.3216,
     "rsi2": 5.6,
-    "relVol": 0.74
+    "relVol": 0.74,
+    "exitT": 1784122200,
+    "exitPx": 243.6781,
+    "exitReason": "SMA5",
+    "retPct": 0.15
   },
   {
     "id": "RSI2:IFF:1783690200",
@@ -578,12 +586,16 @@
     "sector": "Process Industries",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1783690200,
     "entryT": 1783690200,
     "entryPx": 134.7473,
     "rsi2": 7.3,
-    "relVol": 0.68
+    "relVol": 0.68,
+    "exitT": 1784122200,
+    "exitPx": 134.7926,
+    "exitReason": "SMA5",
+    "retPct": 0.03
   },
   {
     "id": "CARR:1783949400:TP2",
@@ -644,5 +656,47 @@
     "tp": 49.2813,
     "risk": 2.0366,
     "riskPct": 4.72
+  },
+  {
+    "id": "RSI2:AXON:1784122200",
+    "ticker": "AXON",
+    "tv": "NASDAQ:AXON",
+    "sector": "Electronic Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784122200,
+    "entryT": 1784122200,
+    "entryPx": 541.3906,
+    "rsi2": 4.7,
+    "relVol": 0.47
+  },
+  {
+    "id": "RSI2:SYY:1784122200",
+    "ticker": "SYY",
+    "tv": "NYSE:SYY",
+    "sector": "Distribution Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784122200,
+    "entryT": 1784122200,
+    "entryPx": 80.7704,
+    "rsi2": 8.2,
+    "relVol": 0.75
+  },
+  {
+    "id": "RSI2:PFGC:1784122200",
+    "ticker": "PFGC",
+    "tv": "NYSE:PFGC",
+    "sector": "Transportation",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784122200,
+    "entryT": 1784122200,
+    "entryPx": 110.4652,
+    "rsi2": 7.6,
+    "relVol": 2.25
   }
 ]
