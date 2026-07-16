@@ -98,7 +98,7 @@ const seen     = load('seen_ema200.json', {});
 const marketOk = await spyInUptrend();
 if (!marketOk) {
   log('⚠️ SPY bajo su EMA200 — mercado bajista, no buscamos señales nuevas hoy');
-  await tgSend('🔵 <b>EMA200 scanner</b>: SPY bajo EMA200 semanal → sin señales nuevas (filtro de régimen activo)');
+  // POLÍTICA: Telegram = SOLO señales. El "sin señales / filtro de régimen" es status → solo log/DASHBOARD.
   process.exit(0);
 }
 

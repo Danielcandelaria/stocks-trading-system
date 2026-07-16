@@ -76,7 +76,90 @@
           "last": 168.1699981689453
         }
       ],
-      "spyRef": 725.4299926757812
+      "spyRef": 725.4299926757812,
+      "result": {
+        "portRetPct": 23.3,
+        "spyRetPct": 2.94,
+        "closedAt": "2026-07-01"
+      }
+    },
+    {
+      "month": "2026-07",
+      "date": "2026-07-01",
+      "ranked": 493,
+      "portfolio": [
+        {
+          "ticker": "SNDK",
+          "tv": "NASDAQ:SNDK",
+          "sector": "Electronic Technology",
+          "mom": 5.778564126303595,
+          "last": 2273.72998046875
+        },
+        {
+          "ticker": "MU",
+          "tv": "NASDAQ:MU",
+          "sector": "Electronic Technology",
+          "mom": 2.4095297266962845,
+          "last": 1154.2900390625
+        },
+        {
+          "ticker": "DELL",
+          "tv": "NYSE:DELL",
+          "sector": "Electronic Technology",
+          "mom": 2.2568089273593595,
+          "last": 431.4599914550781
+        },
+        {
+          "ticker": "INTC",
+          "tv": "NASDAQ:INTC",
+          "sector": "Electronic Technology",
+          "mom": 2.1679557427684353,
+          "last": 139.6300048828125
+        },
+        {
+          "ticker": "BE",
+          "tv": "NYSE:BE",
+          "sector": "Electronic Technology",
+          "mom": 2.160345964022388,
+          "last": 302.70001220703125
+        },
+        {
+          "ticker": "DOCN",
+          "tv": "NYSE:DOCN",
+          "sector": "Technology Services",
+          "mom": 2.149232542541154,
+          "last": 157.02999877929688
+        },
+        {
+          "ticker": "STX",
+          "tv": "NASDAQ:STX",
+          "sector": "Electronic Technology",
+          "mom": 2.0738592133348446,
+          "last": 965
+        },
+        {
+          "ticker": "WDC",
+          "tv": "NASDAQ:WDC",
+          "sector": "Electronic Technology",
+          "mom": 1.9261322111838672,
+          "last": 638.719970703125
+        },
+        {
+          "ticker": "NBIS",
+          "tv": "NASDAQ:NBIS",
+          "sector": "Technology Services",
+          "mom": 1.6383149446248262,
+          "last": 276.1700134277344
+        },
+        {
+          "ticker": "TTMI",
+          "tv": "NASDAQ:TTMI",
+          "sector": "Electronic Technology",
+          "mom": 1.4221974102610035,
+          "last": 187.02000427246094
+        }
+      ],
+      "spyRef": 746.77001953125
     }
   ]
 }

@@ -85,6 +85,10 @@ const text = `📈 <b>MOMENTUM mensual ${month} (paper)</b>\nTop-10 por retorno 
   (out.length ? `\n\nSalen: ${out.join(', ')}` : '') + closePrevText +
   `\n\n⚠️ Forward-only: el backtest de momentum no es fiable (sesgo supervivencia). Validación: comparar vs SPY mes a mes.`;
 console.log(text.replace(/<[^>]+>/g, ''));
-const { tgSend } = await import('./tg.mjs');
-await tgSend(text);
+// POLÍTICA: Telegram = SOLO señales. El reporte mensual de cartera va al DASHBOARD.
+// Envío puntual manual: node momentum_monthly.mjs --telegram
+if (process.argv.includes('--telegram')) {
+  const { tgSend } = await import('./tg.mjs');
+  await tgSend(text);
+}
 log(`portfolio ${month} registrado (${top.map(p => p.ticker).join(', ')})`);
