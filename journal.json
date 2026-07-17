@@ -572,12 +572,16 @@
     "sector": "Consumer Non-Durables",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1783690200,
     "entryT": 1783690200,
     "entryPx": 77.5688,
     "rsi2": 6.2,
-    "relVol": 0.7
+    "relVol": 0.7,
+    "exitT": 1784208600,
+    "exitPx": 77.5612,
+    "exitReason": "SMA5",
+    "retPct": -0.01
   },
   {
     "id": "RSI2:DD:1783690200",
@@ -692,11 +696,43 @@
     "sector": "Transportation",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1784122200,
     "entryT": 1784122200,
     "entryPx": 110.4652,
     "rsi2": 7.6,
-    "relVol": 2.25
+    "relVol": 2.25,
+    "exitT": 1784208600,
+    "exitPx": 113.1134,
+    "exitReason": "SMA5",
+    "retPct": 2.4
+  },
+  {
+    "id": "RSI2:LSCC:1784208600",
+    "ticker": "LSCC",
+    "tv": "NASDAQ:LSCC",
+    "sector": "Electronic Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784208600,
+    "entryT": 1784208600,
+    "entryPx": 124.5622,
+    "rsi2": 9.7,
+    "relVol": 1.32
+  },
+  {
+    "id": "RSI2:NBIX:1784208600",
+    "ticker": "NBIX",
+    "tv": "NASDAQ:NBIX",
+    "sector": "Health Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784208600,
+    "entryT": 1784208600,
+    "entryPx": 171.6358,
+    "rsi2": 7.4,
+    "relVol": 0.74
   }
 ]
