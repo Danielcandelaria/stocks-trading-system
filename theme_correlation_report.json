@@ -1,0 +1,125 @@
+{
+  "generado": "2026-07-20",
+  "temas": 7,
+  "apuestas_efectivas": 2.07,
+  "corr_media": 0.397,
+  "beta_media_vs_QQQ": 2,
+  "caida_si_QQQ_menos30": -60.1,
+  "pares": [
+    {
+      "a": "Miners/HPC",
+      "b": "Infra/Data Centers",
+      "corr": 0.805
+    },
+    {
+      "a": "Quantum",
+      "b": "Power/Nuclear",
+      "corr": 0.705
+    },
+    {
+      "a": "Infra/Data Centers",
+      "b": "Power/Nuclear",
+      "corr": 0.641
+    },
+    {
+      "a": "Miners/HPC",
+      "b": "Power/Nuclear",
+      "corr": 0.612
+    },
+    {
+      "a": "Photonics/Optics",
+      "b": "Semis/AI Compute",
+      "corr": 0.611
+    },
+    {
+      "a": "Quantum",
+      "b": "Infra/Data Centers",
+      "corr": 0.587
+    },
+    {
+      "a": "Semis/AI Compute",
+      "b": "Power/Nuclear",
+      "corr": 0.577
+    },
+    {
+      "a": "Quantum",
+      "b": "Miners/HPC",
+      "corr": 0.559
+    },
+    {
+      "a": "Semis/AI Compute",
+      "b": "Miners/HPC",
+      "corr": 0.551
+    },
+    {
+      "a": "Semis/AI Compute",
+      "b": "Infra/Data Centers",
+      "corr": 0.536
+    },
+    {
+      "a": "Photonics/Optics",
+      "b": "Power/Nuclear",
+      "corr": 0.457
+    },
+    {
+      "a": "Photonics/Optics",
+      "b": "Miners/HPC",
+      "corr": 0.427
+    },
+    {
+      "a": "Quantum",
+      "b": "Semis/AI Compute",
+      "corr": 0.405
+    },
+    {
+      "a": "Photonics/Optics",
+      "b": "Infra/Data Centers",
+      "corr": 0.389
+    },
+    {
+      "a": "Quantum",
+      "b": "Photonics/Optics",
+      "corr": 0.347
+    },
+    {
+      "a": "Miners/HPC",
+      "b": "Healthcare (defensivo)",
+      "corr": 0.121
+    },
+    {
+      "a": "Quantum",
+      "b": "Healthcare (defensivo)",
+      "corr": 0.086
+    },
+    {
+      "a": "Infra/Data Centers",
+      "b": "Healthcare (defensivo)",
+      "corr": 0.012
+    },
+    {
+      "a": "Power/Nuclear",
+      "b": "Healthcare (defensivo)",
+      "corr": 0
+    },
+    {
+      "a": "Semis/AI Compute",
+      "b": "Healthcare (defensivo)",
+      "corr": -0.032
+    },
+    {
+      "a": "Photonics/Optics",
+      "b": "Healthcare (defensivo)",
+      "corr": -0.059
+    }
+  ],
+  "betas": {
+    "Quantum": 2.49,
+    "Infra/Data Centers": 2.49,
+    "Power/Nuclear": 2.45,
+    "Miners/HPC": 2.4,
+    "Semis/AI Compute": 2.1,
+    "Photonics/Optics": 2.06,
+    "Healthcare (defensivo)": 0.03
+  },
+  "nota": "Retornos diarios 1 año. READ-ONLY: no modifica themes.json ni el universo validado."
+}
