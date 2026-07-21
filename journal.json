@@ -540,12 +540,16 @@
     "sector": "Electronic Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1783690200,
     "entryT": 1783690200,
     "entryPx": 81.0805,
     "rsi2": 2.7,
-    "relVol": 0.48
+    "relVol": 0.48,
+    "exitT": 1784554200,
+    "exitPx": 65.7071,
+    "exitReason": "TIME",
+    "retPct": -18.96
   },
   {
     "id": "RSI2:TTWO:1783690200",
@@ -728,11 +732,43 @@
     "sector": "Health Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1784208600,
     "entryT": 1784208600,
     "entryPx": 171.6358,
     "rsi2": 7.4,
-    "relVol": 0.74
+    "relVol": 0.74,
+    "exitT": 1784554200,
+    "exitPx": 172.9135,
+    "exitReason": "SMA5",
+    "retPct": 0.74
+  },
+  {
+    "id": "RSI2:WAT:1784554200",
+    "ticker": "WAT",
+    "tv": "NYSE:WAT",
+    "sector": "Health Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784554200,
+    "entryT": 1784554200,
+    "entryPx": 357.7188,
+    "rsi2": 6.2,
+    "relVol": 0.97
+  },
+  {
+    "id": "RSI2:BEN:1784554200",
+    "ticker": "BEN",
+    "tv": "NYSE:BEN",
+    "sector": "Finance",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784554200,
+    "entryT": 1784554200,
+    "entryPx": 32.2461,
+    "rsi2": 8.8,
+    "relVol": 0.77
   }
 ]
