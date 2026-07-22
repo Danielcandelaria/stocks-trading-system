@@ -718,12 +718,16 @@
     "sector": "Electronic Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1784208600,
     "entryT": 1784208600,
     "entryPx": 124.5622,
     "rsi2": 9.7,
-    "relVol": 1.32
+    "relVol": 1.32,
+    "exitT": 1784640600,
+    "exitPx": 135.7621,
+    "exitReason": "SMA5",
+    "retPct": 8.99
   },
   {
     "id": "RSI2:NBIX:1784208600",
@@ -770,5 +774,19 @@
     "entryPx": 32.2461,
     "rsi2": 8.8,
     "relVol": 0.77
+  },
+  {
+    "id": "RSI2:RBRK:1784640600",
+    "ticker": "RBRK",
+    "tv": "NYSE:RBRK",
+    "sector": "Technology Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784640600,
+    "entryT": 1784640600,
+    "entryPx": 75.8379,
+    "rsi2": 4.1,
+    "relVol": 0.67
   }
 ]
