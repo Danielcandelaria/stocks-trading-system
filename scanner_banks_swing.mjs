@@ -152,13 +152,13 @@ for (const u of scanList) {
     // para el dashboard/forward; a Telegram solo las accionables por tema.
     if (th && th.strength === 'strong') {
       await tgSend(buildStockAlert({
-        emoji: '🟩', system: 'Banks Swing', ticker: u.ticker, sector: u.sector,
-        theme: `TEMA: ${th.theme}`,
-        entry: +sig.entry, entryNote: 'a mercado (BOS confirmado)',
-        target: +sig.target, rr, targetNote: 'o salir si cierra bajo la EMA8',
-        stop: +sig.stop, stopNote: 'bajo el pullback / EMA8',
-        size: '1% riesgo', horizon: 'semanas a meses',
-        why: 'Banks: cruce 8/21 → expansión → pullback a la 8 → BOS → supply.',
+        emoji: '🟩', ticker: u.ticker, sector: u.sector,
+        theme: `Tema fuerte: ${th.theme}`,
+        entry: +sig.entry, entryWhen: 'a mercado, hoy',
+        target: +sig.target, rr,
+        stop: +sig.stop,
+        size: '1% de riesgo', horizon: 'Puede tardar semanas o meses',
+        why: 'Acción en tendencia alcista que hizo una pausa y vuelve a arrancar. Si pierde fuerza, sal antes del stop.',
         tv: u.tv,
       }));
     } else {

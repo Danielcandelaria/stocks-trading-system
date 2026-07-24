@@ -210,12 +210,12 @@ for (const u of universe) {
         });
         signals++;
         await notify(buildStockAlert({
-          emoji: '🔵', system: 'RSI2', ticker: u.ticker, sector: u.sector,
-          entry: entryPx, entryNote: 'a mercado, apertura US 15:30',
-          targetNote: `1er cierre diario sobre SMA5 (~$${s5[i].toFixed(2)}), en 2-3 días`,
-          noStopReason: 'spec validada · fuera SÍ o SÍ al 5º día',
-          size: 'chica (2-3%)',
-          why: `Pánico de corto plazo (RSI2=${r2[i].toFixed(1)}) en valor sobre su EMA200.`,
+          emoji: '🔵', ticker: u.ticker, sector: u.sector,
+          entry: entryPx, entryWhen: 'a mercado, apertura US 15:30h',
+          targetRule: `cuando el precio suba por encima de $${s5[i].toFixed(2)} al cierre (2-3 días normalmente)`,
+          noStop: true, size: '2-3% de la cuenta',
+          timeLimit: 'Máximo 5 días: si no ha subido, vende igual',
+          why: 'Compra un rebote tras una caída fuerte de 1-2 días en una acción que sigue en tendencia alcista.',
           tv: u.tv,
         }));
       }

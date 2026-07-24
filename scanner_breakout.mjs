@@ -95,12 +95,12 @@ async function managePositions(journal, ticker, weekly, e8, e21) {
         pos.riskPct = +((pos.entryPx - pos.stop) / pos.entryPx * 100).toFixed(1);
         if (NOW - hit.t < 4 * 86400) {
           await tgSend(buildStockAlert({
-            emoji: '🟢', system: 'Breakout', ticker,
-            entry: +pos.entryPx, entryNote: 'a mercado (retest confirmado)',
+            emoji: '🟢', ticker,
+            entry: +pos.entryPx, entryWhen: 'a mercado, hoy',
             target: +pos.tp, rr: 2,
             stop: +pos.stop,
-            horizon: 'semanas a meses',
-            why: 'Ruptura + retest a la zona: tomas el movimiento completo desde aquí.',
+            horizon: 'Puede tardar semanas o meses',
+            why: 'La acción rompió resistencia y ha vuelto a tocarla: desde aquí suele seguir subiendo.',
           }));
         } else {
           log(`${ticker}: retest histórico ${new Date(hit.t * 1000).toISOString().slice(0, 10)} — registrado sin alerta`);

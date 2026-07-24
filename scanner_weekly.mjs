@@ -117,12 +117,12 @@ for (const u of universe) {
     });
     signals++;
     await tgSend(buildStockAlert({
-      emoji: '🟣', system: 'Swing Semanal', ticker: u.ticker, sector: u.sector,
-      entry: entryPx, entryNote: 'apertura de la próxima semana',
-      targetNote: 'con el "13" semanal (techo) o ~12 meses',
-      stop, stopNote: 'bajo el suelo del setup-9',
-      size: '1% riesgo', horizon: 'semanas a meses (+20% a +100%)',
-      why: 'Aguante largo, WR bajo (~20%): pocas ganadoras, pero grandes.',
+      emoji: '🟣', ticker: u.ticker, sector: u.sector,
+      entry: entryPx, entryWhen: 'apertura de la próxima semana',
+      targetRule: 'cuando la subida se agote (puede tardar hasta ~12 meses)',
+      stop,
+      size: '1% de riesgo', horizon: 'Aguante largo: semanas a meses (busca +20% a +100%)',
+      why: 'Suelo tras una caída larga. Aciertan pocas, pero las que ganan son grandes: hay que tener paciencia.',
       tv: u.tv,
     }));
   }

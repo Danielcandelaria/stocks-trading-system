@@ -1,58 +1,60 @@
-// alert_format.mjs — formato ÚNICO y CONCISO de las señales de acciones.
+// alert_format.mjs — formato ÚNICO de las señales de acciones, en lenguaje llano.
 //
-// Motivación (2026-07-24): los avisos eran largos y cada scanner tenía el suyo,
-// mezclando explicación con niveles → confusos para operar. Este helper es la
-// ÚNICA fuente del formato: 3 líneas de niveles OPERABLES arriba (entra / sal /
-// stop, con precios exactos), y el "por qué" reducido a una línea al final.
+// Objetivo (2026-07-24): que se opere leyendo el móvil, sin saber nada de la
+// estrategia por dentro. Verbos imperativos (COMPRA / VENDE), los DOS tipos de
+// venta etiquetados en claro —"ganancia" vs "pérdida"— y CERO jerga en las
+// líneas de acción (nada de SMA5, BOS, EMA8, setup-9). El "por qué" va al final
+// en una frase de andar por casa.
 //
 // Regla del proyecto: formato compartido en UN sitio, no duplicado por scanner.
 //
 // buildStockAlert({
-//   emoji, system, ticker, sector, theme?,     // cabecera
-//   entry, entryNote?,                          // 🟢 a qué precio se ENTRA
-//   target?, rr?, targetNote?,                  // 🎯 a qué precio se SALE con beneficio
-//   stop?, stopNote?,                           // 🛑 a qué precio se corta la pérdida
-//   noStopReason?,                              // si la estrategia NO lleva stop (RSI2): por qué
-//   horizon?, size?, why?, tv?                  // pie
-// })  → string HTML listo para Telegram.
+//   emoji, ticker, sector?, theme?,
+//   entry, entryWhen?,          // 🟢 COMPRA: precio + cuándo ("a mercado", "apertura US 15:30h")
+//   target?, rr?,               // 🎯 VENDE con GANANCIA a un precio fijo
+//   targetRule?,                // 🎯 VENDE con GANANCIA por REGLA (cuando no hay precio fijo)
+//   stop?,                      // 🛑 VENDE por PÉRDIDA a este precio
+//   noStop?, size?,             // sistemas sin stop → aviso de posición pequeña
+//   timeLimit?,                 // ⏱ "Máximo 5 días: si no sube, vende igual"
+//   horizon?, why?, tv?
+// })  → string HTML para Telegram.
 
 const money = n => `$${Number(n).toFixed(2)}`;
-const pct = (a, b) => `${((a - b) / b * 100).toFixed(1)}%`;   // variación de a respecto a b
+const pct = (a, b) => `${Math.abs((a - b) / b * 100).toFixed(1)}%`;
 
 export function buildStockAlert(o) {
   const L = [];
-
-  // ── Cabecera: acción + sistema, sin ruido ──
-  L.push(`${o.emoji} <b>COMPRA ${o.ticker}</b> · ${o.system}`);
+  L.push(`${o.emoji} <b>COMPRA — ${o.ticker}</b>`);
   if (o.theme) L.push(`🔥 ${o.theme}`);
   L.push('━━━━━━━━━━━━━━━');
 
-  // ── Los 3 niveles OPERABLES, en el orden en que se usan ──
-  L.push(`🟢 <b>ENTRA</b>   ${money(o.entry)}${o.entryNote ? `  <i>${o.entryNote}</i>` : ''}`);
+  // 🟢 Qué comprar y a cuánto
+  L.push(`🟢 <b>COMPRA</b> a ${money(o.entry)}${o.entryWhen ? `  <i>(${o.entryWhen})</i>` : ''}`);
 
+  // 🎯 Vender para GANAR — precio fijo o regla en claro
   if (o.target != null) {
-    const gain = `+${pct(o.target, o.entry)}${o.rr ? ` · +${o.rr}R` : ''}`;
-    L.push(`🎯 <b>SAL</b>     ${money(o.target)}  <i>${gain}${o.targetNote ? ` · ${o.targetNote}` : ''}</i>`);
-  } else if (o.targetNote) {
-    // Sistemas sin precio fijo de salida (RSI2, Weekly): la regla, en una línea.
-    L.push(`🎯 <b>SAL</b>     <i>${o.targetNote}</i>`);
+    const g = `+${pct(o.target, o.entry)}${o.rr ? ` · +${o.rr}R` : ''}`;
+    L.push(`🎯 <b>VENDE con ganancia</b> a ${money(o.target)}  <i>(${g})</i>`);
+  } else if (o.targetRule) {
+    L.push(`🎯 <b>VENDE con ganancia</b>: <i>${o.targetRule}</i>`);
   }
 
+  // 🛑 Vender para CORTAR PÉRDIDA — o aviso de que no hay stop
   if (o.stop != null) {
-    L.push(`🛑 <b>STOP</b>    ${money(o.stop)}  <i>−${pct(o.entry, o.stop).replace('-', '')}${o.stopNote ? ` · ${o.stopNote}` : ''}</i>`);
-  } else {
-    // Honestidad: si la spec NO lleva stop, se dice — no se inventa un nivel.
-    L.push(`🛑 <b>STOP</b>    <i>sin stop — ${o.noStopReason || 'salida por tiempo'}</i>`);
+    L.push(`🛑 <b>VENDE si baja</b> a ${money(o.stop)}  <i>(−${pct(o.entry, o.stop)}, corta la pérdida)</i>`);
+  } else if (o.noStop) {
+    L.push(`🛡 <b>Sin stop</b> — por eso, <b>poco dinero</b>${o.size ? ` (${o.size})` : ''}`);
   }
 
-  // ── Pie compacto: tamaño, horizonte, contexto ──
-  L.push('━━━━━━━━━━━━━━━');
-  const pie = [];
-  if (o.size) pie.push(`📐 ${o.size}`);
-  if (o.horizon) pie.push(`⏳ ${o.horizon}`);
-  if (pie.length) L.push(pie.join('  ·  '));
-  if (o.why) L.push(`<i>${o.why}</i>`);
-  if (o.tv) L.push(`TV: ${o.tv}`);
+  // ⏱ Límite de tiempo (opcional)
+  if (o.timeLimit) L.push(`⏱ ${o.timeLimit}`);
+  // 📐 Tamaño (cuando SÍ hay stop)
+  if (o.size && !o.noStop) L.push(`📐 Tamaño: ${o.size}`);
+  // ⏳ Cuánto puede durar
+  if (o.horizon) L.push(`⏳ ${o.horizon}`);
 
+  L.push('━━━━━━━━━━━━━━━');
+  if (o.why) L.push(`💡 <i>${o.why}</i>`);
+  if (o.tv) L.push(`<i>TV: ${o.tv}</i>`);
   return L.join('\n');
 }
