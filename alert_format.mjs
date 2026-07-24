@@ -39,17 +39,23 @@ export function buildStockAlert(o) {
     L.push(`🎯 <b>VENDE con ganancia</b>: <i>${o.targetRule}</i>`);
   }
 
-  // 🛑 Vender para CORTAR PÉRDIDA — o aviso de que no hay stop
-  if (o.stop != null) {
-    L.push(`🛑 <b>VENDE si baja</b> a ${money(o.stop)}  <i>(−${pct(o.entry, o.stop)}, corta la pérdida)</i>`);
+  // 🛑 Vender para CORTAR PÉRDIDA. Dos sabores:
+  //   normal      → stop de la estrategia (Breakout/Banks/Weekly)
+  //   catastrofe  → suelo lejano (RSI2 −20%): sincero sobre que es solo un tope
+  // Nota: la pérdida se mide respecto al ENTRY → pct(stop, entry) = (entry-stop)/entry.
+  if (o.stop != null && o.stopKind === 'catastrofe') {
+    L.push(`🛑 <b>Suelo de catástrofe</b>: vende si cae a ${money(o.stop)}  <i>(−${pct(o.stop, o.entry)}, tope extremo)</i>`);
+  } else if (o.stop != null) {
+    L.push(`🛑 <b>VENDE si baja</b> a ${money(o.stop)}  <i>(−${pct(o.stop, o.entry)}, corta la pérdida)</i>`);
   } else if (o.noStop) {
     L.push(`🛡 <b>Sin stop</b> — por eso, <b>poco dinero</b>${o.size ? ` (${o.size})` : ''}`);
   }
 
   // ⏱ Límite de tiempo (opcional)
   if (o.timeLimit) L.push(`⏱ ${o.timeLimit}`);
-  // 📐 Tamaño (cuando SÍ hay stop)
-  if (o.size && !o.noStop) L.push(`📐 Tamaño: ${o.size}`);
+  // 🛡/📐 Tamaño. Si es la RED principal (RSI2), se destaca como tal.
+  if (o.size && o.sizeIsNet) L.push(`🛡 <b>Tu red = posición pequeña</b>: ${o.size} (un desplome extremo así es solo un mal día)`);
+  else if (o.size && !o.noStop && o.stopKind !== 'catastrofe') L.push(`📐 Tamaño: ${o.size}`);
   // ⏳ Cuánto puede durar
   if (o.horizon) L.push(`⏳ ${o.horizon}`);
 

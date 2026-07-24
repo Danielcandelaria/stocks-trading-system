@@ -115,21 +115,38 @@ async function getBars(ticker) {
 
 // ---------- gestión de posiciones paper abiertas ----------
 // RSI2 (mean reversion, estilo Connors validado 2026-06-11: PF 1.36, WF 4/4):
-// SIN stop — salida al cierre sobre SMA5 o time-stop 5 velas.
+// Salida al cierre sobre SMA5 o time-stop 5 velas + STOP DE CATÁSTROFE −20%.
+//
+// El −20% se añadió el 2026-07-24 tras backtest (backtest_rsi2_safetynet.mjs,
+// 3235 señales): un stop CERCANO destruye el edge (EMA10 −70%, −8% −13%) porque
+// en mean-reversion salta en el punto de máximo edge. El −20% cuesta −2pp de
+// +2414 (nada) y salta 5 veces en 2 años: es un SUELO de catástrofe, no una
+// salida normal. NO protege de gaps (abren ya por debajo) — la red real es el
+// TAMAÑO PEQUEÑO. Es un límite de tranquilidad, honesto sobre lo que hace.
+const RSI2_DISASTER = 0.20;                       // stop de catástrofe (fracción)
 function manageOpenRSI2(journal, ticker, bars, s5) {
   for (const pos of journal.filter(p => p.ticker === ticker && p.status === 'open' && p.strategy === 'RSI2')) {
     const startIdx = bars.findIndex(b => b.t > pos.entryT);
     if (startIdx < 0) continue;
+    const disaster = pos.entryPx * (1 - RSI2_DISASTER);
     for (let i = Math.max(startIdx, bars.length - 15); i < bars.length; i++) {
       const b = bars[i];
-      if ((s5[i] != null && b.c > s5[i]) || i - startIdx >= 5) {
-        const px = b.c * (1 - COST);
+      let exitPx = null, reason = null;
+      if (b.l <= disaster) {                       // catástrofe primero (peor caso)
+        exitPx = Math.min(b.o, disaster); reason = 'CATASTROFE';
+      } else if (s5[i] != null && b.c > s5[i]) {
+        exitPx = b.c; reason = 'SMA5';
+      } else if (i - startIdx >= 5) {
+        exitPx = b.c; reason = 'TIME';
+      }
+      if (exitPx != null) {
+        const px = exitPx * (1 - COST);
         pos.status = 'closed'; pos.exitT = b.t; pos.exitPx = +px.toFixed(4);
-        pos.exitReason = i - startIdx >= 5 ? 'TIME' : 'SMA5';
+        pos.exitReason = reason;
         pos.retPct = +((px / pos.entryPx - 1) * 100).toFixed(2);
         // CIERRE: solo INTERNO (log + journal → dashboard), NO a Telegram.
         // El usuario solo quiere señales de COMPRA en Telegram (2026-07-06).
-        log(`CIERRE RSI2 ${ticker}: ${pos.retPct > 0 ? '+' : ''}${pos.retPct}% en ${i - startIdx}d (${pos.exitReason}) — no Telegram`);
+        log(`CIERRE RSI2 ${ticker}: ${pos.retPct > 0 ? '+' : ''}${pos.retPct}% en ${i - startIdx}d (${reason}) — no Telegram`);
         break;
       }
     }
@@ -203,9 +220,11 @@ for (const u of universe) {
         // confirmar el hallazgo en forward sin cambiar la spec en validación.
         const vAvg = bars.slice(Math.max(0, i - 20), i).reduce((s, x) => s + x.v, 0) / Math.min(i, 20);
         const relVol = vAvg ? +(bars[i].v / vAvg).toFixed(2) : null;
+        const disasterPx = +(entryPx * (1 - RSI2_DISASTER)).toFixed(2);
         journal.push({
           id: rKey, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'RSI2', variant: 'RSI2',
           status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
+          stop: disasterPx,                        // stop de catástrofe −20% (trackeado)
           rsi2: +r2[i].toFixed(1), relVol,
         });
         signals++;
@@ -213,7 +232,9 @@ for (const u of universe) {
           emoji: '🔵', ticker: u.ticker, sector: u.sector,
           entry: entryPx, entryWhen: 'a mercado, apertura US 15:30h',
           targetRule: `cuando el precio suba por encima de $${s5[i].toFixed(2)} al cierre (2-3 días normalmente)`,
-          noStop: true, size: '2-3% de la cuenta',
+          stop: disasterPx, stopKind: 'catastrofe',   // suelo de catástrofe, no salida normal
+          size: '2-3% de la cuenta',
+          sizeIsNet: true,                            // el tamaño ES la red principal → destacarlo
           timeLimit: 'Máximo 5 días: si no ha subido, vende igual',
           why: 'Compra un rebote tras una caída fuerte de 1-2 días en una acción que sigue en tendencia alcista.',
           tv: u.tv,
