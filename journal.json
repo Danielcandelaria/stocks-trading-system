@@ -672,12 +672,16 @@
     "sector": "Electronic Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1784122200,
     "entryT": 1784122200,
     "entryPx": 541.3906,
     "rsi2": 4.7,
-    "relVol": 0.47
+    "relVol": 0.47,
+    "exitT": 1784813400,
+    "exitPx": 491.654,
+    "exitReason": "TIME",
+    "retPct": -9.19
   },
   {
     "id": "RSI2:SYY:1784122200",
@@ -804,11 +808,57 @@
     "sector": "Health Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1784727000,
     "entryT": 1784727000,
     "entryPx": 198.6193,
     "rsi2": 4.4,
-    "relVol": 0.77
+    "relVol": 0.77,
+    "exitT": 1784813400,
+    "exitPx": 207.2163,
+    "exitReason": "SMA5",
+    "retPct": 4.33
+  },
+  {
+    "id": "RSI2:PANW:1784813400",
+    "ticker": "PANW",
+    "tv": "NASDAQ:PANW",
+    "sector": "Technology Services",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784813400,
+    "entryT": 1784813400,
+    "entryPx": 325.7928,
+    "rsi2": 3.2,
+    "relVol": 0.8
+  },
+  {
+    "id": "RSI2:KDP:1784813400",
+    "ticker": "KDP",
+    "tv": "NASDAQ:KDP",
+    "sector": "Consumer Non-Durables",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784813400,
+    "entryT": 1784813400,
+    "entryPx": 29.6848,
+    "rsi2": 5,
+    "relVol": 0.87
+  },
+  {
+    "id": "RSI2:RJF:1784813400",
+    "ticker": "RJF",
+    "tv": "NYSE:RJF",
+    "sector": "Finance",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1784813400,
+    "entryT": 1784813400,
+    "entryPx": 166.2231,
+    "rsi2": 4.3,
+    "relVol": 1.55
   }
 ]
