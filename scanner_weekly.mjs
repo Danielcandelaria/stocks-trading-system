@@ -1,4 +1,5 @@
 // stocks/scanner_weekly.mjs
+import { buildStockAlert } from './alert_format.mjs';
 // CUARTO SISTEMA (paper) — DeMark-9 SEMANAL de aguante largo ("swing de meses").
 // Origen: idea de Carlos Mantilla + corrección visual del usuario (CRDO: se compra
 // el 9-SUELO, no el 13-TECHO). Backtest 10y semanal: PF 3.98 vs azar 2.31 (bate al
@@ -115,14 +116,15 @@ for (const u of universe) {
       stop: +stop.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
     });
     signals++;
-    await tgSend(`🟣 <b>SEÑAL SWING SEMANAL — COMPRA (LONG)</b>\n<b>${u.ticker}</b> — ${u.sector}` +
-      `\n` +
-      `\n📍 <b>ENTRADA</b>: comprar en la apertura de la próxima semana ~$${entryPx.toFixed(2)}` +
-      `\n🛑 <b>STOP</b>: $${stop.toFixed(2)} (−${(risk / entryPx * 100).toFixed(1)}%) — bajo el suelo del setup-9` +
-      `\n🎯 <b>SALIDA</b>: cuando aparezca el "13" semanal (techo) o tras ~12 meses` +
-      `\n⏳ <b>Horizonte</b>: SEMANAS a MESES (busca +20% a +100%) — paciencia` +
-      `\n📐 <b>Tamaño</b>: 1% de riesgo / distancia al stop (posición acorde al stop ancho)` +
-      `\n\n⚠️ Sistema de aguante largo, WR bajo (~20%): la mayoría pierden poco, los ganadores son grandes. TV (semanal): ${u.tv}`);
+    await tgSend(buildStockAlert({
+      emoji: '🟣', system: 'Swing Semanal', ticker: u.ticker, sector: u.sector,
+      entry: entryPx, entryNote: 'apertura de la próxima semana',
+      targetNote: 'con el "13" semanal (techo) o ~12 meses',
+      stop, stopNote: 'bajo el suelo del setup-9',
+      size: '1% riesgo', horizon: 'semanas a meses (+20% a +100%)',
+      why: 'Aguante largo, WR bajo (~20%): pocas ganadoras, pero grandes.',
+      tv: u.tv,
+    }));
   }
 }
 

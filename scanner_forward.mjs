@@ -1,4 +1,5 @@
 // stocks/scanner_forward.mjs
+import { buildStockAlert } from './alert_format.mjs';
 // Scanner FORWARD en PAPER — acciones US, diario. Sistema PARALELO:
 // no toca chart/CDP/mutex ni nada del motor forex.
 //
@@ -208,14 +209,15 @@ for (const u of universe) {
           rsi2: +r2[i].toFixed(1), relVol,
         });
         signals++;
-        await notify(`🔵 <b>SEÑAL RSI2 — COMPRA (LONG)</b>\n<b>${u.ticker}</b> — ${u.sector}` +
-          `\n` +
-          `\n📍 <b>ENTRADA</b>: comprar a mercado en la apertura US (15:30) ~$${entryPx.toFixed(2)}` +
-          `\n🛑 <b>STOP</b>: NO lleva (spec validada) — el riesgo se controla con tamaño PEQUEÑO y salida en 5 días máx` +
-          `\n🎯 <b>SALIDA</b>: vender al PRIMER cierre diario por encima de la SMA5 (hoy en $${s5[i].toFixed(2)}) — suele ser en 2-3 días` +
-          `\n⏱ Si al 5º día no salió: vender a mercado al cierre SÍ o SÍ` +
-          `\n📐 <b>Tamaño</b>: máx 2-3% de la cuenta por posición (sin stop ⇒ posición chica)` +
-          `\n\nSetup: pánico de corto plazo (RSI2=${r2[i].toFixed(1)}) en valor sobre su EMA200 (D). TV: ${u.tv}`);
+        await notify(buildStockAlert({
+          emoji: '🔵', system: 'RSI2', ticker: u.ticker, sector: u.sector,
+          entry: entryPx, entryNote: 'a mercado, apertura US 15:30',
+          targetNote: `1er cierre diario sobre SMA5 (~$${s5[i].toFixed(2)}), en 2-3 días`,
+          noStopReason: 'spec validada · fuera SÍ o SÍ al 5º día',
+          size: 'chica (2-3%)',
+          why: `Pánico de corto plazo (RSI2=${r2[i].toFixed(1)}) en valor sobre su EMA200.`,
+          tv: u.tv,
+        }));
       }
     }
   }

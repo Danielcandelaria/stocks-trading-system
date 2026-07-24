@@ -1,4 +1,5 @@
 // stocks/scanner_banks_swing.mjs
+import { buildStockAlert } from './alert_format.mjs';
 // RÉPLICA FIEL de la estrategia de Justin Banks (@RealJGBanks) — "Best Swing Setup".
 // Distinta del BreakoutRetest simplificado: aquí se implementan los 5 PASOS COMPLETOS.
 //
@@ -150,14 +151,16 @@ for (const u of scanList) {
     // + evita spam: dispara ~24/sem en el universo entero). El journal registra TODO
     // para el dashboard/forward; a Telegram solo las accionables por tema.
     if (th && th.strength === 'strong') {
-      await tgSend(`🟩 <b>SEÑAL BANKS SWING — COMPRA (LONG)</b>\n<b>${u.ticker}</b> — ${u.sector}` +
-        `\n🔥 <b>TEMA: ${th.theme}</b>` +
-        `\n` +
-        `\n📍 <b>ENTRADA</b>: a mercado ~$${sig.entry.toFixed(2)} (BOS confirmado: cierre semanal sobre el máximo del pullback)` +
-        `\n🛑 <b>STOP</b>: $${sig.stop.toFixed(2)} (−${sig.riskPct}%) — bajo el pullback / la EMA8` +
-        `\n🎯 <b>TARGET</b>: $${sig.target.toFixed(2)} (siguiente supply, +${rr}R) · o salir si cierra bajo la EMA8` +
-        `\n📐 <b>Tamaño</b>: 1% riesgo / distancia al stop` +
-        `\n\nMétodo Banks (5 pasos): cruce 8/21 → expansión → pullback a la 8 → BOS → siguiente supply. TV (semanal): ${u.tv}`);
+      await tgSend(buildStockAlert({
+        emoji: '🟩', system: 'Banks Swing', ticker: u.ticker, sector: u.sector,
+        theme: `TEMA: ${th.theme}`,
+        entry: +sig.entry, entryNote: 'a mercado (BOS confirmado)',
+        target: +sig.target, rr, targetNote: 'o salir si cierra bajo la EMA8',
+        stop: +sig.stop, stopNote: 'bajo el pullback / EMA8',
+        size: '1% riesgo', horizon: 'semanas a meses',
+        why: 'Banks: cruce 8/21 → expansión → pullback a la 8 → BOS → supply.',
+        tv: u.tv,
+      }));
     } else {
       log(`entrada BOS ${u.ticker} (sin tema fuerte) — solo journal/dashboard, no Telegram`);
     }

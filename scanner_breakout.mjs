@@ -1,4 +1,5 @@
 // stocks/scanner_breakout.mjs
+import { buildStockAlert } from './alert_format.mjs';
 // 5º SISTEMA (paper) — BREAKOUT RETEST SEMANAL (idea Justin Banks @RealUGBanks).
 // Backtest 10y semanal: PF 2.65 vs azar 1.37, meseta robusta (18/18 WF 4/4),
 // correlación 0.04 con el swing de Carlos (diversifica).
@@ -93,10 +94,14 @@ async function managePositions(journal, ticker, weekly, e8, e21) {
         pos.tp = +(pos.entryPx + TP_R * (pos.entryPx - pos.stop)).toFixed(4);
         pos.riskPct = +((pos.entryPx - pos.stop) / pos.entryPx * 100).toFixed(1);
         if (NOW - hit.t < 4 * 86400) {
-          await tgSend(`🟢🟠 <b>RETEST AHORA — ENTRA</b> — ${ticker}\n` +
-            `El precio entró en la zona de retest: <b>COMPRA a mercado ~$${pos.entryPx}</b>\n` +
-            `🛑 Stop $${pos.stop} (−${pos.riskPct}%) · 🎯 Target $${pos.tp} (+2R)\n` +
-            `Aguante: semanas a meses. Esta es tu entrada — tomas el movimiento completo desde aquí.`);
+          await tgSend(buildStockAlert({
+            emoji: '🟢', system: 'Breakout', ticker,
+            entry: +pos.entryPx, entryNote: 'a mercado (retest confirmado)',
+            target: +pos.tp, rr: 2,
+            stop: +pos.stop,
+            horizon: 'semanas a meses',
+            why: 'Ruptura + retest a la zona: tomas el movimiento completo desde aquí.',
+          }));
         } else {
           log(`${ticker}: retest histórico ${new Date(hit.t * 1000).toISOString().slice(0, 10)} — registrado sin alerta`);
         }
