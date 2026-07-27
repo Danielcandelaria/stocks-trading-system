@@ -181,5 +181,14 @@
   "BK:OVV:1783915200": true,
   "BK:NWS:1783915200": true,
   "BK:DOC:1783915200": true,
-  "BK:REG:1783915200": true
+  "BK:REG:1783915200": true,
+  "BK:GD:1784520000": true,
+  "BK:MMM:1784520000": true,
+  "BK:EOG:1784520000": true,
+  "BK:PCAR:1784520000": true,
+  "BK:OXY:1784520000": true,
+  "BK:LNG:1784520000": true,
+  "BK:HIG:1784520000": true,
+  "BK:CF:1784520000": true,
+  "BK:OVV:1784520000": true
 }
