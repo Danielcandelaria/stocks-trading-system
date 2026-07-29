@@ -194,5 +194,12 @@
   "BK:JPM:1784520000": true,
   "BK:DLR:1784520000": true,
   "BK:HPQ:1784520000": true,
-  "BK:SW:1784520000": true
+  "BK:SW:1784520000": true,
+  "BK:DUK:1784520000": true,
+  "BK:ALL:1784520000": true,
+  "BK:ACGL:1784520000": true,
+  "BK:IRM:1784520000": true,
+  "BK:FE:1784520000": true,
+  "BK:WRB:1784520000": true,
+  "BK:SOLV:1783915200": true
 }
