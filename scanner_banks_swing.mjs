@@ -152,13 +152,12 @@ for (const u of scanList) {
     // para el dashboard/forward; a Telegram solo las accionables por tema.
     if (th && th.strength === 'strong') {
       await tgSend(buildStockAlert({
-        emoji: '🟩', ticker: u.ticker, sector: u.sector,
-        theme: `Tema fuerte: ${th.theme}`,
-        entry: +sig.entry, entryWhen: 'a mercado, hoy',
+        emoji: '🟩', ticker: u.ticker,
+        theme: th.theme,
+        entry: +sig.entry,
         target: +sig.target, rr,
         stop: +sig.stop,
-        size: '1% de riesgo', horizon: 'Puede tardar semanas o meses',
-        why: 'Acción en tendencia alcista que hizo una pausa y vuelve a arrancar. Si pierde fuerza, sal antes del stop.',
+        note: 'swing: semanas a meses',
         tv: u.tv,
       }));
     } else {

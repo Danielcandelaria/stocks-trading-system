@@ -229,14 +229,11 @@ for (const u of universe) {
         });
         signals++;
         await notify(buildStockAlert({
-          emoji: '🔵', ticker: u.ticker, sector: u.sector,
-          entry: entryPx, entryWhen: 'a mercado, apertura US 15:30h',
-          targetRule: `cuando el precio suba por encima de $${s5[i].toFixed(2)} al cierre (2-3 días normalmente)`,
-          stop: disasterPx, stopKind: 'catastrofe',   // suelo de catástrofe, no salida normal
-          size: '2-3% de la cuenta',
-          sizeIsNet: true,                            // el tamaño ES la red principal → destacarlo
-          timeLimit: 'Máximo 5 días: si no ha subido, vende igual',
-          why: 'Compra un rebote tras una caída fuerte de 1-2 días en una acción que sigue en tendencia alcista.',
+          emoji: '🔵', ticker: u.ticker,
+          entry: entryPx,
+          target: +s5[i].toFixed(2),                  // aprox: cierre sobre la SMA5
+          stop: disasterPx, stopKind: 'catastrofe',
+          note: 'o vende a los 5 días',
           tv: u.tv,
         }));
       }

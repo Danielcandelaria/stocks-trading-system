@@ -96,11 +96,11 @@ async function managePositions(journal, ticker, weekly, e8, e21) {
         if (NOW - hit.t < 4 * 86400) {
           await tgSend(buildStockAlert({
             emoji: '🟢', ticker,
-            entry: +pos.entryPx, entryWhen: 'a mercado, hoy',
+            entry: +pos.entryPx,
             target: +pos.tp, rr: 2,
             stop: +pos.stop,
-            horizon: 'Puede tardar semanas o meses',
-            why: 'La acción rompió resistencia y ha vuelto a tocarla: desde aquí suele seguir subiendo.',
+            note: 'swing: semanas a meses',
+            tv: pos.tv,
           }));
         } else {
           log(`${ticker}: retest histórico ${new Date(hit.t * 1000).toISOString().slice(0, 10)} — registrado sin alerta`);

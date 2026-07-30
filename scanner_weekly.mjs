@@ -117,12 +117,11 @@ for (const u of universe) {
     });
     signals++;
     await tgSend(buildStockAlert({
-      emoji: '🟣', ticker: u.ticker, sector: u.sector,
-      entry: entryPx, entryWhen: 'apertura de la próxima semana',
-      targetRule: 'cuando la subida se agote (puede tardar hasta ~12 meses)',
+      emoji: '🟣', ticker: u.ticker,
+      entry: entryPx,
+      targetRule: 'cuando se agote (meses)',
       stop,
-      size: '1% de riesgo', horizon: 'Aguante largo: semanas a meses (busca +20% a +100%)',
-      why: 'Suelo tras una caída larga. Aciertan pocas, pero las que ganan son grandes: hay que tener paciencia.',
+      note: 'aguante largo · posición 1%',
       tv: u.tv,
     }));
   }
