@@ -124,10 +124,24 @@ async function getBars(ticker) {
 // salida normal. NO protege de gaps (abren ya por debajo) — la red real es el
 // TAMAÑO PEQUEÑO. Es un límite de tranquilidad, honesto sobre lo que hace.
 const RSI2_DISASTER = 0.20;                       // stop de catástrofe (fracción)
+const RSI2_GAP_MAX = 0.05;                        // guardia de gap: no entrar si abre >5% arriba
 function manageOpenRSI2(journal, ticker, bars, s5) {
   for (const pos of journal.filter(p => p.ticker === ticker && p.status === 'open' && p.strategy === 'RSI2')) {
     const startIdx = bars.findIndex(b => b.t > pos.entryT);
     if (startIdx < 0) continue;
+    // GUARDIA DE GAP (2026-07-30, backtest 3238 señales): si la acción ABRE el
+    // día de compra >5% sobre el cierre de la señal, el rebote ya ocurrió de
+    // noche → se estaría persiguiendo. Ese tramo (gap>5%) rinde −1.04%/26%WR;
+    // saltárselo mejora el total +24pp descartando solo los peores. Idea del
+    // diagrama "fill_engine revalida al precio real", con el umbral correcto
+    // para RSI2 (5%, no 3% — el tramo 2-5% SÍ es rentable, no se toca).
+    if (pos.signalClose != null && bars[startIdx].o > pos.signalClose * (1 + RSI2_GAP_MAX)) {
+      pos.status = 'cancelled'; pos.exitReason = 'GAP_GUARD';
+      pos.exitT = bars[startIdx].t;
+      pos.gapPct = +((bars[startIdx].o / pos.signalClose - 1) * 100).toFixed(1);
+      log(`RSI2 ${ticker}: CANCELADA — abrió +${pos.gapPct}% (gap>5%), no se persigue`);
+      continue;
+    }
     const disaster = pos.entryPx * (1 - RSI2_DISASTER);
     for (let i = Math.max(startIdx, bars.length - 15); i < bars.length; i++) {
       const b = bars[i];
@@ -221,9 +235,11 @@ for (const u of universe) {
         const vAvg = bars.slice(Math.max(0, i - 20), i).reduce((s, x) => s + x.v, 0) / Math.min(i, 20);
         const relVol = vAvg ? +(bars[i].v / vAvg).toFixed(2) : null;
         const disasterPx = +(entryPx * (1 - RSI2_DISASTER)).toFixed(2);
+        const gapLimit = +(bars[i].c * (1 + RSI2_GAP_MAX)).toFixed(2);   // no perseguir si abre por encima
         journal.push({
           id: rKey, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'RSI2', variant: 'RSI2',
           status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
+          signalClose: bars[i].c,                  // ref para la guardia de gap
           stop: disasterPx,                        // stop de catástrofe −20% (trackeado)
           rsi2: +r2[i].toFixed(1), relVol,
         });
@@ -233,7 +249,7 @@ for (const u of universe) {
           entry: entryPx,
           target: +s5[i].toFixed(2),                  // aprox: cierre sobre la SMA5
           stop: disasterPx, stopKind: 'catastrofe',
-          note: 'o vende a los 5 días',
+          note: `NO entres si abre sobre $${gapLimit} (+5%) · o vende a los 5 días`,
           tv: u.tv,
         }));
       }
