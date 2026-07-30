@@ -1054,5 +1054,21 @@
     "tp": 234.7317,
     "risk": 13.7717,
     "riskPct": 7.12
+  },
+  {
+    "id": "RSI2:AVGO:1785331800",
+    "ticker": "AVGO",
+    "tv": "NASDAQ:AVGO",
+    "sector": "Electronic Technology",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "open",
+    "signalT": 1785331800,
+    "entryT": 1785331800,
+    "entryPx": 370.5052,
+    "signalClose": 370.32000732421875,
+    "stop": 296.4,
+    "rsi2": 5.9,
+    "relVol": 1
   }
 ]
