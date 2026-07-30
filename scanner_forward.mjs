@@ -130,19 +130,9 @@ function manageOpenRSI2(journal, ticker, bars, s5) {
   for (const pos of journal.filter(p => p.ticker === ticker && p.status === 'open' && p.strategy === 'RSI2')) {
     const startIdx = bars.findIndex(b => b.t > pos.entryT);
     if (startIdx < 0) continue;
-    // GUARDIA DE GAP (2026-07-30, backtest 3238 señales): si la acción ABRE el
-    // día de compra >5% sobre el cierre de la señal, el rebote ya ocurrió de
-    // noche → se estaría persiguiendo. Ese tramo (gap>5%) rinde −1.04%/26%WR;
-    // saltárselo mejora el total +24pp descartando solo los peores. Idea del
-    // diagrama "fill_engine revalida al precio real", con el umbral correcto
-    // para RSI2 (5%, no 3% — el tramo 2-5% SÍ es rentable, no se toca).
-    if (pos.signalClose != null && bars[startIdx].o > pos.signalClose * (1 + RSI2_GAP_MAX)) {
-      pos.status = 'cancelled'; pos.exitReason = 'GAP_GUARD';
-      pos.exitT = bars[startIdx].t;
-      pos.gapPct = +((bars[startIdx].o / pos.signalClose - 1) * 100).toFixed(1);
-      log(`RSI2 ${ticker}: CANCELADA — abrió +${pos.gapPct}% (gap>5%), no se persigue`);
-      continue;
-    }
+    // (La guardia de gap >5% se aplica ANTES, en confirm_open.mjs, al confirmar
+    //  la entrada tras la apertura US. Aquí solo se gestionan posiciones ya
+    //  confirmadas 'open', cuya entrada es la apertura real del día de compra.)
     const disaster = pos.entryPx * (1 - RSI2_DISASTER);
     for (let i = Math.max(startIdx, bars.length - 15); i < bars.length; i++) {
       const b = bars[i];
@@ -235,28 +225,23 @@ for (const u of universe) {
         // confirmar el hallazgo en forward sin cambiar la spec en validación.
         const vAvg = bars.slice(Math.max(0, i - 20), i).reduce((s, x) => s + x.v, 0) / Math.min(i, 20);
         const relVol = vAvg ? +(bars[i].v / vAvg).toFixed(2) : null;
-        const disasterPx = +(entryPx * (1 - RSI2_DISASTER)).toFixed(2);
-        const gapLimit = +(bars[i].c * (1 + RSI2_GAP_MAX)).toFixed(2);   // no perseguir si abre por encima
-        // VERIFICADOR DE COHERENCIA: el número no cuadra → no se registra ni se avisa.
-        const chk = coherentTrade({ ticker: u.ticker, entry: entryPx, stop: disasterPx, target: s5[i] }, bars[i]);
+        // VERIFICADOR DE COHERENCIA: el número no cuadra → no se registra.
+        const chk = coherentTrade({ ticker: u.ticker, entry: entryPx, stop: +(entryPx * (1 - RSI2_DISASTER)).toFixed(2), target: s5[i] }, bars[i]);
         if (!chk.ok) { log(`RSI2 ${u.ticker}: DESCARTADA por coherencia — ${chk.reason}`); seen[rKey] = true; continue; }
+        // 2 FASES (2026-07-30): el scan corre ANTES de la apertura US → aún no
+        // se sabe el gap. La señal queda PENDING_OPEN (sin avisar); confirm_open.mjs
+        // la confirma tras la apertura, comprueba el gap ≤5% él solo, y solo
+        // entonces manda "COMPRA ahora". El usuario NO revisa nada.
         journal.push({
           id: rKey, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'RSI2', variant: 'RSI2',
-          status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
-          signalClose: bars[i].c,                  // ref para la guardia de gap
-          stop: disasterPx,                        // stop de catástrofe −20% (trackeado)
+          status: 'pending_open', signalT: bars[i].t,
+          signalClose: bars[i].c,                  // ref del gap (apertura vs este cierre)
+          targetRef: +s5[i].toFixed(2),            // SMA5: referencia de venta
           rsi2: +r2[i].toFixed(1), relVol,
         });
-        logDecision({ system: 'RSI2', action: 'ENTER', ticker: u.ticker, entry: entryPx, stop: disasterPx, target: +s5[i].toFixed(2), rsi2: +r2[i].toFixed(1) });
+        logDecision({ system: 'RSI2', action: 'DETECT', ticker: u.ticker, signalClose: bars[i].c, rsi2: +r2[i].toFixed(1) });
         signals++;
-        await notify(buildStockAlert({
-          emoji: '🔵', ticker: u.ticker,
-          entry: entryPx,
-          target: +s5[i].toFixed(2),                  // aprox: cierre sobre la SMA5
-          stop: disasterPx, stopKind: 'catastrofe',
-          note: `NO entres si abre sobre $${gapLimit} (+5%) · o vende a los 5 días`,
-          tv: u.tv,
-        }));
+        log(`RSI2 ${u.ticker}: señal detectada → PENDIENTE de confirmar al abrir (gap ≤5%), sin avisar aún`);
       }
     }
   }
