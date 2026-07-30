@@ -1,5 +1,6 @@
 // stocks/scanner_forward.mjs
 import { buildStockAlert } from './alert_format.mjs';
+import { coherentTrade, logDecision } from './integrity.mjs';
 // Scanner FORWARD en PAPER — acciones US, diario. Sistema PARALELO:
 // no toca chart/CDP/mutex ni nada del motor forex.
 //
@@ -236,6 +237,9 @@ for (const u of universe) {
         const relVol = vAvg ? +(bars[i].v / vAvg).toFixed(2) : null;
         const disasterPx = +(entryPx * (1 - RSI2_DISASTER)).toFixed(2);
         const gapLimit = +(bars[i].c * (1 + RSI2_GAP_MAX)).toFixed(2);   // no perseguir si abre por encima
+        // VERIFICADOR DE COHERENCIA: el número no cuadra → no se registra ni se avisa.
+        const chk = coherentTrade({ ticker: u.ticker, entry: entryPx, stop: disasterPx, target: s5[i] }, bars[i]);
+        if (!chk.ok) { log(`RSI2 ${u.ticker}: DESCARTADA por coherencia — ${chk.reason}`); seen[rKey] = true; continue; }
         journal.push({
           id: rKey, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'RSI2', variant: 'RSI2',
           status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
@@ -243,6 +247,7 @@ for (const u of universe) {
           stop: disasterPx,                        // stop de catástrofe −20% (trackeado)
           rsi2: +r2[i].toFixed(1), relVol,
         });
+        logDecision({ system: 'RSI2', action: 'ENTER', ticker: u.ticker, entry: entryPx, stop: disasterPx, target: +s5[i].toFixed(2), rsi2: +r2[i].toFixed(1) });
         signals++;
         await notify(buildStockAlert({
           emoji: '🔵', ticker: u.ticker,
@@ -295,6 +300,9 @@ for (const u of universe) {
   if (risk <= 0 || risk / entryPx > MAX_STOP) continue;
   if (risk / entryPx < MIN_STOP) { log(`${u.ticker}: setup-9 perf pero stop ${(risk / entryPx * 100).toFixed(1)}% < 3% — descartado`); continue; }
 
+  // VERIFICADOR DE COHERENCIA (DeMark): número que no cuadra con la vela → fuera.
+  const chkD = coherentTrade({ ticker: u.ticker, entry: +entryPx.toFixed(4), stop: +sl.toFixed(4), target: +(entryPx + 2 * risk).toFixed(4) }, bars[i]);
+  if (!chkD.ok) { log(`DeMark ${u.ticker}: DESCARTADA por coherencia — ${chkD.reason}`); continue; }
   for (const [variant, mult] of [['TP2', 2], ['TP3', 3]]) {
     journal.push({
       id: `${key}:${variant}`, ticker: u.ticker, tv: u.tv, sector: u.sector, variant,
@@ -303,6 +311,7 @@ for (const u of universe) {
       risk: +risk.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(2),
     });
   }
+  logDecision({ system: 'DeMark9', action: 'ENTER', ticker: u.ticker, entry: +entryPx.toFixed(4), stop: +sl.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(2) });
   signals++;
 
   // CONTROL DE CALOR DE CARTERA (regla profesional): con 1% de riesgo/trade,
