@@ -306,17 +306,19 @@ for (const u of universe) {
   const heatWarn = openTP2.length >= 4 ? `\n🔥 <b>CALOR: ya hay ${openTP2.length} posiciones abiertas (límite 4) — NO añadir riesgo real</b>`
     : openTP2.filter(p => p.sector === u.sector).length >= 2 ? `\n🔥 <b>CALOR: ya hay 2 abiertas en ${u.sector} — NO concentrar sector</b>` : '';
 
-  const shares10k = Math.floor(100 / risk * 100) / 100; // acciones para cuenta $10k @1% riesgo
-  await notify(`🟢 <b>SEÑAL DEMARK-9 — COMPRA (LONG)</b>\n<b>${u.ticker}</b> — ${u.sector}` +
-    (isCatchUp ? `\n♻️ <i>Recuperada del ${new Date(bars[i].t * 1000).toISOString().slice(0, 10)} (scan perdido)</i>` : '') +
-    `\n` +
-    `\n📍 <b>ENTRADA</b>: comprar a mercado en la apertura US (15:30) ~$${entryPx.toFixed(2)}` +
-    `\n🛑 <b>STOP LOSS</b>: $${sl.toFixed(2)} (−${(risk / entryPx * 100).toFixed(1)}% | −1R) — orden stop puesta NADA MÁS entrar` +
-    `\n🎯 <b>TAKE PROFIT</b>: TP2 $${(entryPx + 2 * risk).toFixed(2)} (+${(2 * risk / entryPx * 100).toFixed(1)}% | +2R) · TP3 $${(entryPx + 3 * risk).toFixed(2)} (+3R)` +
-    `\n⏱ Time-stop: cerrar a mercado si en 40 sesiones no tocó SL ni TP` +
-    `\n📐 <b>Tamaño</b> (1% riesgo): cuenta $10k → ${shares10k} acciones (~$${(shares10k * entryPx).toFixed(0)})` +
-    heatWarn +
-    `\n\nSetup: DeMark 9 perfeccionado + EMA50>200 + px>EMA200 (D). Confirmar el "9" en TV: ${u.tv}`);
+  // Aviso en el formato LIMPIO compartido (igual que los demás sistemas).
+  const tp3 = +(entryPx + 3 * risk).toFixed(2);
+  const heat = openTP2.length >= 4 ? ` · ⚠️ ya ${openTP2.length} abiertas, NO añadir riesgo`
+    : openTP2.filter(p => p.sector === u.sector).length >= 2 ? ` · ⚠️ 2 abiertas en ${u.sector}, no concentrar` : '';
+  const recup = isCatchUp ? '♻️ recuperada · ' : '';
+  await notify(buildStockAlert({
+    emoji: '🟢', ticker: u.ticker,
+    entry: +entryPx.toFixed(2),
+    target: +(entryPx + 2 * risk).toFixed(2), rr: 2,
+    stop: +sl.toFixed(2),
+    note: `${recup}compra en la apertura US (15:30) · 2º objetivo $${tp3} (+3R)${heat}`,
+    tv: u.tv,
+  }));
   } // fin bucle últimas 3 velas
 }
 
