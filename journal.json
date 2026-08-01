@@ -976,13 +976,17 @@
     "sector": "Electronic Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785159000,
     "entryT": 1785159000,
     "entryPx": 123.7719,
     "stop": 99.02,
     "rsi2": 6.2,
-    "relVol": 0.74
+    "relVol": 0.74,
+    "exitT": 1785504600,
+    "exitPx": 115.3823,
+    "exitReason": "SMA5",
+    "retPct": -6.78
   },
   {
     "id": "GOOG:1785245400:TP2",
