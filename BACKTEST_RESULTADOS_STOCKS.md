@@ -150,3 +150,40 @@ Usuario preguntó si entrar en PRU (Pine marcaba ENTRA, scanner decía pending).
 Guía Grok del enfoque amplio de Justin Banks (8 EMA + price action + supply/demand). Núcleo mecanizable testeado: en tendencia (close>EMA200 & 8>21), comprar pullback+reclaim de la 8 EMA, salir al perder la 8 EMA. Diario: PF 1.13 vs azar 1.12 (mismo filtro tendencia+stop+salida) → SIN edge, es beta. El poco PF viene del filtro de tendencia y la salida, no del timing de entrada. Misma trampa que los cruces de EMA. 
 Lo NO mecanizable (supply/demand a mano, BOS/CHOCH/liquidity grabs): subjetivo, sin edge probado, descartado. Intradía 5min: costes lo matan (ver Mariel). 
 Lo positivo: su gestión de riesgo (1%, stop bajo swing, RR 1:2-3, máx 3-4) coincide con la nuestra (cross-check). Su ÚNICO edge mecanizable es el breakout retest semanal, que ya tenemos (PF 2.11). Patrón repetido: el edge del trader discrecional está en el juicio, no en las reglas mecánicas.
+
+---
+
+## Estudio MA200 como soporte/resistencia + filtro de distancia (2026-07-30)
+
+**La MA200 es un nivel REAL** (250 acciones, 2y): como soporte aguanta el 78%, como
+resistencia el 69% (soporte > resistencia = sesgo del sample alcista). PERO como
+ENTRADA sola es floja: tocar la MA da +0.97% forward 10d, por debajo del baseline
+(+1.37%). El toque es señal de debilidad. → valida usar px>EMA200 como FILTRO DE
+RÉGIMEN (no como disparador), que es como ya lo usan RSI2/DeMark.
+
+**Descomposición soporte × sobreventa** (refutó la hipótesis de que se potencian):
+- Sobreventa sola (RSI2<10, sobre MA200): +1.81% forward 10d — el edge está aquí.
+- Soporte solo (≤3% de la MA): +0.99% — LASTRE, bajo baseline.
+- Soporte + sobreventa: +1.02% — juntarlas EMPEORA vs sobreventa sola.
+→ Hallazgo útil: la DISTANCIA sobre la MA200 es filtro de calidad. Sobreventa
+  LEJOS de la MA (+1.81%) >> sobreventa PEGADA a la MA (+1.02%). Pegada = ya cayó
+  mucho, el pánico es parte de un desplome mayor.
+
+**Backtest del filtro de distancia con WALK-FORWARD** (backtest_rsi2_distance.mjs,
+250 tickers, 5y, mecánica exacta SMA5/5d/−20%, 14100 señales):
+| Filtro | n | %/tr | PF | WF |
+|---|---|---|---|---|
+| BASE >0% | 14100 | +0.42 | 1.39 | 3/4 |
+| ≥5% | 9576 | +0.52 | 1.48 | 3/4 |
+| ≥10% | 5919 | +0.64 | 1.55 | 3/4 |
+Base clava la validación (+0.41/PF1.36 → réplica fiel). El filtro mejora %/trade y
+PF de forma MONÓTONA (efecto real), PERO:
+- WF NO mejora (sigue 3/4). No arregla la robustez, solo amplifica lo bueno.
+- La ventana 1 (bajista ~2022) es NEGATIVA en todo y el filtro la EMPEORA
+  (−0.06→−0.27). El filtro AYUDA en alcista, HACE DAÑO en bajista.
+- La mejora se concentra en la ventana 4 (reciente) → posible dependencia de régimen.
+
+**DECISIÓN (usuario, 2026-07-30): DOCUMENTADO, NO aplicado.** No cruza la vara WF
+4/4 (regla #8). Re-evaluar solo si el FORWARD confirma que las señales pegadas a la
+MA rinden peor en vivo. NO tocar la spec de RSI2 por un backtest régimen-dependiente.
+Scripts: study_ma200.mjs, study_ma200_oversold.mjs, backtest_rsi2_distance.mjs.
