@@ -28,5 +28,10 @@
   "W:PWR:1784520000": true,
   "W:SNPS:1784520000": true,
   "W:CPRT:1784520000": true,
-  "W:LITE:1784520000": true
+  "W:LITE:1784520000": true,
+  "W:NEM:1785124800": true,
+  "W:BN:1785124800": true,
+  "W:HSY:1785124800": true,
+  "W:ECHO:1785124800": true,
+  "W:CRCL:1785124800": true
 }
