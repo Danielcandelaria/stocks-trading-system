@@ -80,8 +80,20 @@ async function todayOpen(ticker) {
     // CONFIRMA: entrada a la apertura real; stop de catástrofe recalculado desde ahí.
     const entryPx = +(open * (1 + COST)).toFixed(4);
     const disasterPx = +(entryPx * (1 - DISASTER)).toFixed(2);
+    // SIN RECORRIDO: si el open ya está en/por encima del objetivo de venta (SMA5),
+    // comprar sería vender al instante. NO es dato malo — es que el rebote ya pasó
+    // de noche (primo del gap-guard). Se distingue de un dato incoherente de verdad.
+    if (pos.targetRef != null && entryPx >= pos.targetRef) {
+      pos.status = 'cancelled_no_room'; pos.exitReason = 'NO_ROOM';
+      pos.openPx = +open.toFixed(4); pos.entryPx = entryPx; pos.gapPct = +gapPct.toFixed(1);
+      cancelled++;
+      logDecision({ system: 'RSI2', action: 'CANCEL_NO_ROOM', ticker: pos.ticker, entry: entryPx, target: pos.targetRef });
+      log(`${pos.ticker}: SIN RECORRIDO — abrió $${entryPx} en/sobre el objetivo $${pos.targetRef}, no se compra`);
+      continue;
+    }
+    // Incoherencia REAL (dato malo: entry inválido o stop mal): rechazo distinto.
     const chk = coherentTrade({ ticker: pos.ticker, entry: entryPx, stop: disasterPx, target: pos.targetRef });
-    if (!chk.ok) { pos.status = 'cancelled_incoherent'; log(`${pos.ticker}: descartada por coherencia — ${chk.reason}`); continue; }
+    if (!chk.ok) { pos.status = 'cancelled_incoherent'; pos.entryPx = entryPx; log(`${pos.ticker}: descartada por coherencia (dato) — ${chk.reason}`); continue; }
 
     pos.status = 'open'; pos.entryT = nowSec | 0; pos.entryPx = entryPx;
     pos.openPx = +open.toFixed(4); pos.gapPct = +gapPct.toFixed(1); pos.stop = disasterPx;
