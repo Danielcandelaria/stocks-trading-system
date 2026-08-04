@@ -1166,12 +1166,14 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "cancelled_incoherent",
+    "status": "cancelled_no_room",
     "signalT": 1785418200,
     "signalClose": 94.33999633789062,
     "targetRef": 96.18,
     "rsi2": 7.3,
-    "relVol": 1.41
+    "relVol": 1.41,
+    "exitReason": "NO_ROOM",
+    "relabel_note": "Reclasificado 2026-08-04: no era dato incoherente, era apertura en/sobre el objetivo (sin recorrido)."
   },
   {
     "id": "RSI2:DUK:1785418200",
@@ -1180,12 +1182,14 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "cancelled_incoherent",
+    "status": "cancelled_no_room",
     "signalT": 1785418200,
     "signalClose": 126.2699966430664,
     "targetRef": 128.79,
     "rsi2": 7.7,
-    "relVol": 1.3
+    "relVol": 1.3,
+    "exitReason": "NO_ROOM",
+    "relabel_note": "Reclasificado 2026-08-04: no era dato incoherente, era apertura en/sobre el objetivo (sin recorrido)."
   },
   {
     "id": "RSI2:WM:1785418200",
@@ -1232,12 +1236,14 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "cancelled_incoherent",
+    "status": "cancelled_no_room",
     "signalT": 1785418200,
     "signalClose": 64.43000030517578,
     "targetRef": 65.36,
     "rsi2": 8.6,
-    "relVol": 1.12
+    "relVol": 1.12,
+    "exitReason": "NO_ROOM",
+    "relabel_note": "Reclasificado 2026-08-04: no era dato incoherente, era apertura en/sobre el objetivo (sin recorrido)."
   },
   {
     "id": "RSI2:ETR:1785418200",
@@ -1415,12 +1421,14 @@
     "sector": "Transportation",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "cancelled_incoherent",
+    "status": "cancelled_no_room",
     "signalT": 1785418200,
     "signalClose": 199.25999450683594,
     "targetRef": 204.92,
     "rsi2": 1.4,
-    "relVol": 2.53
+    "relVol": 2.53,
+    "exitReason": "NO_ROOM",
+    "relabel_note": "Reclasificado 2026-08-04: no era dato incoherente, era apertura en/sobre el objetivo (sin recorrido)."
   },
   {
     "id": "RSI2:EXPD:1785418200",
