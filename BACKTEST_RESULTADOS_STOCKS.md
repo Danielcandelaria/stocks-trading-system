@@ -187,3 +187,34 @@ PF de forma MONÓTONA (efecto real), PERO:
 4/4 (regla #8). Re-evaluar solo si el FORWARD confirma que las señales pegadas a la
 MA rinden peor en vivo. NO tocar la spec de RSI2 por un backtest régimen-dependiente.
 Scripts: study_ma200.mjs, study_ma200_oversold.mjs, backtest_rsi2_distance.mjs.
+
+---
+
+## RSI2 — filtro de volatilidad REFUTADO + reconciliación forward/backtest (2026-08-04)
+
+Motivo: el forward de RSI2 iba −3.4% (47 tr), con perdedora media −6.7% vs ganadora
++3.0% — el usuario objetó "gana 1% y arriesga 20%, no es rentable".
+
+**Filtro de volatilidad (ATR%) — backtest_rsi2_volfilter.mjs, 250 tickers, 5y, 14120 señales:**
+| Filtro | n | %/tr | PF | ganaMed | perdMed | peor | WF |
+|---|---|---|---|---|---|---|---|
+| SIN | 14120 | +0.42 | 1.39 | +2.23 | −3.14 | −30.66 | 3/4 |
+| ATR%≤5 | 13239 | +0.28 | 1.27 | +1.97 | −2.97 | −25.70 | 3/4 |
+| ATR%≤3 | 10535 | +0.21 | 1.23 | +1.71 | −2.63 | −20.04 | 3/4 |
+→ **REFUTADO**: el filtro EMPEORA monótonamente (%/tr y PF bajan). Los nombres
+volátiles llevan TANTO las ganadoras grandes como las perdedoras — cortarlos
+encoge las dos colas por igual y la asimetría no mejora (ratio 0.71→0.65). No se
+puede quitar la pérdida sin quitar la ganancia. NO aplicar.
+
+**Reconciliación clave:** el BACKTEST de RSI2 (5y, 14120 tr) es SÓLIDAMENTE rentable
+(+0.42%/tr, PF 1.39, clava la validación +0.41/1.36). El forward −3.4% es un
+ARTEFACTO DE MUESTRA CHICA (47 tr vs 14120): mean-reversion tiene cola gorda (peor
+histórico −30% por gaps que rebasan el −20%), así que 2-3 gaps malos en 47 trades
+dominan. La asimetría (gana +2.2/pierde −3.1) ES rentable porque el WR 68% compensa:
+0.68×2.23 − 0.32×3.14 = +0.52 ≈ +0.42/tr. NO es un bug — es la naturaleza, y funciona
+con muchas operaciones, no con 47.
+
+**DECISIÓN (usuario 2026-08-04): mantener TODOS los sistemas activos, RSI2 sin tocar
+la spec.** CHECKPOINT: si a ~150-200 forward sigue negativo → fallo real, no ruido.
+Todos los filtros probados (safety-net, gap-guard, distancia, volatilidad): ninguno
+mejora RSI2 de forma robusta (WF 4/4). La spec validada se queda como está.
