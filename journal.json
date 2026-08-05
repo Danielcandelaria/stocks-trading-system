@@ -904,13 +904,17 @@
     "sector": "Transportation",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785159000,
     "entryT": 1785159000,
     "entryPx": 281.1005,
     "stop": 224.88,
     "rsi2": 6.2,
-    "relVol": 1.13
+    "relVol": 1.13,
+    "exitT": 1785850200,
+    "exitPx": 274.3428,
+    "exitReason": "SMA5",
+    "retPct": -2.4
   },
   {
     "id": "RSI2:AMKR:1785159000",
@@ -994,14 +998,18 @@
     "tv": "NASDAQ:GOOG",
     "sector": "Technology Services",
     "variant": "TP2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785245400,
     "entryT": 1785245400,
     "entryPx": 332.7663,
     "sl": 314.89,
     "tp": 368.5189,
     "risk": 17.8763,
-    "riskPct": 5.37
+    "riskPct": 5.37,
+    "exitT": 1785763800,
+    "exitPx": 368.3346,
+    "exitReason": "TP",
+    "r": 1.99
   },
   {
     "id": "GOOG:1785245400:TP3",
@@ -1025,13 +1033,17 @@
     "sector": "Process Industries",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785245400,
     "entryT": 1785245400,
     "entryPx": 83.2216,
     "stop": 66.58,
     "rsi2": 6.6,
-    "relVol": 1.49
+    "relVol": 1.49,
+    "exitT": 1785850200,
+    "exitPx": 79.8301,
+    "exitReason": "SMA5",
+    "retPct": -4.08
   },
   {
     "id": "TWLO:1785159000:TP2",
@@ -1109,7 +1121,7 @@
     "sector": "Transportation",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 289.4599914550781,
     "targetRef": 296.54,
@@ -1119,7 +1131,11 @@
     "entryPx": 294.0169,
     "openPx": 293.87,
     "gapPct": 1.5,
-    "stop": 235.21
+    "stop": 235.21,
+    "exitT": 1785850200,
+    "exitPx": 296.2018,
+    "exitReason": "SMA5",
+    "retPct": 0.74
   },
   {
     "id": "RSI2:WELL:1785418200",
@@ -1217,7 +1233,7 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 127.77999877929688,
     "targetRef": 131.87,
@@ -1227,7 +1243,11 @@
     "entryPx": 128.064,
     "openPx": 128,
     "gapPct": 0.2,
-    "stop": 102.45
+    "stop": 102.45,
+    "exitT": 1785850200,
+    "exitPx": 128.2858,
+    "exitReason": "SMA5",
+    "retPct": 0.17
   },
   {
     "id": "RSI2:O:1785418200",
@@ -1252,7 +1272,7 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 108.02999877929688,
     "targetRef": 111.57,
@@ -1262,7 +1282,11 @@
     "entryPx": 108.4942,
     "openPx": 108.44,
     "gapPct": 0.4,
-    "stop": 86.8
+    "stop": 86.8,
+    "exitT": 1785850200,
+    "exitPx": 108.8056,
+    "exitReason": "SMA5",
+    "retPct": 0.29
   },
   {
     "id": "RSI2:XEL:1785418200",
@@ -1307,7 +1331,7 @@
     "sector": "Transportation",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 212.47000122070312,
     "targetRef": 224.26,
@@ -1317,7 +1341,11 @@
     "entryPx": 214.4772,
     "openPx": 214.37,
     "gapPct": 0.9,
-    "stop": 171.58
+    "stop": 171.58,
+    "exitT": 1785850200,
+    "exitPx": 219.2103,
+    "exitReason": "SMA5",
+    "retPct": 2.21
   },
   {
     "id": "RSI2:CNC:1785418200",
@@ -1326,7 +1354,7 @@
     "sector": "Health Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 60.84000015258789,
     "targetRef": 62.81,
@@ -1336,7 +1364,11 @@
     "entryPx": 61.4307,
     "openPx": 61.4,
     "gapPct": 0.9,
-    "stop": 49.14
+    "stop": 49.14,
+    "exitT": 1785763800,
+    "exitPx": 63.7281,
+    "exitReason": "SMA5",
+    "retPct": 3.74
   },
   {
     "id": "RSI2:AEE:1785418200",
@@ -1437,7 +1469,7 @@
     "sector": "Transportation",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 167.00999450683594,
     "targetRef": 171.04,
@@ -1447,7 +1479,11 @@
     "entryPx": 169.2846,
     "openPx": 169.2,
     "gapPct": 1.3,
-    "stop": 135.43
+    "stop": 135.43,
+    "exitT": 1785763800,
+    "exitPx": 170.5047,
+    "exitReason": "SMA5",
+    "retPct": 0.72
   },
   {
     "id": "RSI2:EVRG:1785418200",
@@ -1456,7 +1492,7 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 83.25,
     "targetRef": 85.19,
@@ -1466,7 +1502,11 @@
     "entryPx": 83.1015,
     "openPx": 83.06,
     "gapPct": -0.2,
-    "stop": 66.48
+    "stop": 66.48,
+    "exitT": 1785850200,
+    "exitPx": 83.7981,
+    "exitReason": "SMA5",
+    "retPct": 0.84
   },
   {
     "id": "RSI2:LNT:1785418200",
@@ -1532,7 +1572,7 @@
     "sector": "Producer Manufacturing",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 72.11000061035156,
     "targetRef": 77.34,
@@ -1542,6 +1582,10 @@
     "entryPx": 71.4757,
     "openPx": 71.44,
     "gapPct": -0.9,
-    "stop": 57.18
+    "stop": 57.18,
+    "exitT": 1785763800,
+    "exitPx": 74.6926,
+    "exitReason": "SMA5",
+    "retPct": 4.5
   }
 ]
