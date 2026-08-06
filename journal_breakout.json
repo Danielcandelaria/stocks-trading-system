@@ -26,7 +26,7 @@
     "tv": "NYSE:PRU",
     "sector": "Finance",
     "strategy": "BreakoutRetest",
-    "status": "open",
+    "status": "closed",
     "signalT": 1780891200,
     "level": 105.18,
     "entryPx": 107.01,
@@ -34,7 +34,12 @@
     "tp": 127.4988,
     "breakClose": 108.5,
     "riskPct": 9.6,
-    "entryT": 1781703000
+    "entryT": 1781703000,
+    "exitT": 1786000133.158,
+    "exitPx": 127.4351,
+    "exitReason": "TARGET 2R",
+    "retPct": 19.09,
+    "r": 1.99
   },
   {
     "id": "B:WAT:1779681600",
