@@ -1102,7 +1102,7 @@
     "sector": "Health Technology",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 255.82000732421875,
     "targetRef": 263.49,
@@ -1112,7 +1112,11 @@
     "entryPx": 259.1595,
     "openPx": 259.03,
     "gapPct": 1.3,
-    "stop": 207.33
+    "stop": 207.33,
+    "exitT": 1785936600,
+    "exitPx": 257.4612,
+    "exitReason": "SMA5",
+    "retPct": -0.66
   },
   {
     "id": "RSI2:UNP:1785418200",
@@ -1144,7 +1148,7 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 235.6300048828125,
     "targetRef": 244.14,
@@ -1154,7 +1158,11 @@
     "entryPx": 239.2496,
     "openPx": 239.13,
     "gapPct": 1.5,
-    "stop": 191.4
+    "stop": 191.4,
+    "exitT": 1785936600,
+    "exitPx": 237.1314,
+    "exitReason": "SMA5",
+    "retPct": -0.89
   },
   {
     "id": "RSI2:MO:1785418200",
@@ -1163,7 +1171,7 @@
     "sector": "Consumer Non-Durables",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 67.94000244140625,
     "targetRef": 72.71,
@@ -1173,7 +1181,11 @@
     "entryPx": 70.7303,
     "openPx": 70.695,
     "gapPct": 4.1,
-    "stop": 56.58
+    "stop": 56.58,
+    "exitT": 1785936600,
+    "exitPx": 68.4058,
+    "exitReason": "SMA5",
+    "retPct": -3.29
   },
   {
     "id": "RSI2:SO:1785418200",
