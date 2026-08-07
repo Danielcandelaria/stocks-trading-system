@@ -1226,7 +1226,7 @@
     "sector": "Industrial Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 226.3300018310547,
     "targetRef": 235.8,
@@ -1236,7 +1236,11 @@
     "entryPx": 230.135,
     "openPx": 230.02,
     "gapPct": 1.6,
-    "stop": 184.11
+    "stop": 184.11,
+    "exitT": 1786023000,
+    "exitPx": 228.8955,
+    "exitReason": "SMA5",
+    "retPct": -0.54
   },
   {
     "id": "RSI2:AEP:1785418200",
