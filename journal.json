@@ -1051,14 +1051,18 @@
     "tv": "NYSE:TWLO",
     "sector": "Technology Services",
     "variant": "TP2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785159000,
     "entryT": 1785245400,
     "entryPx": 193.4167,
     "sl": 179.645,
     "tp": 220.96,
     "risk": 13.7717,
-    "riskPct": 7.12
+    "riskPct": 7.12,
+    "exitT": 1786109400,
+    "exitPx": 235.1324,
+    "exitReason": "TP",
+    "r": 3.03
   },
   {
     "id": "TWLO:1785159000:TP3",
@@ -1066,14 +1070,18 @@
     "tv": "NYSE:TWLO",
     "sector": "Technology Services",
     "variant": "TP3",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785159000,
     "entryT": 1785245400,
     "entryPx": 193.4167,
     "sl": 179.645,
     "tp": 234.7317,
     "risk": 13.7717,
-    "riskPct": 7.12
+    "riskPct": 7.12,
+    "exitT": 1786109400,
+    "exitPx": 235.1324,
+    "exitReason": "TP",
+    "r": 3.03
   },
   {
     "id": "RSI2:AVGO:1785331800",
@@ -1311,7 +1319,7 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 78.2300033569336,
     "targetRef": 79.94,
@@ -1321,7 +1329,11 @@
     "entryPx": 78.2291,
     "openPx": 78.19,
     "gapPct": -0.1,
-    "stop": 62.58
+    "stop": 62.58,
+    "exitT": 1786109400,
+    "exitPx": 78.031,
+    "exitReason": "SMA5",
+    "retPct": -0.25
   },
   {
     "id": "RSI2:VTR:1785418200",
@@ -1431,7 +1443,7 @@
     "sector": "Industrial Services",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 68.91999816894531,
     "targetRef": 72.97,
@@ -1441,7 +1453,11 @@
     "entryPx": 71.5357,
     "openPx": 71.5,
     "gapPct": 3.7,
-    "stop": 57.23
+    "stop": 57.23,
+    "exitT": 1786109400,
+    "exitPx": 69.5852,
+    "exitReason": "SMA5",
+    "retPct": -2.73
   },
   {
     "id": "RSI2:CNP:1785418200",
