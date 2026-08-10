@@ -127,5 +127,22 @@
     "theme": null,
     "themeStrength": null,
     "entryT": 1783344600
+  },
+  {
+    "id": "B:MSFT:1785729600",
+    "ticker": "MSFT",
+    "tv": "NASDAQ:MSFT",
+    "sector": "Technology Services",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1785729600,
+    "level": 466.84,
+    "entryPx": 466.84,
+    "stop": 429.4928,
+    "tp": 541.5344,
+    "breakClose": 499.99,
+    "riskPct": 8,
+    "theme": null,
+    "themeStrength": null
   }
 ]
