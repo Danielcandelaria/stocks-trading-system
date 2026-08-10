@@ -62,14 +62,20 @@
     "tv": "NYSE:ABBV",
     "sector": "Health Technology",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782705600,
     "entryT": 1782705600,
     "entryPx": 261.07,
     "stop": 221.94,
     "target": 378.46,
     "riskPct": 15,
-    "theme": null
+    "theme": null,
+    "exitT": 1785729600,
+    "exitPx": 245.917,
+    "exitReason": "cierre < EMA8 (trailing)",
+    "retPct": -5.8,
+    "r": -0.39,
+    "weeksHeld": 4
   },
   {
     "id": "BK:MS:1783310400",
@@ -135,6 +141,21 @@
     "stop": 190.02,
     "target": 290.82,
     "riskPct": 11.7,
+    "theme": null
+  },
+  {
+    "id": "BK:GE:1785729600",
+    "ticker": "GE",
+    "tv": "NYSE:GE",
+    "sector": "Electronic Technology",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1785729600,
+    "entryT": 1785729600,
+    "entryPx": 370.08,
+    "stop": 347.66,
+    "target": 437.3399,
+    "riskPct": 6.1,
     "theme": null
   }
 ]
