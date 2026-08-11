@@ -1405,7 +1405,7 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 108.75,
     "targetRef": 111.42,
@@ -1415,7 +1415,11 @@
     "entryPx": 110.8154,
     "openPx": 110.76,
     "gapPct": 1.8,
-    "stop": 88.65
+    "stop": 88.65,
+    "exitT": 1786368600,
+    "exitPx": 106.9465,
+    "exitReason": "TIME",
+    "retPct": -3.49
   },
   {
     "id": "RSI2:ATO:1785418200",
@@ -1424,7 +1428,7 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 174.25999450683594,
     "targetRef": 177.75,
@@ -1434,7 +1438,11 @@
     "entryPx": 177.0285,
     "openPx": 176.94,
     "gapPct": 1.5,
-    "stop": 141.62
+    "stop": 141.62,
+    "exitT": 1786368600,
+    "exitPx": 167.836,
+    "exitReason": "TIME",
+    "retPct": -5.19
   },
   {
     "id": "RSI2:FTI:1785418200",
@@ -1466,7 +1474,7 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 42.150001525878906,
     "targetRef": 43.55,
@@ -1476,7 +1484,11 @@
     "entryPx": 43.1316,
     "openPx": 43.11,
     "gapPct": 2.3,
-    "stop": 34.51
+    "stop": 34.51,
+    "exitT": 1786368600,
+    "exitPx": 40.01,
+    "exitReason": "TIME",
+    "retPct": -7.24
   },
   {
     "id": "RSI2:XPO:1785418200",
@@ -1547,7 +1559,7 @@
     "sector": "Utilities",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 70.88999938964844,
     "targetRef": 73.11,
@@ -1557,7 +1569,11 @@
     "entryPx": 70.4952,
     "openPx": 70.46,
     "gapPct": -0.6,
-    "stop": 56.4
+    "stop": 56.4,
+    "exitT": 1786368600,
+    "exitPx": 68.1759,
+    "exitReason": "TIME",
+    "retPct": -3.29
   },
   {
     "id": "RSI2:KIM:1785418200",
@@ -1566,7 +1582,7 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 25.510000228881836,
     "targetRef": 26.05,
@@ -1576,7 +1592,11 @@
     "entryPx": 26.033,
     "openPx": 26.02,
     "gapPct": 2,
-    "stop": 20.83
+    "stop": 20.83,
+    "exitT": 1786368600,
+    "exitPx": 24.0979,
+    "exitReason": "TIME",
+    "retPct": -7.43
   },
   {
     "id": "RSI2:WPC:1785418200",
@@ -1585,7 +1605,7 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785418200,
     "signalClose": 74.08000183105469,
     "targetRef": 75.46,
@@ -1595,7 +1615,11 @@
     "entryPx": 74.5773,
     "openPx": 74.54,
     "gapPct": 0.6,
-    "stop": 59.66
+    "stop": 59.66,
+    "exitT": 1786368600,
+    "exitPx": 70.6247,
+    "exitReason": "TIME",
+    "retPct": -5.3
   },
   {
     "id": "RSI2:MAS:1785418200",
@@ -1619,5 +1643,103 @@
     "exitPx": 74.6926,
     "exitReason": "SMA5",
     "retPct": 4.5
+  },
+  {
+    "id": "RSI2:DG:1786368600",
+    "ticker": "DG",
+    "tv": "NYSE:DG",
+    "sector": "Retail Trade",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "pending_open",
+    "signalT": 1786368600,
+    "signalClose": 122.41999816894531,
+    "targetRef": 126.13,
+    "rsi2": 3.5,
+    "relVol": 1.26
+  },
+  {
+    "id": "RSI2:WRB:1786368600",
+    "ticker": "WRB",
+    "tv": "NYSE:WRB",
+    "sector": "Finance",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "pending_open",
+    "signalT": 1786368600,
+    "signalClose": 70.81999969482422,
+    "targetRef": 71.6,
+    "rsi2": 8.2,
+    "relVol": 0.74
+  },
+  {
+    "id": "RSI2:AER:1786368600",
+    "ticker": "AER",
+    "tv": "NYSE:AER",
+    "sector": "Finance",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "pending_open",
+    "signalT": 1786368600,
+    "signalClose": 149.5800018310547,
+    "targetRef": 153.35,
+    "rsi2": 5.9,
+    "relVol": 1.01
+  },
+  {
+    "id": "RSI2:LUV:1786368600",
+    "ticker": "LUV",
+    "tv": "NYSE:LUV",
+    "sector": "Transportation",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "pending_open",
+    "signalT": 1786368600,
+    "signalClose": 44.900001525878906,
+    "targetRef": 47.28,
+    "rsi2": 8.5,
+    "relVol": 0.99
+  },
+  {
+    "id": "RSI2:INVH:1786368600",
+    "ticker": "INVH",
+    "tv": "NYSE:INVH",
+    "sector": "Finance",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "pending_open",
+    "signalT": 1786368600,
+    "signalClose": 29.889999389648438,
+    "targetRef": 30.32,
+    "rsi2": 5.4,
+    "relVol": 0.7
+  },
+  {
+    "id": "RSI2:HST:1786368600",
+    "ticker": "HST",
+    "tv": "NASDAQ:HST",
+    "sector": "Finance",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "pending_open",
+    "signalT": 1786368600,
+    "signalClose": 22.670000076293945,
+    "targetRef": 23.89,
+    "rsi2": 1.9,
+    "relVol": 1.36
+  },
+  {
+    "id": "RSI2:KIM:1786368600",
+    "ticker": "KIM",
+    "tv": "NYSE:KIM",
+    "sector": "Finance",
+    "strategy": "RSI2",
+    "variant": "RSI2",
+    "status": "pending_open",
+    "signalT": 1786368600,
+    "signalClose": 24.110000610351562,
+    "targetRef": 24.58,
+    "rsi2": 2.9,
+    "relVol": 1.12
   }
 ]
