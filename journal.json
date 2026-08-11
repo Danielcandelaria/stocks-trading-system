@@ -1651,12 +1651,17 @@
     "sector": "Retail Trade",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "pending_open",
+    "status": "open",
     "signalT": 1786368600,
     "signalClose": 122.41999816894531,
     "targetRef": 126.13,
     "rsi2": 3.5,
-    "relVol": 1.26
+    "relVol": 1.26,
+    "entryT": 1786455788,
+    "entryPx": 124.6723,
+    "openPx": 124.61,
+    "gapPct": 1.8,
+    "stop": 99.74
   },
   {
     "id": "RSI2:WRB:1786368600",
@@ -1665,12 +1670,17 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "pending_open",
+    "status": "open",
     "signalT": 1786368600,
     "signalClose": 70.81999969482422,
     "targetRef": 71.6,
     "rsi2": 8.2,
-    "relVol": 0.74
+    "relVol": 0.74,
+    "entryT": 1786455788,
+    "entryPx": 71.0055,
+    "openPx": 70.97,
+    "gapPct": 0.2,
+    "stop": 56.8
   },
   {
     "id": "RSI2:AER:1786368600",
@@ -1679,12 +1689,17 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "pending_open",
+    "status": "open",
     "signalT": 1786368600,
     "signalClose": 149.5800018310547,
     "targetRef": 153.35,
     "rsi2": 5.9,
-    "relVol": 1.01
+    "relVol": 1.01,
+    "entryT": 1786455788,
+    "entryPx": 150.9955,
+    "openPx": 150.92,
+    "gapPct": 0.9,
+    "stop": 120.8
   },
   {
     "id": "RSI2:LUV:1786368600",
@@ -1693,12 +1708,17 @@
     "sector": "Transportation",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "pending_open",
+    "status": "open",
     "signalT": 1786368600,
     "signalClose": 44.900001525878906,
     "targetRef": 47.28,
     "rsi2": 8.5,
-    "relVol": 0.99
+    "relVol": 0.99,
+    "entryT": 1786455788,
+    "entryPx": 46.3131,
+    "openPx": 46.29,
+    "gapPct": 3.1,
+    "stop": 37.05
   },
   {
     "id": "RSI2:INVH:1786368600",
@@ -1707,12 +1727,17 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "pending_open",
+    "status": "open",
     "signalT": 1786368600,
     "signalClose": 29.889999389648438,
     "targetRef": 30.32,
     "rsi2": 5.4,
-    "relVol": 0.7
+    "relVol": 0.7,
+    "entryT": 1786455788,
+    "entryPx": 30.105,
+    "openPx": 30.09,
+    "gapPct": 0.7,
+    "stop": 24.08
   },
   {
     "id": "RSI2:HST:1786368600",
@@ -1721,12 +1746,17 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "pending_open",
+    "status": "open",
     "signalT": 1786368600,
     "signalClose": 22.670000076293945,
     "targetRef": 23.89,
     "rsi2": 1.9,
-    "relVol": 1.36
+    "relVol": 1.36,
+    "entryT": 1786455788,
+    "entryPx": 22.7714,
+    "openPx": 22.76,
+    "gapPct": 0.4,
+    "stop": 18.22
   },
   {
     "id": "RSI2:KIM:1786368600",
@@ -1735,11 +1765,16 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "pending_open",
+    "status": "open",
     "signalT": 1786368600,
     "signalClose": 24.110000610351562,
     "targetRef": 24.58,
     "rsi2": 2.9,
-    "relVol": 1.12
+    "relVol": 1.12,
+    "entryT": 1786455788,
+    "entryPx": 24.3422,
+    "openPx": 24.33,
+    "gapPct": 0.9,
+    "stop": 19.47
   }
 ]
