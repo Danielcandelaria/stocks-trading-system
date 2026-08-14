@@ -256,3 +256,30 @@ mejora RSI2 de forma robusta (WF 4/4). La spec validada se queda como está.
 **Comparativa de salidas (PF / Σret):** actual 13/time/stop **7.51 / +7617** (mejor). Trailing 30/40% = 7.03/7.06. Toma fija +25/50/80% = 2.99/3.91/5.12 (peor). 
 
 **CONCLUSIÓN:** igual que EMACross — NO poner toma de beneficios. La salida por agotamiento (countdown-13) + time-stop + stop estructural captura los trends monstruo (MFE media +64%); cualquier TP fijo hunde el PF (de 7.51 a ~3). El WR ya es alto (53%) por el suelo del setup-9 + stop 8%. El countdown-13 solo cierra el 18% (el stop y el time hacen el grueso), pero la combinación es la óptima. Confirmado: las dos trend-following (EMACross, WeeklySwing) NO usan TP; las de reversión (RSI2, DeMark, BreakoutRetest) SÍ.
+
+## EMACross — BACKTEST CONSOLIDADO del sistema final (2026-08-14)
+
+`backtest_emacross_full.mjs` (249 acciones, 10y semanal, LONG-only, stop −18%, salida cruce, coste 0.06%/lado):
+
+| | CONFIRMADO (cruce) | ANTICIPADO (gap<1.2%) |
+|---|---|---|
+| trades | 2589 | 2328 |
+| WR | 33% | 38% |
+| PF | 2.36 | 2.42 |
+| expectancy | +7.57%/tr | +7.50%/tr |
+| ganadora/perdedora media | +39.7% / −8.3% | +34.1% / −8.5% |
+| payoff | 4.80x | 4.03x |
+| mejor / peor | +1443% / **−18%** | +1099% / **−18%** |
+| duración mediana | 16 sem | 19 sem |
+| salidas por stop −18% | 7% | 13% |
+| retorno/drawdown | 11.0x | 9.9x |
+| walk-forward | **4/4** | **4/4** |
+
+Por año (expectancy, entrada): fuerte en años alcistas (2020 +27%, 2023 +24%), plano/negativo en choppy/bear (2018 −3%, 2022 −2%, 2026 −9%). **Regime-dependent**, como toda trend-following.
+
+**Lecturas clave:**
+- El stop −18% FUNCIONA: la peor operación queda capada exactamente en −18% (sin él había −62%). Solo cierra el 7-13% de trades → no estorba a los ganadores.
+- Payoff ~4-5x compensa el WR bajo (33-38%): pierdes pequeño y seguido, ganas grande y de vez en cuando. Perfil win-big/lose-small confirmado.
+- Anticipado sube WR (33→38%) y PF (2.36→2.42) con menos trades — mejor entrada, como ya vimos.
+- WF 4/4 en ambos = edge estable en las 4 ventanas temporales (no un artefacto de un solo régimen).
+- ⚠️ Sesgo de supervivencia (universo de hoy sobre el pasado) → son números de EDGE RELATIVO, no retorno garantizado. Por eso el sistema es SHADOW hasta acumular forward propio. El drawdown de −1775% es de la curva equiponderada acumulada (no compón.), no de una cuenta real con sizing.
