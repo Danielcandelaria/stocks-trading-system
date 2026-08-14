@@ -53,7 +53,8 @@ function analyze(bars) {
   const esL = liveClose * k21 + esC * (1 - k21);
   const gapL = (efL - esL) / liveClose;                 // hueco proyectado con el precio vivo
   const vel = gapC - gapPrev;                            // cambio del hueco por semana
-  return { px: liveClose, gapC, gapL, vel };
+  const ext = Math.abs((liveClose - esL) / esL) * 100;  // extensión sobre la EMA21 (recorrido ya hecho)
+  return { px: liveClose, gapC, gapL, vel, ext };
 }
 
 (async () => {
@@ -63,7 +64,7 @@ function analyze(bars) {
     let bars; try { bars = await getWeekly(u.ticker); await sleep(120); } catch { errs++; continue; }
     if (!bars) continue;
     const a = analyze(bars); if (!a) continue;
-    const { px, gapC, gapL, vel } = a;
+    const { px, gapC, gapL, vel, ext } = a;
 
     // dirección del cruce que se aproxima (según el signo del hueco al cierre)
     const longSide = gapC < 0;   // EMA8 debajo → cruce alcista pendiente
@@ -80,29 +81,32 @@ function analyze(bars) {
     else if (converging && gLive < GAPMAX) level = 2;    // ⏳ 1-2 SEMANAS
     else continue;
 
-    hits.push({ ticker: u.ticker, tv: u.tv, dir, px, level, gLive: gLive * 100 });
+    hits.push({ ticker: u.ticker, tv: u.tv, dir, px, level, gLive: gLive * 100, ext });
     if (++done % 60 === 0) process.stderr.write(`  …revisadas ${done}\n`);
   }
 
-  // orden: LONG antes que SHORT, luego por nivel de urgencia, luego por cercanía
+  // orden: LONG antes que SHORT · nivel de urgencia · MÁS FRESCO (menos extendido) primero
   const rank = h => (h.dir === 'LONG' ? 0 : 100) + h.level * 10;
-  hits.sort((a, b) => rank(a) - rank(b) || a.gLive - b.gLive);
+  hits.sort((a, b) => rank(a) - rank(b) || a.ext - b.ext);
+  const dot = e => e < 3 ? '🟢' : e < 6 ? '🟡' : '🔴';   // frescura: 🟢 fresco · 🔴 extendido (tarde)
 
   const LV = ['🔥 CRUZANDO YA', '⚡ ESTA SEMANA', '⏳ 1-2 SEMANAS'];
   const L = hits.filter(h => h.dir === 'LONG'), S = hits.filter(h => h.dir === 'SHORT');
   console.log(`RADAR: ${hits.length} · LONG ${L.length} (🔥${L.filter(h=>h.level===0).length} ⚡${L.filter(h=>h.level===1).length} ⏳${L.filter(h=>h.level===2).length}) · SHORT ${S.length} · ${errs} err`);
-  for (const h of hits) console.log(`  ${LV[h.level].padEnd(16)} ${h.dir.padEnd(5)} ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  (${h.level === 0 ? 'ya' : h.gLive.toFixed(2) + '%'})`);
+  for (const h of hits) console.log(`  ${LV[h.level].padEnd(16)} ${h.dir.padEnd(5)} ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  ext ${dot(h.ext)}${h.ext.toFixed(1)}%`);
 
   if (DRY || !hits.length) return;
 
   const fmtLevel = (arr, lv) => { const g = arr.filter(h => h.level === lv);
-    if (!g.length) return ''; const line = h => `  ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}` + (lv === 0 ? '' : `  (${h.gLive.toFixed(2)}%)`);
-    return `\n\n${LV[lv]}\n<code>${g.map(line).join('\n')}</code>`; };
+    if (!g.length) return ''; const line = h => `  ${dot(h.ext)} ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  ext +${h.ext.toFixed(1)}%`;
+    return `\n\n${LV[lv]}  <i>(🟢 fresco → 🔴 extendido)</i>\n<code>${g.map(line).join('\n')}</code>`; };
   let msg = `📡 <b>RADAR EMA 8/21 — cruces inminentes</b>  <i>(antes del cierre del viernes)</i>`;
   msg += `\n\n🟢 <b>LONG</b> — operable`;
   msg += [0, 1, 2].map(lv => fmtLevel(L, lv)).join('') || '\n  <i>ninguno cerca</i>';
   if (S.length) { msg += `\n\n🔴 <b>SHORT</b> — informativo (débil en acciones)`;
     msg += [0, 1, 2].map(lv => fmtLevel(S, lv)).join(''); }
-  msg += `\n\n🔥 = con el precio de esta semana el cruce YA ocurrió → mirar hoy. Confirmar en la gráfica antes de entrar.`;
+  msg += `\n\n🔥 = con el precio de esta semana el cruce YA ocurrió → mirar hoy.` +
+         `\n🟢 = fresco (precio pegado a la EMA21, entras temprano) · 🔴 = extendido (ya corrió, llegas tarde).` +
+         `\nPrioriza los 🟢. Confirmar en la gráfica antes de entrar.`;
   await tgSend(msg);
 })();
