@@ -231,3 +231,17 @@ mejora RSI2 de forma robusta (WF 4/4). La spec validada se queda como está.
 **Comparativa de salidas (Σret / PF):** cruce contrario **+19618 / PF 2.35** (mejor). Trailing 15/20/30% = PF 1.50/1.71/1.95 (peor). Toma fija +25/40% = PF 1.45/1.60 (peor). **Cruce + stop duro −18% = +19662 / PF 2.38** (marginalmente mejor, corta la cola de −62% sin tocar ganadores).
 
 **CONCLUSIÓN (regla de oro trend-following):** intentar "capturar el pico antes de la reversión" con trailing o toma fija DESTRUYE el edge — corta los pocos trends monstruo que SON la ventaja. La salida óptima es el **cruce contrario**, aceptando el giveback. Única mejora libre: **stop de catástrofe en −18%** (los ganadores rara vez caen >14% en contra). NO usar trailing ni toma fija.
+
+## EMA 8/21 — timing de entrada: ANTICIPACIÓN valida (2026-08-14)
+
+`backtest_ema_timing.mjs`: entrar 1 semana antes con previsión perfecta lleva PF 2.35→4.18 (+7.59→+12.04%/tr), mejor el 87% de las veces → hay premio real por adelantar. Cota máxima teórica.
+
+`backtest_ema_anticip.mjs` (CAUSAL, sin trampa, incluye falsos): entrada por convergencia del hueco EMA8-EMA21 (= regla del radar), salida por cruce contrario. LONG, 250t 10y:
+| entrada | n | %/tr | WR | PF | Σret% |
+|---|---|---|---|---|---|
+| confirmado (cruce) | 2585 | +7.59 | 33% | 2.35 | +19618 |
+| anticipado gap<0.5% | 1567 | +6.69 | 36% | 2.36 | +10488 |
+| anticipado gap<0.8% | 1932 | +7.19 | 38% | 2.46 | +13890 |
+| **anticipado gap<1.2%** | 2144 | **+8.74** | **40%** | **2.81** | +18731 |
+
+**CONCLUSIÓN:** anticipar por convergencia MEJORA de verdad (PF 2.35→2.81, WR 33→40%) neto de señales falsas. La banda óptima de entrada es gap<1.2%. `radar_emacross.mjs` implementa esto (umbral 0.8% por defecto, conservador; corre jueves). No es solo watchlist: entrar en la banda es mejor entrada que esperar al cierre del cruce.

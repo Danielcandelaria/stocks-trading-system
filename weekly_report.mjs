@@ -58,6 +58,17 @@ const lines = [
     const last = ms.months?.[ms.months.length - 1];
     return last ? `<b>MOMENTUM</b>: portfolio ${last.month}: ${last.portfolio.map(p => p.ticker).join(', ')}` : '<b>MOMENTUM</b>: sin portfolio aún';
   })(),
+  (() => {
+    // SHADOW: EMA 8/21 semanal (paper). LONG = lado fuerte (bt PF 2.35); SHORT informativo (PF 0.48).
+    const j = load('journal_emacross.json') ?? [];
+    if (!j.length) return '<b>EMACross</b> 👁️ shadow: sin datos aún';
+    const side = d => { const c = j.filter(p => p.dir === d && p.status === 'closed');
+      const o = j.filter(p => p.dir === d && p.status === 'open').length;
+      if (!c.length) return `${o} abiertas, 0 cerradas`;
+      const sum = c.reduce((s, p) => s + (p.retPct || 0), 0), wr = c.filter(p => p.retPct > 0).length / c.length;
+      return `${c.length}tr WR ${(wr * 100).toFixed(0)}% Σ ${sum >= 0 ? '+' : ''}${sum.toFixed(1)}% | ${o} abiertas`; };
+    return `<b>EMACross</b> 👁️ shadow (semanal)\n   🟢 LONG: ${side('LONG')}\n   🔴 SHORT: ${side('SHORT')} <i>(informativo)</i>`;
+  })(),
   ``,
   open.length
     ? `<b>Abiertas (${open.length}/4):</b>\n` + open.map(p => `· ${p.ticker} @${p.entryPx} SL ${p.sl} (${p.riskPct}%) — ${p.sector}`).join('\n')
