@@ -23,6 +23,7 @@ const F = n => join(ROOT, n);
 const UA = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' };
 const FAST = 8, SLOW = 21;
 const DRY = process.argv.includes('--dry');
+const SEND_SHORT = false;   // el usuario opera long-only (short débil en acciones); poner true para reactivar
 const GAPMAX = (+process.argv.find(a => /^[\d.]+$/.test(a)) || 1.2) / 100;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f), 'utf8')) : d;
@@ -105,7 +106,7 @@ function analyze(bars) {
   let msg = `📡 <b>RADAR EMA 8/21 — cruces inminentes</b>  <i>(antes del cierre del viernes)</i>`;
   msg += `\n\n🟢 <b>LONG</b> — operable`;
   msg += [0, 1, 2].map(lv => fmtLevel(L, lv)).join('') || '\n  <i>ninguno cerca</i>';
-  if (S.length) { msg += `\n\n🔴 <b>SHORT</b> — informativo (débil en acciones)`;
+  if (SEND_SHORT && S.length) { msg += `\n\n🔴 <b>SHORT</b> — informativo (débil en acciones)`;
     msg += [0, 1, 2].map(lv => fmtLevel(S, lv)).join(''); }
   msg += `\n\n🔥 = con el precio de esta semana el cruce YA ocurrió → mirar hoy.` +
          `\n(+X% s/EMA21) = cuánto ya subió. Es SOLO info: el backtest dice NO descartar los extendidos` +
