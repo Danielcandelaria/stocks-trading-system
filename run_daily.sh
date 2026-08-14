@@ -32,9 +32,10 @@ echo "[$(date '+%Y-%m-%d %H:%M')] ▶ run diario de acciones (recuperación robu
 # /usr/local/bin/node scanner_ema200.mjs
 /usr/local/bin/node watchlist_daily.mjs
 
-# RADAR de cruces EMA 8/21 inminentes: SOLO jueves (día antes del cierre semanal),
-# para tener en el radar y poder anticipar la entrada (backtest: adelantar mejora 87%).
-if [ "$(date +%u)" = "4" ]; then
+# RADAR de cruces EMA 8/21 inminentes: JUEVES y VIERNES (antes del cierre semanal),
+# para ver quién va a cruzar y anticipar la entrada (backtest: adelantar mejora PF 2.35→2.81).
+DOW=$(date +%u)
+if [ "$DOW" = "4" ] || [ "$DOW" = "5" ]; then
   /usr/local/bin/node radar_emacross.mjs
 fi
 

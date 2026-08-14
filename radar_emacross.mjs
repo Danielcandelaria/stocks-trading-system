@@ -1,15 +1,17 @@
 #!/usr/bin/env node
-// radar_emacross.mjs — RADAR de cruces EMA 8/21 semanal INMINENTES.
-//   No espera a que el cruce se confirme al cierre del viernes: detecta cuando las
-//   EMAs están MUY cerca y CONVERGIENDO, para tener el ticker en el radar durante la
-//   semana y poder entrar antes (capturar más movimiento). Ver backtest_ema_timing.mjs:
-//   adelantar 1 semana mejora el 87% de las veces (PF 2.35→4.18 con previsión perfecta).
+// radar_emacross.mjs — RADAR de cruces EMA 8/21 semanal (jueves/viernes, antes del cierre).
+//   OBJETIVO: ver qué empresas van a cruzar ANTES de que cierre la vela semanal, para
+//   entrar sin perder recorrido (backtest: anticipar mejora PF 2.35→2.81).
 //
-//   Manda UN digest a Telegram con los "a punto de cruzar". NO es una entrada: es un
-//   aviso de vigilancia. La entrada real la sigue confirmando scanner_emacross.mjs al cierre.
-//   Umbral: |EMA8-EMA21|/precio < GAP% y el hueco se ESTRECHA hacia el cruce.
+//   Clave: usa el precio EN VIVO de la semana en curso para calcular la EMA "si la vela
+//   cerrase ahora". Así distingue:
+//     🔥 CRUZANDO YA  — con el precio de esta semana el cruce YA ha ocurrido (entrar hoy).
+//     ⚡ ESTA SEMANA  — a un pelo del cruce y convergiendo rápido (probable antes del viernes).
+//     ⏳ 1-2 SEMANAS  — acercándose, vigilar.
+//   Ordena LONG (operable) primero; SHORT informativo (débil en acciones).
+//   Manda UN digest a Telegram por niveles. NO es orden de entrada: confirmar en la gráfica.
 //
-//   Uso:  node radar_emacross.mjs [--dry] [gap%]     (gap% por defecto 0.8)
+//   Uso:  node radar_emacross.mjs [--dry] [gapMax%]     (gapMax% por defecto 1.2)
 
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -21,10 +23,10 @@ const F = n => join(ROOT, n);
 const UA = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' };
 const FAST = 8, SLOW = 21;
 const DRY = process.argv.includes('--dry');
-const GAP = (+process.argv.find(a => /^[\d.]+$/.test(a)) || 0.8) / 100;
+const GAPMAX = (+process.argv.find(a => /^[\d.]+$/.test(a)) || 1.2) / 100;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f), 'utf8')) : d;
-const ema = (cl, p) => { const k = 2 / (p + 1); let e = null; return cl.map((c, i) => { e = e === null ? c : c * k + e * (1 - k); return i >= p - 1 ? e : null; }); };
+const ema = (cl, p) => { const k = 2 / (p + 1); let e = null; return cl.map(c => { e = e === null ? c : c * k + e * (1 - k); return e; }); };
 const NOW = Date.now() / 1000;
 
 async function getWeekly(t) { const y = t.replace('.', '-');
@@ -32,39 +34,75 @@ async function getWeekly(t) { const y = t.replace('.', '-');
     if (!res.ok) return null; const r = (await res.json()).chart?.result?.[0]; const q = r?.indicators?.quote?.[0];
     if (!r?.timestamp || !q) return null; const b = [];
     for (let i = 0; i < r.timestamp.length; i++) if (q.close[i] != null) b.push({ t: r.timestamp[i], c: q.close[i] });
-    while (b.length && NOW - b[b.length - 1].t < 7 * 86400) b.pop();   // fuera la semana en curso
-    return b.length > 30 ? b : null; } catch { return null; } }
+    return b.length > SLOW + 5 ? b : null; } catch { return null; } }
+
+function analyze(bars) {
+  // separar la semana EN CURSO (viva) de las cerradas
+  const forming = bars.length && NOW - bars[bars.length - 1].t < 7 * 86400;
+  const closed = forming ? bars.slice(0, -1) : bars;
+  const liveClose = bars[bars.length - 1].c;            // precio actual (semana viva o último cierre)
+  if (closed.length < SLOW + 3) return null;
+  const cl = closed.map(b => b.c), ef = ema(cl, FAST), es = ema(cl, SLOW);
+  const n = cl.length - 1;
+  const efC = ef[n], esC = es[n], px = cl[n];
+  const gapC = (efC - esC) / px;                        // hueco al último cierre
+  const gapPrev = (ef[n - 1] - es[n - 1]) / cl[n - 1];  // hueco anterior (velocidad)
+  // EMA "si la vela cerrase al precio de AHORA":
+  const k8 = 2 / (FAST + 1), k21 = 2 / (SLOW + 1);
+  const efL = liveClose * k8 + efC * (1 - k8);
+  const esL = liveClose * k21 + esC * (1 - k21);
+  const gapL = (efL - esL) / liveClose;                 // hueco proyectado con el precio vivo
+  const vel = gapC - gapPrev;                            // cambio del hueco por semana
+  return { px: liveClose, gapC, gapL, vel };
+}
 
 (async () => {
   const uni = load('universe.json', { universe: [] }).universe;
-  const hits = []; let done = 0;
+  const hits = []; let done = 0, errs = 0;
   for (const u of uni) {
-    let bars; try { bars = await getWeekly(u.ticker); await sleep(120); } catch { continue; }
-    if (!bars || bars.length < SLOW + 3) continue;
-    const cl = bars.map(b => b.c), ef = ema(cl, FAST), es = ema(cl, SLOW);
-    const L = cl.length - 1; if (ef[L] == null || ef[L - 1] == null) continue;
-    const px = cl[L];
-    const gNow = (ef[L] - es[L]) / px;         // hueco actual (normalizado)
-    const gPrev = (ef[L - 1] - es[L - 1]) / px;
-    if (Math.abs(gNow) >= GAP) continue;       // aún lejos
-    // convergiendo hacia el cruce (el hueco se estrecha):
-    const longImm = gNow < 0 && gNow > gPrev;   // EMA8 debajo, subiendo hacia EMA21 → cruce alcista cerca
-    const shortImm = gNow > 0 && gNow < gPrev;  // EMA8 encima, bajando hacia EMA21 → cruce bajista cerca
-    if (!longImm && !shortImm) continue;
-    hits.push({ ticker: u.ticker, tv: u.tv, dir: longImm ? 'LONG' : 'SHORT', px, gap: Math.abs(gNow) * 100 });
+    let bars; try { bars = await getWeekly(u.ticker); await sleep(120); } catch { errs++; continue; }
+    if (!bars) continue;
+    const a = analyze(bars); if (!a) continue;
+    const { px, gapC, gapL, vel } = a;
+
+    // dirección del cruce que se aproxima (según el signo del hueco al cierre)
+    const longSide = gapC < 0;   // EMA8 debajo → cruce alcista pendiente
+    const dir = longSide ? 'LONG' : 'SHORT';
+
+    // ¿ya cruzó con el precio vivo?  ¿converge?
+    const crossedLive = longSide ? gapL >= 0 : gapL <= 0;
+    const converging = longSide ? gapL > gapC : gapL < gapC;   // el hueco se cierra hacia cero
+    const gLive = Math.abs(gapL);
+
+    let level = null;
+    if (crossedLive) level = 0;                          // 🔥 CRUZANDO YA
+    else if (converging && gLive < 0.004) level = 1;     // ⚡ ESTA SEMANA (a <0.4%)
+    else if (converging && gLive < GAPMAX) level = 2;    // ⏳ 1-2 SEMANAS
+    else continue;
+
+    hits.push({ ticker: u.ticker, tv: u.tv, dir, px, level, gLive: gLive * 100 });
     if (++done % 60 === 0) process.stderr.write(`  …revisadas ${done}\n`);
   }
 
-  hits.sort((a, b) => a.gap - b.gap);   // los más cerca del cruce, primero
-  const L = hits.filter(h => h.dir === 'LONG'), S = hits.filter(h => h.dir === 'SHORT');
-  const line = h => `  ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  (a ${h.gap.toFixed(2)}%)`;
-  console.log(`RADAR: ${hits.length} inminentes · ${L.length} LONG · ${S.length} SHORT (gap<${(GAP*100).toFixed(1)}%)`);
-  for (const h of hits) console.log(`  ${h.dir.padEnd(5)} ${h.ticker.padEnd(6)} gap ${h.gap.toFixed(2)}%  $${h.px.toFixed(2)}`);
+  // orden: LONG antes que SHORT, luego por nivel de urgencia, luego por cercanía
+  const rank = h => (h.dir === 'LONG' ? 0 : 100) + h.level * 10;
+  hits.sort((a, b) => rank(a) - rank(b) || a.gLive - b.gLive);
 
-  if (!DRY && hits.length) await tgSend(
-    `📡 <b>RADAR EMA 8/21 — cruces inminentes</b>  <i>(vigilar, aún sin confirmar)</i>` +
-    `\n\n🟢 <b>LONG a punto</b> (${L.length})\n<code>${L.map(line).join('\n') || '  —'}</code>` +
-    `\n\n🔴 <b>SHORT a punto</b> (${S.length})\n<code>${S.map(line).join('\n') || '  —'}</code>` +
-    `\n\n⏳ El cruce se confirma al CIERRE del viernes. Esto es solo para tenerlos en el radar.`
-  );
+  const LV = ['🔥 CRUZANDO YA', '⚡ ESTA SEMANA', '⏳ 1-2 SEMANAS'];
+  const L = hits.filter(h => h.dir === 'LONG'), S = hits.filter(h => h.dir === 'SHORT');
+  console.log(`RADAR: ${hits.length} · LONG ${L.length} (🔥${L.filter(h=>h.level===0).length} ⚡${L.filter(h=>h.level===1).length} ⏳${L.filter(h=>h.level===2).length}) · SHORT ${S.length} · ${errs} err`);
+  for (const h of hits) console.log(`  ${LV[h.level].padEnd(16)} ${h.dir.padEnd(5)} ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  (${h.level === 0 ? 'ya' : h.gLive.toFixed(2) + '%'})`);
+
+  if (DRY || !hits.length) return;
+
+  const fmtLevel = (arr, lv) => { const g = arr.filter(h => h.level === lv);
+    if (!g.length) return ''; const line = h => `  ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}` + (lv === 0 ? '' : `  (${h.gLive.toFixed(2)}%)`);
+    return `\n\n${LV[lv]}\n<code>${g.map(line).join('\n')}</code>`; };
+  let msg = `📡 <b>RADAR EMA 8/21 — cruces inminentes</b>  <i>(antes del cierre del viernes)</i>`;
+  msg += `\n\n🟢 <b>LONG</b> — operable`;
+  msg += [0, 1, 2].map(lv => fmtLevel(L, lv)).join('') || '\n  <i>ninguno cerca</i>';
+  if (S.length) { msg += `\n\n🔴 <b>SHORT</b> — informativo (débil en acciones)`;
+    msg += [0, 1, 2].map(lv => fmtLevel(S, lv)).join(''); }
+  msg += `\n\n🔥 = con el precio de esta semana el cruce YA ocurrió → mirar hoy. Confirmar en la gráfica antes de entrar.`;
+  await tgSend(msg);
 })();
