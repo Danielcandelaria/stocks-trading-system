@@ -32,14 +32,8 @@ echo "[$(date '+%Y-%m-%d %H:%M')] ▶ run diario de acciones (recuperación robu
 # /usr/local/bin/node scanner_ema200.mjs
 /usr/local/bin/node watchlist_daily.mjs
 
-# RADAR de cruces EMA 8/21 inminentes: TODOS LOS DÍAS DE MERCADO (lun-vie). Usa el precio
-# VIVO de la semana en curso (cambia a diario) → un cruce puede asomar el martes y lo ves ya.
-# Ojo: a principio de semana es más TENTATIVO (aún puede revertir antes del cierre del viernes);
-# jueves/viernes es más firme. Es vigilancia, no orden — confirmar en la gráfica antes de entrar.
-DOW=$(date +%u)
-if [ "$DOW" -le 5 ]; then
-  /usr/local/bin/node radar_emacross.mjs
-fi
+# RADAR de cruces EMA 8/21: agente PROPIO (com.stocks.emaradar), lun-vie 14:00 hora España,
+# ANTES de la apertura de EEUU. Aquí NO se llama para no enviarlo dos veces.
 
 # marcar como corrido hoy (al final → si el Mac se duerme a media ejecución, reintenta)
 echo "$TODAY" > "$STATE"
