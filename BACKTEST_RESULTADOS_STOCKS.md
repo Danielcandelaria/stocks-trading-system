@@ -283,3 +283,15 @@ Por año (expectancy, entrada): fuerte en años alcistas (2020 +27%, 2023 +24%),
 - Anticipado sube WR (33→38%) y PF (2.36→2.42) con menos trades — mejor entrada, como ya vimos.
 - WF 4/4 en ambos = edge estable en las 4 ventanas temporales (no un artefacto de un solo régimen).
 - ⚠️ Sesgo de supervivencia (universo de hoy sobre el pasado) → son números de EDGE RELATIVO, no retorno garantizado. Por eso el sistema es SHADOW hasta acumular forward propio. El drawdown de −1775% es de la curva equiponderada acumulada (no compón.), no de una cuenta real con sizing.
+
+## EMACross — filtro de FRESCURA (extensión sobre EMA21): NO usar (2026-08-14)
+
+`backtest_emacross_ext.mjs` (250t 10y, LONG, stop −18%, salida cruce). Filtrar por baja extensión al entrar EMPEORA:
+| filtro | n | WR | PF | exp%/tr | WF |
+|---|---|---|---|---|---|
+| TODOS | 2590 | 33% | **2.36** | +7.56 | 4/4 |
+| ext<8% | 1975 | 30% | 1.64 | +3.31 | 3/4 |
+| ext<5% | 1287 | 26% | 1.16 | +0.79 | 3/4 |
+| ext<3% | 621 | 23% | 1.01 | +0.03 | 1/4 |
+
+**CONCLUSIÓN (corrige la intuición "fresco = mejor entrada"):** la extensión sobre la EMA21 NO es "llegas tarde" — es MOMENTUM. El cruce extendido (precio bien por encima de EMA21) es una tendencia potente y rinde MEJOR; el cruce fresco (pegado a EMA21) es tibio y whipsapea. Filtrar a frescos deja los cruces débiles → breakeven. **Entrar en TODOS los cruces es óptimo.** El radar muestra la extensión SOLO como info (no como filtro ni prioridad). Regla de oro reconfirmada: no aplicar una intuición sin backtestearla.

@@ -85,10 +85,12 @@ function analyze(bars) {
     if (++done % 60 === 0) process.stderr.write(`  …revisadas ${done}\n`);
   }
 
-  // orden: LONG antes que SHORT · nivel de urgencia · MÁS FRESCO (menos extendido) primero
+  // orden: LONG antes que SHORT · nivel de urgencia · más cerca del cruce primero
   const rank = h => (h.dir === 'LONG' ? 0 : 100) + h.level * 10;
-  hits.sort((a, b) => rank(a) - rank(b) || a.ext - b.ext);
-  const dot = e => e < 3 ? '🟢' : e < 6 ? '🟡' : '🔴';   // frescura: 🟢 fresco · 🔴 extendido (tarde)
+  hits.sort((a, b) => rank(a) - rank(b) || a.gLive - b.gLive);
+  // extensión = cuánto ya subió sobre la EMA21 (SOLO INFO — backtest: NO filtrar por esto;
+  // los extendidos son cruces con más momentum y rinden MEJOR, no peor).
+  const dot = e => e < 3 ? '·' : e < 6 ? '•' : '‣';
 
   const LV = ['🔥 CRUZANDO YA', '⚡ ESTA SEMANA', '⏳ 1-2 SEMANAS'];
   const L = hits.filter(h => h.dir === 'LONG'), S = hits.filter(h => h.dir === 'SHORT');
@@ -98,15 +100,15 @@ function analyze(bars) {
   if (DRY || !hits.length) return;
 
   const fmtLevel = (arr, lv) => { const g = arr.filter(h => h.level === lv);
-    if (!g.length) return ''; const line = h => `  ${dot(h.ext)} ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  ext +${h.ext.toFixed(1)}%`;
-    return `\n\n${LV[lv]}  <i>(🟢 fresco → 🔴 extendido)</i>\n<code>${g.map(line).join('\n')}</code>`; };
+    if (!g.length) return ''; const line = h => `  ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  (+${h.ext.toFixed(1)}% s/EMA21)`;
+    return `\n\n${LV[lv]}\n<code>${g.map(line).join('\n')}</code>`; };
   let msg = `📡 <b>RADAR EMA 8/21 — cruces inminentes</b>  <i>(antes del cierre del viernes)</i>`;
   msg += `\n\n🟢 <b>LONG</b> — operable`;
   msg += [0, 1, 2].map(lv => fmtLevel(L, lv)).join('') || '\n  <i>ninguno cerca</i>';
   if (S.length) { msg += `\n\n🔴 <b>SHORT</b> — informativo (débil en acciones)`;
     msg += [0, 1, 2].map(lv => fmtLevel(S, lv)).join(''); }
   msg += `\n\n🔥 = con el precio de esta semana el cruce YA ocurrió → mirar hoy.` +
-         `\n🟢 = fresco (precio pegado a la EMA21, entras temprano) · 🔴 = extendido (ya corrió, llegas tarde).` +
-         `\nPrioriza los 🟢. Confirmar en la gráfica antes de entrar.`;
+         `\n(+X% s/EMA21) = cuánto ya subió. Es SOLO info: el backtest dice NO descartar los extendidos` +
+         ` (son cruces con más momentum y rinden mejor). Entrar en el cruce y confirmar en la gráfica.`;
   await tgSend(msg);
 })();
