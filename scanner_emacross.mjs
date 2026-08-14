@@ -71,7 +71,15 @@ async function getWeekly(t) {
       p.status = 'closed'; p.exitT = bars[L].t; p.exitPx = px;
       p.retPct = +(((px / p.entryPx - 1) * 100) * ds - COST * 200).toFixed(2);
       nClose++;
-      log(`CIERRE ${p.dir} ${u.ticker}: ${p.retPct > 0 ? '+' : ''}${p.retPct}% (cruce contrario) — no Telegram`);
+      const gan = p.retPct >= 0;
+      log(`CIERRE ${p.dir} ${u.ticker}: ${gan ? '+' : ''}${p.retPct}% (cruce contrario)`);
+      // AVISO de salida: el cruce contrario es la señal de cerrar (tomar beneficios)
+      if (!DRY) await tgSend(
+        `${gan ? '✅' : '⚠️'} <b>CIERRA ${p.dir} ${u.ticker}</b>  <i>(cruce contrario)</i>` +
+        `\n💰 Sale  <b>$${px.toFixed(2)}</b>  ·  ${gan ? '+' : ''}${p.retPct}% desde $${p.entryPx.toFixed(2)}` +
+        `\n🔻 ${p.dir === 'LONG' ? 'La EMA8 cruzó BAJO la EMA21' : 'La EMA8 cruzó SOBRE la EMA21'} → ${gan ? 'toma beneficios' : 'sal, tendencia agotada'}` +
+        `\n📈 ${p.tv || u.tv}`
+      );
     }
 
     // coherencia (dato sano) antes de registrar

@@ -245,3 +245,14 @@ mejora RSI2 de forma robusta (WF 4/4). La spec validada se queda como está.
 | **anticipado gap<1.2%** | 2144 | **+8.74** | **40%** | **2.81** | +18731 |
 
 **CONCLUSIÓN:** anticipar por convergencia MEJORA de verdad (PF 2.35→2.81, WR 33→40%) neto de señales falsas. La banda óptima de entrada es gap<1.2%. `radar_emacross.mjs` implementa esto (umbral 0.8% por defecto, conservador; corre jueves). No es solo watchlist: entrar en la banda es mejor entrada que esperar al cierre del cruce.
+
+## WeeklySwing — análisis MAE/MFE: la salida actual (13/time/stop) es óptima (2026-08-14)
+
+`backtest_weekly_mfe.mjs` (190 trades, 250t 10y, misma lógica que el scanner). Perfil por trade:
+- MFE mediana 36.5% / media **63.7%** (cola aún más gorda que EMACross). MAE mediana −9.9% / peor −44.2%.
+- final mediana +8.5% / media +40.1%. Giveback mediana 17%. Duración mediana 33 sem.
+- Motivo de salida: STOP 47% · TIME(52w) 31% · countdown-13 18% · END 4%.
+
+**Comparativa de salidas (PF / Σret):** actual 13/time/stop **7.51 / +7617** (mejor). Trailing 30/40% = 7.03/7.06. Toma fija +25/50/80% = 2.99/3.91/5.12 (peor). 
+
+**CONCLUSIÓN:** igual que EMACross — NO poner toma de beneficios. La salida por agotamiento (countdown-13) + time-stop + stop estructural captura los trends monstruo (MFE media +64%); cualquier TP fijo hunde el PF (de 7.51 a ~3). El WR ya es alto (53%) por el suelo del setup-9 + stop 8%. El countdown-13 solo cierra el 18% (el stop y el time hacen el grueso), pero la combinación es la óptima. Confirmado: las dos trend-following (EMACross, WeeklySwing) NO usan TP; las de reversión (RSI2, DeMark, BreakoutRetest) SÍ.
