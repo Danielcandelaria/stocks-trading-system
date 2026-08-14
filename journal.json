@@ -1727,7 +1727,7 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1786368600,
     "signalClose": 29.889999389648438,
     "targetRef": 30.32,
@@ -1737,7 +1737,11 @@
     "entryPx": 30.105,
     "openPx": 30.09,
     "gapPct": 0.7,
-    "stop": 24.08
+    "stop": 24.08,
+    "exitT": 1786627800,
+    "exitPx": 30.2848,
+    "exitReason": "SMA5",
+    "retPct": 0.6
   },
   {
     "id": "RSI2:HST:1786368600",
@@ -1765,7 +1769,7 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1786368600,
     "signalClose": 24.110000610351562,
     "targetRef": 24.58,
@@ -1775,6 +1779,10 @@
     "entryPx": 24.3422,
     "openPx": 24.33,
     "gapPct": 0.9,
-    "stop": 19.47
+    "stop": 19.47,
+    "exitT": 1786627800,
+    "exitPx": 24.3778,
+    "exitReason": "SMA5",
+    "retPct": 0.15
   }
 ]
