@@ -78,8 +78,9 @@ async function getWeekly(t) {
     const chk = coherentTrade({ ticker: u.ticker, entry: px });
     if (!chk.ok) { log(`${u.ticker}: descartada por coherencia — ${chk.reason}`); continue; }
 
+    const stop = dir === 'LONG' ? +(px * 0.82).toFixed(2) : +(px * 1.18).toFixed(2);  // catástrofe -18%
     journal.push({ id: key, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'EMACross',
-      dir, status: 'open', signalT: bars[L].t, entryT: bars[L].t, entryPx: px });
+      dir, status: 'open', signalT: bars[L].t, entryT: bars[L].t, entryPx: px, stop });
     logDecision({ system: 'EMACross', action: dir, ticker: u.ticker, entry: px });
     if (dir === 'LONG') nLong++; else nShort++;
     fresh.push({ ticker: u.ticker, tv: u.tv, dir, px });

@@ -9,7 +9,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 499.99
+    "entryPx": 499.99,
+    "stop": 409.99
   },
   {
     "id": "EMAX:HD:1785729600:LONG",
@@ -21,7 +22,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 355.62
+    "entryPx": 355.62,
+    "stop": 291.61
   },
   {
     "id": "EMAX:SHOP:1785729600:LONG",
@@ -33,7 +35,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 151.57
+    "entryPx": 151.57,
+    "stop": 124.29
   },
   {
     "id": "EMAX:ABT:1785729600:LONG",
@@ -45,7 +48,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 107.81
+    "entryPx": 107.81,
+    "stop": 88.4
   },
   {
     "id": "EMAX:BA:1785729600:LONG",
@@ -57,7 +61,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 234.42
+    "entryPx": 234.42,
+    "stop": 192.22
   },
   {
     "id": "EMAX:LMT:1785729600:LONG",
@@ -69,7 +74,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 587.95
+    "entryPx": 587.95,
+    "stop": 482.12
   },
   {
     "id": "EMAX:SPGI:1785729600:SHORT",
@@ -81,7 +87,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 408.19
+    "entryPx": 408.19,
+    "stop": 481.66
   },
   {
     "id": "EMAX:BAM:1785729600:LONG",
@@ -93,7 +100,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 52.49
+    "entryPx": 52.49,
+    "stop": 43.04
   },
   {
     "id": "EMAX:SLB:1785729600:LONG",
@@ -105,7 +113,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 50.53
+    "entryPx": 50.53,
+    "stop": 41.43
   },
   {
     "id": "EMAX:COR:1785729600:LONG",
@@ -117,7 +126,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 320.46
+    "entryPx": 320.46,
+    "stop": 262.78
   },
   {
     "id": "EMAX:DVN:1785729600:SHORT",
@@ -129,7 +139,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 42.98
+    "entryPx": 42.98,
+    "stop": 50.72
   },
   {
     "id": "EMAX:XEL:1785729600:SHORT",
@@ -141,7 +152,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 78.07
+    "entryPx": 78.07,
+    "stop": 92.12
   },
   {
     "id": "EMAX:FERG:1785729600:LONG",
@@ -153,7 +165,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 256.69
+    "entryPx": 256.69,
+    "stop": 210.49
   },
   {
     "id": "EMAX:EXC:1785729600:SHORT",
@@ -165,7 +178,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 45.61
+    "entryPx": 45.61,
+    "stop": 53.82
   },
   {
     "id": "EMAX:WDAY:1785729600:LONG",
@@ -177,7 +191,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 179.64
+    "entryPx": 179.64,
+    "stop": 147.3
   },
   {
     "id": "EMAX:CBRE:1785729600:LONG",
@@ -189,7 +204,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 148.18
+    "entryPx": 148.18,
+    "stop": 121.51
   },
   {
     "id": "EMAX:CMG:1785729600:SHORT",
@@ -201,7 +217,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 32.79
+    "entryPx": 32.79,
+    "stop": 38.69
   },
   {
     "id": "EMAX:TEAM:1785729600:LONG",
@@ -213,7 +230,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 149.07
+    "entryPx": 149.07,
+    "stop": 122.24
   },
   {
     "id": "EMAX:CCL:1785729600:LONG",
@@ -225,7 +243,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 28.99
+    "entryPx": 28.99,
+    "stop": 23.77
   },
   {
     "id": "EMAX:WEC:1785729600:SHORT",
@@ -237,7 +256,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 107.63
+    "entryPx": 107.63,
+    "stop": 127
   },
   {
     "id": "EMAX:ARES:1785729600:LONG",
@@ -249,7 +269,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 136.85
+    "entryPx": 136.85,
+    "stop": 112.22
   },
   {
     "id": "EMAX:GFS:1785729600:SHORT",
@@ -261,7 +282,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 53.93
+    "entryPx": 53.93,
+    "stop": 63.64
   },
   {
     "id": "EMAX:AS:1785729600:LONG",
@@ -273,7 +295,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 36.84
+    "entryPx": 36.84,
+    "stop": 30.21
   },
   {
     "id": "EMAX:SSNC:1785729600:LONG",
@@ -285,7 +308,8 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 79.23
+    "entryPx": 79.23,
+    "stop": 64.97
   },
   {
     "id": "EMAX:CHRW:1785729600:SHORT",
@@ -297,6 +321,7 @@
     "status": "open",
     "signalT": 1785729600,
     "entryT": 1785729600,
-    "entryPx": 149.35
+    "entryPx": 149.35,
+    "stop": 176.23
   }
 ]
