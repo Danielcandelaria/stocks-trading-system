@@ -88,13 +88,15 @@ async function getWeekly(t) {
     const emoji = dir === 'LONG' ? '🟢' : '🔴';
     const accion = dir === 'LONG' ? 'COMPRA (LONG)' : 'VENTA (SHORT)';
     const salida = dir === 'LONG' ? 'la EMA8 cruce BAJO la EMA21' : 'la EMA8 cruce SOBRE la EMA21';
+    const cat = dir === 'LONG' ? px * 0.82 : px * 1.18;   // stop de catástrofe -18% (MAE p90 ganadoras)
     const nota = dir === 'LONG'
-      ? '📊 semanal · sin stop fijo (sales en el cruce contrario)'
-      : '⚠️ lado DÉBIL en acciones (backtest PF 0.48) — informativo · semanal';
+      ? '📊 semanal · salida = cruce contrario (deja correr)'
+      : '⚠️ lado DÉBIL en acciones (backtest PF 0.48) — informativo';
     if (!DRY && !SEED) await tgSend(
       `${emoji} <b>${accion} ${u.ticker}</b>` +
       `\n${emoji} Entra  <b>$${px.toFixed(2)}</b>` +
       `\n🔄 Cierra  <i>cuando ${salida}</i>` +
+      `\n🛑 Catástrofe  $${cat.toFixed(2)} (−18%)` +
       `\n${nota}` +
       `\n📈 ${u.tv}`
     );
