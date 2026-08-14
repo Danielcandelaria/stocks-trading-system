@@ -104,9 +104,9 @@ function analyze(bars) {
   // ── CAPA TV (fuente de verdad): poblar watchlist + confirmar los 🔥 ──
   let tvNote;
   if (await cdpUp()) {
-    try { const added = await syncWatchlist(L.map(h => h.tv)); log(`watchlist "Empresas para vigilar": +${added} símbolos nuevos`); } catch (e) { log('watchlist error: ' + e.message); }
+    try { const added = await syncWatchlist(L.map(h => h.tv)); console.log(`watchlist "Empresas para vigilar": +${added} símbolos nuevos`); } catch (e) { console.log('watchlist error: ' + e.message); }
     const fire = L.filter(h => h.level === 0).slice(0, 12);   // confirmar solo los "cruzando ya" (cap 12)
-    for (const h of fire) { const r = await confirmSymbol(h.tv); if (!r.error) { h.tvCrossed = r.crossed; h.tvGap = r.gapPct; } log(`TV ${h.ticker}: ${r.error ? r.error : (r.crossed ? 'CRUZADO' : 'aún no') + ' (' + r.gapPct.toFixed(2) + '%)'}`); }
+    for (const h of fire) { const r = await confirmSymbol(h.tv); if (!r.error) { h.tvCrossed = r.crossed; h.tvGap = r.gapPct; } console.log(`TV ${h.ticker}: ${r.error ? r.error : (r.crossed ? 'CRUZADO' : 'aún no') + ' (' + r.gapPct.toFixed(2) + '%)'}`); }
     tvNote = '✅ 🔥 verificados contra TV (fuente de verdad).';
   } else {
     tvNote = '⚠️ TV apagado → sin verificar (solo Yahoo). Arranca TV para confirmar.';
