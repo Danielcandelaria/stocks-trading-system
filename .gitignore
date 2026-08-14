@@ -13,6 +13,7 @@ circuit_breaker.json
 seen_signals.json
 seen_breakout.json
 seen_weekly.json
+seen_emacross.json
 momentum_state.json
 spy.json
 watchlist_spain_dc_state.json
