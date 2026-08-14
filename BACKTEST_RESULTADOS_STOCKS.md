@@ -218,3 +218,16 @@ con muchas operaciones, no con 47.
 la spec.** CHECKPOINT: si a ~150-200 forward sigue negativo → fallo real, no ruido.
 Todos los filtros probados (safety-net, gap-guard, distancia, volatilidad): ninguno
 mejora RSI2 de forma robusta (WF 4/4). La spec validada se queda como está.
+
+## EMA 8/21 semanal — análisis MAE/MFE y salida óptima (2026-08-14)
+
+`backtest_ema_mfe.mjs` sobre 2585 LONG (250 tickers, 10y). Perfil por trade (salida=cruce):
+- MFE (máx a favor): mediana **10.7%**, media **31.8%** ← la media >> mediana = cola gorda (pocos trends enormes cargan todo).
+- MAE (máx en contra): mediana −8.1%, peor −62.6%.
+- final@cruce: mediana **−4.5%** (¡el trade típico pierde!), media **+7.6%**.
+- giveback pico→cruce: mediana 16.8%. Duración: 17 semanas.
+- MAE de las GANADORAS: mediana −5.6%, **p90 −14.2%** → un stop más ajustado que ~15% mata ganadores.
+
+**Comparativa de salidas (Σret / PF):** cruce contrario **+19618 / PF 2.35** (mejor). Trailing 15/20/30% = PF 1.50/1.71/1.95 (peor). Toma fija +25/40% = PF 1.45/1.60 (peor). **Cruce + stop duro −18% = +19662 / PF 2.38** (marginalmente mejor, corta la cola de −62% sin tocar ganadores).
+
+**CONCLUSIÓN (regla de oro trend-following):** intentar "capturar el pico antes de la reversión" con trailing o toma fija DESTRUYE el edge — corta los pocos trends monstruo que SON la ventaja. La salida óptima es el **cruce contrario**, aceptando el giveback. Única mejora libre: **stop de catástrofe en −18%** (los ganadores rara vez caen >14% en contra). NO usar trailing ni toma fija.
