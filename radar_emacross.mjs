@@ -13,7 +13,7 @@
 //
 //   Uso:  node radar_emacross.mjs [--dry] [gapMax%]     (gapMax% por defecto 1.2)
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { tgSend } from './tg.mjs';
@@ -28,6 +28,7 @@ const SEND_SHORT = false;   // el usuario opera long-only (short débil en accio
 const GAPMAX = (+process.argv.find(a => /^[\d.]+$/.test(a)) || 1.2) / 100;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f), 'utf8')) : d;
+const save = (f, v) => writeFileSync(F(f), JSON.stringify(v, null, 2));
 const ema = (cl, p) => { const k = 2 / (p + 1); let e = null; return cl.map(c => { e = e === null ? c : c * k + e * (1 - k); return e; }); };
 const NOW = Date.now() / 1000;
 
@@ -104,10 +105,30 @@ function analyze(bars) {
   // ── CAPA TV (fuente de verdad): poblar watchlist + confirmar los 🔥 ──
   let tvNote;
   if (await cdpUp()) {
-    try { const added = await syncWatchlist(L.map(h => h.tv)); console.log(`watchlist "Empresas para vigilar": +${added} símbolos nuevos`); } catch (e) { console.log('watchlist error: ' + e.message); }
-    const fire = L.filter(h => h.level === 0).slice(0, 12);   // confirmar solo los "cruzando ya" (cap 12)
-    for (const h of fire) { const r = await confirmSymbol(h.tv); if (!r.error) { h.tvCrossed = r.crossed; h.tvGap = r.gapPct; } console.log(`TV ${h.ticker}: ${r.error ? r.error : (r.crossed ? 'CRUZADO' : 'aún no') + ' (' + r.gapPct.toFixed(2) + '%)'}`); }
-    tvNote = '✅ 🔥 verificados contra TV (fuente de verdad).';
+    const fire = L.filter(h => h.level === 0);   // 🔥 = "cruzando ya" → los que se validan en TV
+    // watchlist "Empresas para vigilar" = SOLO los 🔥 (el usuario la gestiona/borra a mano)
+    try { const added = await syncWatchlist(fire.map(h => h.tv)); console.log(`watchlist "Empresas para vigilar": +${added} 🔥`); } catch (e) { console.log('watchlist error: ' + e.message); }
+    // confirmar el cruce en TV; señal NUEVA de Telegram cuando TV confirma un cruce por 1ª vez
+    const prev = load('seen_tv_confirmed.json', {});   // { TICKER: true } cruces ya avisados
+    const now = {};
+    for (const h of fire) {
+      const r = await confirmSymbol(h.tv);
+      if (r.error) { console.log(`TV ${h.ticker}: ${r.error}`); continue; }
+      h.tvCrossed = r.crossed; h.tvGap = r.gapPct;
+      console.log(`TV ${h.ticker}: ${r.crossed ? 'CRUZADO' : 'aún no'} (${r.gapPct.toFixed(2)}%)`);
+      if (r.crossed) {
+        now[h.ticker] = true;
+        if (!prev[h.ticker]) await tgSend(          // ← 2ª señal: cruce CONFIRMADO en TV (entrada)
+          `✅ <b>CRUCE CONFIRMADO EN TV — ${h.ticker}</b>` +
+          `\n🟢 La EMA8 cruzó SOBRE la EMA21 (confirmado en TradingView)` +
+          `\n💵 Precio  <b>$${r.price.toFixed(2)}</b>` +
+          `\n🎯 Entrada · salida en el cruce contrario · stop catástrofe −18%` +
+          `\n📈 ${h.tv}`
+        );
+      }
+    }
+    save('seen_tv_confirmed.json', now);   // solo los cruzados AHORA → si descruza y recruza, re-avisa
+    tvNote = '✅ 🔥 verificados contra TV. Aviso APARTE cuando TV confirma el cruce (entrada).';
   } else {
     tvNote = '⚠️ TV apagado → sin verificar (solo Yahoo). Arranca TV para confirmar.';
   }
