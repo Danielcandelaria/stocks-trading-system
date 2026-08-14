@@ -32,6 +32,12 @@ echo "[$(date '+%Y-%m-%d %H:%M')] ▶ run diario de acciones (recuperación robu
 # /usr/local/bin/node scanner_ema200.mjs
 /usr/local/bin/node watchlist_daily.mjs
 
+# RADAR de cruces EMA 8/21 inminentes: SOLO jueves (día antes del cierre semanal),
+# para tener en el radar y poder anticipar la entrada (backtest: adelantar mejora 87%).
+if [ "$(date +%u)" = "4" ]; then
+  /usr/local/bin/node radar_emacross.mjs
+fi
+
 # marcar como corrido hoy (al final → si el Mac se duerme a media ejecución, reintenta)
 echo "$TODAY" > "$STATE"
 echo "[$(date '+%Y-%m-%d %H:%M')] ✓ run diario completado"
