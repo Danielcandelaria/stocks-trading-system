@@ -17,6 +17,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { tgSend } from './tg.mjs';
+import { cdpUp, confirmSymbol, syncWatchlist } from './tv_layer.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
@@ -100,19 +101,30 @@ function analyze(bars) {
 
   if (DRY || !hits.length) return;
 
+  // ── CAPA TV (fuente de verdad): poblar watchlist + confirmar los 🔥 ──
+  let tvNote;
+  if (await cdpUp()) {
+    try { const added = await syncWatchlist(L.map(h => h.tv)); log(`watchlist "Empresas para vigilar": +${added} símbolos nuevos`); } catch (e) { log('watchlist error: ' + e.message); }
+    const fire = L.filter(h => h.level === 0).slice(0, 12);   // confirmar solo los "cruzando ya" (cap 12)
+    for (const h of fire) { const r = await confirmSymbol(h.tv); if (!r.error) { h.tvCrossed = r.crossed; h.tvGap = r.gapPct; } log(`TV ${h.ticker}: ${r.error ? r.error : (r.crossed ? 'CRUZADO' : 'aún no') + ' (' + r.gapPct.toFixed(2) + '%)'}`); }
+    tvNote = '✅ 🔥 verificados contra TV (fuente de verdad).';
+  } else {
+    tvNote = '⚠️ TV apagado → sin verificar (solo Yahoo). Arranca TV para confirmar.';
+  }
+
   const fmtLevel = (arr, lv) => { const g = arr.filter(h => h.level === lv);
     if (!g.length) return '';
-    const line = h => `  ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  (+${h.ext.toFixed(1)}% s/EMA21)` +
-      (lv === 0 && h.gLive < 0.25 ? '  ⚠️al filo' : '');   // cruce razor-thin → confirmar en TV
+    const tv = h => h.tvCrossed === true ? '  ✅TV' : h.tvCrossed === false ? '  ⏳TV aún no' : '';
+    const line = h => `  ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  (+${h.ext.toFixed(1)}% s/EMA21)` + (lv === 0 ? tv(h) : '');
     return `\n\n${LV[lv]}\n<code>${g.map(line).join('\n')}</code>`; };
   let msg = `📡 <b>RADAR EMA 8/21 — cruces inminentes</b>  <i>(antes del cierre del viernes)</i>`;
   msg += `\n\n🟢 <b>LONG</b> — operable`;
   msg += [0, 1, 2].map(lv => fmtLevel(L, lv)).join('') || '\n  <i>ninguno cerca</i>';
   if (SEND_SHORT && S.length) { msg += `\n\n🔴 <b>SHORT</b> — informativo (débil en acciones)`;
     msg += [0, 1, 2].map(lv => fmtLevel(S, lv)).join(''); }
-  msg += `\n\n🔥 = con el precio de esta semana el cruce YA ocurrió (proyección). ⚠️al filo = cruce muy justo,` +
-         ` puede que TV aún no lo pinte → CONFIRMAR en el chart (fuente de verdad).` +
-         `\n(+X% s/EMA21) = cuánto ya subió (solo info; NO descartar extendidos, son momentum).` +
-         `\nEl cruce se cierra el viernes. Radar = aviso, no orden.`;
+  msg += `\n\n${tvNote}` +
+         `\n✅TV = TV confirma el cruce (entrar). ⏳TV aún no = proyección Yahoo pero TV aún no cruza (esperar).` +
+         `\n(+X% s/EMA21) = cuánto ya subió (info; NO descartar extendidos, son momentum).` +
+         `\nTickers en watchlist "Empresas para vigilar". Cruce se cierra el viernes.`;
   await tgSend(msg);
 })();
