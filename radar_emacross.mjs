@@ -101,15 +101,18 @@ function analyze(bars) {
   if (DRY || !hits.length) return;
 
   const fmtLevel = (arr, lv) => { const g = arr.filter(h => h.level === lv);
-    if (!g.length) return ''; const line = h => `  ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  (+${h.ext.toFixed(1)}% s/EMA21)`;
+    if (!g.length) return '';
+    const line = h => `  ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  (+${h.ext.toFixed(1)}% s/EMA21)` +
+      (lv === 0 && h.gLive < 0.25 ? '  ⚠️al filo' : '');   // cruce razor-thin → confirmar en TV
     return `\n\n${LV[lv]}\n<code>${g.map(line).join('\n')}</code>`; };
   let msg = `📡 <b>RADAR EMA 8/21 — cruces inminentes</b>  <i>(antes del cierre del viernes)</i>`;
   msg += `\n\n🟢 <b>LONG</b> — operable`;
   msg += [0, 1, 2].map(lv => fmtLevel(L, lv)).join('') || '\n  <i>ninguno cerca</i>';
   if (SEND_SHORT && S.length) { msg += `\n\n🔴 <b>SHORT</b> — informativo (débil en acciones)`;
     msg += [0, 1, 2].map(lv => fmtLevel(S, lv)).join(''); }
-  msg += `\n\n🔥 = con el precio de esta semana el cruce YA ocurrió → mirar hoy.` +
-         `\n(+X% s/EMA21) = cuánto ya subió. Es SOLO info: el backtest dice NO descartar los extendidos` +
-         ` (son cruces con más momentum y rinden mejor). Entrar en el cruce y confirmar en la gráfica.`;
+  msg += `\n\n🔥 = con el precio de esta semana el cruce YA ocurrió (proyección). ⚠️al filo = cruce muy justo,` +
+         ` puede que TV aún no lo pinte → CONFIRMAR en el chart (fuente de verdad).` +
+         `\n(+X% s/EMA21) = cuánto ya subió (solo info; NO descartar extendidos, son momentum).` +
+         `\nEl cruce se cierra el viernes. Radar = aviso, no orden.`;
   await tgSend(msg);
 })();
