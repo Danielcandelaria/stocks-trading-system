@@ -312,3 +312,7 @@ Por año (expectancy, entrada): fuerte en años alcistas (2020 +27%, 2023 +24%),
 - Shorts NO funcionan ni en bear (PF 0.22, WF 0/4): el cruce 8/21 semanal come los rallies de rebote/short-squeeze. WR 13%.
 - Régimen-switch (D) PEOR que long-only (1.48 < 2.36). **Se mantiene long-only en todo régimen.**
 - Nota: el 8/21 no es vehículo bajista; una estrategia para el giro necesitaría OTRO diseño (sistema aparte).
+
+## EMACross — MID/SMALL caps (2026-08-16)
+
+`backtest_midsmall.mjs` (996 tickers $300M-$8B, 10y, long-only stop -18%): PF **1.65**, WR 25%, exp +5.61%/tr, ganadora media **+57.5%** (tienden más fuerte que large), perdedora −11.5%, WF 4/4. Peor que large-cap (PF 2.36) y **optimista** por supervivencia. Los ganadores son mayores pero más whipsaw y pérdidas más grandes. Large-cap sigue siendo el núcleo; mid/small solo como shadow de baja convicción si se quiere. Split MID vs SMALL en curso.
