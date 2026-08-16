@@ -31,6 +31,7 @@ const NOW = Date.now() / 1000;
 // recién cerrados (NU/DVN) por tratarlos como "en formación" (bug 2026-08-16).
 const _d = new Date(), _dow = _d.getUTCDay(), _h = _d.getUTCHours();
 const WEEK_OVER = _dow === 0 || _dow === 6 || (_dow === 5 && _h >= 20);
+const DASH_URL = process.env.DASH_URL || 'http://localhost:8080';
 
 async function getWeekly(t) {
   const y = t.replace('.', '-');
@@ -52,7 +53,8 @@ async function getWeekly(t) {
   const journal = load('journal_emacross.json', []);
   const seen = load('seen_emacross.json', {});
   let nLong = 0, nShort = 0, nClose = 0, errors = 0;
-  const fresh = [];   // señales nuevas de esta pasada (para modo --seed)
+  const fresh = [];        // señales nuevas de esta pasada
+  const closedList = [];   // cierres de esta pasada (para el aviso consolidado)
 
   for (const u of uni) {
     let bars; try { bars = await getWeekly(u.ticker); await sleep(120); } catch { errors++; continue; }
@@ -76,15 +78,8 @@ async function getWeekly(t) {
       p.status = 'closed'; p.exitT = bars[L].t; p.exitPx = px;
       p.retPct = +(((px / p.entryPx - 1) * 100) * ds - COST * 200).toFixed(2);
       nClose++;
-      const gan = p.retPct >= 0;
-      log(`CIERRE ${p.dir} ${u.ticker}: ${gan ? '+' : ''}${p.retPct}% (cruce contrario)`);
-      // AVISO de salida: el cruce contrario es la señal de cerrar (tomar beneficios)
-      if (!DRY) await tgSend(
-        `${gan ? '✅' : '⚠️'} <b>CIERRA ${p.dir} ${u.ticker}</b>  <i>(cruce contrario)</i>` +
-        `\n💰 Sale  <b>$${px.toFixed(2)}</b>  ·  ${gan ? '+' : ''}${p.retPct}% desde $${p.entryPx.toFixed(2)}` +
-        `\n🔻 ${p.dir === 'LONG' ? 'La EMA8 cruzó BAJO la EMA21' : 'La EMA8 cruzó SOBRE la EMA21'} → ${gan ? 'toma beneficios' : 'sal, tendencia agotada'}` +
-        `\n📈 ${p.tv || u.tv}`
-      );
+      log(`CIERRE ${p.dir} ${u.ticker}: ${p.retPct >= 0 ? '+' : ''}${p.retPct}% (cruce contrario)`);
+      if (p.dir === 'LONG') closedList.push(u.ticker);   // solo LONG interesa al usuario
     }
 
     // coherencia (dato sano) antes de registrar
@@ -97,36 +92,18 @@ async function getWeekly(t) {
     logDecision({ system: 'EMACross', action: dir, ticker: u.ticker, entry: px });
     if (dir === 'LONG') nLong++; else nShort++;
     fresh.push({ ticker: u.ticker, tv: u.tv, dir, px });
-
-    // aviso individual (cadencia normal). En --seed se acumula y sale un solo resumen.
-    const emoji = dir === 'LONG' ? '🟢' : '🔴';
-    const accion = dir === 'LONG' ? 'COMPRA (LONG)' : 'VENTA (SHORT)';
-    const salida = dir === 'LONG' ? 'la EMA8 cruce BAJO la EMA21' : 'la EMA8 cruce SOBRE la EMA21';
-    const cat = dir === 'LONG' ? px * 0.82 : px * 1.18;   // stop de catástrofe -18% (MAE p90 ganadoras)
-    const nota = dir === 'LONG'
-      ? '📊 semanal · salida = cruce contrario (deja correr)'
-      : '⚠️ lado DÉBIL en acciones (backtest PF 0.48) — informativo';
-    if (!DRY && !SEED) await tgSend(
-      `${emoji} <b>${accion} ${u.ticker}</b>` +
-      `\n${emoji} Entra  <b>$${px.toFixed(2)}</b>` +
-      `\n🔄 Cierra  <i>cuando ${salida}</i>` +
-      `\n🛑 Catástrofe  $${cat.toFixed(2)} (−18%)` +
-      `\n${nota}` +
-      `\n📈 ${u.tv}`
-    );
   }
 
-  // modo --seed: un único mensaje resumen con todas las señales frescas
-  if (!DRY && SEED && fresh.length) {
-    const L = fresh.filter(s => s.dir === 'LONG'), S = fresh.filter(s => s.dir === 'SHORT');
-    const line = s => `  ${s.ticker.padEnd(6)} $${s.px.toFixed(2)}`;
-    await tgSend(
-      `📐 <b>EMA 8/21 semanal — cruces de esta semana</b>` +
-      `\n\n🟢 <b>LONG</b> (${L.length}) · lado fuerte (PF 2.35)\n<code>${L.map(line).join('\n') || '  —'}</code>` +
-      `\n\n🔴 <b>SHORT</b> (${S.length}) · lado débil, informativo (PF 0.48)\n<code>${S.map(line).join('\n') || '  —'}</code>` +
-      `\n\n🔄 Cada uno se cierra en el cruce contrario. Sin stop fijo.`
-    );
-  }
+  // AVISO SIMPLIFICADO (foco): no listamos tickers, solo "revisa el dashboard".
+  const nL = fresh.filter(s => s.dir === 'LONG').length;   // solo LONG interesa al usuario
+  if (!DRY && nL) await tgSend(
+    `🔵 <b>EMACross — ${nL} posible${nL > 1 ? 's' : ''} oportunidad${nL > 1 ? 'es' : ''}</b>` +
+    `\n👉 Revisa el dashboard: ${DASH_URL}`
+  );
+  if (!DRY && closedList.length) await tgSend(
+    `⚠️ <b>EMACross — ${closedList.length} posición${closedList.length > 1 ? 'es' : ''} a cerrar</b>  <i>(cruce contrario)</i>` +
+    `\n👉 Revisa el dashboard: ${DASH_URL}`
+  );
 
   if (!DRY) { save('journal_emacross.json', journal); save('seen_emacross.json', seen); }
   const open = journal.filter(p => p.status === 'open');

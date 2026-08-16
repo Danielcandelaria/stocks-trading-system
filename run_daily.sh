@@ -27,6 +27,7 @@ echo "[$(date '+%Y-%m-%d %H:%M')] ▶ run diario de acciones (recuperación robu
 /usr/local/bin/node momentum_monthly.mjs
 /usr/local/bin/node scanner_emacross.mjs       # EMA 8/21 large-cap (LONG+SHORT); dedup
 /usr/local/bin/node scanner_emacross_mid.mjs   # EMA 8/21 MID-caps $2-8B (LONG shadow, PF 1.82)
+/usr/local/bin/node track_pnl.mjs   # P&L en vivo FOCO → dashboard
 # EMA200Bounce ELIMINADA 2026-07-03: validada (WF 3/4) pero regime-dependent —
 # sangra en choppy (fwd −25.6%, 0% WR) y estamos en midterm choppy. Reversible:
 # descomentar cuando el regimen gire a bull (+ restaurar journal_ema200.json.off).

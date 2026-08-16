@@ -26,7 +26,8 @@ import { tgSend } from './tg.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
-const COST = 0.0005, MIN_STOP = 0.08, MAX_STOP = 0.30, TIME_STOP_W = 52, CAP = 5;
+const COST = 0.0005, MIN_STOP = 0.08, MAX_STOP = 0.30, TIME_STOP_W = 52;   // sin CAP: el usuario decide
+const DASH_URL = process.env.DASH_URL || 'http://localhost:8080';
 const UA = { 'User-Agent': 'Mozilla/5.0' };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f))) : d;
@@ -84,6 +85,7 @@ const universe = load('universe.json', { universe: [] }).universe;
 const journal = load('journal_weekly.json', []);
 const seen = load('seen_weekly.json', {});
 let signals = 0, errors = 0;
+const newSignals = [];   // tickers con señal nueva esta pasada (para el aviso consolidado)
 
 for (const u of universe) {
   let bars;
@@ -111,25 +113,21 @@ for (const u of universe) {
     // con él PF 3.98→6.95 y bate al azar 2.42). ~2.5× el 3% del sistema diario.
     if (risk <= 0 || risk / entryPx > MAX_STOP || risk / entryPx < MIN_STOP) continue;
 
-    const open = journal.filter(p => p.status === 'open');
-    if (open.length >= CAP) { log(`${u.ticker}: 9 semanal válido pero ya hay ${CAP} abiertas — descartado`); continue; }
-
+    // SIN CAP: registramos toda señal válida; el usuario decide en cuál entrar (lo ve en el dashboard).
     journal.push({
       id: key, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'WeeklySwing',
       status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
       stop: +stop.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
     });
-    signals++;
-    await tgSend(buildStockAlert({
-      emoji: '🟣', ticker: u.ticker,
-      entry: entryPx,
-      targetRule: 'cuando se agote (meses)',
-      stop,
-      note: 'aguante largo · posición 1%',
-      tv: u.tv,
-    }));
+    signals++; newSignals.push(u.ticker);
   }
 }
+
+// Aviso SIMPLIFICADO: no listamos tickers, solo "revisa el dashboard" (el detalle está allí).
+if (newSignals.length) await tgSend(
+  `🟣 <b>WeeklySwing — ${newSignals.length} posible${newSignals.length > 1 ? 's' : ''} oportunidad${newSignals.length > 1 ? 'es' : ''}</b>` +
+  `\n👉 Revisa el dashboard: ${DASH_URL}`
+);
 
 save('journal_weekly.json', journal);
 save('seen_weekly.json', seen);
