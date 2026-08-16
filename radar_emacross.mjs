@@ -17,7 +17,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { tgSend } from './tg.mjs';
-import { cdpUp, confirmSymbol, syncWatchlist } from './tv_layer.mjs';
+import { cdpUp, confirmSymbol, syncWatchlist, reconnect } from './tv_layer.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
@@ -41,8 +41,11 @@ async function getWeekly(t) { const y = t.replace('.', '-');
     return b.length > SLOW + 5 ? b : null; } catch { return null; } }
 
 function analyze(bars) {
-  // separar la semana EN CURSO (viva) de las cerradas
-  const forming = bars.length && NOW - bars[bars.length - 1].t < 7 * 86400;
+  // separar la semana EN CURSO (viva) de las cerradas.
+  // BUG-FIX: en modo DEFINITIVO (viernes tras cierre / finde) la última vela YA está cerrada
+  // y es la buena → NO tratarla como "en formación" (si no, se pierden cruces reales tipo NU/DVN).
+  // En provisional (intradía 14:00) sí es en formación → proyección viva.
+  const forming = !DEFINITIVE && bars.length && NOW - bars[bars.length - 1].t < 7 * 86400;
   const closed = forming ? bars.slice(0, -1) : bars;
   const liveClose = bars[bars.length - 1].c;            // precio actual (semana viva o último cierre)
   if (closed.length < SLOW + 3) return null;
@@ -112,8 +115,11 @@ function analyze(bars) {
     // confirmar el cruce en TV; señal NUEVA de Telegram cuando TV confirma un cruce por 1ª vez
     const prev = DEFINITIVE ? load('seen_tv_confirmed.json', {}) : {};   // { TICKER: true } cruces ya avisados
     const now = {};
+    let ci = 0;
     for (const h of fire) {
       const r = await confirmSymbol(h.tv);
+      ci++;
+      if (r.timedOut || ci % 5 === 0) await reconnect();   // CDP zombi o cada 5 → reconexión fresca
       if (r.error) { console.log(`TV ${h.ticker}: ${r.error}`); continue; }
       h.tvCrossed = r.crossed; h.tvGap = r.gapPct;
       console.log(`TV ${h.ticker}: ${r.crossed ? 'CRUZADO' : 'aún no'} (${r.gapPct.toFixed(2)}%)`);

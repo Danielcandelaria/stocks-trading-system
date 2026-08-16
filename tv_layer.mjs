@@ -6,7 +6,11 @@
 //   Todo tolerante a que TV esté apagado (el usuario gestiona el browser): si algo falla,
 //   devuelve error controlado y el radar sigue en modo solo-Yahoo.
 
-import { evaluate, getClient } from '../src/connection.js';
+import { evaluate, getClient, disconnect } from '../src/connection.js';
+
+// Fuerza una reconexión CDP fresca: la conexión se pone zombi tras muchas llamadas
+// (timeouts 90s en Runtime.evaluate). Llamar cada N confirmaciones evita el atasco.
+export async function reconnect() { try { await disconnect(); } catch {} }
 import { setSymbol, setTimeframe } from '../src/core/chart.js';
 import { getOhlcv } from '../src/core/data.js';
 
@@ -23,20 +27,29 @@ async function getCurrentSymbol() {
   catch { return null; }
 }
 
-export async function confirmSymbol(tvSymbol) {
+async function _confirmOne(tvSymbol) {
   const base = tvSymbol.split(':').pop().toUpperCase();
+  await setSymbol({ symbol: tvSymbol });
+  let ok = false;
+  for (let i = 0; i < 30; i++) { await SLEEP(500); const cur = await getCurrentSymbol(); if (cur && cur.toUpperCase().includes(base)) { ok = true; break; } }
+  if (!ok) return { error: 'no confirmó símbolo' };
+  await setTimeframe({ timeframe: 'W' });
+  await SLEEP(2500);
+  const data = await getOhlcv({ count: 60 });
+  const bars = data?.bars || [];
+  if (bars.length < SLOW + 3) return { error: `pocas barras (${bars.length})` };
+  const cl = bars.map(b => b.close), ef = ema(cl, FAST), es = ema(cl, SLOW), n = cl.length - 1;
+  return { price: cl[n], ema8: ef[n], ema21: es[n], gapPct: (ef[n] - es[n]) / cl[n] * 100, crossed: ef[n] > es[n] };
+}
+
+// Timeout duro por confirmación: si CDP se pone zombi, una llamada puede colgarse 90s.
+// La carrera contra 40s garantiza que ningún ticker bloquee el run entero.
+export async function confirmSymbol(tvSymbol) {
   try {
-    await setSymbol({ symbol: tvSymbol });
-    let ok = false;
-    for (let i = 0; i < 50; i++) { await SLEEP(500); const cur = await getCurrentSymbol(); if (cur && cur.toUpperCase().includes(base)) { ok = true; break; } }
-    if (!ok) return { error: 'no confirmó símbolo' };
-    await setTimeframe({ timeframe: 'W' });
-    await SLEEP(2500);
-    const data = await getOhlcv({ count: 60 });
-    const bars = data?.bars || [];
-    if (bars.length < SLOW + 3) return { error: `pocas barras (${bars.length})` };
-    const cl = bars.map(b => b.close), ef = ema(cl, FAST), es = ema(cl, SLOW), n = cl.length - 1;
-    return { price: cl[n], ema8: ef[n], ema21: es[n], gapPct: (ef[n] - es[n]) / cl[n] * 100, crossed: ef[n] > es[n] };
+    return await Promise.race([
+      _confirmOne(tvSymbol),
+      new Promise(r => setTimeout(() => r({ error: 'timeout', timedOut: true }), 40000)),
+    ]);
   } catch (e) { return { error: e.message }; }
 }
 

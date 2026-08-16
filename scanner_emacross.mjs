@@ -26,6 +26,11 @@ const save = (f, v) => writeFileSync(F(f), JSON.stringify(v, null, 2));
 const ema = (cl, p) => { const k = 2 / (p + 1); let e = null; return cl.map((c, i) => { e = e === null ? c : c * k + e * (1 - k); return i >= p - 1 ? e : null; }); };
 const DRY = process.argv.includes("--dry");
 const NOW = Date.now() / 1000;
+// La semana bursátil está CERRADA (finde o viernes tras el cierre US ~20:00 UTC) → la última
+// vela YA es definitiva y NO se descarta. Si no, en finde/viernes-noche se perdían cruces
+// recién cerrados (NU/DVN) por tratarlos como "en formación" (bug 2026-08-16).
+const _d = new Date(), _dow = _d.getUTCDay(), _h = _d.getUTCHours();
+const WEEK_OVER = _dow === 0 || _dow === 6 || (_dow === 5 && _h >= 20);
 
 async function getWeekly(t) {
   const y = t.replace('.', '-');
@@ -37,7 +42,7 @@ async function getWeekly(t) {
     const b = [];
     for (let i = 0; i < r.timestamp.length; i++) if (q.close[i] != null) b.push({ t: r.timestamp[i], c: q.close[i] });
     // descartar la semana EN CURSO (incompleta)
-    while (b.length && NOW - b[b.length - 1].t < 7 * 86400) b.pop();
+    while (b.length && !WEEK_OVER && NOW - b[b.length - 1].t < 7 * 86400) b.pop();
     return b.length > 30 ? b : null;
   } catch { return null; }
 }

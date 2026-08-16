@@ -30,7 +30,7 @@ async function getWeekly(t) { const y = t.replace('.', '-');
     if (!res.ok) return null; const r = (await res.json()).chart?.result?.[0]; const q = r?.indicators?.quote?.[0];
     if (!r?.timestamp || !q) return null; const b = [];
     for (let i = 0; i < r.timestamp.length; i++) if (q.close[i] != null) b.push({ t: r.timestamp[i], c: q.close[i] });
-    while (b.length && NOW - b[b.length - 1].t < 7 * 86400) b.pop();   // fuera la semana en curso
+    while (b.length && !WEEK_OVER && NOW - b[b.length - 1].t < 7 * 86400) b.pop();   // fuera la semana en curso
     return b.length > 30 ? b : null; } catch { return null; } }
 
 (async () => {

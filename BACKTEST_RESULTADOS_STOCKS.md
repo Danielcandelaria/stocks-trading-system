@@ -316,3 +316,14 @@ Por año (expectancy, entrada): fuerte en años alcistas (2020 +27%, 2023 +24%),
 ## EMACross — MID/SMALL caps (2026-08-16)
 
 `backtest_midsmall.mjs` (996 tickers $300M-$8B, 10y, long-only stop -18%): PF **1.65**, WR 25%, exp +5.61%/tr, ganadora media **+57.5%** (tienden más fuerte que large), perdedora −11.5%, WF 4/4. Peor que large-cap (PF 2.36) y **optimista** por supervivencia. Los ganadores son mayores pero más whipsaw y pérdidas más grandes. Large-cap sigue siendo el núcleo; mid/small solo como shadow de baja convicción si se quiere. Split MID vs SMALL en curso.
+
+## EMACross — comparación por TEMPORALIDAD (2026-08-16)
+
+`backtest_ema_tf.mjs` (200 large-caps, long-only stop -18%, salida cruce):
+| TF | n | WR | PF | exp/tr | ganaMed | durMed | WF |
+|---|---|---|---|---|---|---|---|
+| DIARIO | 10918 | 35% | 1.76 | +2.01% | +13% | 17 días | 4/4 |
+| **SEMANAL** | 2060 | 34% | **2.52** | +8.22% | +40% | 17 sem | 3/4 |
+| MENSUAL | 650 | 34% | **7.48** | +65.85% | +224% | 11 meses | 4/4 |
+
+**CONCLUSIÓN:** TF más alto = menos señales, mucha más calidad (principio trend-following confirmado). **SEMANAL sigue siendo lo correcto** (equilibrio señales/calidad/holds). DIARIO descartado (PF 1.76, mucho ruido). MENSUAL seductor (PF 7.48, ganadora +224%) pero IMPRÁCTICO: sesgo de supervivencia MÁXIMO (holds de 11 meses = solo supervivientes), muestra pequeña (650), señales rarísimas y capital inmovilizado ~1 año. No fiarse del 7.48.
