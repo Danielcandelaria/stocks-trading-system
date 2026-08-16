@@ -25,6 +25,7 @@ const UA = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' };
 const FAST = 8, SLOW = 21;
 const DRY = process.argv.includes('--dry');
 const SEND_SHORT = false;   // el usuario opera long-only (short débil en acciones); poner true para reactivar
+const DEFINITIVE = process.argv.includes('--definitive');   // viernes tras cierre US: dispara señales de ENTRADA reales
 const GAPMAX = (+process.argv.find(a => /^[\d.]+$/.test(a)) || 1.2) / 100;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f), 'utf8')) : d;
@@ -109,26 +110,30 @@ function analyze(bars) {
     // watchlist "Empresas para vigilar" = SOLO los 🔥 (el usuario la gestiona/borra a mano)
     try { const added = await syncWatchlist(fire.map(h => h.tv)); console.log(`watchlist "Empresas para vigilar": +${added} 🔥`); } catch (e) { console.log('watchlist error: ' + e.message); }
     // confirmar el cruce en TV; señal NUEVA de Telegram cuando TV confirma un cruce por 1ª vez
-    const prev = load('seen_tv_confirmed.json', {});   // { TICKER: true } cruces ya avisados
+    const prev = DEFINITIVE ? load('seen_tv_confirmed.json', {}) : {};   // { TICKER: true } cruces ya avisados
     const now = {};
     for (const h of fire) {
       const r = await confirmSymbol(h.tv);
       if (r.error) { console.log(`TV ${h.ticker}: ${r.error}`); continue; }
       h.tvCrossed = r.crossed; h.tvGap = r.gapPct;
       console.log(`TV ${h.ticker}: ${r.crossed ? 'CRUZADO' : 'aún no'} (${r.gapPct.toFixed(2)}%)`);
-      if (r.crossed) {
+      // La señal de ENTRADA solo se dispara en la corrida DEFINITIVA (viernes tras el cierre semanal).
+      // Intradía un cruce puede deshacerse antes del cierre (visto: CVNA/GEHC/ADSK el 14-ago).
+      if (r.crossed && DEFINITIVE) {
         now[h.ticker] = true;
-        if (!prev[h.ticker]) await tgSend(          // ← 2ª señal: cruce CONFIRMADO en TV (entrada)
+        if (!prev[h.ticker]) await tgSend(
           `✅ <b>CRUCE CONFIRMADO EN TV — ${h.ticker}</b>` +
-          `\n🟢 La EMA8 cruzó SOBRE la EMA21 (confirmado en TradingView)` +
+          `\n🟢 La EMA8 cruzó SOBRE la EMA21 al CIERRE semanal (definitivo)` +
           `\n💵 Precio  <b>$${r.price.toFixed(2)}</b>` +
           `\n🎯 Entrada · salida en el cruce contrario · stop catástrofe −18%` +
           `\n📈 ${h.tv}`
         );
       }
     }
-    save('seen_tv_confirmed.json', now);   // solo los cruzados AHORA → si descruza y recruza, re-avisa
-    tvNote = '✅ 🔥 verificados contra TV. Aviso APARTE cuando TV confirma el cruce (entrada).';
+    if (DEFINITIVE) save('seen_tv_confirmed.json', now);   // solo cruzados AHORA → si descruza y recruza, re-avisa
+    tvNote = DEFINITIVE
+      ? '✅ DEFINITIVO (cierre semanal). Señal de ENTRADA enviada por cada cruce confirmado.'
+      : '⏳ PROVISIONAL (mercado abierto/semana en curso). ✅TV = cruzado AHORA, puede deshacerse al cierre. Las entradas reales salen el VIERNES tras el cierre.';
   } else {
     tvNote = '⚠️ TV apagado → sin verificar (solo Yahoo). Arranca TV para confirmar.';
   }
