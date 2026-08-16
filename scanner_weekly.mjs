@@ -23,6 +23,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { computeTDSetup, computeTDCountdown } from '../scanner/demark_calc.mjs';
 import { tgSend } from './tg.mjs';
+import { beat } from './heartbeat.mjs';
 import { getWeeklyBars } from './weekly_bars.mjs';
 import { buildSystemAlert } from './alert_system.mjs';
 
@@ -128,4 +129,5 @@ try {
 } catch {}
 
 const open = journal.filter(p => p.status === 'open');
+beat('weekly', { nuevas: signals, universo: universe.length });
 log(`scan: ${universe.length} tickers, ${signals} señales nuevas, ${errors} errores | abiertas ${open.length}`);

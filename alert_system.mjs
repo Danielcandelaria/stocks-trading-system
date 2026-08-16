@@ -3,6 +3,7 @@
 // en TradingView (timeframe + indicador + qué buscar) y enlaza al panel.
 
 const DASH_URL = process.env.DASH_URL || 'http://localhost:8080';
+const ahora = () => new Date().toLocaleString('es-ES', { weekday: 'short', hour: '2-digit', minute: '2-digit' });
 
 const SYS = {
   EMACross: {
@@ -28,7 +29,7 @@ const SYS = {
 /** Aviso del RADAR: cuántas hay por nivel y qué mirar. */
 export function buildRadarAlert({ yaCruzado = 0, aPunto = 0, acercandose = 0 } = {}) {
   const s = SYS.EMACross;
-  return `🎯 <b>RADAR ${s.name}</b> — qué vigilar` +
+  return `🎯 <b>RADAR ${s.name}</b> — ${ahora()}` +
     `\n\n🟢 <b>${yaCruzado}</b> YA CRUZADO (entrada válida)` +
     `\n⚡ <b>${aPunto}</b> a punto de cruzar` +
     `\n⏳ <b>${acercandose}</b> acercándose` +
@@ -42,7 +43,7 @@ export function buildSystemAlert(systemId, n, { kind = 'entrada' } = {}) {
   const plural = n > 1;
   const titulo = kind === 'salida'
     ? `⚠️ <b>${s.emoji} ${s.name} — ${n} posición${plural ? 'es' : ''} A CERRAR</b>`
-    : `${s.emoji} <b>${s.name} — ${n} posible${plural ? 's' : ''} oportunidad${plural ? 'es' : ''}</b>`;
+    : `${s.emoji} <b>${s.name} — ${n} señal${plural ? 'es' : ''} NUEVA${plural ? 'S'  : ''}</b>  <i>${ahora()}</i>`;
   const cuerpo = kind === 'salida'
     ? `\n\n🔻 La tendencia se ha roto (cruce contrario) → toca cerrar y tomar el resultado.`
     : `\n\n📊 <b>Sistema:</b> ${s.que}` +

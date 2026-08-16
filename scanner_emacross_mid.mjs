@@ -10,6 +10,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { tgSend } from './tg.mjs';
+import { beat } from './heartbeat.mjs';
 import { coherentTrade, logDecision } from './integrity.mjs';
 import { getWeeklyBars } from './weekly_bars.mjs';
 import { buildSystemAlert } from './alert_system.mjs';
@@ -73,5 +74,6 @@ const getWeekly = t => getWeeklyBars(t);   // módulo compartido (dedup + semana
   if (!DRY) { save('journal_emacross_mid.json', journal); save('seen_emacross_mid.json', seen); }
   const open = journal.filter(p => p.status === 'open');
   log(`scan: ${uni.length} MID · ${nLong} LONG nuevos · ${nClose} cierres · ${errors} err | abiertas ${open.length}`);
+  beat('emacrossmid', { nuevas: nLong, universo: uni.length });
   console.log(`RESUMEN MID: ${nLong} LONG nuevos, ${nClose} cierres`);
 })();

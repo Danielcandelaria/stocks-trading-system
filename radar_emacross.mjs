@@ -17,6 +17,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { tgSend } from './tg.mjs';
+import { beat } from './heartbeat.mjs';
 import { cdpUp, confirmSymbol, syncWatchlist, reconnect } from './tv_layer.mjs';
 import { getWeeklyBars, weekIsOver } from './weekly_bars.mjs';
 import { buildRadarAlert } from './alert_system.mjs';
@@ -127,6 +128,7 @@ function analyze(bars) {
     })),
   });
   persist();
+  beat('radar', { yaCruzado: L.filter(h => h.level === 0).length, aPunto: L.filter(h => h.level === 1).length, acercandose: L.filter(h => h.level === 2).length });
   if (DRY || !hits.length) return;
 
   // ── CAPA TV (fuente de verdad): poblar watchlist + confirmar los 🔥 ──
