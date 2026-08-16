@@ -343,3 +343,16 @@ Barrido de umbral de anticipación (convergencia del hueco EMA8-EMA21):
 Detalle banda 1.2%: 91% CONFIRMAN (entras 2 sem antes, 2.8% más barato → +10.06%/tr), 9% FALSOS (−18.12%/tr, tocan el stop). Neto a 1.2% = empate (+7.50 vs +7.57). A 2.0% = +0.69%/tr mejor que confirmado.
 
 **CONCLUSIÓN:** anticipar SÍ captura más recorrido en los que funcionan (antes + más barato), pero cada falso cuesta −18%. Banda estrecha = empate; **banda ANCHA (2.0%) = mejor (PF 2.52 vs 2.36)** porque captura más cruces temprano. El backtest entra a ciegas; con CONFIRMACIÓN VISUAL el usuario filtra falsos → inclina la balanza aún más a favor. **Ajustado radar + Pine a gap 2.0%.**
+
+## EMACross + DeMark 9-13 — combinaciones (2026-08-16)
+
+`backtest_ema_demark_combo.mjs` (250 large-caps, 10y semanal, long-only stop -18%):
+| variante | n | WR | PF | exp/tr | dur | WF |
+|---|---|---|---|---|---|---|
+| BASE (EMACross puro) | 2587 | 33% | 2.36 | +7.57% | 25 sem | 4/4 |
+| **D9-ENTRY (setup-9 → salida cruce↓)** | 818 | 54% | **3.30** | +13.61% | 30 sem | 4/4 |
+| D13-EXIT (cruce↑ → salida cd-13) | 2654 | 39% | 2.13 | +5.74% | 17 sem | 4/4 |
+| D9+D13 (setup-9 → cd-13 = WeeklySwing) | 843 | 55% | 3.46 | +14.23% | 26 sem | 4/4 |
+| Confluencia (cruce + D9 en <8v) | 223 | 36% | 3.18 | +11.59% | 26 sem | 4/4 |
+
+**CONCLUSIÓN (continuidad):** salir con el 13 (D13-EXIT) EMPEORA (PF 2.36→2.13, dur 25→17 sem) — fadea la tendencia y corta ganadores, contra la continuidad. El ganador es **D9-ENTRY: usar el Setup-9 para entrar temprano (en el suelo, antes del cruce) y RODAR hasta el cruce contrario** (PF 3.30, WR 54%, +13.6%/tr). DeMark mete temprano en el giro (captura recorrido); la continuidad (cruce EMA) manda en la salida, NO el 13. Pero n=818 (subconjunto alta convicción) solapa con DeMark-9/WeeklySwing ya existentes. Pendiente: continuación pura por TDST break.
