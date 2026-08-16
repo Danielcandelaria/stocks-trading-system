@@ -26,7 +26,7 @@ export function weekIsOver(d = new Date()) {
  * @param {{range?:string, ohlc?:boolean}} opts  ohlc:true → incluye o/h/l/v
  * @returns {Promise<Array|null>} [{t, c, ...}] o null si no hay datos suficientes
  */
-export async function getWeeklyBars(ticker, { range = '2y', ohlc = false } = {}) {
+export async function getWeeklyBars(ticker, { range = '2y', ohlc = false, keepForming = false } = {}) {
   const y = ticker.replace('.', '-');
   let json;
   try {
@@ -56,7 +56,7 @@ export async function getWeeklyBars(ticker, { range = '2y', ohlc = false } = {})
 
   // (2) quitar la semana EN CURSO si aún no ha terminado
   const NOW = Date.now() / 1000;
-  if (!weekIsOver() && dedup.length && NOW - dedup[dedup.length - 1].t < 7 * 86400) dedup.pop();
+  if (!keepForming && !weekIsOver() && dedup.length && NOW - dedup[dedup.length - 1].t < 7 * 86400) dedup.pop();
 
   return dedup.length ? dedup : null;
 }

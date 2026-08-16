@@ -25,6 +25,17 @@ const SYS = {
   },
 };
 
+/** Aviso del RADAR: cuántas hay por nivel y qué mirar. */
+export function buildRadarAlert({ yaCruzado = 0, aPunto = 0, acercandose = 0 } = {}) {
+  const s = SYS.EMACross;
+  return `🎯 <b>RADAR ${s.name}</b> — qué vigilar` +
+    `\n\n🟢 <b>${yaCruzado}</b> YA CRUZADO (entrada válida)` +
+    `\n⚡ <b>${aPunto}</b> a punto de cruzar` +
+    `\n⏳ <b>${acercandose}</b> acercándose` +
+    `\n\n📈 <b>En TradingView:</b>\n   ${s.tv}` +
+    `\n\n👉 <b>Lista completa y rentabilidad:</b> ${DASH_URL}`;
+}
+
 /** Aviso de OPORTUNIDADES nuevas de un sistema. */
 export function buildSystemAlert(systemId, n, { kind = 'entrada' } = {}) {
   const s = SYS[systemId]; if (!s) return null;

@@ -26,3 +26,4 @@ pnl.log
 *.bak-preRebuild
 *.bak-preRSI2del
 dashboard.log
+radar_live.json
