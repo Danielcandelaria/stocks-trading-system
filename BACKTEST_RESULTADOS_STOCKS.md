@@ -295,3 +295,20 @@ Por año (expectancy, entrada): fuerte en años alcistas (2020 +27%, 2023 +24%),
 | ext<3% | 621 | 23% | 1.01 | +0.03 | 1/4 |
 
 **CONCLUSIÓN (corrige la intuición "fresco = mejor entrada"):** la extensión sobre la EMA21 NO es "llegas tarde" — es MOMENTUM. El cruce extendido (precio bien por encima de EMA21) es una tendencia potente y rinde MEJOR; el cruce fresco (pegado a EMA21) es tibio y whipsapea. Filtrar a frescos deja los cruces débiles → breakeven. **Entrar en TODOS los cruces es óptimo.** El radar muestra la extensión SOLO como info (no como filtro ni prioridad). Regla de oro reconfirmada: no aplicar una intuición sin backtestearla.
+
+## EMACross — filtro de RÉGIMEN de mercado (SPY vs EMA40s): NO usar (2026-08-16)
+
+`backtest_ema_regime.mjs` (250t 10y, long+short, stop ±18%). SPY: 81% semanas BULL / 19% BEAR.
+| estrategia | n | WR | PF | exp% | WF |
+|---|---|---|---|---|---|
+| A) Long-only TODO (actual) | 2587 | 33% | **2.36** | +7.57 | 4/4 |
+| B) Long-only en BULL | 2222 | 33% | 2.29 | +7.15 | 4/4 |
+| Long en BEAR (control) | 365 | 33% | **2.84** | +10.13 | 4/4 |
+| C) Short-only en BEAR | 893 | 13% | **0.22** | −6.86 | **0/4** |
+| D) Régimen-switch (Lbull+Sbear) | 3115 | 27% | 1.48 | +3.13 | 2/4 |
+
+**CONCLUSIÓN (refuta la hipótesis "shorts en bear / regime-switch"):**
+- Filtrar longs por régimen EMPEORA (B 2.29 < A 2.36). Los longs en BEAR son los MEJORES (PF 2.84) — los mejores cruces alcistas ocurren con SPY aún bajo su media (suelos/inicio de recuperación); filtrarlos quita las mejores entradas.
+- Shorts NO funcionan ni en bear (PF 0.22, WF 0/4): el cruce 8/21 semanal come los rallies de rebote/short-squeeze. WR 13%.
+- Régimen-switch (D) PEOR que long-only (1.48 < 2.36). **Se mantiene long-only en todo régimen.**
+- Nota: el 8/21 no es vehículo bajista; una estrategia para el giro necesitaría OTRO diseño (sistema aparte).
