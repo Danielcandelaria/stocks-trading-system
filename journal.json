@@ -1651,7 +1651,7 @@
     "sector": "Retail Trade",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1786368600,
     "signalClose": 122.41999816894531,
     "targetRef": 126.13,
@@ -1661,7 +1661,11 @@
     "entryPx": 124.6723,
     "openPx": 124.61,
     "gapPct": 1.8,
-    "stop": 99.74
+    "stop": 99.74,
+    "exitT": 1786714200,
+    "exitPx": 123.2184,
+    "exitReason": "SMA5",
+    "retPct": -1.17
   },
   {
     "id": "RSI2:WRB:1786368600",
@@ -1670,7 +1674,7 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1786368600,
     "signalClose": 70.81999969482422,
     "targetRef": 71.6,
@@ -1680,7 +1684,11 @@
     "entryPx": 71.0055,
     "openPx": 70.97,
     "gapPct": 0.2,
-    "stop": 56.8
+    "stop": 56.8,
+    "exitT": 1786714200,
+    "exitPx": 70.4747,
+    "exitReason": "SMA5",
+    "retPct": -0.75
   },
   {
     "id": "RSI2:AER:1786368600",
@@ -1689,7 +1697,7 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1786368600,
     "signalClose": 149.5800018310547,
     "targetRef": 153.35,
@@ -1699,7 +1707,11 @@
     "entryPx": 150.9955,
     "openPx": 150.92,
     "gapPct": 0.9,
-    "stop": 120.8
+    "stop": 120.8,
+    "exitT": 1786714200,
+    "exitPx": 152.3738,
+    "exitReason": "SMA5",
+    "retPct": 0.91
   },
   {
     "id": "RSI2:LUV:1786368600",
@@ -1750,7 +1762,7 @@
     "sector": "Finance",
     "strategy": "RSI2",
     "variant": "RSI2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1786368600,
     "signalClose": 22.670000076293945,
     "targetRef": 23.89,
@@ -1760,7 +1772,11 @@
     "entryPx": 22.7714,
     "openPx": 22.76,
     "gapPct": 0.4,
-    "stop": 18.22
+    "stop": 18.22,
+    "exitT": 1786714200,
+    "exitPx": 22.8885,
+    "exitReason": "SMA5",
+    "retPct": 0.51
   },
   {
     "id": "RSI2:KIM:1786368600",
