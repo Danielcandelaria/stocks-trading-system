@@ -23,3 +23,5 @@ confirm_open.log
 seen_emacross_mid.json
 pnl_live.json
 pnl.log
+*.bak-preRebuild
+*.bak-preRSI2del

@@ -124,6 +124,7 @@ async function getBars(ticker) {
 // +2414 (nada) y salta 5 veces en 2 años: es un SUELO de catástrofe, no una
 // salida normal. NO protege de gaps (abren ya por debajo) — la red real es el
 // TAMAÑO PEQUEÑO. Es un límite de tranquilidad, honesto sobre lo que hace.
+const RSI2_ENABLED = false;                       // ⛔ RSI2 ELIMINADO 2026-08-16 (petición usuario)
 const RSI2_DISASTER = 0.20;                       // stop de catástrofe (fracción)
 const RSI2_GAP_MAX = 0.05;                        // guardia de gap: no entrar si abre >5% arriba
 function manageOpenRSI2(journal, ticker, bars, s5) {
@@ -206,7 +207,7 @@ for (const u of universe) {
   const td = computeTDSetup(bars);
 
   manageOpen(journal, u.ticker, bars);
-  manageOpenRSI2(journal, u.ticker, bars, s5);
+  if (RSI2_ENABLED) manageOpenRSI2(journal, u.ticker, bars, s5);
 
   // --- Sistema RSI2 (mean reversion): RSI(2)<10 + precio>EMA200, vela cerrada.
   // Paper SIN stop (spec Connors validada). Máx 5 posiciones abiertas a la vez.
@@ -214,7 +215,7 @@ for (const u of universe) {
     const i = bars.length - 1;
     const openRSI2 = journal.filter(p => p.status === 'open' && p.strategy === 'RSI2');
     const rKey = `RSI2:${u.ticker}:${bars[i].t}`;
-    if (!rsi2Paused && r2[i] != null && e200[i] != null && r2[i] < 10 && bars[i].c > e200[i] && !seen[rKey]) {
+    if (RSI2_ENABLED && !rsi2Paused && r2[i] != null && e200[i] != null && r2[i] < 10 && bars[i].c > e200[i] && !seen[rKey]) {
       seen[rKey] = true;
       if (openRSI2.length >= 5) {
         log(`RSI2 ${u.ticker}: señal válida pero ya hay 5 abiertas — descartada`);
