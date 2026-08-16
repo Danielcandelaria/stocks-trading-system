@@ -33,6 +33,10 @@ const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f))) : d;
 const save = (f, v) => writeFileSync(F(f), JSON.stringify(v, null, 2));
 const log = (...a) => console.log(new Date().toISOString(), '[WEEKLY]', ...a);
 const NOW = Date.now() / 1000;
+// Semana bursátil CERRADA (finde o viernes tras cierre US ~20:00 UTC) → la última vela ya
+// es definitiva y no se descarta (evita 1 semana de retraso en finde/viernes-noche).
+const _d = new Date(), _dow = _d.getUTCDay(), _h = _d.getUTCHours();
+const WEEK_OVER = _dow === 0 || _dow === 6 || (_dow === 5 && _h >= 20);
 
 async function getWeekly(ticker) {
   const y = ticker.replace('.', '-');
@@ -48,7 +52,7 @@ async function getWeekly(ticker) {
   }
   // descartar TODA barra de la semana en curso (incompleta): Yahoo a veces
   // devuelve la semana viva como 1-2 barras de <7 días. Quitar todas.
-  while (bars.length && NOW - bars[bars.length - 1].t < 7 * 86400) bars.pop();
+  while (bars.length && !WEEK_OVER && NOW - bars[bars.length - 1].t < 7 * 86400) bars.pop();
   return bars;
 }
 
