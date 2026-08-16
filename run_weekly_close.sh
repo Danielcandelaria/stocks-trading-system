@@ -7,5 +7,6 @@ echo "[$(date '+%Y-%m-%d %H:%M')] ▶ CIERRE SEMANAL — revisando todos los sis
 /usr/local/bin/node scanner_weekly.mjs          # DeMark Setup-9 semanal
 /usr/local/bin/node radar_emacross.mjs --definitive   # radar definitivo + confirma en TV
 /usr/local/bin/node scanner_emacross_mid.mjs    # mid-caps (observación)
+/usr/local/bin/node sync_watchlist.mjs        # watchlist TV = solo lo accionable
 /usr/local/bin/node track_pnl.mjs               # refresca datos del panel
 echo "[$(date '+%Y-%m-%d %H:%M')] ✓ cierre semanal completado"

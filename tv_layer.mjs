@@ -75,6 +75,33 @@ export async function addToWatchlist(tvSymbol) {
   } catch { return false; }
 }
 
+// Borra un símbolo de la watchlist: scrollIntoView → clic (selecciona) → tecla Suprimir.
+// (TV no expone botón de borrar en la fila; la lista es virtualizada, por eso el scroll.)
+export async function removeFromWatchlist(tvSymbol) {
+  const short = tvSymbol.split(':').pop().toUpperCase();
+  try {
+    const c = await getClient();
+    const found = await evaluate(`(function(){var c=document.querySelector("[class*=layout__area--right]");if(!c)return false;
+      var el=Array.from(c.querySelectorAll("[data-symbol-full]")).find(function(e){return (e.getAttribute("data-symbol-full")||"").split(":").pop().toUpperCase()==="${short}";});
+      if(!el)return false; el.scrollIntoView({block:"center"}); return true;})()`);
+    if (!found) return false;
+    await SLEEP(600);
+    const p = await evaluate(`(function(){var c=document.querySelector("[class*=layout__area--right]");
+      var el=Array.from(c.querySelectorAll("[data-symbol-full]")).find(function(e){return (e.getAttribute("data-symbol-full")||"").split(":").pop().toUpperCase()==="${short}";});
+      if(!el)return null; var r=el.getBoundingClientRect();
+      return (r.top>0&&r.top<window.innerHeight)?{x:Math.round(r.left+r.width/2),y:Math.round(r.top+r.height/2)}:null;})()`);
+    if (!p) return false;
+    await c.Input.dispatchMouseEvent({ type: 'mousePressed', x: p.x, y: p.y, button: 'left', clickCount: 1 });
+    await c.Input.dispatchMouseEvent({ type: 'mouseReleased', x: p.x, y: p.y, button: 'left', clickCount: 1 });
+    await SLEEP(500);
+    await c.Input.dispatchKeyEvent({ type: 'rawKeyDown', key: 'Delete', code: 'Delete', windowsVirtualKeyCode: 46, nativeVirtualKeyCode: 46 });
+    await c.Input.dispatchKeyEvent({ type: 'keyUp', key: 'Delete', code: 'Delete', windowsVirtualKeyCode: 46, nativeVirtualKeyCode: 46 });
+    await SLEEP(700);
+    const still = (await getWatchlist()).some(s => s.split(':').pop().toUpperCase() === short);
+    return !still;
+  } catch { return false; }
+}
+
 // Sincroniza la watchlist con los símbolos objetivo (añade los que falten). No borra
 // (borrar por DOM es frágil); la lista "Empresas para vigilar" acumula los del radar.
 export async function syncWatchlist(tvSymbols) {

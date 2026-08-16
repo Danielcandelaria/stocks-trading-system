@@ -136,7 +136,7 @@ function analyze(bars) {
   if (await cdpUp()) {
     const fire = L.filter(h => h.level === 0);   // 🔥 = "cruzando ya" → los que se validan en TV
     // watchlist "Empresas para vigilar" = SOLO los 🔥 (el usuario la gestiona/borra a mano)
-    try { const added = await syncWatchlist(fire.map(h => h.tv)); console.log(`watchlist "Empresas para vigilar": +${added} 🔥`); } catch (e) { console.log('watchlist error: ' + e.message); }
+    // la watchlist la gestiona sync_watchlist.mjs (añade lo accionable y borra lo obsoleto)
     // confirmar el cruce en TV; señal NUEVA de Telegram cuando TV confirma un cruce por 1ª vez
     const prev = DEFINITIVE ? load('seen_tv_confirmed.json', {}) : {};   // { TICKER: true } cruces ya avisados
     const now = {};
