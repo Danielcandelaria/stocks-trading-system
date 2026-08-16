@@ -11,6 +11,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { tgSend } from './tg.mjs';
 import { coherentTrade, logDecision } from './integrity.mjs';
+import { getWeeklyBars } from './weekly_bars.mjs';
+import { buildSystemAlert } from './alert_system.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
@@ -25,13 +27,7 @@ const save = (f, v) => writeFileSync(F(f), JSON.stringify(v, null, 2));
 const ema = (cl, p) => { const k = 2 / (p + 1); let e = null; return cl.map((c, i) => { e = e === null ? c : c * k + e * (1 - k); return i >= p - 1 ? e : null; }); };
 const NOW = Date.now() / 1000;
 
-async function getWeekly(t) { const y = t.replace('.', '-');
-  try { const res = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${y}?range=2y&interval=1wk`, { headers: UA });
-    if (!res.ok) return null; const r = (await res.json()).chart?.result?.[0]; const q = r?.indicators?.quote?.[0];
-    if (!r?.timestamp || !q) return null; const b = [];
-    for (let i = 0; i < r.timestamp.length; i++) if (q.close[i] != null) b.push({ t: r.timestamp[i], c: q.close[i] });
-    while (b.length && !WEEK_OVER && NOW - b[b.length - 1].t < 7 * 86400) b.pop();   // fuera la semana en curso
-    return b.length > 30 ? b : null; } catch { return null; } }
+const getWeekly = t => getWeeklyBars(t);   // módulo compartido (dedup + semana cerrada)
 
 (async () => {
   const uni = load('universe_midsmall.json', { universe: [] }).universe.filter(u => u.mcap >= MIN_MCAP);
@@ -72,14 +68,7 @@ async function getWeekly(t) { const y = t.replace('.', '-');
   }
 
   // digest consolidado (un solo mensaje) — shadow, informativo
-  if (!DRY && (fresh.length || closed.length)) {
-    const line = s => `  ${s.ticker.padEnd(6)} $${s.px.toFixed(2)}`;
-    let msg = `🟪 <b>EMACross MID-caps — shadow</b>  <i>(informativo, recolectando forward · NO operar)</i>`;
-    if (fresh.length) msg += `\n\n🟢 <b>Cruces LONG nuevos</b> (${fresh.length})\n<code>${fresh.map(line).join('\n')}</code>`;
-    if (closed.length) msg += `\n\n🔻 <b>Cierres</b> (cruce contrario): ${closed.map(c => `${c.ticker} ${c.retPct >= 0 ? '+' : ''}${c.retPct}%`).join(', ')}`;
-    msg += `\n\nMID $2-8B · PF 1.82 backtest (< large 2.36). Salida = cruce contrario · stop −18%.`;
-    await tgSend(msg);
-  }
+  if (!DRY && fresh.length) await tgSend(buildSystemAlert('EMACrossMid', fresh.length));
 
   if (!DRY) { save('journal_emacross_mid.json', journal); save('seen_emacross_mid.json', seen); }
   const open = journal.filter(p => p.status === 'open');

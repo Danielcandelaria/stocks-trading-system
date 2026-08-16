@@ -8,6 +8,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { getWeeklyBars } from './weekly_bars.mjs';
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
 const UA = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' };
@@ -20,13 +21,7 @@ const ema = (cl, p) => { const k = 2 / (p + 1); let e = null; return cl.map((c, 
 const NOW = Date.now() / 1000;
 const _d = new Date(), WEEK_OVER = _d.getUTCDay() === 0 || _d.getUTCDay() === 6 || (_d.getUTCDay() === 5 && _d.getUTCHours() >= 20);
 
-async function getW(t) { const y = t.replace('.', '-');
-  try { const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${y}?range=2y&interval=1wk`, { headers: UA });
-    if (!r.ok) return null; const d = (await r.json()).chart?.result?.[0]; const q = d?.indicators?.quote?.[0];
-    if (!d?.timestamp || !q) return null; const b = [];
-    for (let i = 0; i < d.timestamp.length; i++) if (q.close[i] != null) b.push({ t: d.timestamp[i], c: q.close[i] });
-    while (b.length && !WEEK_OVER && NOW - b[b.length - 1].t < 7 * 86400) b.pop();
-    return b.length > SLOW + 3 ? b : null; } catch { return null; } }
+const getW = t => getWeeklyBars(t);   // módulo compartido (dedup + semana cerrada)
 
 (async () => {
   const uni = load('universe.json', { universe: [] }).universe;

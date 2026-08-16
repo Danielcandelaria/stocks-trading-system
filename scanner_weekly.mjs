@@ -23,6 +23,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { computeTDSetup, computeTDCountdown } from '../scanner/demark_calc.mjs';
 import { tgSend } from './tg.mjs';
+import { getWeeklyBars } from './weekly_bars.mjs';
+import { buildSystemAlert } from './alert_system.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
@@ -40,21 +42,9 @@ const _d = new Date(), _dow = _d.getUTCDay(), _h = _d.getUTCHours();
 const WEEK_OVER = _dow === 0 || _dow === 6 || (_dow === 5 && _h >= 20);
 
 async function getWeekly(ticker) {
-  const y = ticker.replace('.', '-');
-  const res = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${y}?range=5y&interval=1wk`, { headers: UA });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const r = (await res.json()).chart?.result?.[0];
-  const q = r?.indicators?.quote?.[0];
-  if (!r?.timestamp || !q) throw new Error('sin datos');
-  const bars = [];
-  for (let i = 0; i < r.timestamp.length; i++) {
-    if (q.open[i] == null || q.close[i] == null) continue;
-    bars.push({ t: r.timestamp[i], o: q.open[i], h: q.high[i], l: q.low[i], c: q.close[i], v: q.volume[i] ?? 0 });
-  }
-  // descartar TODA barra de la semana en curso (incompleta): Yahoo a veces
-  // devuelve la semana viva como 1-2 barras de <7 días. Quitar todas.
-  while (bars.length && !WEEK_OVER && NOW - bars[bars.length - 1].t < 7 * 86400) bars.pop();
-  return bars;
+  const b = await getWeeklyBars(ticker, { range: '5y', ohlc: true });   // módulo compartido (dedup + semana cerrada)
+  if (!b) throw new Error('sin datos');
+  return b;
 }
 
 function manageOpen(journal, ticker, bars, cd) {
@@ -124,10 +114,7 @@ for (const u of universe) {
 }
 
 // Aviso SIMPLIFICADO: no listamos tickers, solo "revisa el dashboard" (el detalle está allí).
-if (newSignals.length) await tgSend(
-  `🟣 <b>WeeklySwing — ${newSignals.length} posible${newSignals.length > 1 ? 's' : ''} oportunidad${newSignals.length > 1 ? 'es' : ''}</b>` +
-  `\n👉 Revisa el dashboard: ${DASH_URL}`
-);
+if (newSignals.length) await tgSend(buildSystemAlert('WeeklySwing', newSignals.length));
 
 save('journal_weekly.json', journal);
 save('seen_weekly.json', seen);
@@ -139,4 +126,4 @@ try {
 } catch {}
 
 const open = journal.filter(p => p.status === 'open');
-log(`scan: ${universe.length} tickers, ${signals} señales nuevas, ${errors} errores | abiertas ${open.length}/${CAP}`);
+log(`scan: ${universe.length} tickers, ${signals} señales nuevas, ${errors} errores | abiertas ${open.length}`);

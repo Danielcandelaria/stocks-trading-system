@@ -21,6 +21,7 @@ async function price(t) { const y = t.replace('.', '-');
 const positions = [
   ...load('journal_emacross.json', []).filter(p => p.status === 'open' && p.dir === 'LONG').map(p => ({ ...p, strategy: 'EMACross' })),
   ...load('journal_weekly.json', []).filter(p => p.status === 'open').map(p => ({ ...p, strategy: 'WeeklySwing' })),
+  ...load('journal_emacross_mid.json', []).filter(p => p.status === 'open').map(p => ({ ...p, strategy: 'EMACrossMid' })),
 ];
 
 const out = [];
@@ -39,6 +40,6 @@ out.sort((a, b) => (a.strategy).localeCompare(b.strategy) || (b.pnlPct ?? -999) 
 
 writeFileSync(F('pnl_live.json'), JSON.stringify({ updatedAt: new Date().toISOString(), positions: out }, null, 2));
 const byS = s => out.filter(p => p.strategy === s);
-for (const s of ['EMACross', 'WeeklySwing']) { const a = byS(s); const avg = a.filter(p => p.pnlPct != null);
+for (const s of ['EMACross', 'WeeklySwing', 'EMACrossMid']) { const a = byS(s); const avg = a.filter(p => p.pnlPct != null);
   console.log(`${s}: ${a.length} abiertas · P&L medio ${avg.length ? (avg.reduce((x, p) => x + p.pnlPct, 0) / avg.length).toFixed(1) : '—'}%`); }
 console.log('→ pnl_live.json actualizado');

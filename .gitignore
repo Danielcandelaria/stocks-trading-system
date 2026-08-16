@@ -25,3 +25,4 @@ pnl_live.json
 pnl.log
 *.bak-preRebuild
 *.bak-preRSI2del
+dashboard.log

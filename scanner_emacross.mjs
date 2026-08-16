@@ -14,6 +14,8 @@ import { dirname, join } from 'node:path';
 import { tgSend } from './tg.mjs';
 const SEED = process.argv.includes('--seed');   // 1ª pasada: un mensaje resumen, sin spam
 import { coherentTrade, logDecision } from './integrity.mjs';
+import { getWeeklyBars } from './weekly_bars.mjs';
+import { buildSystemAlert } from './alert_system.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
@@ -33,20 +35,7 @@ const _d = new Date(), _dow = _d.getUTCDay(), _h = _d.getUTCHours();
 const WEEK_OVER = _dow === 0 || _dow === 6 || (_dow === 5 && _h >= 20);
 const DASH_URL = process.env.DASH_URL || 'http://localhost:8080';
 
-async function getWeekly(t) {
-  const y = t.replace('.', '-');
-  try {
-    const res = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${y}?range=2y&interval=1wk`, { headers: UA });
-    if (!res.ok) return null;
-    const r = (await res.json()).chart?.result?.[0]; const q = r?.indicators?.quote?.[0];
-    if (!r?.timestamp || !q) return null;
-    const b = [];
-    for (let i = 0; i < r.timestamp.length; i++) if (q.close[i] != null) b.push({ t: r.timestamp[i], c: q.close[i] });
-    // descartar la semana EN CURSO (incompleta)
-    while (b.length && !WEEK_OVER && NOW - b[b.length - 1].t < 7 * 86400) b.pop();
-    return b.length > 30 ? b : null;
-  } catch { return null; }
-}
+const getWeekly = t => getWeeklyBars(t);   // módulo compartido (dedup + semana cerrada)
 
 (async () => {
   const uni = load('universe.json', { universe: [] }).universe;
@@ -96,14 +85,8 @@ async function getWeekly(t) {
 
   // AVISO SIMPLIFICADO (foco): no listamos tickers, solo "revisa el dashboard".
   const nL = fresh.filter(s => s.dir === 'LONG').length;   // solo LONG interesa al usuario
-  if (!DRY && nL) await tgSend(
-    `🔵 <b>EMACross — ${nL} posible${nL > 1 ? 's' : ''} oportunidad${nL > 1 ? 'es' : ''}</b>` +
-    `\n👉 Revisa el dashboard: ${DASH_URL}`
-  );
-  if (!DRY && closedList.length) await tgSend(
-    `⚠️ <b>EMACross — ${closedList.length} posición${closedList.length > 1 ? 'es' : ''} a cerrar</b>  <i>(cruce contrario)</i>` +
-    `\n👉 Revisa el dashboard: ${DASH_URL}`
-  );
+  if (!DRY && nL) await tgSend(buildSystemAlert('EMACross', nL));
+  if (!DRY && closedList.length) await tgSend(buildSystemAlert('EMACross', closedList.length, { kind: 'salida' }));
 
   if (!DRY) { save('journal_emacross.json', journal); save('seen_emacross.json', seen); }
   const open = journal.filter(p => p.status === 'open');
