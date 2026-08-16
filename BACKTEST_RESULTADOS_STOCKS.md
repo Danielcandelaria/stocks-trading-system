@@ -327,3 +327,19 @@ Por año (expectancy, entrada): fuerte en años alcistas (2020 +27%, 2023 +24%),
 | MENSUAL | 650 | 34% | **7.48** | +65.85% | +224% | 11 meses | 4/4 |
 
 **CONCLUSIÓN:** TF más alto = menos señales, mucha más calidad (principio trend-following confirmado). **SEMANAL sigue siendo lo correcto** (equilibrio señales/calidad/holds). DIARIO descartado (PF 1.76, mucho ruido). MENSUAL seductor (PF 7.48, ganadora +224%) pero IMPRÁCTICO: sesgo de supervivencia MÁXIMO (holds de 11 meses = solo supervivientes), muestra pequeña (650), señales rarísimas y capital inmovilizado ~1 año. No fiarse del 7.48.
+
+## EMACross — ANTICIPADO vs CONFIRMADO a detalle + banda óptima 2.0% (2026-08-16)
+
+`backtest_anticip_detail.mjs` (250 large-caps, 10y, long-only stop -18%, salida cruce).
+Barrido de umbral de anticipación (convergencia del hueco EMA8-EMA21):
+| entrada | n | WR | PF | exp/tr | WF |
+|---|---|---|---|---|---|
+| CONFIRMADO (cruce) | 2587 | 33% | 2.36 | +7.57% | 4/4 |
+| anticip gap<0.5% | 1628 | 34% | 1.98 | +5.22% | 4/4 |
+| anticip gap<1.2% | 2326 | 37% | 2.41 | +7.50% | 4/4 |
+| anticip gap<1.5% | 2451 | 38% | 2.47 | +7.94% | 4/4 |
+| **anticip gap<2.0%** | 2554 | **40%** | **2.52** | **+8.26%** | 4/4 |
+
+Detalle banda 1.2%: 91% CONFIRMAN (entras 2 sem antes, 2.8% más barato → +10.06%/tr), 9% FALSOS (−18.12%/tr, tocan el stop). Neto a 1.2% = empate (+7.50 vs +7.57). A 2.0% = +0.69%/tr mejor que confirmado.
+
+**CONCLUSIÓN:** anticipar SÍ captura más recorrido en los que funcionan (antes + más barato), pero cada falso cuesta −18%. Banda estrecha = empate; **banda ANCHA (2.0%) = mejor (PF 2.52 vs 2.36)** porque captura más cruces temprano. El backtest entra a ciegas; con CONFIRMACIÓN VISUAL el usuario filtra falsos → inclina la balanza aún más a favor. **Ajustado radar + Pine a gap 2.0%.**
