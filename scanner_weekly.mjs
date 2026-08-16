@@ -93,7 +93,8 @@ for (const u of universe) {
     if (td.bullSetup[i] !== 9 || !td.bullSetupBars[i]) continue;
     const key = `W:${u.ticker}:${bars[i].t}`;
     if (seen[key]) continue;
-    seen[key] = true;
+    // OJO: 'seen' se marca DESPUÉS de registrar (abajo). Marcarlo aquí hacía que una señal
+    // descartada (antes por el CAP, ahora por stop fuera de rango) se perdiera PARA SIEMPRE.
 
     const stop = Math.min(...td.bullSetupBars[i].map(k => bars[k].l));
     const ref = i < bars.length - 1 ? bars[i + 1].o : bars[i].c;
@@ -109,6 +110,7 @@ for (const u of universe) {
       status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
       stop: +stop.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
     });
+    seen[key] = true;
     signals++; newSignals.push(u.ticker);
   }
 }

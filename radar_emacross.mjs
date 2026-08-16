@@ -28,7 +28,7 @@ const FAST = 8, SLOW = 21;
 const DRY = process.argv.includes('--dry');
 const SEND_SHORT = false;   // el usuario opera long-only (short débil en acciones); poner true para reactivar
 const DEFINITIVE = process.argv.includes('--definitive');   // viernes tras cierre US: dispara señales de ENTRADA reales
-const FRESH_W = +(process.env.FRESH_W || 3);   // semanas máx desde el cruce para seguir siendo entrada fresca
+const FRESH_W = +(process.env.FRESH_W || 1);   // semanas máx desde el cruce para seguir siendo entrada fresca
 const GAPMAX = (+process.argv.find(a => /^[\d.]+$/.test(a)) || 2.0) / 100;   // banda óptima 2.0% (backtest_anticip_detail)
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const load = (f, d) => existsSync(F(f)) ? JSON.parse(readFileSync(F(f), 'utf8')) : d;
