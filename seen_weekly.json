@@ -35,5 +35,9 @@
   "W:ECHO:1785124800": true,
   "W:CRCL:1785124800": true,
   "W:ASTS:1785729600": true,
-  "W:NXT:1785729600": true
+  "W:NXT:1785729600": true,
+  "W:QCOM:1786334400": true,
+  "W:NXPI:1786334400": true,
+  "W:CCI:1786334400": true,
+  "W:SBAC:1786334400": true
 }

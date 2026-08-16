@@ -63,5 +63,31 @@
     "entryPx": 44.7324,
     "stop": 39.6,
     "riskPct": 11.5
+  },
+  {
+    "id": "W:QCOM:1786334400",
+    "ticker": "QCOM",
+    "tv": "NASDAQ:QCOM",
+    "sector": "Electronic Technology",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1786334400,
+    "entryT": 1786334400,
+    "entryPx": 165.8729,
+    "stop": 142.89,
+    "riskPct": 13.9
+  },
+  {
+    "id": "W:CCI:1786334400",
+    "ticker": "CCI",
+    "tv": "NYSE:CCI",
+    "sector": "Finance",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1786334400,
+    "entryT": 1786334400,
+    "entryPx": 76.018,
+    "stop": 69.72,
+    "riskPct": 8.3
   }
 ]
