@@ -23,6 +23,29 @@
       "retPct": null,
       "notas": "Primera operación con dinero real. Señal EMACross confirmada (cruce semanal del 10-ago). Entrada @ 15.23. Tamaño ajustado de 190 a 100 USD el mismo día (alineado con el plan de 5 posiciones × ~100).",
       "riskUsd": 18
+    },
+    {
+      "id": "REAL-2026-08-17-SYK",
+      "ticker": "SYK",
+      "tv": "NYSE:SYK",
+      "sector": "Health Technology",
+      "direction": "LONG",
+      "system": "EMACross",
+      "signalDate": "2026-08-10",
+      "signalPrice": 339.21,
+      "entryDate": "2026-08-17",
+      "entryPrice": 339.21,
+      "shares": 0.2948,
+      "amountUsd": 100,
+      "stop": 278.15,
+      "stopPct": -18,
+      "riskUsd": 18,
+      "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios.",
+      "status": "open",
+      "exitDate": null,
+      "exitPrice": null,
+      "retPct": null,
+      "notas": "Cruce fresco de esta semana, la MENOS extendida del radar (+3.0% sobre EMA21). Segunda posición real."
     }
   ]
 }
