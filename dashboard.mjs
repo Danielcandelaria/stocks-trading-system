@@ -44,7 +44,13 @@ function snapshot() {
 
   // ── WeeklySwing: del journal, solo señales RECIENTES (vivas) ──
   const wj = (rd('journal_weekly.json') || []).filter(p => p.status === 'open');
-  const wk = p => Math.floor((now - p.signalT) / (7 * 86400));
+  // Semanas ANCLADAS a la vela: la señal de la última semana CERRADA es "0" (la más fresca).
+  // Contar por días daba 1 semana de más el lunes siguiente (QCOM/CCI salían como viejas).
+  const d = new Date(); const dow = d.getUTCDay();
+  const monday = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() - ((dow + 6) % 7)));
+  const weekClosed = dow === 0 || dow === 6 || (dow === 5 && d.getUTCHours() >= 20);
+  const anchor = monday.getTime() / 1000 - (weekClosed ? 0 : 7 * 86400);   // lunes de la última semana cerrada
+  const wk = p => Math.max(0, Math.round((anchor - p.signalT) / (7 * 86400)));
   const wmap = p => ({ ticker: p.ticker, tv: p.tv || p.ticker, price: +(+p.entryPx).toFixed(2), weeks: wk(p), stop: p.stop != null ? +(+p.stop).toFixed(2) : null });
   const weekly = {
     id: 'WeeklySwing', emoji: '🟣', name: 'WEEKLYSWING',
