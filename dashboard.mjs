@@ -65,8 +65,21 @@ function snapshot() {
     older: wj.filter(p => wk(p) > FRESH_WEEKS).length,
   };
 
+  // ── MIS POSICIONES REALES (dinero real) ──
+  const pnl = rd('pnl_live.json') || { positions: [] };
+  const px = t => (pnl.positions.find(p => p.ticker === t) || {}).current ?? null;
+  const real = ((rd('trades_real.json') || {}).trades || []).map(t => {
+    const cur = px(t.ticker);
+    const base = t.entryPrice ?? t.signalPrice;
+    return { ...t, current: cur,
+      pnlPct: (cur != null && base) ? +(((cur / base) - 1) * 100).toFixed(2) : null,
+      toStopPct: (cur != null && t.stop) ? +(((cur / t.stop) - 1) * 100).toFixed(1) : null,
+      pendiente: t.entryPrice == null };
+  });
+
   return {
     ts: new Date().toISOString(),
+    real,
     radarAt: radar?.updatedAt || null,
     definitive: radar?.definitive ?? null,
     beats,
@@ -86,6 +99,14 @@ h1{font-size:23px;font-weight:600;margin:0 0 6px}
 .live{display:flex;gap:14px;flex-wrap:wrap;color:var(--mut);font-size:12.5px;margin-bottom:24px}
 .live b{color:var(--tx);font-weight:500}
 .dot{color:var(--go)}
+.real{background:rgba(63,185,80,.07);border:1px solid rgba(63,185,80,.35);border-radius:14px;margin-bottom:22px;overflow:hidden}
+.real .rh{padding:14px 20px;font-weight:600;font-size:16px;border-bottom:1px solid rgba(63,185,80,.25);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.real table{width:100%;border-collapse:collapse;font-size:14px}
+.real th{text-align:left;color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding:9px 20px;font-weight:500}
+.real td{padding:10px 20px;border-top:1px solid rgba(63,185,80,.15)}
+.real .r{text-align:right}
+.pos{color:var(--go)}.neg{color:#f85149}
+.warn{color:var(--warn);font-size:12px}
 .sys{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin-bottom:20px;overflow:hidden}
 .sys.s0{border-left:4px solid var(--core)}.sys.s1{border-left:4px solid var(--pur)}
 .hd{padding:16px 20px 14px}
@@ -114,6 +135,7 @@ h1{font-size:23px;font-weight:600;margin:0 0 6px}
 </style></head><body><div class="wrap">
 <h1>📊 Acciones</h1>
 <div class="live" id="live">cargando…</div>
+<div id="real"></div>
 <div id="systems"></div>
 <div class="ft" id="ft"></div>
 </div>
@@ -134,6 +156,22 @@ async function load(){
     '<span><span class="dot">●</span> Escáner cruces: <b>'+hace(b.emacross?.at)+'</b></span>'+
     (d.definitive===false?'<span style="color:var(--warn)">semana en curso (provisional)</span>':
      d.definitive===true?'<span style="color:var(--go)">cierre semanal confirmado</span>':'');
+
+  // ── MIS POSICIONES REALES ──
+  const R=d.real||[];
+  document.getElementById('real').innerHTML = R.length ? '<div class="real">'+
+    '<div class="rh">💰 Mis posiciones REALES <span style="font-weight:400;font-size:12.5px;color:var(--mut)">dinero real · '+R.length+'</span></div>'+
+    '<table><thead><tr><th>Ticker</th><th>Sistema</th><th class="r">Entrada</th><th class="r">Ahora</th><th class="r">P&L</th><th class="r">Stop</th><th class="r">Entré</th></tr></thead><tbody>'+
+    R.map(t=>'<tr><td><b><a href="'+tvUrl(t.tv)+'" target="_blank" style="color:var(--tx);text-decoration:none">'+esc(t.ticker)+'</a></b></td>'+
+      '<td style="color:var(--mut);font-size:13px">'+esc(t.system)+'</td>'+
+      '<td class="r">'+(t.entryPrice!=null?t.entryPrice:'<span class="warn">falta ('+t.signalPrice+'?)</span>')+'</td>'+
+      '<td class="r">'+(t.current!=null?t.current:'—')+'</td>'+
+      '<td class="r '+((t.pnlPct||0)>=0?'pos':'neg')+'" style="font-weight:600">'+(t.pnlPct!=null?(t.pnlPct>=0?'+':'')+t.pnlPct+'%':'—')+'</td>'+
+      '<td class="r" style="color:var(--mut)">'+(t.stop!=null?t.stop:'—')+(t.toStopPct!=null?' <span style="font-size:12px">('+t.toStopPct+'%)</span>':'')+'</td>'+
+      '<td class="r" style="color:var(--mut);font-size:13px">'+esc(t.entryDate||'—')+'</td></tr>').join('')+
+    '</tbody></table>'+
+    '<div style="padding:10px 20px;color:var(--mut);font-size:12px;border-top:1px solid rgba(63,185,80,.15)">Salida: cruce contrario · el stop es de catástrofe (−18%), no táctico</div>'+
+    '</div>' : '';
 
   document.getElementById('systems').innerHTML=d.systems.map((s,i)=>{
     const grupos=s.groups.map(g=>{
