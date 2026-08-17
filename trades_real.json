@@ -11,9 +11,9 @@
       "signalDate": "2026-08-10",
       "signalPrice": 15.23,
       "entryDate": "2026-08-17",
-      "entryPrice": null,
-      "shares": null,
-      "amountUsd": null,
+      "entryPrice": 15.23,
+      "shares": 12.4754,
+      "amountUsd": 190,
       "stop": 12.49,
       "stopPct": -18,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios.",
@@ -21,7 +21,8 @@
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Primera operación con dinero real. Señal EMACross confirmada (EMA8 14.06 > EMA21 14.02 en semanal, cruce del 10-ago). Pendiente de anotar precio de entrada real y tamaño."
+      "notas": "Primera operación con dinero real. Señal EMACross confirmada (cruce semanal del 10-ago). Entrada 190 USD @ 15.23.",
+      "riskUsd": 34.2
     }
   ]
 }
