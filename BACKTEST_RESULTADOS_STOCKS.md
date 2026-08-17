@@ -356,3 +356,20 @@ Detalle banda 1.2%: 91% CONFIRMAN (entras 2 sem antes, 2.8% más barato → +10.
 | Confluencia (cruce + D9 en <8v) | 223 | 36% | 3.18 | +11.59% | 26 sem | 4/4 |
 
 **CONCLUSIÓN (continuidad):** salir con el 13 (D13-EXIT) EMPEORA (PF 2.36→2.13, dur 25→17 sem) — fadea la tendencia y corta ganadores, contra la continuidad. El ganador es **D9-ENTRY: usar el Setup-9 para entrar temprano (en el suelo, antes del cruce) y RODAR hasta el cruce contrario** (PF 3.30, WR 54%, +13.6%/tr). DeMark mete temprano en el giro (captura recorrido); la continuidad (cruce EMA) manda en la salida, NO el 13. Pero n=818 (subconjunto alta convicción) solapa con DeMark-9/WeeklySwing ya existentes. Pendiente: continuación pura por TDST break.
+
+## WeeklySwing — ¿filtrar por tendencia? NO (2026-08-17)
+
+Duda real del usuario (caso CCI): el Setup-9 semanal dispara con las EMAs claramente bajistas;
+¿conviene exigir tendencia alcista de fondo, como hace el DeMark diario (EMA50>EMA200)?
+
+`backtest_weekly_filter.mjs` (250 large-caps, 10y):
+| filtro | n | WR | PF | exp/tr | WF |
+|---|---|---|---|---|---|
+| **SIN filtro (actual)** | 193 | 51% | **7.63** | +39.47% | **4/4** |
+| precio > EMA30 sem | 21 | 43% | 1.21 | +1.53% | 1/4 |
+| precio > EMA50 sem | 29 | 45% | 3.05 | +14.18% | 1/4 |
+| EMA10 > EMA30 sem | 26 | 42% | 3.54 | +18.70% | 1/4 |
+| precio > SMA200 sem | 74 | 47% | 4.47 | +22.11% | 2/4 |
+
+**CONCLUSIÓN:** filtrar por tendencia DESTRUYE el sistema — elimina 62-89% de las señales y TODAS las variantes suspenden el walk-forward. El Setup-9 ES por definición una señal de cuchillo cayendo (9 semanas de caída ⇒ EMAs bajistas); exigir tendencia alcista quita justo los mejores rebotes. **WeeklySwing se queda SIN filtro de tendencia.** Que las EMAs estén bajistas es el REQUISITO, no una contraindicación (caso CCI = señal legítima).
+⚠️ n=193 (muestra modesta) y PF inflado por supervivencia; lo robusto aquí es la comparación relativa (filtro empeora en todas las ventanas).
