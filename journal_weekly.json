@@ -124,13 +124,18 @@
     "tv": "NASDAQ:LITE",
     "sector": "Producer Manufacturing",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1784520000,
     "entryT": 1784520000,
     "entryPx": 768.2339,
     "stop": 650.82,
     "riskPct": 15.3,
-    "recovered": true
+    "recovered": true,
+    "exitT": 1785124800,
+    "exitPx": 650.4946,
+    "exitReason": "STOP",
+    "retPct": -15.33,
+    "weeksHeld": 0
   },
   {
     "id": "W:MSTR:1783915200",
