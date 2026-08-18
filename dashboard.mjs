@@ -34,8 +34,10 @@ function snapshot() {
     tv: { tf: 'Semanal (1W)', ind: 'EMA 8/21 · Entradas, Salidas y Anticipación', mira: 'la etiqueta verde COMPRA (EMA8 naranja cruzando SOBRE la EMA21 azul)' },
     entrada: 'Cruce EMA8 sobre EMA21', salida: 'Cruce contrario (dejar correr)', stop: '−18%',
     groups: [
-      { key: 'ahora', label: 'ENTRAR AHORA', hint: 'cruzaron esta semana — confirma en TV y entra', items: lv(0).filter(t => t.weeks === 0) },
-      { key: 'reciente', label: 'AÚN VÁLIDAS', hint: 'cruzaron la semana pasada, siguen frescas', items: lv(0).filter(t => t.weeks === 1) },
+      // ordenadas por FUERZA (extensión): con capital limitado, las de arriba son las MÁS prometedoras
+      // (backtest: tercio alto de extensión PF 3.86 vs 1.09 el bajo). Ver backtest_ranking.mjs.
+      { key: 'ahora', label: 'ENTRAR AHORA · ordenadas por fuerza', hint: '↓ las de arriba son las más prometedoras (más momentum)', items: lv(0).filter(t => t.weeks === 0).sort((a, b) => (b.extPct ?? 0) - (a.extPct ?? 0)) },
+      { key: 'reciente', label: 'AÚN VÁLIDAS', hint: 'cruzaron la semana pasada, ordenadas por fuerza', items: lv(0).filter(t => t.weeks === 1).sort((a, b) => (b.extPct ?? 0) - (a.extPct ?? 0)) },
       { key: 'punto', label: 'A PUNTO DE CRUZAR', hint: 'muy cerca — tu indicador (modo anticipado) marca la COMPRA aquí', items: lv(1) },
       { key: 'cerca', label: 'EN PREVISIÓN · anticipación', hint: 'convergiendo hacia el cruce (banda 2%) — ordenadas por cercanía', items: lv(2) },
     ],
@@ -176,11 +178,13 @@ async function load(){
   document.getElementById('systems').innerHTML=d.systems.map((s,i)=>{
     const grupos=s.groups.map(g=>{
       const antic=(g.key==='punto'||g.key==='cerca');   // niveles de anticipación → mostrar cuánto falta
+      const cross=(g.key==='ahora'||g.key==='reciente'); // cruces → mostrar FUERZA (extensión)
+      const fdot=e=>e>=10?'🟢':e>=5?'🟡':'🔴';           // fuerza: 🟢 fuerte · 🔴 floja (tercio bajo = breakeven)
       const chips=g.items.map(t=>'<div class="chip'+(g.key==='ahora'?' big':'')+'">'+
         '<a href="'+tvUrl(t.tv)+'" target="_blank">'+esc(t.ticker)+'</a>'+
         '<span class="px">$'+t.price+'</span>'+
         (antic&&t.gapPct!=null?'<span class="px" style="color:var(--warn)">falta '+t.gapPct+'%</span>':'')+
-        (!antic&&t.stop!=null?'<span class="px">stop '+t.stop+'</span>':'')+'</div>').join('');
+        (cross&&t.extPct!=null?'<span class="px">'+fdot(t.extPct)+' fuerza +'+t.extPct+'%</span>':'')+'</div>').join('');
       if(!g.items.length && (g.key==='cerca'||g.key==='reciente')) return '';
       return '<div class="grp"><div class="gh g-'+g.key+'"><span class="t">'+esc(g.label)+'</span>'+
         '<span class="n">'+g.items.length+'</span><span class="hint">'+esc(g.hint)+'</span></div>'+
