@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // sync_watchlist.mjs — pone en la watchlist de TradingView lo ACCIONABLE de hoy:
-//   · EMACross "ENTRAR AHORA" (cruzaron esta semana) + "A PUNTO" (pueden cruzar en días)
+//   · EMACross: cruzaron esta semana + a punto (nivel 1) + en previsión/anticipación (nivel 2, banda 2%)
 //   · WeeklySwing con señal viva (Setup-9 de esta semana o la pasada)
 // Solo AÑADE (borrar por DOM es frágil; el usuario limpia a mano). Informa de las obsoletas.
 import { readFileSync, existsSync } from 'node:fs';
@@ -21,7 +21,8 @@ const now = Date.now() / 1000;
   const want = [];
   // EMACross: cruzaron esta semana (nivel 0, weeks 0) + a punto (nivel 1)
   for (const t of lv(0)) if (t.weeks === 0) want.push({ tv: t.tv, ticker: t.ticker, why: 'EMACross · cruzó esta semana' });
-  for (const t of lv(1)) want.push({ tv: t.tv, ticker: t.ticker, why: 'EMACross · a punto' });
+  for (const t of lv(1)) want.push({ tv: t.tv, ticker: t.ticker, why: 'EMACross · a punto de cruzar' });
+  for (const t of lv(2)) want.push({ tv: t.tv, ticker: t.ticker, why: 'EMACross · en previsión (anticipación)' });   // banda 2% = la del indicador
   // WeeklySwing: señal viva (≤1 semana)
   for (const p of (rd('journal_weekly.json') || []).filter(p => p.status === 'open')) {
     const w = Math.floor((now - p.signalT) / (7 * 86400));
