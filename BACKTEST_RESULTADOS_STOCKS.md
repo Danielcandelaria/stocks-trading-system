@@ -415,3 +415,29 @@ Duda del usuario: ¿mejora entrar solo con precio por encima de la EMA200 (tende
 | Anticipado | EMA8 > EMA200 | 1020 | 36% | 1.75 | +3.93% | +4010% | 4/4 |
 
 **CONCLUSIÓN:** el filtro EMA200 EMPEORA el sistema — corta la rentabilidad casi a la mitad (Σret +9787%→+4477%) y baja el PF de 2.31 a 1.77 en ambos modos. Vetó 668 trades en Anticipado, y eran de los BUENOS: cuando la EMA8 cruza al alza la EMA21 estando el precio aún DEBAJO de la EMA200, se está pillando el giro de tendencia TEMPRANO = el de mayor recorrido posterior. Exigir precio>EMA200 obliga a entrar tarde, con el movimiento ya maduro. Coherente con "filtrar a frescas empeora" y con el ranking por fuerza. NO añadir filtro EMA200 (ni de tendencia mayor en general): los mejores cruces del EMACross nacen POR DEBAJO de la media de 200.
+
+## OTRAS CLASES DE ACTIVO — ¿sirve el EMA8/21? (2026-08-18)
+
+`backtest_multiasset.mjs` (10 años semanal, SIN sesgo de supervivencia, coste 0.06%/lado). Listón = acciones PF 2.52 WF 4/4.
+
+**FOREX (20 pares) — NO transfiere:**
+| variante | PF | WF |
+|---|---|---|
+| Long-only Anticipado | 1.20 | 2/4 |
+| Long-only Confirmado | 0.67 | 1/4 |
+| Long+Short (ambos modos) | 0.44-0.67 | 0-1/4 |
+
+CONCLUSIÓN forex: el cruce EMA NO vale (no hay deriva alcista). Confirma por qué el sistema forex en vivo usa DeMark/FOTSI/DVA, NO este cruce. No tocar.
+
+**MATERIAS PRIMAS (22 futuros) — solo un subconjunto robusto:**
+- Global long-only anticipado: PF 1.69 pero WF 2/4 (régimen). Long+Short = negativo (los cortos matan).
+- Por subgrupo (long-only anticipado):
+  | subgrupo | PF | exp | WF |
+  |---|---|---|---|
+  | **Metales preciosos (GC/SI/PL/PA)** | **2.43** | +6.71% | **4/4** ✅ |
+  | Ganado (LE/HE/GF) | 1.56 | +2.82% | 3/4 🟡 |
+  | Energía | 1.68 | +4.43% | 1/4 ❌ |
+  | Agrícolas | 1.46 | +2.58% | 2/4 ❌ |
+  | Cobre | 2.02 | +4.61% | 1/4 (9tr) ❌ |
+
+CONCLUSIÓN materias primas: igual que en acciones, el edge está en un SUBCONJUNTO. **METALES PRECIOSOS = edge robusto (PF 2.43, WF 4/4, long-only anticipado)** — candidato real, misma lógica que el sistema de acciones. Ganado secundario (WF 3/4). Energía/agrícolas/cobre = régimen, NO robusto. Cortos OFF en todo (pierden). Cautela: 44 trades (muestra modesta vs miles en acciones) → validar forward antes de real, misma disciplina.
