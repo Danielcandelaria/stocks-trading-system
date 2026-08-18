@@ -388,3 +388,15 @@ Duda del usuario: ¿un filtro de momentum mejora la anticipación y permite quit
 | sube 4s + precio>EMA5 | 2403 | 2.50 | +8.33% | 11% | 4/4 |
 
 **CONCLUSIÓN:** el filtro de momentum NO aporta — la anticipación (EMAs convergiendo al alza) YA contiene el momentum, así que el filtro es redundante (PF ~2.52 sin cambio, %falsas ~12% sin cambio). El 12% de falsas es IRREDUCIBLE: también tienen momentum al entrar y su reversión no es predecible; el stop -18% es la red. IMPORTANTE: la anticipación SISTEMÁTICA (a ciegas, sin humano) ya bate al confirmado (2.52 vs 2.36) → se PUEDE quitar el factor humano y operar mecánico. No añadir filtro de momentum.
+
+## EMACross — SELECCIÓN con capital limitado: ranquear por FUERZA (2026-08-17)
+
+Problema real: no hay capital para todas las señales; ¿cuáles elegir? `backtest_ranking.mjs`
+(250 large-caps, 10y, entradas en tercios por métrica):
+| ranquear por | tercio bajo | tercio medio | tercio ALTO |
+|---|---|---|---|
+| Extensión s/EMA21 | PF 1.09 (+0.4%) | 1.63 | **PF 3.86 (+18.7%, WR 41%)** |
+| Momentum 12 sem | 1.81 (+4.1%) | 2.04 | **3.04 (+13.3%)** |
+| Momentum 26 sem | 2.20 | 1.48 | **3.26 (+13.0%)** |
+
+**CONCLUSIÓN:** las señales MÁS FUERTES (extendidas / con más momentum) son las ganadoras — tercio alto ≈ 3.5× el bajo, consistente en las 3 métricas. Las "pegadas y seguras" (tercio bajo de extensión) son breakeven (PF 1.09) = coincide con "filtrar a frescas empeora". REGLA DE SELECCIÓN con capital limitado: priorizar las de MAYOR extensión sobre EMA21 / mayor momentum, NO las pegadas. Contraintuitivo (parece perseguir) pero robusto. La extensión es SOLO para RANQUEAR/seleccionar, nunca para descartar (el sistema entra en todas si hay capital).
