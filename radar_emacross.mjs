@@ -119,13 +119,15 @@ function analyze(bars) {
   const persist = () => save('radar_live.json', {
     updatedAt: new Date().toISOString(),
     definitive: DEFINITIVE,
-    levels: [0, 1, 2].map(lv => ({
-      level: lv, label: LV_TXT[lv],
-      tickers: L.filter(h => h.level === lv).map(h => ({
+    levels: [0, 1, 2].map(lv => {
+      let tk = L.filter(h => h.level === lv).map(h => ({
         ticker: h.ticker, tv: h.tv, price: +h.px.toFixed(2), extPct: +h.ext.toFixed(1),
         gapPct: +h.gLive.toFixed(2), tvCrossed: h.tvCrossed ?? null, weeks: h.weeks ?? null,
-      })),
-    })),
+      }));
+      // anticipación (nivel 1 y 2): ordenar por CERCANÍA al cruce (menos hueco que cerrar, primero)
+      if (lv >= 1) tk = tk.sort((a, b) => a.gapPct - b.gapPct);
+      return { level: lv, label: LV_TXT[lv], tickers: tk };
+    }),
   });
   persist();
   beat('radar', { yaCruzado: L.filter(h => h.level === 0).length, aPunto: L.filter(h => h.level === 1).length, acercandose: L.filter(h => h.level === 2).length });

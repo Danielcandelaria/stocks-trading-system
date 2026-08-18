@@ -36,8 +36,8 @@ function snapshot() {
     groups: [
       { key: 'ahora', label: 'ENTRAR AHORA', hint: 'cruzaron esta semana — confirma en TV y entra', items: lv(0).filter(t => t.weeks === 0) },
       { key: 'reciente', label: 'AÚN VÁLIDAS', hint: 'cruzaron la semana pasada, siguen frescas', items: lv(0).filter(t => t.weeks === 1) },
-      { key: 'punto', label: 'A PUNTO', hint: 'pueden cruzar en días — prepara la orden', items: lv(1) },
-      { key: 'cerca', label: 'VIGILAR', hint: 'acercándose, aún no', items: lv(2) },
+      { key: 'punto', label: 'A PUNTO DE CRUZAR', hint: 'muy cerca — tu indicador (modo anticipado) marca la COMPRA aquí', items: lv(1) },
+      { key: 'cerca', label: 'EN PREVISIÓN · anticipación', hint: 'convergiendo hacia el cruce (banda 2%) — ordenadas por cercanía', items: lv(2) },
     ],
     lastRun: beats.radar?.at || null,
   };
@@ -175,10 +175,12 @@ async function load(){
 
   document.getElementById('systems').innerHTML=d.systems.map((s,i)=>{
     const grupos=s.groups.map(g=>{
+      const antic=(g.key==='punto'||g.key==='cerca');   // niveles de anticipación → mostrar cuánto falta
       const chips=g.items.map(t=>'<div class="chip'+(g.key==='ahora'?' big':'')+'">'+
         '<a href="'+tvUrl(t.tv)+'" target="_blank">'+esc(t.ticker)+'</a>'+
         '<span class="px">$'+t.price+'</span>'+
-        (t.stop!=null?'<span class="px">stop '+t.stop+'</span>':'')+'</div>').join('');
+        (antic&&t.gapPct!=null?'<span class="px" style="color:var(--warn)">falta '+t.gapPct+'%</span>':'')+
+        (!antic&&t.stop!=null?'<span class="px">stop '+t.stop+'</span>':'')+'</div>').join('');
       if(!g.items.length && (g.key==='cerca'||g.key==='reciente')) return '';
       return '<div class="grp"><div class="gh g-'+g.key+'"><span class="t">'+esc(g.label)+'</span>'+
         '<span class="n">'+g.items.length+'</span><span class="hint">'+esc(g.hint)+'</span></div>'+
