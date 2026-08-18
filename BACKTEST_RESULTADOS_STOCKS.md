@@ -373,3 +373,18 @@ Duda real del usuario (caso CCI): el Setup-9 semanal dispara con las EMAs claram
 
 **CONCLUSIÓN:** filtrar por tendencia DESTRUYE el sistema — elimina 62-89% de las señales y TODAS las variantes suspenden el walk-forward. El Setup-9 ES por definición una señal de cuchillo cayendo (9 semanas de caída ⇒ EMAs bajistas); exigir tendencia alcista quita justo los mejores rebotes. **WeeklySwing se queda SIN filtro de tendencia.** Que las EMAs estén bajistas es el REQUISITO, no una contraindicación (caso CCI = señal legítima).
 ⚠️ n=193 (muestra modesta) y PF inflado por supervivencia; lo robusto aquí es la comparación relativa (filtro empeora en todas las ventanas).
+
+## EMACross — ¿filtro de momentum en la anticipación? NO (2026-08-17)
+
+Duda del usuario: ¿un filtro de momentum mejora la anticipación y permite quitar el factor humano?
+`backtest_anticip_momentum.mjs` (250 large-caps, 10y, anticipación gap<2% convergiendo, stop -18%):
+| filtro | n | PF | exp/tr | %falsas | WF |
+|---|---|---|---|---|---|
+| SIN filtro | 2550 | **2.52** | +8.26% | 12% | 4/4 |
+| precio sube 2 sem | 2507 | 2.50 | +8.14% | 12% | 4/4 |
+| precio sube 4 sem | 2406 | 2.51 | +8.33% | 11% | 4/4 |
+| precio > EMA5 | 2540 | 2.53 | +8.31% | 12% | 4/4 |
+| EMA8 sube 2 sem | 2287 | 2.46 | +8.20% | 11% | 4/4 |
+| sube 4s + precio>EMA5 | 2403 | 2.50 | +8.33% | 11% | 4/4 |
+
+**CONCLUSIÓN:** el filtro de momentum NO aporta — la anticipación (EMAs convergiendo al alza) YA contiene el momentum, así que el filtro es redundante (PF ~2.52 sin cambio, %falsas ~12% sin cambio). El 12% de falsas es IRREDUCIBLE: también tienen momentum al entrar y su reversión no es predecible; el stop -18% es la red. IMPORTANTE: la anticipación SISTEMÁTICA (a ciegas, sin humano) ya bate al confirmado (2.52 vs 2.36) → se PUEDE quitar el factor humano y operar mecánico. No añadir filtro de momentum.
