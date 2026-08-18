@@ -1,0 +1,28 @@
+{
+  "test": {
+    "at": "2026-08-16T20:57:27.391Z",
+    "ok": 1
+  },
+  "radar": {
+    "at": "2026-08-18T12:02:12.871Z",
+    "yaCruzado": 49,
+    "aPunto": 6,
+    "acercandose": 24
+  },
+  "weekly": {
+    "at": "2026-08-18T07:11:37.315Z",
+    "nuevas": 0,
+    "universo": 495
+  },
+  "emacross": {
+    "at": "2026-08-18T07:20:22.814Z",
+    "nuevas": 0,
+    "cierres": 0,
+    "universo": 495
+  },
+  "emacrossmid": {
+    "at": "2026-08-18T07:22:47.640Z",
+    "nuevas": 0,
+    "universo": 679
+  }
+}

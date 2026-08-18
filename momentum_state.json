@@ -159,7 +159,90 @@
           "last": 187.02000427246094
         }
       ],
-      "spyRef": 746.77001953125
+      "spyRef": 746.77001953125,
+      "result": {
+        "portRetPct": -26.92,
+        "spyRetPct": 0.03,
+        "closedAt": "2026-08-01"
+      }
+    },
+    {
+      "month": "2026-08",
+      "date": "2026-08-01",
+      "ranked": 494,
+      "portfolio": [
+        {
+          "ticker": "SNDK",
+          "tv": "NASDAQ:SNDK",
+          "sector": "Electronic Technology",
+          "mom": 2.7682551765294523,
+          "last": 1214.8299560546875
+        },
+        {
+          "ticker": "DELL",
+          "tv": "NYSE:DELL",
+          "sector": "Electronic Technology",
+          "mom": 2.5889105212823025,
+          "last": 405.3699951171875
+        },
+        {
+          "ticker": "MRVL",
+          "tv": "NASDAQ:MRVL",
+          "sector": "Electronic Technology",
+          "mom": 2.344602901908906,
+          "last": 187.55999755859375
+        },
+        {
+          "ticker": "ALAB",
+          "tv": "NASDAQ:ALAB",
+          "sector": "Electronic Technology",
+          "mom": 1.6851549752199215,
+          "last": 311.2300109863281
+        },
+        {
+          "ticker": "INTC",
+          "tv": "NASDAQ:INTC",
+          "sector": "Electronic Technology",
+          "mom": 1.6103575224285933,
+          "last": 90.19999694824219
+        },
+        {
+          "ticker": "NBIS",
+          "tv": "NASDAQ:NBIS",
+          "sector": "Technology Services",
+          "mom": 1.4147085010310252,
+          "last": 190.41000366210938
+        },
+        {
+          "ticker": "MU",
+          "tv": "NASDAQ:MU",
+          "sector": "Electronic Technology",
+          "mom": 1.3687556140710968,
+          "last": 823.030029296875
+        },
+        {
+          "ticker": "FLEX",
+          "tv": "NASDAQ:FLEX",
+          "sector": "Electronic Technology",
+          "mom": 1.3450434690193216,
+          "last": 113.75
+        },
+        {
+          "ticker": "WDC",
+          "tv": "NASDAQ:WDC",
+          "sector": "Electronic Technology",
+          "mom": 1.149240283202595,
+          "last": 544.8400268554688
+        },
+        {
+          "ticker": "AMD",
+          "tv": "NASDAQ:AMD",
+          "sector": "Electronic Technology",
+          "mom": 1.1448172757233857,
+          "last": 476.1499938964844
+        }
+      ],
+      "spyRef": 747.030029296875
     }
   ]
 }

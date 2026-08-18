@@ -173,9 +173,14 @@ function analyze(bars) {
 
   persist();   // re-guardar ya con el estado de TV
 
-  await tgSend(buildRadarAlert({
-    yaCruzado: L.filter(h => h.level === 0).length,
-    aPunto: L.filter(h => h.level === 1).length,
-    acercandose: L.filter(h => h.level === 2).length,
-  }));
+  // Alerta ENFOCADA a los 2 cubos accionables (sin ruido):
+  //   P1 = anticipadas inminentes (nivel 1, <0.4%) · P2 = cruzadas FUERTES (nivel 0, weeks 0, ext≥15%)
+  const SL = px => +(px * 0.82).toFixed(2);
+  const p1 = L.filter(h => h.level === 1)
+    .sort((a, b) => a.gLive - b.gLive)
+    .map(h => ({ ticker: h.ticker, price: +h.px.toFixed(2), stop: SL(h.px) }));
+  const p2 = L.filter(h => h.level === 0 && (h.weeks ?? 0) === 0 && (h.ext ?? 0) >= 15)
+    .sort((a, b) => b.ext - a.ext)
+    .map(h => ({ ticker: h.ticker, price: +h.px.toFixed(2), stop: SL(h.px) }));
+  await tgSend(buildRadarAlert({ p1, p2, vigilar: L.filter(h => h.level === 2).length }));
 })();

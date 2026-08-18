@@ -26,21 +26,30 @@ function snapshot() {
   const beats = rd('heartbeat.json') || {};
   const now = Date.now() / 1000;
 
-  // ── EMACross: del radar (ya cruzado / a punto / acercándose) ──
-  const lv = i => (radar?.levels?.[i]?.tickers || []);
+  // ── EMACross: del radar, reorganizado por PRIORIDAD (2 cubos) ──
+  //   Filosofía validada: (1) ANTICIPADA gana por timing (entra antes/barato, PF 2.52>2.36),
+  //   (2) entre CRUZADAS, solo las FUERTES valen (ext≥15 tercio alto PF 3.86; pegadas <8 = breakeven 1.09).
+  //   Se prioriza P1 anticipadas + P2 cruzadas-fuertes; el resto se degrada para quitar ruido.
+  const SL_PCT = 0.18;   // stop catástrofe −18% desde el precio actual
+  const lv = i => (radar?.levels?.[i]?.tickers || []).map(t => ({ ...t, stop: +(t.price * (1 - SL_PCT)).toFixed(2) }));
+  const cross0 = lv(0).filter(t => t.weeks === 0);
+  const p1 = lv(1).slice().sort((a, b) => a.gapPct - b.gapPct);                                   // anticipada inminente (<0.4%)
+  const p2 = cross0.filter(t => (t.extPct ?? 0) >= 15).sort((a, b) => b.extPct - a.extPct);       // cruzada FUERTE
+  const p3 = cross0.filter(t => (t.extPct ?? 0) >= 8 && (t.extPct ?? 0) < 15).sort((a, b) => b.extPct - a.extPct); // fuerza media
+  const pegadas = cross0.filter(t => (t.extPct ?? 0) < 8).sort((a, b) => b.extPct - a.extPct);    // cruzadas pegadas (EVITAR)
+  const vigilar = lv(2).slice().sort((a, b) => a.gapPct - b.gapPct);                              // anticipación temprana (banda 2%)
   const emacross = {
     id: 'EMACross', emoji: '🔵', name: 'EMACROSS',
     subtitle: 'Cruce EMA 8/21 · gráfico SEMANAL · large-caps',
-    tv: { tf: 'Semanal (1W)', ind: 'EMA 8/21 · Entradas, Salidas y Anticipación', mira: 'la etiqueta verde COMPRA (EMA8 naranja cruzando SOBRE la EMA21 azul)' },
-    entrada: 'Cruce EMA8 sobre EMA21', salida: 'Cruce contrario (dejar correr)', stop: '−18%',
+    tv: { tf: 'Semanal (1W)', ind: 'EMA 8/21 · Entradas, Salidas y Anticipación', mira: 'la etiqueta verde COMPRA / el triángulo lima CRUCE CERCA (EMA8 naranja acercándose a la EMA21 azul)' },
+    entrada: 'Anticipada (antes del cruce) o cruce EMA8>EMA21', salida: 'Cruce contrario (dejar correr)', stop: '−18% del precio de entrada',
     groups: [
-      // ordenadas por FUERZA (extensión): con capital limitado, las de arriba son las MÁS prometedoras
-      // (backtest: tercio alto de extensión PF 3.86 vs 1.09 el bajo). Ver backtest_ranking.mjs.
-      { key: 'ahora', label: 'ENTRAR AHORA · ordenadas por fuerza', hint: '↓ las de arriba son las más prometedoras (más momentum)', items: lv(0).filter(t => t.weeks === 0).sort((a, b) => (b.extPct ?? 0) - (a.extPct ?? 0)) },
-      { key: 'reciente', label: 'AÚN VÁLIDAS', hint: 'cruzaron la semana pasada, ordenadas por fuerza', items: lv(0).filter(t => t.weeks === 1).sort((a, b) => (b.extPct ?? 0) - (a.extPct ?? 0)) },
-      { key: 'punto', label: 'A PUNTO DE CRUZAR', hint: 'muy cerca — tu indicador (modo anticipado) marca la COMPRA aquí', items: lv(1) },
-      { key: 'cerca', label: 'EN PREVISIÓN · anticipación', hint: 'convergiendo hacia el cruce (banda 2%) — ordenadas por cercanía', items: lv(2) },
+      { key: 'p1', label: '🎯 PRIORIDAD 1 · ENTRAR AHORA — anticipada', hint: 'entra ANTES del cruce = más barato (el backtest gana aquí, PF 2.52)', items: p1 },
+      { key: 'p2', label: '🎯 PRIORIDAD 2 · ENTRAR AHORA — cruzada FUERTE', hint: 'ya cruzó pero merece la pena por fuerza (ext ≥15%)', items: p2 },
+      { key: 'p3', label: 'También válidas · fuerza media', hint: 'cruzadas con fuerza 8-15%', items: p3 },
+      { key: 'vigilar', label: 'VIGILAR · anticipación temprana', hint: 'convergiendo (banda 2%) — pueden pasar a Prioridad 1 cualquier día', items: vigilar },
     ],
+    pegadas: pegadas.map(t => t.ticker),   // cruzadas pegadas (ext<8%) — se muestran como nota, NO como señal
     lastRun: beats.radar?.at || null,
   };
 
@@ -130,6 +139,7 @@ h1{font-size:23px;font-weight:600;margin:0 0 6px}
 .chip a{color:var(--tx);text-decoration:none;font-weight:600}
 .chip a:hover{color:var(--core)}
 .chip .px{color:var(--mut);font-size:12.5px}
+.chip .sl{color:#f85149;font-size:12px;background:rgba(248,81,73,.1);padding:1px 6px;border-radius:5px}
 .empty{padding:16px 20px;color:var(--mut);font-size:13.5px}
 .foot{padding:10px 20px;border-top:1px solid var(--bd);color:var(--mut);font-size:12px}
 .ft{color:var(--mut);font-size:12px;margin-top:24px;text-align:center}
@@ -176,25 +186,30 @@ async function load(){
     '</div>' : '';
 
   document.getElementById('systems').innerHTML=d.systems.map((s,i)=>{
+    // prioridad → color del encabezado: p1/p2 verde (ENTRAR AHORA), p3 normal, vigilar apagado
+    const prio=k=>(k==='p1'||k==='p2'||k==='ahora')?'ahora':(k==='p3'||k==='reciente')?'reciente':(k==='vigilar'||k==='punto'||k==='cerca')?'cerca':'reciente';
     const grupos=s.groups.map(g=>{
-      const antic=(g.key==='punto'||g.key==='cerca');   // niveles de anticipación → mostrar cuánto falta
-      const cross=(g.key==='ahora'||g.key==='reciente'); // cruces → mostrar FUERZA (extensión)
-      const fdot=e=>e>=10?'🟢':e>=5?'🟡':'🔴';           // fuerza: 🟢 fuerte · 🔴 floja (tercio bajo = breakeven)
-      const chips=g.items.map(t=>'<div class="chip'+(g.key==='ahora'?' big':'')+'">'+
+      const antic=(g.key==='p1'||g.key==='vigilar'||g.key==='punto'||g.key==='cerca'); // anticipación → cuánto falta
+      const cross=(g.key==='p2'||g.key==='p3'||g.key==='ahora'||g.key==='reciente');    // cruce → FUERZA
+      const prime=(g.key==='p1'||g.key==='p2');                                          // ENTRAR AHORA (destacado)
+      const fdot=e=>e>=15?'🟢':e>=8?'🟡':'🔴';
+      const chips=g.items.map(t=>'<div class="chip'+(prime?' big':'')+'">'+
         '<a href="'+tvUrl(t.tv)+'" target="_blank">'+esc(t.ticker)+'</a>'+
         '<span class="px">$'+t.price+'</span>'+
         (antic&&t.gapPct!=null?'<span class="px" style="color:var(--warn)">falta '+t.gapPct+'%</span>':'')+
-        (cross&&t.extPct!=null?'<span class="px">'+fdot(t.extPct)+' fuerza +'+t.extPct+'%</span>':'')+'</div>').join('');
-      if(!g.items.length && (g.key==='cerca'||g.key==='reciente')) return '';
-      return '<div class="grp"><div class="gh g-'+g.key+'"><span class="t">'+esc(g.label)+'</span>'+
+        (cross&&t.extPct!=null?'<span class="px">'+fdot(t.extPct)+' +'+t.extPct+'%</span>':'')+
+        (t.stop!=null?'<span class="sl">🛑 SL $'+t.stop+'</span>':'')+'</div>').join('');
+      if(!g.items.length && g.key!=='p1' && g.key!=='p2') return '';   // P1/P2 siempre visibles (aunque vacías); resto solo si hay
+      return '<div class="grp"><div class="gh g-'+prio(g.key)+'"><span class="t">'+esc(g.label)+'</span>'+
         '<span class="n">'+g.items.length+'</span><span class="hint">'+esc(g.hint)+'</span></div>'+
-        (chips?'<div class="chips">'+chips+'</div>':'<div class="empty">Ninguna ahora mismo.</div>')+'</div>';
+        (chips?'<div class="chips">'+chips+'</div>':'<div class="empty">Ninguna ahora mismo. En cuanto aparezca una, sale aquí y te llega al Telegram.</div>')+'</div>';
     }).join('');
+    const pegNote=(s.pegadas&&s.pegadas.length)?'<div class="foot" style="color:var(--mut)">⚪ '+s.pegadas.length+' cruzadas pegadas (fuerza &lt;8%, EVITAR — breakeven): '+s.pegadas.join(', ')+'</div>':'';
     return '<div class="sys s'+i+'">'+
       '<div class="hd"><h2>'+s.emoji+' '+esc(s.name)+'</h2><div class="st">'+esc(s.subtitle)+'</div>'+
       '<div class="tvline">📈 <b>En TradingView:</b> gráfico <b>'+esc(s.tv.tf)+'</b> + indicador <b>'+esc(s.tv.ind)+'</b><br><span class="k">→ mira '+esc(s.tv.mira)+'</span></div>'+
       '<div class="rl"><span>📍 Entra: <b>'+esc(s.entrada)+'</b></span><span>🚪 Sale: <b>'+esc(s.salida)+'</b></span><span>🛑 Stop: <b>'+esc(s.stop)+'</b></span></div>'+
-      '</div>'+grupos+
+      '</div>'+grupos+pegNote+
       '<div class="foot">Última revisión: '+hace(s.lastRun)+(s.older?' · '+s.older+' señales antiguas ocultas (ya no operables)':'')+'</div>'+
     '</div>';
   }).join('');

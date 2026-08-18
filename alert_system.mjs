@@ -26,15 +26,27 @@ const SYS = {
   },
 };
 
-/** Aviso del RADAR: cuántas hay por nivel y qué mirar. */
-export function buildRadarAlert({ yaCruzado = 0, aPunto = 0, acercandose = 0 } = {}) {
+/** Aviso del RADAR enfocado a los 2 cubos accionables (sin ruido).
+ *  p1 = anticipadas inminentes (ENTRAR AHORA, entra barato antes del cruce)
+ *  p2 = cruzadas FUERTES (ext≥15%, merecen la pena aunque ya cruzaron)
+ *  Cada item: { ticker, price, stop }. `vigilar` = nº en anticipación temprana (solo cuenta). */
+export function buildRadarAlert({ p1 = [], p2 = [], vigilar = 0 } = {}) {
   const s = SYS.EMACross;
-  return `🎯 <b>RADAR ${s.name}</b> — ${ahora()}` +
-    `\n\n🟢 <b>${yaCruzado}</b> YA CRUZADO (entrada válida)` +
-    `\n⚡ <b>${aPunto}</b> a punto de cruzar` +
-    `\n⏳ <b>${acercandose}</b> acercándose` +
-    `\n\n📈 <b>En TradingView:</b>\n   ${s.tv}` +
-    `\n\n👉 <b>Lista completa y rentabilidad:</b> ${DASH_URL}`;
+  const fmt = t => `   • <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}`;
+  if (!p1.length && !p2.length) {
+    return `🎯 <b>RADAR ${s.name}</b> — ${ahora()}` +
+      `\n\nSin señales accionables ahora mismo.` +
+      (vigilar ? `\n⏳ ${vigilar} en anticipación temprana (vigilando).` : '') +
+      `\n\n👉 ${DASH_URL}`;
+  }
+  let m = `🎯 <b>RADAR ${s.name} — ENTRAR AHORA</b>  <i>${ahora()}</i>`;
+  if (p1.length) m += `\n\n🟢 <b>ANTICIPADAS</b> (entra ANTES del cruce = más barato):\n` + p1.map(fmt).join('\n');
+  if (p2.length) m += `\n\n💪 <b>CRUZADAS FUERTES</b> (ext≥15%, siguen valiendo):\n` + p2.map(fmt).join('\n');
+  m += `\n\n📈 <b>En TradingView:</b>\n   ${s.tv}`;
+  m += `\n⚙️ ${s.reglas}`;
+  if (vigilar) m += `\n\n⏳ ${vigilar} más en anticipación temprana (aún no accionables).`;
+  m += `\n\n👉 <b>Detalle y SL en el panel:</b> ${DASH_URL}`;
+  return m;
 }
 
 /** Aviso de OPORTUNIDADES nuevas de un sistema. */
