@@ -400,3 +400,18 @@ Problema real: no hay capital para todas las señales; ¿cuáles elegir? `backte
 | Momentum 26 sem | 2.20 | 1.48 | **3.26 (+13.0%)** |
 
 **CONCLUSIÓN:** las señales MÁS FUERTES (extendidas / con más momentum) son las ganadoras — tercio alto ≈ 3.5× el bajo, consistente en las 3 métricas. Las "pegadas y seguras" (tercio bajo de extensión) son breakeven (PF 1.09) = coincide con "filtrar a frescas empeora". REGLA DE SELECCIÓN con capital limitado: priorizar las de MAYOR extensión sobre EMA21 / mayor momentum, NO las pegadas. Contraintuitivo (parece perseguir) pero robusto. La extensión es SOLO para RANQUEAR/seleccionar, nunca para descartar (el sistema entra en todas si hay capital).
+
+## EMACross — ¿filtro por EMA200 semanal (solo entrar sobre la 200)? NO (2026-08-18)
+
+Duda del usuario: ¿mejora entrar solo con precio por encima de la EMA200 (tendencia mayor alcista)?
+`backtest_ema200_filter.mjs` (250 large-caps, 242 con datos, 10y, stop -18%, salida cruce):
+| MODO | variante | n | WR | PF | exp/tr | Σret | WF |
+|---|---|---|---|---|---|---|---|
+| Confirmado | SIN filtro (actual) | 1569 | 34% | **2.12** | +6.07% | **+9522%** | 3/4 |
+| Confirmado | close > EMA200 | 1278 | 31% | 1.64 | +3.57% | +4560% | 3/4 |
+| Confirmado | EMA8 > EMA200 | 1137 | 31% | 1.65 | +3.56% | +4047% | 3/4 |
+| Anticipado | SIN filtro (actual) | 1415 | 38% | **2.31** | +6.92% | **+9787%** | 4/4 |
+| Anticipado | close > EMA200 | 1112 | 37% | 1.77 | +4.03% | +4477% | 4/4 |
+| Anticipado | EMA8 > EMA200 | 1020 | 36% | 1.75 | +3.93% | +4010% | 4/4 |
+
+**CONCLUSIÓN:** el filtro EMA200 EMPEORA el sistema — corta la rentabilidad casi a la mitad (Σret +9787%→+4477%) y baja el PF de 2.31 a 1.77 en ambos modos. Vetó 668 trades en Anticipado, y eran de los BUENOS: cuando la EMA8 cruza al alza la EMA21 estando el precio aún DEBAJO de la EMA200, se está pillando el giro de tendencia TEMPRANO = el de mayor recorrido posterior. Exigir precio>EMA200 obliga a entrar tarde, con el movimiento ya maduro. Coherente con "filtrar a frescas empeora" y con el ranking por fuerza. NO añadir filtro EMA200 (ni de tendencia mayor en general): los mejores cruces del EMACross nacen POR DEBAJO de la media de 200.
