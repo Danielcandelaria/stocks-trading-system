@@ -46,6 +46,29 @@
       "exitPrice": null,
       "retPct": null,
       "notas": "Cruce fresco de esta semana, la MENOS extendida del radar (+3.0% sobre EMA21). Segunda posición real."
+    },
+    {
+      "id": "REAL-2026-08-18-TPG",
+      "ticker": "TPG",
+      "tv": "NASDAQ:TPG",
+      "sector": "Finance",
+      "direction": "LONG",
+      "system": "EMACross",
+      "signalDate": "2026-08-10",
+      "signalPrice": 53.03,
+      "entryDate": "2026-08-18",
+      "entryPrice": 53.03,
+      "shares": 1.8857,
+      "amountUsd": 100,
+      "stop": 43.48,
+      "stopPct": -18,
+      "riskUsd": 18,
+      "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios.",
+      "status": "open",
+      "exitDate": null,
+      "exitPrice": null,
+      "retPct": null,
+      "notas": "Tercera posición real. Cruce confirmado + tercil FUERTE (ext +17.1% s/EMA21) — la ÚNICA de su lista de 9 que el sistema aprobaba hoy; las demás eran sesgo de valor. Elegida por fuerza del cruce, no por la empresa."
     }
   ]
 }
