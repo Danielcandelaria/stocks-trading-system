@@ -510,3 +510,15 @@ Cierre de vela señal PF 2.35 vs apertura siguiente semana PF 2.37 — idéntico
   (resto: todos verdes; años grandes 2020 +33%, 2023 +18%, 2025 +24%)
 
 CONCLUSIÓN: combinar los dos sistemas REDUCE el drawdown ~32% (−25%→−17%) y convierte en positivos los años malos de EMACross (2018, 2022) manteniendo casi todo el upside. DeMark rescata justo cuando el trend-following sufre (lateral/bajista). Cartera combinada = más suave y robusta que cualquiera solo. Recomendación de asignación: repartir capital entre ambos sistemas, no todo a EMACross.
+
+## WeeklySwing — AISLAR el STOP: setupLow vs -18% (2026-08-19)
+
+`backtest_ws_stop.mjs` — mismas señales (todos los setup-9, sin filtro riesgo), MISMA salida, SOLO cambia el stop.
+| salida | stop | WR | PF | MEDIANA | sin-top5% | %stop | WF |
+|---|---|---|---|---|---|---|---|
+| cd13/52w (VIVO) | **setupLow** | 23% | 5.25 | **−2.5%** | 1.87 | **76%** | 4/4 |
+| cd13/52w | **−18%** | 54% | 4.12 | **+5.4%** | 2.32 | 37% | 4/4 |
+| setup-9 opp | setupLow | 27% | 3.00 | −2.2% | 1.55 | 73% | 4/4 |
+| setup-9 opp | **−18%** | 61% | 2.81 | **+9.4%** | 1.95 | 34% | 4/4 |
+
+CONFIRMADO: el stop −18% es CLARAMENTE superior al setupLow con la salida fija. Mediana pasa de NEGATIVA a POSITIVA, WR se duplica (23→54%), robustez sube (sin-top5% 1.87→2.32), te barren la mitad (%stop 76→37%), mejor casi cada año (2018 −0→+11, 2023 +10→+25). El único "peor" es el PF (5.25→4.12) = espejismo del stop estrecho (pérdidas diminutas inflan el PF, no es más edge). El setup-9 es reversión: el stop estrecho saca con el primer ruido ANTES del rebote; el −18% le da aire. ⇒ ACCIÓN: cambiar el stop de WeeklySwing en vivo (`scanner_weekly.mjs`) de setupLow a −18% y quitar el filtro de riesgo 8-30% (con stop fijo ya no aplica). Contradice la lección #9 del CLAUDE.md (que era para forex/DeMark diario); en acciones semanal, −18% gana.
