@@ -592,3 +592,12 @@ CONCLUSIÓN: anticipada y ya-cruzada son ~EQUIVALENTES en agregado (PF 4.63 vs 4
 | ⭐⭐ STACK | 2.46 | **1.34** | −0.4% | MUCHO peor (sem sin-top5% 3.64) |
 
 CONCLUSIÓN: el edge NO transfiere bien a diario. TODO se debilita y, lo crítico, la ROBUSTEZ (sin-top5%) se derrumba: la confluencia/stack que en semanal eran ultra-robustas (3.64) en diario quedan en 1.34 (frágiles, dependientes de outliers otra vez). El diario tiene 3-4× más señales (4552 vs 1575), más ruido, más coste, holds cortos (16-34d) y más trabajo de monitoreo. La "reversión desde el suelo" es un fenómeno SEMANAL; en diario es ruido. ÚNICA pieza que aguanta razonablemente en diario = DeMark setup-9 (WR 71%, mediana +5.8%, único con robustez decente 1.79) — patrón estructural de agotamiento que cruza timeframes; aun así MEJOR en semanal. VEREDICTO: quedarse en SEMANAL. No mover a diario. (Caveat: diario 5y y stop -18% probablemente ancho; un stop más ceñido podría cambiar detalles, pero la caída de robustez es estructural, no de calibración.)
+
+## VALIDACIÓN FORMAL — Deflated Sharpe + PBO (Pilar 2) (2026-08-19)
+
+`backtest_validation.mjs` — 12 variantes como "trials", series mensuales, 242 acciones, 10y.
+- **Sharpe mensual**: el más alto = EMA anticipado (0.563). ⚠️ Confluencia/stack salen MÁS BAJOS (0.35) por artefacto: pocas señales → muchos meses a cero → el Sharpe-sobre-calendario premia FRECUENCIA, no calidad por-trade. (PF/skew dicen lo contrario: confluencia mejor por trade.) Dos lentes distintas, ambas válidas.
+- **DEFLATED SHARPE del elegido (EMA antic)**: SR 0.563 vs SR0-por-azar (12 trials) 0.176; skew +1.99, kurt 9.79, T=75 meses → **DSR = 100%** ✅. El edge SUPERA el ajuste por multiple-testing: NO es un artefacto de data-mining entre nuestras variantes.
+- **PBO (CSCV, S=8, 70 splits)** = **7.1%** ✅. El mejor in-sample sigue por encima de la mediana out-of-sample en el 93% de las particiones → NO overfit.
+
+CONCLUSIÓN: el edge es estadísticamente REAL y robusto al multiple-testing (DSR 100%, PBO 7%). Nuestras auditorías informales (mediana, quitar top-5%, walk-forward) eran versiones caseras de esto y el test formal las confirma. ⚠️ PERO estos tests NO corrigen el SESGO DE SUPERVIVENCIA (universo = vivos de hoy) — eso es una inflación SEPARADA y sin corregir → el edge EN VIVO será menor que el backtest. Por eso el sizing fraccional (¼ Kelly) NO es opcional. skew +1.99 confirma la asimetría (cola derecha gorda). El Sharpe premia frecuencia (EMA) y el PF premia calidad (stack) → refuerza COMBINAR ambos, no elegir uno.
