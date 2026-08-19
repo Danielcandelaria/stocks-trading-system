@@ -601,3 +601,17 @@ CONCLUSIÓN: el edge NO transfiere bien a diario. TODO se debilita y, lo crític
 - **PBO (CSCV, S=8, 70 splits)** = **7.1%** ✅. El mejor in-sample sigue por encima de la mediana out-of-sample en el 93% de las particiones → NO overfit.
 
 CONCLUSIÓN: el edge es estadísticamente REAL y robusto al multiple-testing (DSR 100%, PBO 7%). Nuestras auditorías informales (mediana, quitar top-5%, walk-forward) eran versiones caseras de esto y el test formal las confirma. ⚠️ PERO estos tests NO corrigen el SESGO DE SUPERVIVENCIA (universo = vivos de hoy) — eso es una inflación SEPARADA y sin corregir → el edge EN VIVO será menor que el backtest. Por eso el sizing fraccional (¼ Kelly) NO es opcional. skew +1.99 confirma la asimetría (cola derecha gorda). El Sharpe premia frecuencia (EMA) y el PF premia calidad (stack) → refuerza COMBINAR ambos, no elegir uno.
+
+## PILAR 3 — low-beta / quality (Buffett) sobre el sistema (2026-08-19)
+
+`backtest_lowbeta.mjs` — tilt de beta (trailing 104s vs SPY) sobre las señales. 242 acciones, 10y.
+| | BAJA beta (~0.5) | MEDIA (~1.0) | ALTA beta (~1.5) |
+|---|---|---|---|
+| EMA antic PF | 1.91 | 3.19 | **5.23** |
+| EMA antic sin-top5% | 1.08 | 1.59 | **2.19** |
+| Confluencia PF | 1.89 | 3.70 | **7.05** |
+| Confluencia sin-top5% | 1.16 | 1.98 | **2.88** |
+
+CONCLUSIÓN: el tilt de BAJA BETA NO mejora nuestras señales — al revés, la ALTA beta es mejor en PF, expectancy Y robustez. Tiene sentido: nuestro sistema es momentum/reversión CONVEXO (pérdida acotada por el stop −18%, ganancia abierta); las acciones de alta beta se mueven más → cuando la señal acierta, el pelotazo es mayor con la MISMA pérdida máxima. Es lo contrario de BAB en aislado, pero NO es contradicción: BAB/Buffett funciona para BUY-AND-HOLD largo plazo SIN apalancar (baja beta = mejor Sharpe con exposición continua); nuestro sistema es momentum TIMED con stop duro → quiere convexidad = alta beta.
+⚠️ MATIZ: la alta beta es el cubo MÁS inflado por supervivencia (las de alta beta que sobrevivieron son los mayores ganadores; las que fueron a cero no están) + riesgo de gap a través del stop. NO perseguir alta beta a ciegas; el sistema ya vive en beta media-alta y el −18% es la red.
+VEREDICTO Pilar 3: (1) NO filtrar señales por low-beta. (2) El motor Buffett (calidad+low-beta) es un SLEEVE SEPARADO (buy-and-hold), no un filtro de momentum — diversifica a nivel CARTERA, no de señal; requiere fundamentales punto-en-el-tiempo (no disponibles aquí) y cambia la operación. Para capital pequeño, la diversificación real que YA tienes es EMACross (momentum) + DeMark (reversión). Añadir sleeve de calidad = prematuro. Quality-momentum combo (Asness) es hipótesis válida pero requiere datos fundamentales para validar — NO añadir filtro sin validar.
