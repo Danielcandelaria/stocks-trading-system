@@ -441,3 +441,35 @@ CONCLUSIÓN forex: el cruce EMA NO vale (no hay deriva alcista). Confirma por qu
   | Cobre | 2.02 | +4.61% | 1/4 (9tr) ❌ |
 
 CONCLUSIÓN materias primas: igual que en acciones, el edge está en un SUBCONJUNTO. **METALES PRECIOSOS = edge robusto (PF 2.43, WF 4/4, long-only anticipado)** — candidato real, misma lógica que el sistema de acciones. Ganado secundario (WF 3/4). Energía/agrícolas/cobre = régimen, NO robusto. Cortos OFF en todo (pierden). Cautela: 44 trades (muestra modesta vs miles en acciones) → validar forward antes de real, misma disciplina.
+
+## EMACross — ENCIMA vs DEBAJO de la EMA200 (no filtrar, comparar cubos) (2026-08-19)
+
+Reformulación del filtro EMA200: en vez de filtrar, se COMPARAN los dos grupos de entradas (modo Anticipado, 250 large-caps, 10y):
+| grupo | trades | WR | PF | exp/tr | Σret | WF |
+|---|---|---|---|---|---|---|
+| Todas | 1425 | 38% | 2.35 | +7.07% | +10073% | 4/4 |
+| Entrada ENCIMA EMA200 | 1106 | 37% | 1.80 | +4.16% | +4599% | 4/4 |
+| **Entrada DEBAJO EMA200** | 319 | 41% | **4.16** | **+17.16%** | +5474% | 3/4 |
+
+CONCLUSIÓN: al revés de la sabiduría popular. Entrar DEBAJO de la EMA200 (cruce 8/21 naciente desde el fondo = giro temprano) rinde >2x el PF y >4x la expectancy que encima. Los 319 de debajo (22%) generan MÁS Σret que los 1106 de encima. Confirma por qué el filtro EMA200 empeoraba: quitaba las joyas. NO filtrar por encima de la 200. ⚠️ PENDIENTE de auditar por outliers/supervivencia (ver sección siguiente): el cubo debajo-200 es el MÁS expuesto a sesgo de supervivencia (las que rebotan sobreviven, las que siguen cayendo a cero no están en el universo).
+
+## ⚠️ AUDITORÍA ESCÉPTICA — cuestionar todo antes de real (2026-08-19)
+
+`backtest_audit.mjs` — ataque a los pilares. Hallazgos que CAMBIAN cómo hay que operar:
+
+**1) DEPENDENCIA DE OUTLIERS (lo más importante):**
+- **MEDIANA por trade = −3.01% (NEGATIVA).** El trade típico PIERDE. La media +7.07% la sostienen unos pocos pelotazos.
+- Top-10 trades = 19% de todo el beneficio (39% en el cubo debajo-200).
+- **PF 2.35 → sin el top-5% de ganadoras → PF 1.08 (breakeven).** Encima-EMA200 sin top5% = PF 0.85 (PIERDE). Debajo-200 aguanta mejor (4.16→2.16).
+- ⇒ Es un sistema de SESGO POSITIVO (trend-following clásico): pierdes poco a menudo, ganas mucho rara vez. Legítimo, pero exige CAPTURAR los pocos ganadores. Con 5 posiciones y capital limitado, si no cazas un pelotazo te quedas en breakeven.
+
+**2) RÉGIMEN (expectancy por año de entrada):**
+2020:+28% · 2021:+4% · 2022:−2% · 2023:+16% · 2024:+3% · 2025:+4% · 2026:−7%
+- **En el año bajista (2022) PIERDE. 2026 en curso −7%.** Los años buenos (2020/2023) cargan todo. El "WF 4/4" que citábamos eran 4 trozos de UNA década alcista, NO out-of-sample real. Sangra en mercados bajistas/laterales.
+
+**3) REALISMO DE ENTRADA (✅ pasa limpio):**
+Cierre de vela señal PF 2.35 vs apertura siguiente semana PF 2.37 — idéntico. El edge NO depende de entrar al cierre exacto.
+
+**4) STOP -18%:** 13% de trades salen por stop (16% debajo-200). Riesgo de cola acotado, coherente con ~12% de falsas.
+
+**VEREDICTO:** el edge es REAL pero NO es el "PF 2.5 dinero fácil" que parecía. Es un sistema de cola gorda: mediana negativa, el dinero llega en grumos de pocos ganadores grandes. Implicaciones para real: (a) 5 posiciones es POCO para muestrear la cola con fiabilidad → conviene más posiciones/menor tamaño si el capital lo permite, o asumir varianza alta; (b) NO evitar las "que dan miedo" (debajo-200, muy extendidas) — ESAS son las ganadoras; (c) aguantar hasta el cruce contrario (los pelotazos necesitan tiempo); (d) esperar rojo la mayor parte del tiempo; (e) en mercado bajista, sangra — vigilar régimen. Supervivencia sigue inflando todo (más el cubo debajo-200).
