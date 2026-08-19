@@ -539,3 +539,15 @@ CONCLUSIONES:
 3. **EMACross solo** = mejor standalone bajo capital tight (más señales → más rotación → diversificación → maxDD −26%).
 4. **Combinado** = mejor return y (en N=3/8) mejor maxDD: más fuentes de señal mantienen los slots llenos y diversifican dos edges poco correlacionados. Capital limitado NO significa abandonar un sistema — significa tomar menos de CADA uno pero mantener ambos alimentando la cola.
 ⚠️ Sims con 47-163 trades tomados = ALTA varianza (order-dependent). Robusto: (a) el edge sobrevive, (b) DeMark solo concentra mal, (c) cherry-picking por sesgo es el riesgo real → usar regla de selección MECÁNICA (por fuerza/ranking).
+
+## CONFLUENCIA — cruce EMA + setup-9 reciente debajo (idea del usuario) (2026-08-19)
+
+`backtest_confluence.mjs` — entrar en el cruce EMA8/21 SOLO si hubo un Buy Setup-9 dentro de las últimas K velas (el 9 respalda el giro). 246 large-caps, 10y, stop -18%.
+| filtro | n | WR | PF | exp | MEDIANA | sin-top5% | WF |
+|---|---|---|---|---|---|---|---|
+| EMA anticip SOLO (baseline) | 2484 | 41% | 3.24 | +11.2% | −2.5% | 1.35 | 4/4 |
+| **EMA + 9 en ≤13 velas** | **529** | 43% | **4.28** | **+15.3%** | −2.0% | **1.66** | 4/4 |
+| EMA + 9 en ≤26 velas | 815 | 40% | 3.34 | +12.1% | −2.8% | 1.30 | 4/4 |
+| EMA + 9 en ≤52 velas | 1166 | 40% | 3.21 | +11.3% | −2.6% | 1.27 | 4/4 |
+
+CONCLUSIÓN: la confluencia FUNCIONA como filtro de calidad, pero SOLO con ventana TIGHT (9 en ≤13 semanas = giro reciente). Mejora PF 3.24→4.28, expectancy +11.2%→+15.3%, robustez sin-top5% 1.35→1.66 (menos dependiente de outliers). Ventanas anchas (26/52) ≈ baseline (deja de filtrar). Coste: ~1/5 de las señales (529 vs 2484 = ~53/año ≈ 1/semana en todo el universo). ⇒ IDEAL para capital limitado: menos señales (menos presión de sesgo, las tomas casi todas) Y de más calidad, en UNA sola señal combinada. LÍMITES honestos: NO arregla la mediana negativa (−2.0%, sigue siendo sistema de cola/positive-skew → necesita ganadores) NI el año bajista 2022 (−2%). Es un EMACross MEJOR, no un sistema distinto. Perfil distinto a DeMark solo (mediana +9.4% pero avg menor).
