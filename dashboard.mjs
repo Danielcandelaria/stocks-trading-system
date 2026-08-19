@@ -39,17 +39,21 @@ function snapshot() {
   const pegadas = cross0.filter(t => (t.extPct ?? 0) < 8).sort((a, b) => b.extPct - a.extPct);    // cruzadas pegadas (EVITAR)
   const vigilar = lv(2).slice().sort((a, b) => a.gapPct - b.gapPct);                              // anticipación temprana (banda 2%)
   // ⭐ CONFLUENCIA: cruce/anticipación EMA CON un setup-9 reciente debajo (backtest PF 4.28 > 3.24).
-  const conf = [
+  const confAll = [
     ...cross0.filter(t => t.conf9).sort((a, b) => b.extPct - a.extPct).map(t => ({ ...t, _ant: false })),
     ...lv(1).concat(lv(2)).filter(t => t.conf9).sort((a, b) => a.gapPct - b.gapPct).map(t => ({ ...t, _ant: true })),
   ];
+  // ⭐⭐ STACK: confluencia + DEBAJO de la EMA200 = el cubo más robusto (backtest sin-top5% 3.64).
+  const stack = confAll.filter(t => t.below200 === true);
+  const conf = confAll.filter(t => t.below200 !== true);   // ⭐ confluencia (encima 200 o desconocido)
   const emacross = {
     id: 'EMACross', emoji: '🔵', name: 'EMACROSS',
     subtitle: 'Cruce EMA 8/21 · gráfico SEMANAL · large-caps',
     tv: { tf: 'Semanal (1W)', ind: 'EMA 8/21 · Entradas, Salidas y Anticipación', mira: 'la etiqueta verde COMPRA / el triángulo lima CRUCE CERCA (EMA8 naranja acercándose a la EMA21 azul)' },
     entrada: 'Anticipada (antes del cruce) o cruce EMA8>EMA21', salida: 'Cruce contrario (dejar correr)', stop: '−18% del precio de entrada',
     groups: [
-      { key: 'conf', label: '⭐ CONFLUENCIA · MÁXIMA PRIORIDAD', hint: 'cruce EMA + setup-9 reciente debajo (la mejor calidad: PF 4.28 vs 3.24)', items: conf },
+      { key: 'stack', label: '⭐⭐ STACK · PRIORIDAD ABSOLUTA', hint: 'confluencia + DEBAJO EMA200 = reversión profunda, lo más robusto (sin-top5% 3.64)', items: stack },
+      { key: 'conf', label: '⭐ CONFLUENCIA · máxima prioridad', hint: 'cruce EMA + setup-9 reciente debajo (encima de la 200)', items: conf },
       { key: 'p1', label: '🎯 PRIORIDAD 1 · ENTRAR AHORA — anticipada', hint: 'entra ANTES del cruce = más barato (el backtest gana aquí, PF 2.52)', items: p1 },
       { key: 'p2', label: '🎯 PRIORIDAD 2 · ENTRAR AHORA — cruzada FUERTE', hint: 'ya cruzó pero merece la pena por fuerza (ext ≥15%)', items: p2 },
       { key: 'p3', label: 'También válidas · fuerza media', hint: 'cruzadas con fuerza 8-15%', items: p3 },
@@ -155,6 +159,7 @@ h1{font-size:23px;font-weight:600;margin:0 0 6px}
 .chip .px{color:var(--mut);font-size:12.5px}
 .chip .sl{color:#f85149;font-size:12px;background:rgba(248,81,73,.1);padding:1px 6px;border-radius:5px}
 .chip.conf{border-color:rgba(210,153,34,.6);background:rgba(210,153,34,.1)}
+.chip.stack{border-color:rgba(163,113,247,.7);background:rgba(163,113,247,.13)}
 .chip .star{font-size:12px}
 .gh.g-ahora .t{color:var(--go)}
 .empty{padding:16px 20px;color:var(--mut);font-size:13.5px}
@@ -204,16 +209,17 @@ async function load(){
 
   document.getElementById('systems').innerHTML=d.systems.map((s,i)=>{
     // prioridad → color del encabezado: p1/p2 verde (ENTRAR AHORA), p3 normal, vigilar apagado
-    const prio=k=>(k==='conf'||k==='p1'||k==='p2'||k==='ahora')?'ahora':(k==='p3'||k==='reciente')?'reciente':(k==='vigilar'||k==='punto'||k==='cerca')?'cerca':'reciente';
+    const prio=k=>(k==='stack'||k==='conf'||k==='p1'||k==='p2'||k==='ahora')?'ahora':(k==='p3'||k==='reciente')?'reciente':(k==='vigilar'||k==='punto'||k==='cerca')?'cerca':'reciente';
     const grupos=s.groups.map(g=>{
       const gAntic=(g.key==='p1'||g.key==='vigilar'||g.key==='punto'||g.key==='cerca'); // anticipación por defecto
-      const prime=(g.key==='conf'||g.key==='p1'||g.key==='p2');                          // ENTRAR AHORA (destacado)
+      const prime=(g.key==='stack'||g.key==='conf'||g.key==='p1'||g.key==='p2');         // ENTRAR AHORA (destacado)
       const fdot=e=>e>=15?'🟢':e>=8?'🟡':'🔴';
       const chips=g.items.map(t=>{
         const antic = t._ant!==undefined ? t._ant : gAntic;   // grupo confluencia = mixto (per-item)
         const cross = !antic;
-        return '<div class="chip'+(prime?' big':'')+(t.conf9?' conf':'')+'">'+
-          (t.conf9?'<span class="star">⭐</span>':'')+
+        const star = t.below200===true ? '⭐⭐' : (t.conf9 ? '⭐' : '');
+        return '<div class="chip'+(prime?' big':'')+(t.conf9?' conf':'')+(t.below200===true?' stack':'')+'">'+
+          (star?'<span class="star">'+star+'</span>':'')+
           '<a href="'+tvUrl(t.tv)+'" target="_blank">'+esc(t.ticker)+'</a>'+
           '<span class="px">$'+t.price+'</span>'+
           (antic&&t.gapPct!=null?'<span class="px" style="color:var(--warn)">falta '+t.gapPct+'%</span>':'')+

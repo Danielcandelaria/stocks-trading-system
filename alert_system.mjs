@@ -33,7 +33,7 @@ const SYS = {
 export function buildRadarAlert({ conf = [], p1 = [], p2 = [], vigilar = 0 } = {}) {
   const s = SYS.EMACross;
   const fmt = t => `   • <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}`;
-  const fmtC = t => `   ⭐ <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}  <i>(${t.detail})</i>`;
+  const fmtC = t => `   ${t.stack ? '⭐⭐' : '⭐'} <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}  <i>(${t.detail})</i>`;
   if (!conf.length && !p1.length && !p2.length) {
     return `🎯 <b>RADAR ${s.name}</b> — ${ahora()}` +
       `\n\nSin señales accionables ahora mismo.` +
@@ -56,12 +56,13 @@ export function buildRadarAlert({ conf = [], p1 = [], p2 = [], vigilar = 0 } = {
 export function buildConfluenceAlert(list = [], { isNew = false } = {}) {
   if (!list.length) return null;
   const s = SYS.EMACross;
-  const fmt = t => `   ⭐ <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}  <i>(${t.detail}, 9 hace ${t.bars9}v)</i>`;
+  const fmt = t => `   ${t.stack ? '⭐⭐' : '⭐'} <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}  <i>(${t.detail}, 9 hace ${t.bars9}v)</i>`;
+  const nStack = list.filter(t => t.stack).length;
   const head = isNew
     ? `⭐⭐ <b>NUEVA CONFLUENCIA — MÁXIMA PRIORIDAD</b> ⭐⭐  <i>${ahora()}</i>`
     : `⭐ <b>CONFLUENCIA ${s.name} — MÁXIMA PRIORIDAD</b>  <i>${ahora()}</i>`;
   return `${head}` +
-    `\n<i>Cruce EMA8/21 + Setup-9 reciente debajo = la mejor calidad (backtest PF 4.28 vs 3.24).</i>` +
+    `\n<i>Cruce EMA8/21 + Setup-9 debajo. ⭐⭐ = además DEBAJO de la EMA200 = el cubo MÁS robusto (${nStack}).</i>` +
     `\n\n${list.map(fmt).join('\n')}` +
     `\n\n📈 Gráfico <b>SEMANAL</b> · entra en el cruce/anticipación · stop −18% · deja correr hasta el cruce contrario.` +
     `\n👉 <b>Panel:</b> ${DASH_URL}`;

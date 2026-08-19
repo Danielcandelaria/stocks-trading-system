@@ -75,7 +75,10 @@ function analyze(bars) {
     const td = computeTDSetup(closed);
     for (let i = n; i >= Math.max(0, n - CONFL_WIN); i--) { if (td.bullSetup[i] === 9) { conf9 = true; bars9 = n - i; break; } }
   } catch { /* si falla, sin confluencia */ }
-  return { px: liveClose, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9 };
+  // ¿debajo de la EMA200? (reversión profunda = el mejor cubo del backtest). null si <200 velas.
+  const e200 = closed.length >= 200 ? ema(cl, 200) : null;
+  const below200 = e200 ? liveClose < e200[n] : null;
+  return { px: liveClose, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200 };
 }
 
 (async () => {
@@ -85,7 +88,7 @@ function analyze(bars) {
     let bars; try { bars = await getWeekly(u.ticker); await sleep(120); } catch { errs++; continue; }
     if (!bars) continue;
     const a = analyze(bars); if (!a) continue;
-    const { px, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9 } = a;
+    const { px, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200 } = a;
 
     // dirección del cruce que se aproxima (según el signo del hueco al cierre)
     const longSide = gapC < 0;   // EMA8 debajo → cruce alcista pendiente
@@ -109,7 +112,7 @@ function analyze(bars) {
     else if (converging && gLive < GAPMAX) level = 2;     // ⏳ acercándose
     else continue;
 
-    hits.push({ ticker: u.ticker, tv: u.tv, dir: 'LONG', px, level, gLive: gLive * 100, ext, weeks, conf9: !!conf9, bars9 });
+    hits.push({ ticker: u.ticker, tv: u.tv, dir: 'LONG', px, level, gLive: gLive * 100, ext, weeks, conf9: !!conf9, bars9, below200 });
     if (++done % 60 === 0) process.stderr.write(`  …revisadas ${done}\n`);
   }
 
@@ -134,7 +137,7 @@ function analyze(bars) {
       let tk = L.filter(h => h.level === lv).map(h => ({
         ticker: h.ticker, tv: h.tv, price: +h.px.toFixed(2), extPct: +h.ext.toFixed(1),
         gapPct: +h.gLive.toFixed(2), tvCrossed: h.tvCrossed ?? null, weeks: h.weeks ?? null,
-        conf9: !!h.conf9, bars9: h.bars9 ?? null,   // ⭐ confluencia: setup-9 reciente debajo
+        conf9: !!h.conf9, bars9: h.bars9 ?? null, below200: h.below200 ?? null,   // ⭐ confluencia + ⭐⭐ debajo-200
       }));
       // anticipación (nivel 1 y 2): ordenar por CERCANÍA al cruce (menos hueco que cerrar, primero)
       if (lv >= 1) tk = tk.sort((a, b) => a.gapPct - b.gapPct);
@@ -195,13 +198,14 @@ function analyze(bars) {
     .sort((a, b) => b.ext - a.ext)
     .map(h => ({ ticker: h.ticker, price: +h.px.toFixed(2), stop: SL(h.px) }));
 
-  // ⭐ CONFLUENCIA — máxima prioridad: cruce/anticipación EMA + setup-9 reciente debajo.
+  // ⭐ CONFLUENCIA — cruce/anticipación EMA + setup-9 reciente debajo. ⭐⭐ STACK = además DEBAJO EMA200.
   const conf = L.filter(h => h.conf9)
-    .sort((a, b) => (a.level - b.level) || (a.gLive - b.gLive))   // cruzadas primero, luego más cerca del cruce
     .map(h => ({
       ticker: h.ticker, price: +h.px.toFixed(2), stop: SL(h.px), bars9: h.bars9,
-      detail: h.level === 0 ? `cruzada +${h.ext.toFixed(1)}%` : `a ${h.gLive.toFixed(2)}% del cruce`,
-    }));
+      stack: h.below200 === true,   // ⭐⭐ el cubo más robusto (reversión profunda)
+      detail: (h.level === 0 ? `cruzada +${h.ext.toFixed(1)}%` : `a ${h.gLive.toFixed(2)}% del cruce`) + (h.below200 === true ? ', DEBAJO 200' : ''),
+    }))
+    .sort((a, b) => (b.stack - a.stack) || 0);   // ⭐⭐ stack primero
   // ping URGENTE solo de las NUEVAS (dedup por ticker) para no repetir cada corrida
   const prevConf = load('seen_confluence.json', {});
   const nowConf = {}; const fresh = [];
