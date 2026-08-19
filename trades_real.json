@@ -69,6 +69,29 @@
       "exitPrice": null,
       "retPct": null,
       "notas": "Tercera posición real. Cruce confirmado + tercil FUERTE (ext +17.1% s/EMA21) — la ÚNICA de su lista de 9 que el sistema aprobaba hoy; las demás eran sesgo de valor. Elegida por fuerza del cruce, no por la empresa."
+    },
+    {
+      "id": "REAL-2026-08-19-BR",
+      "ticker": "BR",
+      "tv": "NYSE:BR",
+      "sector": "Technology Services",
+      "direction": "LONG",
+      "system": "Confluencia-STACK",
+      "signalDate": "2026-08-19",
+      "signalPrice": 169.86,
+      "entryDate": "2026-08-19",
+      "entryPrice": 169.86,
+      "shares": 0.5887,
+      "amountUsd": 100,
+      "stop": 139.29,
+      "stopPct": -18,
+      "riskUsd": 18,
+      "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
+      "status": "open",
+      "exitDate": null,
+      "exitPrice": null,
+      "retPct": null,
+      "notas": "Cuarta posición real. Primera del tier ⭐⭐ STACK (confluencia EMA+setup-9 + DEBAJO EMA200). Entrada ANTICIPADA (aún no cruza, falta ~0.56%). Máxima prioridad del sistema, la config más robusta del backtest (sin-top5% 3.64). Elegida por el tier, no por la empresa."
     }
   ]
 }
