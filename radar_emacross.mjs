@@ -21,6 +21,11 @@ import { beat } from './heartbeat.mjs';
 import { cdpUp, confirmSymbol, syncWatchlist, reconnect } from './tv_layer.mjs';
 import { getWeeklyBars, weekIsOver } from './weekly_bars.mjs';
 import { buildRadarAlert } from './alert_system.mjs';
+import { computeTDSetup } from '../scanner/demark_calc.mjs';
+
+// Confluencia: un cruce EMA respaldado por un Buy Setup-9 DEBAJO en las últimas N velas
+// (backtest 2026-08-19: sube PF 3.24→4.28 y expectancy +11→+15%, ~1/5 de señales). Ventana TIGHT.
+const CONFL_WIN = 13;
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
@@ -64,7 +69,13 @@ function analyze(bars) {
   // si YA está cruzado al alza, ¿hace cuántas semanas cruzó? (para saber si la entrada sigue fresca)
   let weeksSinceCross = null;
   if (efC > esC) { for (let i = n; i > 0; i--) { if (ef[i - 1] <= es[i - 1] && ef[i] > es[i]) { weeksSinceCross = n - i; break; } } }
-  return { px: liveClose, gapC, gapL, vel, ext, weeksSinceCross };
+  // Confluencia DeMark: ¿hubo un Buy Setup-9 en las últimas CONFL_WIN velas cerradas?
+  let conf9 = false, bars9 = null;
+  try {
+    const td = computeTDSetup(closed);
+    for (let i = n; i >= Math.max(0, n - CONFL_WIN); i--) { if (td.bullSetup[i] === 9) { conf9 = true; bars9 = n - i; break; } }
+  } catch { /* si falla, sin confluencia */ }
+  return { px: liveClose, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9 };
 }
 
 (async () => {
@@ -74,7 +85,7 @@ function analyze(bars) {
     let bars; try { bars = await getWeekly(u.ticker); await sleep(120); } catch { errs++; continue; }
     if (!bars) continue;
     const a = analyze(bars); if (!a) continue;
-    const { px, gapC, gapL, vel, ext, weeksSinceCross } = a;
+    const { px, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9 } = a;
 
     // dirección del cruce que se aproxima (según el signo del hueco al cierre)
     const longSide = gapC < 0;   // EMA8 debajo → cruce alcista pendiente
@@ -98,7 +109,7 @@ function analyze(bars) {
     else if (converging && gLive < GAPMAX) level = 2;     // ⏳ acercándose
     else continue;
 
-    hits.push({ ticker: u.ticker, tv: u.tv, dir: 'LONG', px, level, gLive: gLive * 100, ext, weeks });
+    hits.push({ ticker: u.ticker, tv: u.tv, dir: 'LONG', px, level, gLive: gLive * 100, ext, weeks, conf9: !!conf9, bars9 });
     if (++done % 60 === 0) process.stderr.write(`  …revisadas ${done}\n`);
   }
 
@@ -123,6 +134,7 @@ function analyze(bars) {
       let tk = L.filter(h => h.level === lv).map(h => ({
         ticker: h.ticker, tv: h.tv, price: +h.px.toFixed(2), extPct: +h.ext.toFixed(1),
         gapPct: +h.gLive.toFixed(2), tvCrossed: h.tvCrossed ?? null, weeks: h.weeks ?? null,
+        conf9: !!h.conf9, bars9: h.bars9 ?? null,   // ⭐ confluencia: setup-9 reciente debajo
       }));
       // anticipación (nivel 1 y 2): ordenar por CERCANÍA al cruce (menos hueco que cerrar, primero)
       if (lv >= 1) tk = tk.sort((a, b) => a.gapPct - b.gapPct);
