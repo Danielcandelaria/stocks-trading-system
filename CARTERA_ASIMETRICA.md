@@ -58,6 +58,16 @@ Ejemplo con $500: 7 posiciones de ~$70, riesgo ~$12,6 cada una.
 
 ---
 
-### Caveats pendientes / próximos pasos
-- Supervivencia NO corregida → sizing conservador es obligatorio (no opcional).
-- **Pilar 3 (pendiente):** añadir CALIDAD + LOW-BETA como segundo motor (estilo Buffett's Alpha: calidad + baja beta + apalancamiento moderado, largo plazo) — edge poco correlacionado con momentum → más asimetría por diversificación.
+## 9. LOS 3 PILARES (consolidado 2026-08-19)
+- **Pilar 1 — Sizing (Kelly):** Kelly completo f*≈2 es trampa (inflado). Regla real = ¼ Kelly: sin apalancar, 6-8 posiciones de 13-16%, ~2,5% riesgo/trade. `backtest_kelly.mjs`.
+- **Pilar 2 — Validación (Deflated Sharpe + PBO):** DSR 100% · PBO 7,1% → edge REAL y no-overfit al multiple-testing. NO corrige supervivencia → el sizing conservador es la red. `backtest_validation.mjs`.
+- **Pilar 3 — Segundo motor (Buffett quality/low-beta):** DESCARTADO como filtro — el low-beta EMPEORA nuestras señales (somos momentum convexo, queremos beta media-alta; el −18% es la red). El sleeve Buffett buy-and-hold diversifica a nivel cartera pero requiere fundamentales que no hay y diluye capital pequeño → PREMATURO. `backtest_lowbeta.mjs`.
+
+**La diversificación real que YA tienes = EMACross (momentum) + DeMark/WeeklySwing (reversión):** dos motores poco correlacionados (ρ 0.47), combinar reduce drawdown −25%→−17% y tapa los años malos. Ese es tu "segundo motor", ya validado.
+
+### Caveats permanentes
+- Supervivencia NO corregida → sizing conservador OBLIGATORIO.
+- Sangra en mercado bajista → vigilar régimen; la combinación de motores amortigua.
+- Re-cuestionar antes de cambiar cualquier regla.
+
+**ESTADO: cartera asimétrica CONSOLIDADA y validada. Operar con este manual; el forward es el juez.**
