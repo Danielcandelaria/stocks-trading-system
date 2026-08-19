@@ -30,16 +30,18 @@ const SYS = {
  *  p1 = anticipadas inminentes (ENTRAR AHORA, entra barato antes del cruce)
  *  p2 = cruzadas FUERTES (ext≥15%, merecen la pena aunque ya cruzaron)
  *  Cada item: { ticker, price, stop }. `vigilar` = nº en anticipación temprana (solo cuenta). */
-export function buildRadarAlert({ p1 = [], p2 = [], vigilar = 0 } = {}) {
+export function buildRadarAlert({ conf = [], p1 = [], p2 = [], vigilar = 0 } = {}) {
   const s = SYS.EMACross;
   const fmt = t => `   • <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}`;
-  if (!p1.length && !p2.length) {
+  const fmtC = t => `   ⭐ <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}  <i>(${t.detail})</i>`;
+  if (!conf.length && !p1.length && !p2.length) {
     return `🎯 <b>RADAR ${s.name}</b> — ${ahora()}` +
       `\n\nSin señales accionables ahora mismo.` +
       (vigilar ? `\n⏳ ${vigilar} en anticipación temprana (vigilando).` : '') +
       `\n\n👉 ${DASH_URL}`;
   }
   let m = `🎯 <b>RADAR ${s.name} — ENTRAR AHORA</b>  <i>${ahora()}</i>`;
+  if (conf.length) m += `\n\n⭐ <b>CONFLUENCIA (MÁXIMA PRIORIDAD)</b> — cruce + setup-9 debajo:\n` + conf.map(fmtC).join('\n');
   if (p1.length) m += `\n\n🟢 <b>ANTICIPADAS</b> (entra ANTES del cruce = más barato):\n` + p1.map(fmt).join('\n');
   if (p2.length) m += `\n\n💪 <b>CRUZADAS FUERTES</b> (ext≥15%, siguen valiendo):\n` + p2.map(fmt).join('\n');
   m += `\n\n📈 <b>En TradingView:</b>\n   ${s.tv}`;
@@ -47,6 +49,22 @@ export function buildRadarAlert({ p1 = [], p2 = [], vigilar = 0 } = {}) {
   if (vigilar) m += `\n\n⏳ ${vigilar} más en anticipación temprana (aún no accionables).`;
   m += `\n\n👉 <b>Detalle y SL en el panel:</b> ${DASH_URL}`;
   return m;
+}
+
+/** Aviso ⭐ CONFLUENCIA — máxima prioridad (cruce EMA + setup-9 reciente debajo).
+ *  list: [{ ticker, price, stop, detail, bars9 }]. isNew=true → ping urgente de señales nuevas. */
+export function buildConfluenceAlert(list = [], { isNew = false } = {}) {
+  if (!list.length) return null;
+  const s = SYS.EMACross;
+  const fmt = t => `   ⭐ <b>${t.ticker}</b>  $${t.price}  🛑 SL $${t.stop}  <i>(${t.detail}, 9 hace ${t.bars9}v)</i>`;
+  const head = isNew
+    ? `⭐⭐ <b>NUEVA CONFLUENCIA — MÁXIMA PRIORIDAD</b> ⭐⭐  <i>${ahora()}</i>`
+    : `⭐ <b>CONFLUENCIA ${s.name} — MÁXIMA PRIORIDAD</b>  <i>${ahora()}</i>`;
+  return `${head}` +
+    `\n<i>Cruce EMA8/21 + Setup-9 reciente debajo = la mejor calidad (backtest PF 4.28 vs 3.24).</i>` +
+    `\n\n${list.map(fmt).join('\n')}` +
+    `\n\n📈 Gráfico <b>SEMANAL</b> · entra en el cruce/anticipación · stop −18% · deja correr hasta el cruce contrario.` +
+    `\n👉 <b>Panel:</b> ${DASH_URL}`;
 }
 
 /** Aviso de OPORTUNIDADES nuevas de un sistema. */

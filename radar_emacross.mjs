@@ -20,7 +20,7 @@ import { tgSend } from './tg.mjs';
 import { beat } from './heartbeat.mjs';
 import { cdpUp, confirmSymbol, syncWatchlist, reconnect } from './tv_layer.mjs';
 import { getWeeklyBars, weekIsOver } from './weekly_bars.mjs';
-import { buildRadarAlert } from './alert_system.mjs';
+import { buildRadarAlert, buildConfluenceAlert } from './alert_system.mjs';
 import { computeTDSetup } from '../scanner/demark_calc.mjs';
 
 // Confluencia: un cruce EMA respaldado por un Buy Setup-9 DEBAJO en las últimas N velas
@@ -194,5 +194,21 @@ function analyze(bars) {
   const p2 = L.filter(h => h.level === 0 && (h.weeks ?? 0) === 0 && (h.ext ?? 0) >= 15)
     .sort((a, b) => b.ext - a.ext)
     .map(h => ({ ticker: h.ticker, price: +h.px.toFixed(2), stop: SL(h.px) }));
-  await tgSend(buildRadarAlert({ p1, p2, vigilar: L.filter(h => h.level === 2).length }));
+
+  // ⭐ CONFLUENCIA — máxima prioridad: cruce/anticipación EMA + setup-9 reciente debajo.
+  const conf = L.filter(h => h.conf9)
+    .sort((a, b) => (a.level - b.level) || (a.gLive - b.gLive))   // cruzadas primero, luego más cerca del cruce
+    .map(h => ({
+      ticker: h.ticker, price: +h.px.toFixed(2), stop: SL(h.px), bars9: h.bars9,
+      detail: h.level === 0 ? `cruzada +${h.ext.toFixed(1)}%` : `a ${h.gLive.toFixed(2)}% del cruce`,
+    }));
+  // ping URGENTE solo de las NUEVAS (dedup por ticker) para no repetir cada corrida
+  const prevConf = load('seen_confluence.json', {});
+  const nowConf = {}; const fresh = [];
+  for (const c of conf) { nowConf[c.ticker] = true; if (!prevConf[c.ticker]) fresh.push(c); }
+  save('seen_confluence.json', nowConf);
+  if (fresh.length) { const m = buildConfluenceAlert(fresh, { isNew: true }); if (m) await tgSend(m); }
+
+  // digest normal, liderado por la confluencia (máxima prioridad arriba)
+  await tgSend(buildRadarAlert({ conf, p1, p2, vigilar: L.filter(h => h.level === 2).length }));
 })();
