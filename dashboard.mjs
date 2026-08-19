@@ -88,6 +88,14 @@ function snapshot() {
       pendiente: t.entryPrice == null };
   });
 
+  // ── POSICIONES ABIERTAS (avance en vivo) por sistema, desde pnl_live ──
+  const pnlPos = (rd('pnl_live.json') || {}).positions || [];
+  const openFor = id => pnlPos.filter(p => p.strategy === id && p.current != null)
+    .map(p => ({ ticker: p.ticker, tv: p.tv || p.ticker, entry: p.entry, current: p.current, pnlPct: p.pnlPct, days: p.days }))
+    .sort((a, b) => (b.pnlPct ?? -999) - (a.pnlPct ?? -999));
+  emacross.open = openFor('EMACross');
+  weekly.open = openFor('WeeklySwing');
+
   return {
     ts: new Date().toISOString(),
     real,
@@ -205,11 +213,22 @@ async function load(){
         (chips?'<div class="chips">'+chips+'</div>':'<div class="empty">Ninguna ahora mismo. En cuanto aparezca una, sale aquí y te llega al Telegram.</div>')+'</div>';
     }).join('');
     const pegNote=(s.pegadas&&s.pegadas.length)?'<div class="foot" style="color:var(--mut)">⚪ '+s.pegadas.length+' cruzadas pegadas (fuerza &lt;8%, EVITAR — breakeven): '+s.pegadas.join(', ')+'</div>':'';
+    // ── EN CURSO: posiciones abiertas del sistema con su P&L (el "avance") ──
+    const O=s.open||[]; const CAP=20;
+    const oAvg=O.length?O.reduce((a,b)=>a+(b.pnlPct||0),0)/O.length:0;
+    const oGreen=O.filter(o=>(o.pnlPct||0)>0).length;
+    const oShown=O.slice(0,CAP);
+    const enCurso=O.length?'<div class="grp"><div class="gh g-reciente"><span class="t">📈 EN CURSO (posiciones abiertas)</span>'+
+      '<span class="n">'+O.length+'</span><span class="hint">P&L medio <b style="color:'+(oAvg>=0?'var(--go)':'#f85149')+'">'+(oAvg>=0?'+':'')+oAvg.toFixed(1)+'%</b> · '+oGreen+'/'+O.length+' en verde</span></div>'+
+      '<div class="chips">'+oShown.map(o=>'<div class="chip"><a href="'+tvUrl(o.tv)+'" target="_blank">'+esc(o.ticker)+'</a>'+
+        '<span class="'+((o.pnlPct||0)>=0?'pos':'neg')+'" style="font-weight:600;font-size:13px">'+((o.pnlPct||0)>=0?'+':'')+(o.pnlPct!=null?o.pnlPct.toFixed(1):'?')+'%</span>'+
+        '<span class="px">$'+o.entry+'→$'+o.current+'</span></div>').join('')+'</div>'+
+      (O.length>CAP?'<div class="empty">… y '+(O.length-CAP)+' más (ordenadas por P&L)</div>':'')+'</div>':'';
     return '<div class="sys s'+i+'">'+
       '<div class="hd"><h2>'+s.emoji+' '+esc(s.name)+'</h2><div class="st">'+esc(s.subtitle)+'</div>'+
       '<div class="tvline">📈 <b>En TradingView:</b> gráfico <b>'+esc(s.tv.tf)+'</b> + indicador <b>'+esc(s.tv.ind)+'</b><br><span class="k">→ mira '+esc(s.tv.mira)+'</span></div>'+
       '<div class="rl"><span>📍 Entra: <b>'+esc(s.entrada)+'</b></span><span>🚪 Sale: <b>'+esc(s.salida)+'</b></span><span>🛑 Stop: <b>'+esc(s.stop)+'</b></span></div>'+
-      '</div>'+grupos+pegNote+
+      '</div>'+grupos+pegNote+enCurso+
       '<div class="foot">Última revisión: '+hace(s.lastRun)+(s.older?' · '+s.older+' señales antiguas ocultas (ya no operables)':'')+'</div>'+
     '</div>';
   }).join('');
