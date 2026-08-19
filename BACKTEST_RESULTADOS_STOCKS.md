@@ -496,3 +496,17 @@ Cierre de vela señal PF 2.35 vs apertura siguiente semana PF 2.37 — idéntico
 - SETUP-9 salida NATIVA (stop=setupLow tight, exit cd13/52w): PF 6.09 pero MEDIANA −8.2%, 51% stops = muerte por mil cortes. El stop AMPLIO −18% + salida en setup-9 opuesto es MUY superior (mediana +9.4%). ⚠️ sugiere revisar el stop de WeeklySwing en vivo (usa setupLow) → probar −18%. Nota: native y cat18 difieren en stop Y en trigger de salida; falta aislar cada uno.
 - COUNTDOWN-13 solo: PF 1.42, WF 2/4, mediana −9.9%, se hunde sin top-5% (0.79). NO es edge por sí solo — confirma la cautela histórica sobre el 13.
 - Mismo sesgo de supervivencia que EMACross (comprar sobrevendido incluye value-traps que no están en el universo → algo inflado; el −18% acota).
+
+## CARTERA COMBINADA EMACross + DeMark (50/50) — ¿diversifica y tapa 2022? SÍ (2026-08-19)
+
+`backtest_combo.mjs` (246 large-caps, 10y, ambos LONG stop -18%, curva por media trimestral):
+- **Correlación trimestral ρ = 0.47** (media) — suficiente para diversificar.
+- **Max drawdown: EMA −25% · DeMark −21% · COMBINADO −17%** → la combinación tiene MENOS drawdown que CUALQUIERA de los dos solos. Peor trimestre: −13.1% cada uno → −10.6% combinado.
+- **Año a año la cartera combinada es POSITIVA TODOS los años**, incluidos los que EMACross perdía:
+  | año | EMA | DeMark | COMBO |
+  |---|---|---|---|
+  | 2018 | −2% | +7% | +3% ✅ |
+  | 2022 | −2% | +4% | +1% ✅ |
+  (resto: todos verdes; años grandes 2020 +33%, 2023 +18%, 2025 +24%)
+
+CONCLUSIÓN: combinar los dos sistemas REDUCE el drawdown ~32% (−25%→−17%) y convierte en positivos los años malos de EMACross (2018, 2022) manteniendo casi todo el upside. DeMark rescata justo cuando el trend-following sufre (lateral/bajista). Cartera combinada = más suave y robusta que cualquiera solo. Recomendación de asignación: repartir capital entre ambos sistemas, no todo a EMACross.
