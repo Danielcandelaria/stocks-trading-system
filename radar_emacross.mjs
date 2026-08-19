@@ -43,7 +43,9 @@ const ema = (cl, p) => { const k = 2 / (p + 1); let e = null; return cl.map(c =>
 const NOW = Date.now() / 1000;
 
 // barras deduplicadas CONSERVANDO la semana viva (el radar proyecta con el precio actual)
-const getWeekly = t => getWeeklyBars(t, { keepForming: true });
+// 6 años (~312 velas) para que la EMA200 sea fiable (below200/stack). El cruce EMA8/21 converge
+// rápido → más historia no lo altera; solo habilita el filtro de la 200.
+const getWeekly = t => getWeeklyBars(t, { keepForming: true, range: '6y' });
 
 function analyze(bars) {
   // separar la semana EN CURSO (viva) de las cerradas.
