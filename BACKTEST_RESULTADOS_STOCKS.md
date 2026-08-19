@@ -551,3 +551,17 @@ CONCLUSIONES:
 | EMA + 9 en ≤52 velas | 1166 | 40% | 3.21 | +11.3% | −2.6% | 1.27 | 4/4 |
 
 CONCLUSIÓN: la confluencia FUNCIONA como filtro de calidad, pero SOLO con ventana TIGHT (9 en ≤13 semanas = giro reciente). Mejora PF 3.24→4.28, expectancy +11.2%→+15.3%, robustez sin-top5% 1.35→1.66 (menos dependiente de outliers). Ventanas anchas (26/52) ≈ baseline (deja de filtrar). Coste: ~1/5 de las señales (529 vs 2484 = ~53/año ≈ 1/semana en todo el universo). ⇒ IDEAL para capital limitado: menos señales (menos presión de sesgo, las tomas casi todas) Y de más calidad, en UNA sola señal combinada. LÍMITES honestos: NO arregla la mediana negativa (−2.0%, sigue siendo sistema de cola/positive-skew → necesita ganadores) NI el año bajista 2022 (−2%). Es un EMACross MEJOR, no un sistema distinto. Perfil distinto a DeMark solo (mediana +9.4% pero avg menor).
+
+## SÍNTESIS — apilar lo aprendido: ¿cuál es la MEJOR opción? (2026-08-19)
+
+`backtest_synthesis.mjs` — stack de filtros sobre EMA anticipado (stop -18%, salida cruce). 242 large-caps, 10y.
+| combinación | n | WR | PF | exp | MEDIANA | sin-top5% | WF |
+|---|---|---|---|---|---|---|---|
+| EMA anticip SOLO (baseline) | 1575 | 42% | 3.64 | +12.7% | −2.1% | 1.55 | 4/4 |
+| EMA + confluencia 9 | 345 | 43% | 4.63 | +17.6% | −2.2% | 1.72 | 4/4 |
+| EMA + debajo EMA200 | 378 | 45% | 4.73 | +18.2% | −1.7% | 2.48 | 4/4 |
+| **EMA + 9 + DEBAJO 200 (STACK)** | **65** | 48% | **5.75** | +19.1% | **−0.3%** | **3.64** | 4/4 |
+| EMA + 9 + encima 200 | 295 | 41% | 4.34 | +16.8% | −3.0% | 1.43 | 4/4 |
+| DeMark setup-9 solo (ref) | 867 | 61% | 2.83 | +11.7% | **+9.5%** | 1.96 | 4/4 |
+
+CONCLUSIÓN (síntesis): TODO lo aprendido apunta a lo MISMO — **reversión desde un suelo oversold cazada temprano**. Anticipado (timing) + Setup-9 (agotamiento) + debajo-EMA200 (reversión profunda) son 3 lentes del mismo fenómeno. Apilarlos mejora la robustez MONÓTONAMENTE: sin-top5% 1.55→1.72→2.48→**3.64**. El STACK (EMA+9+debajo200) deja de ser lotería de outliers y se vuelve edge FIABLE: PF 5.75, mediana casi-cero (−0.3% vs −2.1% baseline), sin-top5% 3.64, POSITIVO todos los años (2022 +3%, 2021 +21 vs +4, 2024 +16 vs +3). El "+encima 200" es el PEOR (mediana −3.0%) → confirma que la magia está DEBAJO de la 200 (reversión, no continuación). ⚠️ n=65 (pocas, ~6.5/año) = ruidoso en el número exacto, pero la mejora MONÓTONA de robustez al apilar es el takeaway sólido. Para capital limitado es IDEAL (pocas, ultra-calidad, se toman todas, sin sesgo). DeMark solo sigue siendo el de mediana positiva (+9.5%) y más frecuente = flujo estable. PRÁCTICA: marcar las confluencias que además están DEBAJO de la EMA200 = la crème de la crème (máxima prioridad dentro de máxima prioridad).
