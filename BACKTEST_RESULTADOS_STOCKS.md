@@ -565,3 +565,17 @@ CONCLUSIÓN: la confluencia FUNCIONA como filtro de calidad, pero SOLO con venta
 | DeMark setup-9 solo (ref) | 867 | 61% | 2.83 | +11.7% | **+9.5%** | 1.96 | 4/4 |
 
 CONCLUSIÓN (síntesis): TODO lo aprendido apunta a lo MISMO — **reversión desde un suelo oversold cazada temprano**. Anticipado (timing) + Setup-9 (agotamiento) + debajo-EMA200 (reversión profunda) son 3 lentes del mismo fenómeno. Apilarlos mejora la robustez MONÓTONAMENTE: sin-top5% 1.55→1.72→2.48→**3.64**. El STACK (EMA+9+debajo200) deja de ser lotería de outliers y se vuelve edge FIABLE: PF 5.75, mediana casi-cero (−0.3% vs −2.1% baseline), sin-top5% 3.64, POSITIVO todos los años (2022 +3%, 2021 +21 vs +4, 2024 +16 vs +3). El "+encima 200" es el PEOR (mediana −3.0%) → confirma que la magia está DEBAJO de la 200 (reversión, no continuación). ⚠️ n=65 (pocas, ~6.5/año) = ruidoso en el número exacto, pero la mejora MONÓTONA de robustez al apilar es el takeaway sólido. Para capital limitado es IDEAL (pocas, ultra-calidad, se toman todas, sin sesgo). DeMark solo sigue siendo el de mediana positiva (+9.5%) y más frecuente = flujo estable. PRÁCTICA: marcar las confluencias que además están DEBAJO de la EMA200 = la crème de la crème (máxima prioridad dentro de máxima prioridad).
+
+## CONFLUENCIA — ANTICIPADA vs YA CRUZADA, por separado (2026-08-19)
+
+`backtest_confluence_split.mjs` (242 large-caps, 10y, stop -18%, salida cruce). El trigger es la única diferencia.
+| variante | n | WR | PF | exp | MEDIANA | sin-top5% | WF |
+|---|---|---|---|---|---|---|---|
+| ANTICIPADA (todas) | 345 | 43% | 4.63 | +17.6% | −2.2% | 1.72 | 4/4 |
+| └ anticipada DEBAJO 200 | 58 | 48% | 5.79 | +19.5% | −0.3% | 4.01 | 4/4 |
+| └ anticipada encima 200 | 287 | 41% | 4.44 | +17.2% | −2.8% | 1.43 | 4/4 |
+| YA CRUZADA (todas) | 314 | 40% | 4.72 | +19.1% | −3.5% | 1.78 | 4/4 |
+| └ cruzada DEBAJO 200 | 33 | 58% | 5.41 | +19.6% | **+4.3%** | 4.29 | 3/4 |
+| └ cruzada encima 200 | 281 | 38% | 4.65 | +19.1% | −4.1% | 1.54 | 4/4 |
+
+CONCLUSIÓN: anticipada y ya-cruzada son ~EQUIVALENTES en agregado (PF 4.63 vs 4.72, ambas WF 4/4). Anticipada = mediana algo mejor (−2.2 vs −3.5%) y entra más barato; cruzada = PF/expectancy algo mayor (más certeza). NINGUNA domina claramente → CORRIGE la afirmación previa de "priorizar anticipada" (fue una sobreestimación; el backtest anticipado era el único hecho entonces). El factor DOMINANTE NO es anticipada-vs-cruzada, es **DEBAJO 200** (el stack): en ambos modos sin-top5% salta a ~4.0-4.3 (vs 1.4-1.5 encima). La cruzada+debajo200 tiene incluso MEDIANA POSITIVA (+4.3%) y WR 58%, pero n=33 (ruidoso, WF 3/4); la anticipada+debajo200 tiene más muestra (58, WF 4/4) con mediana −0.3%. PRÁCTICA: tomar la confluencia en CUALQUIER modo (cruzada o anticipada), priorizando SIEMPRE las de debajo-200 (stack). Anticipar = entrada más barata; esperar el cruce = más confirmación. Ambas válidas. ⚠️ buckets debajo-200 = 33-58 trades (ruido en el decimal; el patrón debajo≫encima es sólido).
