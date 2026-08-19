@@ -473,3 +473,26 @@ Cierre de vela señal PF 2.35 vs apertura siguiente semana PF 2.37 — idéntico
 **4) STOP -18%:** 13% de trades salen por stop (16% debajo-200). Riesgo de cola acotado, coherente con ~12% de falsas.
 
 **VEREDICTO:** el edge es REAL pero NO es el "PF 2.5 dinero fácil" que parecía. Es un sistema de cola gorda: mediana negativa, el dinero llega en grumos de pocos ganadores grandes. Implicaciones para real: (a) 5 posiciones es POCO para muestrear la cola con fiabilidad → conviene más posiciones/menor tamaño si el capital lo permite, o asumir varianza alta; (b) NO evitar las "que dan miedo" (debajo-200, muy extendidas) — ESAS son las ganadoras; (c) aguantar hasta el cruce contrario (los pelotazos necesitan tiempo); (d) esperar rojo la mayor parte del tiempo; (e) en mercado bajista, sangra — vigilar régimen. Supervivencia sigue inflando todo (más el cubo debajo-200).
+
+## NUESTRO DeMark (setup-9/cd-13) en ACCIONES — vs EMACross, misma lupa escéptica (2026-08-19)
+
+`backtest_demark.mjs` — usa el motor verificado `scanner/demark_calc.mjs` (réplica fiel del Pine Mantilla PB DeMARK 9-13). 246 large-caps, 10y semanal, una posición a la vez, coste 0.06%/lado.
+
+**COMPARATIVA DIRECTA (ambos con stop -18%, una posición a la vez):**
+| métrica | EMACross | DeMark SETUP-9 |
+|---|---|---|
+| trades | 1425 | 873 |
+| WR | 38% | **61%** |
+| PF | 2.35 | **2.81** |
+| MEDIANA/trade | **−3.0%** ❌ | **+9.43%** ✅ |
+| PF sin top-5% | **1.08** (breakeven) | **1.95** ✅ |
+| peor año (2022 bajista) | **−2%** ❌ | **+4%** ✅ |
+| ¿todos los años +? | NO (2022,2026 neg) | **SÍ, los 11 años** ✅ |
+| WF | 4/4 | 4/4 |
+
+**DeMark SETUP-9 es MÁS ROBUSTO que EMACross en TODAS las dimensiones escépticas**: gana la mayoría de trades (mediana +9%, no depende de pelotazos), aguanta quitar el top-5% (1.95 vs 1.08), y es rentable CADA año incluido el bajista 2022 donde EMACross sangraba. Razón: setup-9 compra AGOTAMIENTO/suelos (mean-reversion) → funciona en lateral y bajista, justo donde el trend-following (EMACross) falla. **Son COMPLEMENTARIOS** (tendencia + reversión).
+
+**Matices/debilidades (sigue el escepticismo):**
+- SETUP-9 salida NATIVA (stop=setupLow tight, exit cd13/52w): PF 6.09 pero MEDIANA −8.2%, 51% stops = muerte por mil cortes. El stop AMPLIO −18% + salida en setup-9 opuesto es MUY superior (mediana +9.4%). ⚠️ sugiere revisar el stop de WeeklySwing en vivo (usa setupLow) → probar −18%. Nota: native y cat18 difieren en stop Y en trigger de salida; falta aislar cada uno.
+- COUNTDOWN-13 solo: PF 1.42, WF 2/4, mediana −9.9%, se hunde sin top-5% (0.79). NO es edge por sí solo — confirma la cautela histórica sobre el 13.
+- Mismo sesgo de supervivencia que EMACross (comprar sobrevendido incluye value-traps que no están en el universo → algo inflado; el −18% acota).
