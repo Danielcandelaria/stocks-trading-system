@@ -579,3 +579,16 @@ CONCLUSIÓN (síntesis): TODO lo aprendido apunta a lo MISMO — **reversión de
 | └ cruzada encima 200 | 281 | 38% | 4.65 | +19.1% | −4.1% | 1.54 | 4/4 |
 
 CONCLUSIÓN: anticipada y ya-cruzada son ~EQUIVALENTES en agregado (PF 4.63 vs 4.72, ambas WF 4/4). Anticipada = mediana algo mejor (−2.2 vs −3.5%) y entra más barato; cruzada = PF/expectancy algo mayor (más certeza). NINGUNA domina claramente → CORRIGE la afirmación previa de "priorizar anticipada" (fue una sobreestimación; el backtest anticipado era el único hecho entonces). El factor DOMINANTE NO es anticipada-vs-cruzada, es **DEBAJO 200** (el stack): en ambos modos sin-top5% salta a ~4.0-4.3 (vs 1.4-1.5 encima). La cruzada+debajo200 tiene incluso MEDIANA POSITIVA (+4.3%) y WR 58%, pero n=33 (ruidoso, WF 3/4); la anticipada+debajo200 tiene más muestra (58, WF 4/4) con mediana −0.3%. PRÁCTICA: tomar la confluencia en CUALQUIER modo (cruzada o anticipada), priorizando SIEMPRE las de debajo-200 (stack). Anticipar = entrada más barata; esperar el cruce = más confirmación. Ambas válidas. ⚠️ buckets debajo-200 = 33-58 trades (ruido en el decimal; el patrón debajo≫encima es sólido).
+
+## ¿Transfiere a DIARIO? NO — es un sistema SEMANAL (2026-08-19)
+
+`backtest_daily.mjs` (200 large-caps, 5 años DIARIO, stop -18%, salida cruce). Comparado con semanal:
+| config | DIARIO PF | DIARIO sin-top5% | DIARIO mediana | vs SEMANAL |
+|---|---|---|---|---|
+| EMA anticipado | 2.14 | 1.11 | −0.7% | peor (sem 2.35, sin-top5% 1.55) |
+| EMA confirmado | 1.99 | **0.93** | −1.9% | peor (sin-top5%<1 = pierde sin outliers) |
+| DeMark setup-9 | 2.57 | 1.79 | +5.8% · WR 71% | peor pero DECENTE (sem 2.83/+9.5%) |
+| Confluencia (EMA+9) | 2.29 | 1.27 | −0.6% | MUCHO peor (sem 4.28) |
+| ⭐⭐ STACK | 2.46 | **1.34** | −0.4% | MUCHO peor (sem sin-top5% 3.64) |
+
+CONCLUSIÓN: el edge NO transfiere bien a diario. TODO se debilita y, lo crítico, la ROBUSTEZ (sin-top5%) se derrumba: la confluencia/stack que en semanal eran ultra-robustas (3.64) en diario quedan en 1.34 (frágiles, dependientes de outliers otra vez). El diario tiene 3-4× más señales (4552 vs 1575), más ruido, más coste, holds cortos (16-34d) y más trabajo de monitoreo. La "reversión desde el suelo" es un fenómeno SEMANAL; en diario es ruido. ÚNICA pieza que aguanta razonablemente en diario = DeMark setup-9 (WR 71%, mediana +5.8%, único con robustez decente 1.79) — patrón estructural de agotamiento que cruza timeframes; aun así MEJOR en semanal. VEREDICTO: quedarse en SEMANAL. No mover a diario. (Caveat: diario 5y y stop -18% probablemente ancho; un stop más ceñido podría cambiar detalles, pero la caída de robustez es estructural, no de calibración.)
