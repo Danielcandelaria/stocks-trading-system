@@ -522,3 +522,20 @@ CONCLUSIÓN: combinar los dos sistemas REDUCE el drawdown ~32% (−25%→−17%)
 | setup-9 opp | **−18%** | 61% | 2.81 | **+9.4%** | 1.95 | 34% | 4/4 |
 
 CONFIRMADO: el stop −18% es CLARAMENTE superior al setupLow con la salida fija. Mediana pasa de NEGATIVA a POSITIVA, WR se duplica (23→54%), robustez sube (sin-top5% 1.87→2.32), te barren la mitad (%stop 76→37%), mejor casi cada año (2018 −0→+11, 2023 +10→+25). El único "peor" es el PF (5.25→4.12) = espejismo del stop estrecho (pérdidas diminutas inflan el PF, no es más edge). El setup-9 es reversión: el stop estrecho saca con el primer ruido ANTES del rebote; el −18% le da aire. ⇒ ACCIÓN: cambiar el stop de WeeklySwing en vivo (`scanner_weekly.mjs`) de setupLow a −18% y quitar el filtro de riesgo 8-30% (con stop fijo ya no aplica). Contradice la lección #9 del CLAUDE.md (que era para forex/DeMark diario); en acciones semanal, −18% gana.
+
+## CAPITAL LIMITADO — ¿se rompe el edge? ¿uno o dos sistemas? (2026-08-19)
+
+`backtest_capital.mjs` — N sleeves (N posiciones máx), señales por ORDEN DE LLEGADA (sin cherry-picking), cada sleeve compone. 246 acciones, 10y.
+| N | sistema | tomadas | x10y | CAGR | maxDD | mediana |
+|---|---|---|---|---|---|---|
+| 5 | EMACross solo | 81/2484 (3%) | x3.7 | 14% | **−26%** | +0.4% |
+| 5 | DeMark solo | 106/873 (12%) | x1.9 | 7% | **−51%** | +6.0% |
+| 5 | Combinado | 98/3357 (3%) | **x4.2** | **16%** | −33% | −2.0% |
+(patrón consistente en N=3 y N=8: DeMark solo SIEMPRE el peor maxDD −49..−57%; combinado mejor o casi-mejor return y en N=3/8 el mejor maxDD −21/−23%.)
+
+CONCLUSIONES:
+1. **El edge NO se rompe con capital limitado.** Tomando señales por orden de llegada (SIN cherry-picking), todas las configs dan CAGR +7..16%. El miedo "se cae el sistema" es infundado SI se selecciona mecánicamente, no por gusto. El peligro real = cherry-picking por sesgo (value bias), no la falta de capital.
+2. **DeMark SOLO es el PEOR bajo capital limitado** (maxDD −51%, x1.9) pese a su mejor calidad por-trade: baja frecuencia (873 señales) + holds largos (hasta 52w) → pocas posiciones → concentración → drawdowns profundos. Su edge per-trade necesita MUCHAS posiciones para cosecharse sin concentración.
+3. **EMACross solo** = mejor standalone bajo capital tight (más señales → más rotación → diversificación → maxDD −26%).
+4. **Combinado** = mejor return y (en N=3/8) mejor maxDD: más fuentes de señal mantienen los slots llenos y diversifican dos edges poco correlacionados. Capital limitado NO significa abandonar un sistema — significa tomar menos de CADA uno pero mantener ambos alimentando la cola.
+⚠️ Sims con 47-163 trades tomados = ALTA varianza (order-dependent). Robusto: (a) el edge sobrevive, (b) DeMark solo concentra mal, (c) cherry-picking por sesgo es el riesgo real → usar regla de selección MECÁNICA (por fuerza/ranking).
