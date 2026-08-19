@@ -8,7 +8,9 @@ import { buildStockAlert } from './alert_format.mjs';
 // Spec validada (backtest_weekly):
 //   TF      : SEMANAL
 //   Entrada : bullSetup==9 (suelo de agotamiento vendedor) en vela semanal cerrada
-//   Stop    : mínimo del setup (setupLow); descartar si dista >30% del precio
+//   Stop    : -18% del precio de entrada (catástrofe). CAMBIADO 2026-08-19: aislado y confirmado
+//             que -18% bate a setupLow (mediana -2.5%→+5.4%, WR 23%→54%, %stop 76%→37%). Ver
+//             backtest_ws_stop.mjs. El setupLow (stop estrecho) sacaba con el ruido antes del rebote.
 //   Salida  : bearCountdown==13 (techo) Ó time-stop 52 semanas Ó stop
 //   Horizonte: semanas a meses (busca +20% a +100%)
 //   Cap     : máx 5 posiciones abiertas
@@ -29,7 +31,7 @@ import { buildSystemAlert } from './alert_system.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
-const COST = 0.0005, MIN_STOP = 0.08, MAX_STOP = 0.30, TIME_STOP_W = 52;   // sin CAP: el usuario decide
+const COST = 0.0005, CAT = 0.18, TIME_STOP_W = 52;   // stop catástrofe -18% (validado 2026-08-19). Sin CAP.
 const DASH_URL = process.env.DASH_URL || 'http://localhost:8080';
 const UA = { 'User-Agent': 'Mozilla/5.0' };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -97,19 +99,16 @@ for (const u of universe) {
     // OJO: 'seen' se marca DESPUÉS de registrar (abajo). Marcarlo aquí hacía que una señal
     // descartada (antes por el CAP, ahora por stop fuera de rango) se perdiera PARA SIEMPRE.
 
-    const stop = Math.min(...td.bullSetupBars[i].map(k => bars[k].l));
     const ref = i < bars.length - 1 ? bars[i + 1].o : bars[i].c;
     const entryPx = +(ref * (1 + COST)).toFixed(4);
-    const risk = entryPx - stop;
-    // suelo de stop 8% (validado: sin él, los stops diminutos se noisean al instante;
-    // con él PF 3.98→6.95 y bate al azar 2.42). ~2.5× el 3% del sistema diario.
-    if (risk <= 0 || risk / entryPx > MAX_STOP || risk / entryPx < MIN_STOP) continue;
+    const stop = +(entryPx * (1 - CAT)).toFixed(4);   // stop catástrofe -18% (fijo, ya no setupLow)
+    const setupLow = Math.min(...td.bullSetupBars[i].map(k => bars[k].l));   // guardado solo informativo
 
-    // SIN CAP: registramos toda señal válida; el usuario decide en cuál entrar (lo ve en el dashboard).
+    // SIN CAP ni filtro de riesgo (el stop es fijo -18%): registramos toda señal válida.
     journal.push({
       id: key, ticker: u.ticker, tv: u.tv, sector: u.sector, strategy: 'WeeklySwing',
       status: 'open', signalT: bars[i].t, entryT: bars[i].t, entryPx,
-      stop: +stop.toFixed(4), riskPct: +(risk / entryPx * 100).toFixed(1),
+      stop, riskPct: +(CAT * 100).toFixed(1), setupLow: +setupLow.toFixed(4),
     });
     seen[key] = true;
     signals++; newSignals.push(u.ticker);
