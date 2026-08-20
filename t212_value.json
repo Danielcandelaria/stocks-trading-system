@@ -1,0 +1,43 @@
+{
+  "_nota": "LEDGER DE VALOR — Trading212. Buy-and-hold de CALIDAD a largo plazo. Regla de salida = TESIS (fundamentales rotos), NO precio; el stop -18% NO aplica aquí. Cada posición DEBE tener una tesis; sin tesis viva, no es inversión de valor = candidata a cerrar. Coste/valor en EUR (mark-to-market 2026-08-19 vía ISIN).",
+  "reglas": {
+    "entrada": "Empresa de calidad (rentable, foso, líder) a precio razonable. Se puede promediar a la baja si la tesis aguanta.",
+    "salida": "Solo si se ROMPE la tesis (beneficios/foso/deuda). Una caída de precio NO es señal de venta.",
+    "revision": "Trimestral: ¿sigue viva la tesis de cada una? Si no → cerrar.",
+    "sizing": "Sin apalancar. Diversificado por sectores. Largo plazo.",
+    "fiscal": "Tributa al vender → mantener difiere el impuesto (eficiente)."
+  },
+  "holdings": [
+    { "ticker": "UBER", "name": "Uber", "entry": 78.67, "amountUsd": null, "costEur": null, "thesis": "Plataforma dominante movilidad+delivery, ya rentable (2023-24), efecto red. NO es value barato, es calidad/crecimiento. Tesis rota si: pierde rentabilidad o cuota. IMPORTE PENDIENTE." },
+    { "ticker": "AAPL", "name": "Apple", "costEur": 279, "valueEur": 290, "thesis": "Ecosistema+servicios recurrentes, foso de marca, recompras masivas. Rota si: erosión de márgenes/ecosistema." },
+    { "ticker": "MSFT", "name": "Microsoft", "costEur": 341, "valueEur": 352, "thesis": "Azure (nube) + software empresarial recurrente, foso ancho, IA. Rota si: Azure pierde crecimiento." },
+    { "ticker": "GOOGL", "name": "Alphabet", "costEur": 146, "valueEur": 174, "thesis": "Búsqueda/publicidad dominante + nube + IA; barata vs pares. Rota si: IA le come la búsqueda." },
+    { "ticker": "AMZN", "name": "Amazon", "costEur": 348, "valueEur": 367, "thesis": "E-commerce + AWS (motor de beneficio) + publicidad. Rota si: AWS se estanca." },
+    { "ticker": "NVDA", "name": "Nvidia", "costEur": 304, "valueEur": 337, "thesis": "Cuasi-monopolio compute IA. Caro pero calidad. Rota si: competencia/CapEx IA se enfría." },
+    { "ticker": "META", "name": "Meta", "costEur": 199, "valueEur": 174, "thesis": "Publicidad dominante + eficiencia de costes. Riesgo: quema en metaverso. Rota si: publicidad cae." },
+    { "ticker": "NKE", "name": "Nike", "costEur": 929, "valueEur": 612, "thesis": "Marca/foso intactos, TURNAROUND pendiente (ingresos cayendo). Tesis = giro se materializa. ⚠️ VIGILAR: si el giro no llega en 12-18m, revisar. Es la posición más grande y más roja (-34%)." },
+    { "ticker": "ISRG", "name": "Intuitive Surgical", "costEur": 62, "valueEur": 59, "thesis": "Monopolio cirugía robótica, ingresos recurrentes (instrumental). Rota si: competencia real." },
+    { "ticker": "MDT", "name": "Medtronic", "costEur": 154, "valueEur": 173, "thesis": "Dispositivos médicos diversificado, dividendo aristócrata. Defensiva." },
+    { "ticker": "SYK", "name": "Stryker", "costEur": 154, "valueEur": 156, "thesis": "Ortopedia/medtech de calidad, crecimiento estable. (Ojo: también en eToro como swing — cuentas distintas.)" },
+    { "ticker": "CPRT", "name": "Copart", "costEur": 429, "valueEur": 367, "thesis": "Subastas coches siniestrados, foso de red, márgenes altos, compounder." },
+    { "ticker": "ROK", "name": "Rockwell Automation", "costEur": 62, "valueEur": 53, "thesis": "Automatización industrial, beneficiario reshoring." },
+    { "ticker": "CGNX", "name": "Cognex", "costEur": 31, "valueEur": 27, "thesis": "Visión artificial industrial, líder de nicho." },
+    { "ticker": "PTC", "name": "PTC Inc", "costEur": 123, "valueEur": 161, "thesis": "Software industrial (CAD/PLM), ingresos recurrentes. En verde (+31%)." },
+    { "ticker": "NOW", "name": "ServiceNow", "costEur": 822, "valueEur": 820, "thesis": "Software empresarial recurrente, crecimiento alto. Caro → tesis exige que mantenga crecimiento." },
+    { "ticker": "BWXT", "name": "BWX Technologies", "costEur": 72, "valueEur": 61, "thesis": "Componentes nucleares defensa, contratos gobierno (visibilidad). Borderline temático pero rentable." },
+    { "ticker": "RR", "name": "Rolls-Royce", "costEur": 139, "valueEur": 113, "thesis": "Giro completado, motores aero + defensa, flujo de caja recuperado." },
+    { "ticker": "MRL", "name": "Merlin Properties", "costEur": 1110, "valueEur": 995, "thesis": "REIT español (logística/oficinas/data centers), activos reales, dividendo. ⚠️ Posición grande; vigilar oficinas." },
+    { "ticker": "CCJ", "name": "Cameco", "costEur": 75, "valueEur": 72, "thesis": "Mayor minera de uranio, rentable, apuesta ESTRUCTURAL nuclear. Borderline (materia prima)." },
+    { "ticker": "CEG", "name": "Constellation Energy", "costEur": 100, "valueEur": 80, "thesis": "Mayor generación nuclear USA, beneficiario demanda eléctrica IA." },
+    { "ticker": "PEG", "name": "Public Service Enterprise", "costEur": 86, "valueEur": 82, "thesis": "Utility regulada, dividendo estable. Defensiva." },
+    { "ticker": "CEZ", "name": "CEZ (utility checa)", "costEur": 80, "valueEur": 84, "thesis": "Utility checa, dividendo. En verde." },
+    { "ticker": "PCG", "name": "PG&E", "costEur": 71, "valueEur": 77, "thesis": "Utility California; riesgo incendios estructural → más especulativa que value pura." },
+    { "ticker": "XIACY", "name": "Xiaomi", "costEur": 31, "valueEur": 38, "thesis": "Hardware+ecosistema China. Riesgo ADR/regulación China → borderline." }
+  ],
+  "porDecidir_NO_son_valor": [
+    "ASTS", "RKLB", "RDW", "KRKNF", "PL", "AVAV", "SERV", "OKLO", "SMR", "LEU",
+    "NXE", "UUUU", "UEC", "DNN", "YCA", "PDN", "KOID", "FOIL", "SGLN", "SSLN",
+    "SYM", "PRCT", "MBLY", "OUST", "ARDX", "ADX", "SPCX", "FOT", "GMVDF"
+  ],
+  "_porDecidir_nota": "Temáticas/pre-beneficio/penny que NO encajan en valor. Opciones: (a) cerrar y reinvertir, (b) mover a eToro con stop -18%, (c) mantener SOLO con tesis escrita. GMVDF (-100%) = muerta, cerrar por pérdida fiscal."
+}
