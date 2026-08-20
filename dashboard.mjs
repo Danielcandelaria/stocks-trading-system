@@ -31,7 +31,11 @@ function snapshot() {
   //   (2) entre CRUZADAS, solo las FUERTES valen (ext≥15 tercio alto PF 3.86; pegadas <8 = breakeven 1.09).
   //   Se prioriza P1 anticipadas + P2 cruzadas-fuertes; el resto se degrada para quitar ruido.
   const SL_PCT = 0.18;   // stop catástrofe −18% desde el precio actual
-  const lv = i => (radar?.levels?.[i]?.tickers || []).map(t => ({ ...t, stop: +(t.price * (1 - SL_PCT)).toFixed(2) }));
+  // ya DENTRO (posiciones reales abiertas) → no avisar de "entrar" en lo que ya tienes
+  const held = new Set(((rd('trades_real.json') || {}).trades || []).filter(t => t.status === 'open').map(t => t.ticker.toUpperCase()));
+  const lv = i => (radar?.levels?.[i]?.tickers || [])
+    .filter(t => !held.has(t.ticker.toUpperCase()))
+    .map(t => ({ ...t, stop: +(t.price * (1 - SL_PCT)).toFixed(2) }));
   const cross0 = lv(0).filter(t => t.weeks === 0);
   const p1 = lv(1).slice().sort((a, b) => a.gapPct - b.gapPct);                                   // anticipada inminente (<0.4%)
   const p2 = cross0.filter(t => (t.extPct ?? 0) >= 15).sort((a, b) => b.extPct - a.extPct);       // cruzada FUERTE
