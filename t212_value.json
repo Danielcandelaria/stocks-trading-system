@@ -1,43 +1,79 @@
 {
-  "_nota": "LEDGER DE VALOR — Trading212. Buy-and-hold de CALIDAD a largo plazo. Regla de salida = TESIS (fundamentales rotos), NO precio; el stop -18% NO aplica aquí. Cada posición DEBE tener una tesis; sin tesis viva, no es inversión de valor = candidata a cerrar. Coste/valor en EUR (mark-to-market 2026-08-19 vía ISIN).",
+  "_nota": "LEDGER T212 — reescrito 2026-08-20 tras deep-dive de fundamentales (IBKR precios + web). CLAVE: muchas 'especulativas' resultaron negocios REALES rentables o creciendo; sus caídas fueron de-rating de valoración, no del negocio. Clasificación en 5 cubos con distinta regla de riesgo.",
   "reglas": {
-    "entrada": "Empresa de calidad (rentable, foso, líder) a precio razonable. Se puede promediar a la baja si la tesis aguanta.",
-    "salida": "Solo si se ROMPE la tesis (beneficios/foso/deuda). Una caída de precio NO es señal de venta.",
-    "revision": "Trimestral: ¿sigue viva la tesis de cada una? Si no → cerrar.",
-    "sizing": "Sin apalancar. Diversificado por sectores. Largo plazo.",
-    "fiscal": "Tributa al vender → mantener difiere el impuesto (eficiente)."
+    "nucleo_valor": "Calidad durable, buy-and-hold. Salida = TESIS rota (fundamentales), NO precio. Sin stop -18%. Promediar a la baja si la tesis aguanta.",
+    "calidad_growth": "Rentables pero VOLÁTILES/growth. Buy-and-hold con TESIS + vigilancia trimestral. Más beta que el núcleo → tamaño menor. Sin -18% pero revisar si la tesis se deteriora.",
+    "convexo_tematico": "Negocio real pero NO rentable / pre-ingresos / cíclico. Es la COLA CONVEXA del portafolio: tamaño PEQUEÑO, diversificado, aceptando que algunas van a cero a cambio de que otras multipliquen. Cada una con TESIS y un stop de convicción (no el -18% swing).",
+    "cortar": "Sin tesis viva / muerta / negocio roto. Realizar (pérdida fiscal) y reinvertir.",
+    "macro_decidir": "No son empresas (ETF/materias). Exposición macro al oro/plata/uranio/tema. Decidir si se quiere, no analizar como acción."
   },
-  "holdings": [
-    { "ticker": "UBER", "name": "Uber", "entry": 78.67, "amountUsd": null, "costEur": null, "thesis": "Plataforma dominante movilidad+delivery, ya rentable (2023-24), efecto red. NO es value barato, es calidad/crecimiento. Tesis rota si: pierde rentabilidad o cuota. IMPORTE PENDIENTE." },
-    { "ticker": "AAPL", "name": "Apple", "costEur": 279, "valueEur": 290, "thesis": "Ecosistema+servicios recurrentes, foso de marca, recompras masivas. Rota si: erosión de márgenes/ecosistema." },
-    { "ticker": "MSFT", "name": "Microsoft", "costEur": 341, "valueEur": 352, "thesis": "Azure (nube) + software empresarial recurrente, foso ancho, IA. Rota si: Azure pierde crecimiento." },
-    { "ticker": "GOOGL", "name": "Alphabet", "costEur": 146, "valueEur": 174, "thesis": "Búsqueda/publicidad dominante + nube + IA; barata vs pares. Rota si: IA le come la búsqueda." },
-    { "ticker": "AMZN", "name": "Amazon", "costEur": 348, "valueEur": 367, "thesis": "E-commerce + AWS (motor de beneficio) + publicidad. Rota si: AWS se estanca." },
-    { "ticker": "NVDA", "name": "Nvidia", "costEur": 304, "valueEur": 337, "thesis": "Cuasi-monopolio compute IA. Caro pero calidad. Rota si: competencia/CapEx IA se enfría." },
-    { "ticker": "META", "name": "Meta", "costEur": 199, "valueEur": 174, "thesis": "Publicidad dominante + eficiencia de costes. Riesgo: quema en metaverso. Rota si: publicidad cae." },
-    { "ticker": "NKE", "name": "Nike", "costEur": 929, "valueEur": 612, "thesis": "Marca/foso intactos, TURNAROUND pendiente (ingresos cayendo). Tesis = giro se materializa. ⚠️ VIGILAR: si el giro no llega en 12-18m, revisar. Es la posición más grande y más roja (-34%)." },
-    { "ticker": "ISRG", "name": "Intuitive Surgical", "costEur": 62, "valueEur": 59, "thesis": "Monopolio cirugía robótica, ingresos recurrentes (instrumental). Rota si: competencia real." },
-    { "ticker": "MDT", "name": "Medtronic", "costEur": 154, "valueEur": 173, "thesis": "Dispositivos médicos diversificado, dividendo aristócrata. Defensiva." },
-    { "ticker": "SYK", "name": "Stryker", "costEur": 154, "valueEur": 156, "thesis": "Ortopedia/medtech de calidad, crecimiento estable. (Ojo: también en eToro como swing — cuentas distintas.)" },
-    { "ticker": "CPRT", "name": "Copart", "costEur": 429, "valueEur": 367, "thesis": "Subastas coches siniestrados, foso de red, márgenes altos, compounder." },
-    { "ticker": "ROK", "name": "Rockwell Automation", "costEur": 62, "valueEur": 53, "thesis": "Automatización industrial, beneficiario reshoring." },
-    { "ticker": "CGNX", "name": "Cognex", "costEur": 31, "valueEur": 27, "thesis": "Visión artificial industrial, líder de nicho." },
-    { "ticker": "PTC", "name": "PTC Inc", "costEur": 123, "valueEur": 161, "thesis": "Software industrial (CAD/PLM), ingresos recurrentes. En verde (+31%)." },
-    { "ticker": "NOW", "name": "ServiceNow", "costEur": 822, "valueEur": 820, "thesis": "Software empresarial recurrente, crecimiento alto. Caro → tesis exige que mantenga crecimiento." },
-    { "ticker": "BWXT", "name": "BWX Technologies", "costEur": 72, "valueEur": 61, "thesis": "Componentes nucleares defensa, contratos gobierno (visibilidad). Borderline temático pero rentable." },
-    { "ticker": "RR", "name": "Rolls-Royce", "costEur": 139, "valueEur": 113, "thesis": "Giro completado, motores aero + defensa, flujo de caja recuperado." },
-    { "ticker": "MRL", "name": "Merlin Properties", "costEur": 1110, "valueEur": 995, "thesis": "REIT español (logística/oficinas/data centers), activos reales, dividendo. ⚠️ Posición grande; vigilar oficinas." },
-    { "ticker": "CCJ", "name": "Cameco", "costEur": 75, "valueEur": 72, "thesis": "Mayor minera de uranio, rentable, apuesta ESTRUCTURAL nuclear. Borderline (materia prima)." },
-    { "ticker": "CEG", "name": "Constellation Energy", "costEur": 100, "valueEur": 80, "thesis": "Mayor generación nuclear USA, beneficiario demanda eléctrica IA." },
-    { "ticker": "PEG", "name": "Public Service Enterprise", "costEur": 86, "valueEur": 82, "thesis": "Utility regulada, dividendo estable. Defensiva." },
-    { "ticker": "CEZ", "name": "CEZ (utility checa)", "costEur": 80, "valueEur": 84, "thesis": "Utility checa, dividendo. En verde." },
-    { "ticker": "PCG", "name": "PG&E", "costEur": 71, "valueEur": 77, "thesis": "Utility California; riesgo incendios estructural → más especulativa que value pura." },
-    { "ticker": "XIACY", "name": "Xiaomi", "costEur": 31, "valueEur": 38, "thesis": "Hardware+ecosistema China. Riesgo ADR/regulación China → borderline." }
+
+  "nucleo_valor": [
+    { "ticker": "UBER", "entry": 78.67, "amountUsd": null, "thesis": "Plataforma dominante movilidad+delivery, ya rentable, efecto red. IMPORTE PENDIENTE." },
+    { "ticker": "AAPL", "thesis": "Ecosistema+servicios recurrentes, foso de marca, recompras." },
+    { "ticker": "MSFT", "thesis": "Azure + software empresarial recurrente, foso ancho, IA." },
+    { "ticker": "GOOGL", "thesis": "Búsqueda/publicidad dominante + nube + IA, barata vs pares." },
+    { "ticker": "AMZN", "thesis": "E-commerce + AWS (motor de beneficio) + publicidad." },
+    { "ticker": "NVDA", "thesis": "Cuasi-monopolio compute IA. Caro pero calidad." },
+    { "ticker": "META", "thesis": "Publicidad dominante + eficiencia de costes. Riesgo metaverso." },
+    { "ticker": "ISRG", "thesis": "Monopolio cirugía robótica, ingresos recurrentes." },
+    { "ticker": "MDT", "thesis": "Dispositivos médicos diversificado, dividendo aristócrata." },
+    { "ticker": "SYK", "thesis": "Ortopedia/medtech de calidad, crecimiento estable. (También swing en eToro — cuentas distintas.)" },
+    { "ticker": "CPRT", "thesis": "Subastas coches siniestrados, foso de red, márgenes altos." },
+    { "ticker": "ROK", "thesis": "Automatización industrial, beneficiario reshoring." },
+    { "ticker": "CGNX", "thesis": "Visión artificial industrial, líder de nicho." },
+    { "ticker": "PTC", "thesis": "Software industrial (CAD/PLM) recurrente. En verde." },
+    { "ticker": "NOW", "thesis": "Software empresarial recurrente, crecimiento alto. Caro." },
+    { "ticker": "CCJ", "thesis": "Cameco: mayor minera uranio, RENTABLE + dividendo. Apuesta nuclear con calidad." },
+    { "ticker": "BWXT", "thesis": "Componentes nucleares defensa, contratos gobierno, rentable." },
+    { "ticker": "NKE", "thesis": "Marca/foso intactos, TURNAROUND pendiente. ⚠️ Posición grande y roja (-34%); revisar si el giro no llega en 12-18m." },
+    { "ticker": "RR", "thesis": "Rolls-Royce: giro completado, aero + defensa, caja recuperada." },
+    { "ticker": "MRL", "thesis": "REIT español (logística/oficinas/data centers), activos reales. ⚠️ Grande; vigilar oficinas." },
+    { "ticker": "CEG", "thesis": "Mayor generación nuclear USA, demanda IA." },
+    { "ticker": "PEG", "thesis": "Utility regulada, dividendo. Defensiva." },
+    { "ticker": "CEZ", "thesis": "Utility checa, dividendo. En verde." },
+    { "ticker": "PCG", "thesis": "Utility California; riesgo incendios → borderline." },
+    { "ticker": "XIACY", "thesis": "Xiaomi hardware+ecosistema. Riesgo ADR/China → borderline." }
   ],
-  "porDecidir_NO_son_valor": [
-    "ASTS", "RKLB", "RDW", "KRKNF", "PL", "AVAV", "SERV", "OKLO", "SMR", "LEU",
-    "NXE", "UUUU", "UEC", "DNN", "YCA", "PDN", "KOID", "FOIL", "SGLN", "SSLN",
-    "SYM", "PRCT", "MBLY", "OUST", "ARDX", "ADX", "SPCX", "FOT", "GMVDF"
+
+  "calidad_growth": [
+    { "ticker": "AVAV", "thesis": "Drones/defensa. Ingresos +133% a $642M/tr, FCF +$55M, RENTABLE. Stock -35% YTD = de-rating. PT analistas ~$409. Riesgo: valoración, ciclo defensa." },
+    { "ticker": "SYM", "thesis": "Symbotic: beneficio neto $55M, EBITDA $95M, backlog $22.5B. RENTABLE. Riesgo: dependencia Walmart + valoración." },
+    { "ticker": "PL", "thesis": "Planet Labs: PRIMER año rentable (EBITDA +$15M, FCF+), defensa +50%, backlog $900M. Giro logrado." },
+    { "ticker": "LEU", "thesis": "Centrus: beneficio $38.7M/tr, backlog $4.5B, HALEU $900M DOE. RENTABLE + estratégico (enriquecimiento USA)." },
+    { "ticker": "KRKNF", "thesis": "Kraken: ingresos +65%, EBITDA $40-50M positivo, defensa subsea. Rentable en EBITDA." },
+    { "ticker": "MBLY", "thesis": "Mobileye: guía subida, op income $210M, recompra $250M, diseño Mahindra. Sólida pese a stock flojo." },
+    { "ticker": "PDN", "thesis": "Paladin: PRODUCE 4.82M lbs uranio a $70/lb, sube guía 2027. Productor real (cíclico uranio)." }
   ],
-  "_porDecidir_nota": "Temáticas/pre-beneficio/penny que NO encajan en valor. Opciones: (a) cerrar y reinvertir, (b) mover a eToro con stop -18%, (c) mantener SOLO con tesis escrita. GMVDF (-100%) = muerta, cerrar por pérdida fiscal."
+
+  "convexo_tematico": [
+    { "ticker": "RKLB", "thesis": "Rocket Lab: ingresos +38% $602M, backlog $2.36B, Neutron Q4, break-even 2027, PT $115-122. La MEJOR growth del grupo." },
+    { "ticker": "OUST", "thesis": "Ouster lidar: ingresos +56%, margen bruto 49%, $263M caja, PT $58. Momentum real, sin beneficio aún." },
+    { "ticker": "RDW", "thesis": "Redwire: ingresos +90%, backlog $542M, defensa (Edge Autonomy), rated Buy. Sin beneficio aún." },
+    { "ticker": "PRCT", "thesis": "Procept: robótica quirúrgica próstata, ingresos +27% $94M/tr, escalando. Pérdida -$96M FY." },
+    { "ticker": "ARDX", "thesis": "Ardelyx: ingresos $407M (Ibsrela +73%), pero RECORTÓ guía 2026 (pagadores), beneficio 2027, $281M caja. Real con tropiezo." },
+    { "ticker": "UEC", "thesis": "Uranium Energy: productor en rampa, ingresos $20M, PT $18. Cíclica uranio." },
+    { "ticker": "UUUU", "thesis": "Energy Fuels: uranio + tierras raras. +52% YTD (re-rating). Cíclica." },
+    { "ticker": "NXE", "thesis": "NexGen: uranio pre-producción (Rook I), depósito de calidad. Bet ciclo 2030." },
+    { "ticker": "DNN", "thesis": "Denison: uranio pre-producción (Wheeler River). Bet ciclo. +17% YTD." },
+    { "ticker": "ASTS", "thesis": "SpaceMobile: pre-ingresos, $3.7B caja, backlog $1.3B, 45+ lanzamientos 2026, objetivo $1B 2027. BINARIA (10x o dilución/fallo)." },
+    { "ticker": "OKLO", "thesis": "Oklo: primer ingreso 2026 (~$4M), reactor fin-2027, balance limpio, PT $90. Historia con respaldo (Sam Altman)." },
+    { "ticker": "SMR", "thesis": "NuScale: ingresos comerciales ~2030s (el MÁS lejano). Apuesta muy largo plazo." }
+  ],
+
+  "cortar": [
+    { "ticker": "SERV", "razon": "Serve Robotics: RECORTÓ guía a $9-10M (Uber Eats flojo), economía no funciona, solo 812 robots activos, Neutral. Negocio no cuaja." },
+    { "ticker": "GMVDF", "razon": "Muerta (-100%). Realizar pérdida fiscal." },
+    { "ticker": "ADX", "razon": "Audax Renovables: eléctrica española apalancada, sin tesis de calidad." },
+    { "ticker": "FOT", "razon": "Ticker sin identificar/verificar; probable posición residual." }
+  ],
+
+  "macro_decidir": [
+    { "ticker": "SGLN", "que": "Oro físico (ETC) — exposición al oro." },
+    { "ticker": "SSLN", "que": "Plata física (ETC) — exposición a la plata." },
+    { "ticker": "YCA", "que": "Yellow Cake: uranio físico — proxy del precio del uranio." },
+    { "ticker": "KOID", "que": "ETF robótica/IA — cesta temática." },
+    { "ticker": "FOIL", "que": "ETF materia prima (aluminio) — exposición macro." },
+    { "ticker": "SPCX", "que": "ETF espacio/SPAC — cesta temática." }
+  ]
 }
