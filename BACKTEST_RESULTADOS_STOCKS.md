@@ -641,3 +641,15 @@ RECTIFICACIÓN: el cambio 13→8 se aplicó IN-SAMPLE sin confirmar (error de pr
 | ≤26v | 2.07 | 5.59 |
 
 DOS conclusiones: (1) la DIRECCIÓN tight se confirma OOS (óptimo 6 en mitad-1, 8 en mitad-2, ambos <13) → acercar el 9 NO es overfit de dirección. (2) HALLAZGO MAYOR que se había pasado: la confluencia es FUERTEMENTE dependiente de RÉGIMEN — mitad vieja mediocre (PF ~1.8, mediana −4.5%, sin-top5% <1 = pierde sin outliers), mitad reciente espectacular (PF 8-11). El PF 5.45 full-sample estaba inflado por el régimen reciente. ⇒ Operar la confluencia con humildad (no PF garantizado); el forward podría parecerse a cualquiera de las dos mitades. REGLA DE PROCESO grabada: NINGÚN parámetro al sistema en vivo sin confirmación out-of-sample, y NINGÚN número full-sample sin desglose por régimen/mitades. Valor en vivo: revertido a 13 pendiente de decisión del usuario (8 está confirmado en dirección, mejora marginal).
+
+## RE-EXAMEN anticipado vs confirmado POR RÉGIMEN (OOS) (2026-08-21)
+
+`backtest_antic_vs_confirm_oos.mjs` — el full-sample daba ~equivalentes; ¿aguanta por régimen?
+| | FULL PF/med | H1 2016-21 PF/med | H2 2021-26 PF/med |
+|---|---|---|---|
+| EMA anticipado | 3.59 / −2.2% | 2.49 / −3.6% | 5.11 / +0.1% |
+| EMA confirmado | 3.31 / −3.7% | 2.49 / −4.9% | 4.36 / −2.0% |
+| Conf-9 anticipado | 5.54 / −1.8% | 2.11 / −4.5% (n111) | 11.40 / +3.2% (n112) |
+| Conf-9 confirmado | 6.95 / −1.2% | 2.64 / −5.0% (n75) | 12.85 / +3.6% (n96) |
+
+CONCLUSIONES: (1) siguen ~EQUIVALENTES por régimen, ninguno domina decisivamente → confirmado OOS. (2) MATIZ: EMA sola favorece ANTICIPADO en ambas mitades (mejor mediana); la CONFLUENCIA favorece CONFIRMADO en ambas mitades (PF 2.64>2.11 en H1, 12.85>11.40 en H2) — pero muestras pequeñas (n75-112, ruidoso). (3) LO GRANDE: el RÉGIMEN eclipsa la decisión de timing — en H1 (malo) AMBOS son mediocres (PF 2.1-2.6, mediana −4.5 a −5%); en H2 ambos brillan. La elección anticipado/confirmado importa MUCHO menos que el régimen. IMPLICACIÓN dinero real: para el tier CONFLUENCIA/STACK, el CONFIRMADO es marginalmente más robusto Y evita el ~12% de falsas anticipaciones → ligera ventaja a esperar el cruce, sobre todo en señales lejos de cruzar. Diferencia pequeña; ni anticipar ni confirmar te salva en régimen malo.
