@@ -23,9 +23,11 @@ import { getWeeklyBars, weekIsOver } from './weekly_bars.mjs';
 import { buildRadarAlert, buildConfluenceAlert } from './alert_system.mjs';
 import { computeTDSetup } from '../scanner/demark_calc.mjs';
 
-// Confluencia: un cruce EMA respaldado por un Buy Setup-9 DEBAJO en las últimas N velas
-// (backtest 2026-08-19: sube PF 3.24→4.28 y expectancy +11→+15%, ~1/5 de señales). Ventana TIGHT.
-const CONFL_WIN = 13;
+// Confluencia: un cruce EMA respaldado por un Buy Setup-9 DEBAJO en las últimas N velas.
+// Ventana OPTIMIZADA 2026-08-21: barrido 2..52 → óptimo en 8 (meseta robusta 6-10, no pico).
+// vs 13: PF 4.47→5.45, expectancy +17→+22%, sin-top5% 1.66→1.99, WF 4/4. El 9 reciente respalda
+// un giro vigente; a 13 semanas ya está rancio. Ver backtest_confl_window.mjs.
+const CONFL_WIN = 8;
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);

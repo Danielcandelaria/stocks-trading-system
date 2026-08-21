@@ -615,3 +615,17 @@ CONCLUSIÓN: el edge es estadísticamente REAL y robusto al multiple-testing (DS
 CONCLUSIÓN: el tilt de BAJA BETA NO mejora nuestras señales — al revés, la ALTA beta es mejor en PF, expectancy Y robustez. Tiene sentido: nuestro sistema es momentum/reversión CONVEXO (pérdida acotada por el stop −18%, ganancia abierta); las acciones de alta beta se mueven más → cuando la señal acierta, el pelotazo es mayor con la MISMA pérdida máxima. Es lo contrario de BAB en aislado, pero NO es contradicción: BAB/Buffett funciona para BUY-AND-HOLD largo plazo SIN apalancar (baja beta = mejor Sharpe con exposición continua); nuestro sistema es momentum TIMED con stop duro → quiere convexidad = alta beta.
 ⚠️ MATIZ: la alta beta es el cubo MÁS inflado por supervivencia (las de alta beta que sobrevivieron son los mayores ganadores; las que fueron a cero no están) + riesgo de gap a través del stop. NO perseguir alta beta a ciegas; el sistema ya vive en beta media-alta y el −18% es la red.
 VEREDICTO Pilar 3: (1) NO filtrar señales por low-beta. (2) El motor Buffett (calidad+low-beta) es un SLEEVE SEPARADO (buy-and-hold), no un filtro de momentum — diversifica a nivel CARTERA, no de señal; requiere fundamentales punto-en-el-tiempo (no disponibles aquí) y cambia la operación. Para capital pequeño, la diversificación real que YA tienes es EMACross (momentum) + DeMark (reversión). Añadir sleeve de calidad = prematuro. Quality-momentum combo (Asness) es hipótesis válida pero requiere datos fundamentales para validar — NO añadir filtro sin validar.
+
+## CONFLUENCIA — optimización de la ventana del 9: 13→8 velas (2026-08-21)
+
+`backtest_confl_window.mjs` — barrido de cuán reciente debe ser el Buy Setup-9 antes del cruce (2..52 velas), 242 large-caps, 10y, stop -18%.
+| ventana | n | PF | exp | sin-top5% | WF |
+|---|---|---|---|---|---|
+| ≤6v | 171 | 4.74 | +18.7% | 1.93 | 4/4 |
+| **≤8v (NUEVO óptimo)** | 215 | **5.45** | **+21.9%** | **1.99** | 4/4 |
+| ≤10v | 265 | 5.07 | +19.6% | 1.79 | 4/4 |
+| ≤13v (viejo) | 334 | 4.47 | +17.2% | 1.66 | 4/4 |
+| ≤20v | 451 | 3.92 | +15.2% | 1.40 | 4/4 |
+| ≤26v+ | 540+ | ~3.5 | ~+13% | ~1.3 | 4/4 |
+
+CONCLUSIÓN: acercar el 9 de 13→8 velas MEJORA todo (PF 4.47→5.45, exp +17→+22%, sin-top5% 1.66→1.99, muestra sana 215tr). Alejarlo empeora monótonamente. NO es overfit: es una MESETA (6-8-10 todas fuertes, PF 4.7-5.5), no un pico aislado — señal de efecto real (el 9 reciente respalda un giro vigente; a 13 semanas está rancio). El STACK confirma la dirección (más tight = mejor) con muestras pequeñas. APLICADO: `CONFL_WIN=8` en radar_emacross.mjs + Pine conflWin=8. ⚠️ Añade un parámetro al multiple-testing; el forward manda.
