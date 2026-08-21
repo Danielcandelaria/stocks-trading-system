@@ -202,5 +202,47 @@
     "recovered": true,
     "setupLow_old": 51.98,
     "migratedTo18": true
+  },
+  {
+    "id": "W:MCHP:1786939200",
+    "ticker": "MCHP",
+    "tv": "NASDAQ:MCHP",
+    "sector": "Electronic Technology",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1786939200,
+    "entryT": 1786939200,
+    "entryPx": 75.8479,
+    "stop": 62.1953,
+    "riskPct": 18,
+    "setupLow": 71.24
+  },
+  {
+    "id": "W:ON:1786939200",
+    "ticker": "ON",
+    "tv": "NASDAQ:ON",
+    "sector": "Electronic Technology",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1786939200,
+    "entryT": 1786939200,
+    "entryPx": 74.7474,
+    "stop": 61.2929,
+    "riskPct": 18,
+    "setupLow": 74.5
+  },
+  {
+    "id": "W:GFS:1786939200",
+    "ticker": "GFS",
+    "tv": "NASDAQ:GFS",
+    "sector": "Electronic Technology",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1786939200,
+    "entryT": 1786939200,
+    "entryPx": 47.3537,
+    "stop": 38.83,
+    "riskPct": 18,
+    "setupLow": 46.39
   }
 ]

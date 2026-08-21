@@ -39,5 +39,8 @@
   "W:QCOM:1786334400": true,
   "W:NXPI:1786334400": true,
   "W:CCI:1786334400": true,
-  "W:SBAC:1786334400": true
+  "W:SBAC:1786334400": true,
+  "W:MCHP:1786939200": true,
+  "W:ON:1786939200": true,
+  "W:GFS:1786939200": true
 }
