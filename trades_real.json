@@ -36,7 +36,7 @@
       "signalDate": "2026-08-10",
       "signalPrice": 339.21,
       "entryDate": "2026-08-17",
-      "entryPrice": 348.80,
+      "entryPrice": 348.8,
       "shares": 0.51606,
       "amountUsd": 90,
       "stop": 278.15,
@@ -104,7 +104,7 @@
       "direction": "LONG",
       "system": "Confluencia-STACK",
       "signalDate": "2026-08-21",
-      "signalPrice": 68.10,
+      "signalPrice": 68.1,
       "entryDate": "2026-08-21",
       "entryPrice": 68.95,
       "shares": 1.68296,
@@ -118,6 +118,30 @@
       "exitPrice": null,
       "retPct": null,
       "notas": "Quinta posición real. Tier ⭐⭐ STACK (confluencia + DEBAJO EMA200), 9 hace 4 velas, verificada en vivo. Elegida por el tier (máxima convicción), no por la empresa. Nos lleva a 5 posiciones. Caveat: confluencia régimen-dependiente. RECONCILIADO 2026-08-22: entrada real 68.95 (antes 68.10) y tamaño real ~$116.04 (usuario confirma intención de $100 — diferencia sin explicar, no es apalancamiento: G/P%=precio% 1:1). Stop y riskUsd recalculados sobre datos reales."
+    },
+    {
+      "id": "REAL-2026-08-22-HSY",
+      "ticker": "HSY",
+      "tv": "NYSE:HSY",
+      "sector": "Consumer Non-Durables",
+      "direction": "LONG",
+      "system": "Confluencia-STACK",
+      "signalDate": "2026-08-22",
+      "signalPrice": 188.31,
+      "entryDate": "2026-08-22",
+      "entryPrice": 188.31,
+      "shares": 0.79656,
+      "amountUsd": 150,
+      "amountNote": "usuario indicó 150 EUR — pendiente confirmar si la ejecución fue en EUR o USD",
+      "stop": 154.41,
+      "stopPct": -18,
+      "riskUsd": 27,
+      "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
+      "status": "open",
+      "exitDate": null,
+      "exitPrice": null,
+      "retPct": null,
+      "notas": "Sexta posición real (5 abiertas). Tier ⭐⭐ STACK verificado en vivo: DEBAJO EMA200 + setup-9 hace 2 velas (el más fresco del radar). Entrada ANTICIPADA (falta 2.80% para cruzar) — se había sugerido esperar cruce confirmado por estar lejos del umbral; decisión del usuario entrar anticipado. Tamaño 150 (mayor que el estándar de 100). Apalancamiento: PENDIENTE confirmar 1x (regla tras incidente SYK)."
     }
   ]
 }
