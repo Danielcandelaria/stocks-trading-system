@@ -24,10 +24,10 @@ import { buildRadarAlert, buildConfluenceAlert } from './alert_system.mjs';
 import { computeTDSetup } from '../scanner/demark_calc.mjs';
 
 // Confluencia: un cruce EMA respaldado por un Buy Setup-9 DEBAJO en las últimas N velas.
-// Ventana 13 (valor validado). El 8 salió mejor en un barrido IN-SAMPLE (2026-08-21) pero se
-// REVIRTIÓ a 13 hasta confirmarlo OUT-OF-SAMPLE (backtest_confl_window_oos.mjs). Regla: no cambiar
-// un parámetro del sistema en vivo sin confirmación fuera de muestra.
-const CONFL_WIN = 13;
+// Ventana 8 — CONFIRMADA OUT-OF-SAMPLE (backtest_confl_window_oos.mjs, 2026-08-21): tight gana en
+// AMBAS mitades (óptimo 6 en 2016-21, 8 en 2021-26, ambos <13). ⚠️ La confluencia es RÉGIMEN-
+// DEPENDIENTE (mitad vieja PF~1.8 / reciente PF 8-11) → operar con humildad, no es PF garantizado.
+const CONFL_WIN = 8;
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
