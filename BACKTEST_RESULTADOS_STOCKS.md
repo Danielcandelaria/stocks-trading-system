@@ -629,3 +629,15 @@ VEREDICTO Pilar 3: (1) NO filtrar señales por low-beta. (2) El motor Buffett (c
 | ≤26v+ | 540+ | ~3.5 | ~+13% | ~1.3 | 4/4 |
 
 CONCLUSIÓN: acercar el 9 de 13→8 velas MEJORA todo (PF 4.47→5.45, exp +17→+22%, sin-top5% 1.66→1.99, muestra sana 215tr). Alejarlo empeora monótonamente. NO es overfit: es una MESETA (6-8-10 todas fuertes, PF 4.7-5.5), no un pico aislado — señal de efecto real (el 9 reciente respalda un giro vigente; a 13 semanas está rancio). El STACK confirma la dirección (más tight = mejor) con muestras pequeñas. APLICADO: `CONFL_WIN=8` en radar_emacross.mjs + Pine conflWin=8. ⚠️ Añade un parámetro al multiple-testing; el forward manda.
+
+## ⚠️ CORRECCIÓN — ventana de confluencia: confirmación OOS + dependencia de régimen (2026-08-21)
+
+RECTIFICACIÓN: el cambio 13→8 se aplicó IN-SAMPLE sin confirmar (error de proceso). Revertido a 13; confirmado con `backtest_confl_window_oos.mjs` (2 mitades temporales):
+| ventana | Mitad1 2016-21 PF | Mitad2 2021-26 PF |
+|---|---|---|
+| ≤6v | 2.09 | 9.08 |
+| ≤8v | 1.84 | 11.50 |
+| ≤13v | 1.84 | 8.15 |
+| ≤26v | 2.07 | 5.59 |
+
+DOS conclusiones: (1) la DIRECCIÓN tight se confirma OOS (óptimo 6 en mitad-1, 8 en mitad-2, ambos <13) → acercar el 9 NO es overfit de dirección. (2) HALLAZGO MAYOR que se había pasado: la confluencia es FUERTEMENTE dependiente de RÉGIMEN — mitad vieja mediocre (PF ~1.8, mediana −4.5%, sin-top5% <1 = pierde sin outliers), mitad reciente espectacular (PF 8-11). El PF 5.45 full-sample estaba inflado por el régimen reciente. ⇒ Operar la confluencia con humildad (no PF garantizado); el forward podría parecerse a cualquiera de las dos mitades. REGLA DE PROCESO grabada: NINGÚN parámetro al sistema en vivo sin confirmación out-of-sample, y NINGÚN número full-sample sin desglose por régimen/mitades. Valor en vivo: revertido a 13 pendiente de decisión del usuario (8 está confirmado en dirección, mejora marginal).
