@@ -11,17 +11,17 @@
       "signalDate": "2026-08-10",
       "signalPrice": 15.23,
       "entryDate": "2026-08-17",
-      "entryPrice": 15.23,
-      "shares": 6.566,
+      "entryPrice": 15.28,
+      "shares": 6.5445,
       "amountUsd": 100,
-      "stop": 12.49,
+      "stop": 12.53,
       "stopPct": -18,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios.",
       "status": "open",
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Primera operación con dinero real. Señal EMACross confirmada (cruce semanal del 10-ago). Entrada @ 15.23. Tamaño ajustado de 190 a 100 USD el mismo día (alineado con el plan de 5 posiciones × ~100).",
+      "notas": "Primera operación con dinero real. Señal EMACross confirmada (cruce semanal del 10-ago). Tamaño ajustado de 190 a 100 USD el mismo día (alineado con el plan de 5 posiciones × ~100). RECONCILIADO 2026-08-22 con extracto real de la cuenta: entrada real 15.28 (antes 15.23), stop recalculado sobre el precio real.",
       "riskUsd": 18
     },
     {
@@ -60,10 +60,10 @@
       "signalDate": "2026-08-10",
       "signalPrice": 53.03,
       "entryDate": "2026-08-18",
-      "entryPrice": 53.03,
-      "shares": 1.8857,
+      "entryPrice": 52.08,
+      "shares": 1.92012,
       "amountUsd": 100,
-      "stop": 43.48,
+      "stop": 42.71,
       "stopPct": -18,
       "riskUsd": 18,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios.",
@@ -71,7 +71,7 @@
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Tercera posición real. Cruce confirmado + tercil FUERTE (ext +17.1% s/EMA21) — la ÚNICA de su lista de 9 que el sistema aprobaba hoy; las demás eran sesgo de valor. Elegida por fuerza del cruce, no por la empresa."
+      "notas": "Tercera posición real. Cruce confirmado + tercil FUERTE (ext +17.1% s/EMA21) — la ÚNICA de su lista de 9 que el sistema aprobaba hoy; las demás eran sesgo de valor. Elegida por fuerza del cruce, no por la empresa. RECONCILIADO 2026-08-22: entrada real 52.08 (antes 53.03), stop recalculado."
     },
     {
       "id": "REAL-2026-08-19-BR",
@@ -83,10 +83,10 @@
       "signalDate": "2026-08-19",
       "signalPrice": 169.86,
       "entryDate": "2026-08-19",
-      "entryPrice": 170.00,
-      "shares": 0.5882,
+      "entryPrice": 171.03,
+      "shares": 0.58469,
       "amountUsd": 100,
-      "stop": 139.40,
+      "stop": 140.24,
       "stopPct": -18,
       "riskUsd": 18,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
@@ -94,7 +94,7 @@
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Cuarta posición real. Primera del tier ⭐⭐ STACK (confluencia EMA+setup-9 + DEBAJO EMA200). Entrada ANTICIPADA (aún no cruza, falta ~0.56%). Máxima prioridad del sistema, la config más robusta del backtest (sin-top5% 3.64). Elegida por el tier, no por la empresa."
+      "notas": "Cuarta posición real. Primera del tier ⭐⭐ STACK (confluencia EMA+setup-9 + DEBAJO EMA200). Entrada ANTICIPADA (aún no cruza, falta ~0.56%). Máxima prioridad del sistema, la config más robusta del backtest (sin-top5% 3.64). Elegida por el tier, no por la empresa. RECONCILIADO 2026-08-22: entrada real 171.03 (antes 170.00), stop recalculado."
     },
     {
       "id": "REAL-2026-08-21-LYB",
@@ -106,18 +106,18 @@
       "signalDate": "2026-08-21",
       "signalPrice": 68.10,
       "entryDate": "2026-08-21",
-      "entryPrice": 68.10,
-      "shares": 1.4684,
-      "amountUsd": 100,
-      "stop": 55.84,
+      "entryPrice": 68.95,
+      "shares": 1.68296,
+      "amountUsd": 116.04,
+      "stop": 56.54,
       "stopPct": -18,
-      "riskUsd": 18,
+      "riskUsd": 20.89,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
       "status": "open",
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Quinta posición real. Tier ⭐⭐ STACK (confluencia + DEBAJO EMA200), 9 hace 4 velas, verificada en vivo. Entrada ANTICIPADA muy cerca del cruce (falta ~1.55%). Elegida por el tier (máxima convicción), no por la empresa. Nos lleva a 5 posiciones (hacia las 6-8 que diversifican). Caveat: confluencia régimen-dependiente."
+      "notas": "Quinta posición real. Tier ⭐⭐ STACK (confluencia + DEBAJO EMA200), 9 hace 4 velas, verificada en vivo. Elegida por el tier (máxima convicción), no por la empresa. Nos lleva a 5 posiciones. Caveat: confluencia régimen-dependiente. RECONCILIADO 2026-08-22: entrada real 68.95 (antes 68.10) y tamaño real ~$116.04 (usuario confirma intención de $100 — diferencia sin explicar, no es apalancamiento: G/P%=precio% 1:1). Stop y riskUsd recalculados sobre datos reales."
     }
   ]
 }
