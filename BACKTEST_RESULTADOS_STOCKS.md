@@ -660,3 +660,17 @@ CONCLUSIONES: (1) siguen ~EQUIVALENTES por régimen, ninguno domina decisivament
 TP fijo por régimen (CAGR): sin-TP H1 12.0%/H2 16.1% · TP+25% H1 27.9%/H2 12.1% · TP+50% 11.7/10.9 · TP+100% 11.9/16.1.
 CONCLUSIÓN TP: el TP+25% que brillaba full-sample (26.4% CAGR) era ARTEFACTO DE RÉGIMEN — genial en 2016-21 (27.9%) pero PEOR que sin-TP en 2021-26 (12.1% vs 16.1%). En el régimen actual/relevante, SIN TP (dejar correr hasta cruce contrario) gana o empata. NO añadir TP fijo. Confirma la regla validada y la disciplina de no fiarse de números in-sample sin desglose por régimen.
 PROYECCIÓN $600 (6×$100), sin TP, CAGR base 14.8% pero INFLADO por supervivencia → escenarios con haircut: malo (3.7%) $600→$719 en 5y · base (haircut 50%, 7.4%) →$857 · bueno (12.5%) →$1083. ⚠️ NO predicción; varianza -30%..+60% anual; fricciones (comisiones/impuestos) recortan más; haircut 50% es asunción. Realista 5y: ~$700-1100. El valor está en componer disciplina + escalar capital cuando el forward confirme + track record para copiadores.
+
+## REVIEW de parámetros con disciplina OOS (2026-08-21)
+
+**VOLUMEN — NO ayuda** (`backtest_volume.mjs`, OOS por régimen). Todos los filtros de volumen empeoran vs sin-filtro, en full-sample Y en H2 (régimen actual): vol>media20 (la "confirmación" clásica) baja H2 de PF 5.05→3.18 y recorta la muestra a la mitad. Lógica: el sistema compra suelos sobrevendidos (capitulación = volumen BAJO); exigir volumen alto filtra los rebotes silenciosos que funcionan. Confirma literatura académica (momentum de precio funciona sin volumen). NO añadir.
+
+**LONGITUDES EMA** (`backtest_ema_lengths.mjs`, sweep OOS). Actual 8/21: FULL PF 3.59, sin5% 1.53, H1 2.50, H2 5.05.
+| pareja | FULL PF/sin5% | H1 | H2 |
+|---|---|---|---|
+| 8/21 (actual) | 3.59 / 1.53 | 2.50 | 5.05 |
+| **10/30** | **4.15 / 1.89** | **3.35** | **5.16** |
+| 13/34 | 4.77 / 2.23 | 5.38 | 4.15 (peor H2) |
+| 12/26, 8/34, 9/26 | mixtas | | |
+
+HALLAZGO: **10/30 bate a 8/21 en AMBAS mitades Y es más robusto** (sin-top5% 1.53→1.89 = menos dependiente de outliers, justo nuestra debilidad). Es candidato OOS-robusto REAL (no artefacto: EMAs más lentas = menos whipsaw, menos señales más limpias). 13/34 = régimen-tradeoff (genial H1, peor H2) → NO dominante. ⚠️ NO aplicado: cambiar el EMA base obliga a RE-VALIDAR toda la pila (confluencia, DeMark overlay, debajo-200, stop, ventana) sobre 10/30 + actualizar radar/Pine/dashboard/indicador. Y es UNA sola partición OOS (falta walk-forward multi-ventana). Decisión del usuario. Otros params ya validados: stop -18%, ventana confluencia 8, debajo-200.
