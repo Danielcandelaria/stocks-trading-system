@@ -94,6 +94,10 @@ function snapshot() {
   const pnl = rd('pnl_live.json') || { positions: [] };
   const px = t => (pnl.positions.find(p => p.ticker === t) || {}).current ?? null;
   const real = ((rd('trades_real.json') || {}).trades || []).map(t => {
+    if (t.status === 'closed') {
+      // cerrada: el resultado REAL (retPct/exitPrice) manda, nunca recalcular con precio en vivo
+      return { ...t, current: t.exitPrice ?? null, pnlPct: t.retPct ?? null, toStopPct: null, pendiente: false };
+    }
     const cur = px(t.ticker);
     const base = t.entryPrice ?? t.signalPrice;
     return { ...t, current: cur,

@@ -24,6 +24,14 @@ const positions = [
   ...load('journal_emacross_mid.json', []).filter(p => p.status === 'open').map(p => ({ ...p, strategy: 'EMACrossMid' })),
 ];
 
+// GARANTÍA: toda posición REAL (dinero real) tiene precio en vivo, esté o no en los journals de
+// paper trading. Antes dependía de coincidencia casual de ticker (BR no estaba en ninguno → null).
+const realCovered = new Set(positions.map(p => p.ticker));
+for (const t of load('trades_real.json', { trades: [] }).trades.filter(t => t.status === 'open')) {
+  if (realCovered.has(t.ticker)) continue;
+  positions.push({ ticker: t.ticker, tv: t.tv, sector: t.sector, strategy: 'RealOnly', entryPx: t.entryPrice, stop: t.stop, signalT: null });
+}
+
 const out = [];
 for (const p of positions) {
   const cur = await price(p.ticker); await sleep(90);
