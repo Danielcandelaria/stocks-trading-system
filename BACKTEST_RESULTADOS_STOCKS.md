@@ -674,3 +674,14 @@ PROYECCIÓN $600 (6×$100), sin TP, CAGR base 14.8% pero INFLADO por supervivenc
 | 12/26, 8/34, 9/26 | mixtas | | |
 
 HALLAZGO: **10/30 bate a 8/21 en AMBAS mitades Y es más robusto** (sin-top5% 1.53→1.89 = menos dependiente de outliers, justo nuestra debilidad). Es candidato OOS-robusto REAL (no artefacto: EMAs más lentas = menos whipsaw, menos señales más limpias). 13/34 = régimen-tradeoff (genial H1, peor H2) → NO dominante. ⚠️ NO aplicado: cambiar el EMA base obliga a RE-VALIDAR toda la pila (confluencia, DeMark overlay, debajo-200, stop, ventana) sobre 10/30 + actualizar radar/Pine/dashboard/indicador. Y es UNA sola partición OOS (falta walk-forward multi-ventana). Decisión del usuario. Otros params ya validados: stop -18%, ventana confluencia 8, debajo-200.
+
+## ⚠️ DECISIÓN FINAL — EMA 10/30: NO migrar (re-examen crítico, 2026-08-22)
+
+Al re-examinar `backtest_1030_revalidate.mjs` con más escepticismo (no solo mirar PF/robustez agregados):
+1. **10/30 da 25-40% MENOS señales** en las 3 capas (1572→1175 base, 223→147 conf, 29→17 stack). Con capital limitado, menos señales = peor despliegue/diversificación (Grinold). No capturado por el PF.
+2. **La MEDIANA empeora** en base y confluencia (−2.2→−2.8%, −1.8→−2.7%): el trade típico es MÁS rojo, ganancia más lumpy → mayor riesgo psicológico de abandono (riesgo #1 de REALIDAD_DINERO_REAL.md).
+3. **Justo en confluencia (la capa que SÍ operamos), el walk-forward EMPEORA** (4/4→3/4). BR y LYB (posiciones reales) son STACK — ahí no hay mejora clara, hay degradación de robustez.
+4. **Stack n=17** (vs 29) — muestra demasiado pequeña para concluir nada; el "PF 9.36" es ruido, no señal.
+5. Coste de cambio real: reescribir radar + 2 Pine strategies (nombradas literalmente "8_21") + dashboard + docs, sobre UNA sola partición OOS (no walk-forward multi-corte).
+
+VEREDICTO: NO migrar. Mejora agregada que se diluye/revierte justo donde se opera con dinero real, con coste de cambio alto. Se mantiene EMA 8/21. Descartado (no "pendiente"). Lección: un backtest "gana en el agregado" no basta — hay que mirar si gana en la capa donde realmente se despliega capital.
