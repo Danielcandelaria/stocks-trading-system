@@ -92,6 +92,29 @@
       "exitPrice": null,
       "retPct": null,
       "notas": "Cuarta posición real. Primera del tier ⭐⭐ STACK (confluencia EMA+setup-9 + DEBAJO EMA200). Entrada ANTICIPADA (aún no cruza, falta ~0.56%). Máxima prioridad del sistema, la config más robusta del backtest (sin-top5% 3.64). Elegida por el tier, no por la empresa."
+    },
+    {
+      "id": "REAL-2026-08-21-LYB",
+      "ticker": "LYB",
+      "tv": "NYSE:LYB",
+      "sector": "Process Industries",
+      "direction": "LONG",
+      "system": "Confluencia-STACK",
+      "signalDate": "2026-08-21",
+      "signalPrice": 68.10,
+      "entryDate": "2026-08-21",
+      "entryPrice": 68.10,
+      "shares": 1.4684,
+      "amountUsd": 100,
+      "stop": 55.84,
+      "stopPct": -18,
+      "riskUsd": 18,
+      "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
+      "status": "open",
+      "exitDate": null,
+      "exitPrice": null,
+      "retPct": null,
+      "notas": "Quinta posición real. Tier ⭐⭐ STACK (confluencia + DEBAJO EMA200), 9 hace 4 velas, verificada en vivo. Entrada ANTICIPADA muy cerca del cruce (falta ~1.55%). Elegida por el tier (máxima convicción), no por la empresa. Nos lleva a 5 posiciones (hacia las 6-8 que diversifican). Caveat: confluencia régimen-dependiente."
     }
   ]
 }
