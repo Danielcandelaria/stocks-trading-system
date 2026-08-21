@@ -653,3 +653,10 @@ DOS conclusiones: (1) la DIRECCIÓN tight se confirma OOS (óptimo 6 en mitad-1,
 | Conf-9 confirmado | 6.95 / −1.2% | 2.64 / −5.0% (n75) | 12.85 / +3.6% (n96) |
 
 CONCLUSIONES: (1) siguen ~EQUIVALENTES por régimen, ninguno domina decisivamente → confirmado OOS. (2) MATIZ: EMA sola favorece ANTICIPADO en ambas mitades (mejor mediana); la CONFLUENCIA favorece CONFIRMADO en ambas mitades (PF 2.64>2.11 en H1, 12.85>11.40 en H2) — pero muestras pequeñas (n75-112, ruidoso). (3) LO GRANDE: el RÉGIMEN eclipsa la decisión de timing — en H1 (malo) AMBOS son mediocres (PF 2.1-2.6, mediana −4.5 a −5%); en H2 ambos brillan. La elección anticipado/confirmado importa MUCHO menos que el régimen. IMPLICACIÓN dinero real: para el tier CONFLUENCIA/STACK, el CONFIRMADO es marginalmente más robusto Y evita el ~12% de falsas anticipaciones → ligera ventaja a esperar el cruce, sobre todo en señales lejos de cruzar. Diferencia pequeña; ni anticipar ni confirmar te salva en régimen malo.
+
+## ¿AYUDA UN TP FIJO? NO (OOS) + proyección honesta $100×N (2026-08-21)
+
+`backtest_tp_projection.mjs` — cartera 6 posiciones, señales EMA antic + DeMark, 10y.
+TP fijo por régimen (CAGR): sin-TP H1 12.0%/H2 16.1% · TP+25% H1 27.9%/H2 12.1% · TP+50% 11.7/10.9 · TP+100% 11.9/16.1.
+CONCLUSIÓN TP: el TP+25% que brillaba full-sample (26.4% CAGR) era ARTEFACTO DE RÉGIMEN — genial en 2016-21 (27.9%) pero PEOR que sin-TP en 2021-26 (12.1% vs 16.1%). En el régimen actual/relevante, SIN TP (dejar correr hasta cruce contrario) gana o empata. NO añadir TP fijo. Confirma la regla validada y la disciplina de no fiarse de números in-sample sin desglose por régimen.
+PROYECCIÓN $600 (6×$100), sin TP, CAGR base 14.8% pero INFLADO por supervivencia → escenarios con haircut: malo (3.7%) $600→$719 en 5y · base (haircut 50%, 7.4%) →$857 · bueno (12.5%) →$1083. ⚠️ NO predicción; varianza -30%..+60% anual; fricciones (comisiones/impuestos) recortan más; haircut 50% es asunción. Realista 5y: ~$700-1100. El valor está en componer disciplina + escalar capital cuando el forward confirme + track record para copiadores.
