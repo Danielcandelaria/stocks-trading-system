@@ -23,10 +23,21 @@ por backtest validado o por los papers; lo que es asunción, se dice.
 - **Cero forward real de un ciclo completo.** Estamos en el minuto 1. El backtest es hipótesis; el forward es el juez.
 
 ## 🔴 RIESGOS CONCRETOS A TU DINERO AHORA
-- **4 posiciones reales** (NU, SYK, TPG, BR) < las 6-8 recomendadas → poca diversificación de la cola.
 - **NU y SYK = pegadas / baja convicción** (peor tercil del ranking, mediana breakeven).
 - **Riesgo psicológico #1: abandonar el sistema en la racha roja** (que VENDRÁ). Ese es el error que
   mata el edge, no el mercado. La disciplina es el activo.
+
+## ⚡ INCIDENTE REAL — apalancamiento oculto (SYK, 2026-08-21)
+Se cerró SYK con **−18.11% de cuenta** creyendo que era el stop del sistema. Diagnóstico: la posición
+era **CFD con apalancamiento x2 sin saberlo**. El movimiento REAL del precio fue solo **−9.05%**
+(348.80→317.22) — con 1x, la posición seguiría abierta hoy (precio ~$327, solo −6% desde entrada).
+El −18% del sistema está calibrado para **precio 1x**; con 2x sin saberlo, el stop de cuenta salta a
+mitad de camino del stop real diseñado → sales antes de tiempo, sistemáticamente, en TODAS las
+posiciones que tengan el mismo problema. Esto invalida el sizing/backtest de esa posición concreta.
+**ACCIÓN OBLIGATORIA antes de cada entrada: verificar apalancamiento = 1x explícitamente en el
+bróker.** No asumir. Confirmado 2026-08-21: NU/TPG/BR/LYB están en 1x (sin apalancar) — solo SYK
+tuvo el problema, ya cerrada y corregida en el ledger con los datos reales de la cuenta (no la
+estimación previa).
 
 ## 🛡️ LA DISCIPLINA (no negociable con dinero real)
 1. NADA al sistema en vivo sin confirmación **out-of-sample**.
