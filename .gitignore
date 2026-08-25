@@ -27,3 +27,5 @@ pnl.log
 *.bak-preRSI2del
 dashboard.log
 radar_live.json
+seen_confluence.json
+dashboard_health.json

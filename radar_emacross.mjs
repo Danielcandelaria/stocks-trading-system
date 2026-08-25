@@ -82,7 +82,10 @@ function analyze(bars) {
   // ¿debajo de la EMA200? (reversión profunda = el mejor cubo del backtest). null si <200 velas.
   const e200 = closed.length >= 200 ? ema(cl, 200) : null;
   const below200 = e200 ? liveClose < e200[n] : null;
-  return { px: liveClose, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200 };
+  // distancia % a la EMA200 (negativa = por debajo). Cuando |dist200| es pequeña el ticker está
+  // EN LA FRONTERA → salta entre STACK ⭐⭐ y CONFLUENCIA ⭐ con cualquier movimiento pequeño.
+  const dist200 = e200 ? ((liveClose - e200[n]) / e200[n]) * 100 : null;
+  return { px: liveClose, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200, dist200 };
 }
 
 (async () => {
@@ -92,7 +95,7 @@ function analyze(bars) {
     let bars; try { bars = await getWeekly(u.ticker); await sleep(120); } catch { errs++; continue; }
     if (!bars) continue;
     const a = analyze(bars); if (!a) continue;
-    const { px, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200 } = a;
+    const { px, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200, dist200 } = a;
 
     // dirección del cruce que se aproxima (según el signo del hueco al cierre)
     const longSide = gapC < 0;   // EMA8 debajo → cruce alcista pendiente
@@ -116,7 +119,7 @@ function analyze(bars) {
     else if (converging && gLive < GAPMAX) level = 2;     // ⏳ acercándose
     else continue;
 
-    hits.push({ ticker: u.ticker, tv: u.tv, dir: 'LONG', px, level, gLive: gLive * 100, ext, weeks, conf9: !!conf9, bars9, below200 });
+    hits.push({ ticker: u.ticker, tv: u.tv, dir: 'LONG', px, level, gLive: gLive * 100, ext, weeks, conf9: !!conf9, bars9, below200, dist200 });
     if (++done % 60 === 0) process.stderr.write(`  …revisadas ${done}\n`);
   }
 
@@ -128,7 +131,12 @@ function analyze(bars) {
   const dot = e => e < 3 ? '·' : e < 6 ? '•' : '‣';
 
   const LV = ['🟢 YA CRUZADO', '⚡ A PUNTO', '⏳ ACERCÁNDOSE'];
-  const L = hits.filter(h => h.dir === 'LONG'), S = hits.filter(h => h.dir === 'SHORT');
+  // NO avisar por Telegram de tickers en los que YA estás dentro (posiciones reales abiertas).
+  // El usuario recibía señales de nombres que ya tiene → filtrar contra trades_real.json.
+  const heldReal = new Set(((load('trades_real.json', {}).trades) || [])
+    .filter(t => t.status === 'open').map(t => String(t.ticker).toUpperCase()));
+  const notHeld = h => !heldReal.has(String(h.ticker).toUpperCase());
+  const L = hits.filter(h => h.dir === 'LONG' && notHeld(h)), S = hits.filter(h => h.dir === 'SHORT');
   console.log(`RADAR: ${hits.length} · LONG ${L.length} (🔥${L.filter(h=>h.level===0).length} ⚡${L.filter(h=>h.level===1).length} ⏳${L.filter(h=>h.level===2).length}) · SHORT ${S.length} · ${errs} err`);
   for (const h of hits) console.log(`  ${LV[h.level].padEnd(16)} ${h.dir.padEnd(5)} ${h.ticker.padEnd(6)} $${h.px.toFixed(2)}  ext ${dot(h.ext)}${h.ext.toFixed(1)}%`);
 
@@ -141,7 +149,7 @@ function analyze(bars) {
       let tk = L.filter(h => h.level === lv).map(h => ({
         ticker: h.ticker, tv: h.tv, price: +h.px.toFixed(2), extPct: +h.ext.toFixed(1),
         gapPct: +h.gLive.toFixed(2), tvCrossed: h.tvCrossed ?? null, weeks: h.weeks ?? null,
-        conf9: !!h.conf9, bars9: h.bars9 ?? null, below200: h.below200 ?? null,   // ⭐ confluencia + ⭐⭐ debajo-200
+        conf9: !!h.conf9, bars9: h.bars9 ?? null, below200: h.below200 ?? null, dist200: h.dist200 ?? null,   // ⭐ confluencia + ⭐⭐ debajo-200 (+ distancia a la 200)
       }));
       // anticipación (nivel 1 y 2): ordenar por CERCANÍA al cruce (menos hueco que cerrar, primero)
       if (lv >= 1) tk = tk.sort((a, b) => a.gapPct - b.gapPct);

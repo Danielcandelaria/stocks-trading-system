@@ -685,3 +685,19 @@ Al re-examinar `backtest_1030_revalidate.mjs` con más escepticismo (no solo mir
 5. Coste de cambio real: reescribir radar + 2 Pine strategies (nombradas literalmente "8_21") + dashboard + docs, sobre UNA sola partición OOS (no walk-forward multi-corte).
 
 VEREDICTO: NO migrar. Mejora agregada que se diluye/revierte justo donde se opera con dinero real, con coste de cambio alto. Se mantiene EMA 8/21. Descartado (no "pendiente"). Lección: un backtest "gana en el agregado" no basta — hay que mirar si gana en la capa donde realmente se despliega capital.
+
+## WeeklySwing — Stop -18% → -25% CONFIRMADO OOS (2026-08-22)
+
+`backtest_ref_demark_stop.mjs` (barrido -12..30%) + `backtest_ref_demark_stop_oos.mjs` (verificación adversarial OOS):
+
+| stop | H1 PF | H1 med | H1 PF-sin5% | H1 WR | H2 PF | H2 med | H2 PF-sin5% | H2 WR |
+|------|-------|--------|-------------|-------|-------|--------|-------------|-------|
+| -18% (actual) | 1.83 | +5.4% | 1.31 | 56% | 3.19 | +11.6% | 2.40 | 62% |
+| **-25%** | **2.14** | **+8.6%** | **1.60** | **65%** | 3.15 | **+12.9%** | **2.46** | **66%** |
+| -30% | 2.12 | +8.6% | 1.58 | 68% | 3.89 | +13.6% | 3.06 | 71% |
+
+CONFIRMADO OOS en AMBAS mitades: -25% bate a -18% en mediana, PF-sin5%, WR. Meseta 15-30% (no pico aislado). -25% elegido como punto medio (no -30% para limitar pérdida por trade).
+
+**Caveat sizing:** con stop -25%, la pérdida por trade fallido sube 39% (de $18 a $25 sobre $100). Para mantener riesgo constante por operación, el tamaño por posición debe bajar de ~$100 a ~$72 (= $18 de riesgo / 0.25). O mantener $100 y aceptar riesgo de $25/trade.
+
+⇒ APLICADO en `scanner_weekly.mjs` (CAT=0.25) y `CARTERA_ASIMETRICA.md`.

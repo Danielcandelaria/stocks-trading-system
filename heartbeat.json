@@ -4,24 +4,24 @@
     "ok": 1
   },
   "radar": {
-    "at": "2026-08-18T12:02:12.871Z",
-    "yaCruzado": 49,
-    "aPunto": 6,
-    "acercandose": 24
+    "at": "2026-08-25T12:02:09.242Z",
+    "yaCruzado": 38,
+    "aPunto": 4,
+    "acercandose": 22
   },
   "weekly": {
-    "at": "2026-08-18T07:11:37.315Z",
+    "at": "2026-08-25T07:43:43.130Z",
     "nuevas": 0,
     "universo": 495
   },
   "emacross": {
-    "at": "2026-08-18T07:20:22.814Z",
+    "at": "2026-08-25T07:50:00.641Z",
     "nuevas": 0,
     "cierres": 0,
     "universo": 495
   },
   "emacrossmid": {
-    "at": "2026-08-18T07:22:47.640Z",
+    "at": "2026-08-25T07:52:17.123Z",
     "nuevas": 0,
     "universo": 679
   }
