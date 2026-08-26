@@ -37,9 +37,14 @@ function snapshot() {
   const held = new Set(((rd('trades_real.json') || {}).trades || [])
     .filter(t => t.status === 'open' || t.status === 'closed')
     .map(t => t.ticker.toUpperCase()));
+  // ── Guardarraíl de SECTOR: cruza el universo para saber el sector de cada candidata ──
+  const _uniRaw = rd('universe.json');
+  const _uni = Array.isArray(_uniRaw) ? _uniRaw : (_uniRaw?.universe || []);
+  const SECT = Object.fromEntries(_uni
+    .filter(u => u && u.ticker).map(u => [u.ticker.toUpperCase(), u.sector || null]));
   const lv = i => (radar?.levels?.[i]?.tickers || [])
     .filter(t => !held.has(t.ticker.toUpperCase()))
-    .map(t => ({ ...t, stop: +(t.price * (1 - SL_PCT)).toFixed(2) }));
+    .map(t => ({ ...t, sector: SECT[t.ticker.toUpperCase()] || null, stop: +(t.price * (1 - SL_PCT)).toFixed(2) }));
   const cross0 = lv(0).filter(t => t.weeks === 0);
   // ⭐ CONFLUENCIA: cruce/anticipación EMA CON un setup-9 reciente debajo (backtest PF 4.28 > 3.24).
   const confAll = [
@@ -59,20 +64,41 @@ function snapshot() {
   const p3 = noC(cross0.filter(t => (t.extPct ?? 0) >= 8 && (t.extPct ?? 0) < 15)).sort((a, b) => b.extPct - a.extPct); // fuerza media
   const pegadas = noC(cross0.filter(t => (t.extPct ?? 0) < 8)).sort((a, b) => b.extPct - a.extPct);    // cruzadas pegadas (EVITAR)
   const vigilar = noC(lv(2)).slice().sort((a, b) => a.gapPct - b.gapPct);                              // anticipación temprana (banda 2%)
+
+  // ── GUARDARRAÍL DE SECTOR (regla del manual: máx 2 posiciones por sector) ──
+  //   Cuenta arranca en tus posiciones REALES abiertas y va sumando por prioridad.
+  //   'cap' = esta candidata sería la 2ª del sector (límite). 'breach' = la 3ª+ (rompe el cap).
+  const SECT_CAP = 2;
+  const realOpen = ((rd('trades_real.json') || {}).trades || []).filter(t => t.status === 'open');
+  const runSect = {};
+  for (const t of realOpen) { const s = t.sector || SECT[t.ticker.toUpperCase()]; if (s) runSect[s] = (runSect[s] || 0) + 1; }
+  const sectorBase = { ...runSect };   // concentración YA existente (solo reales), para la alerta
+  const tagSect = arr => arr.map(t => {
+    const s = t.sector; let sectorWarn = null;
+    if (s) { const before = runSect[s] || 0; sectorWarn = before >= SECT_CAP ? 'breach' : (before === SECT_CAP - 1 ? 'cap' : null); runSect[s] = before + 1; }
+    return { ...t, sectorWarn };
+  });
+  // Etiquetar en orden de prioridad (la cuenta acumulada refleja lo que añadirías bajando la escalera).
+  const [stackT, confT, p1T, p2T, p3T, vigilarT] = [stack, conf, p1, p2, p3, vigilar].map(tagSect);
+  // Alerta de sistema: sectores ya al límite o pasados SOLO con tus posiciones reales.
+  const sectorGuard = Object.entries(sectorBase).filter(([, n]) => n >= SECT_CAP)
+    .map(([s, n]) => ({ sector: s, count: n })).sort((a, b) => b.count - a.count);
+
   const emacross = {
     id: 'EMACross', emoji: '🔵', name: 'EMACROSS',
     subtitle: 'Cruce EMA 8/21 · gráfico SEMANAL · large-caps',
     tv: { tf: 'Semanal (1W)', ind: 'EMA 8/21 · Entradas, Salidas y Anticipación', mira: 'la etiqueta verde COMPRA / el triángulo lima CRUCE CERCA (EMA8 naranja acercándose a la EMA21 azul)' },
     entrada: 'Anticipada (antes del cruce) o cruce EMA8>EMA21', salida: 'Cruce contrario (dejar correr)', stop: '−18% del precio de entrada',
     groups: [
-      { key: 'stack', label: '⭐⭐ STACK · PRIORIDAD ABSOLUTA', hint: 'confluencia + DEBAJO EMA200 = reversión profunda, lo más robusto (sin-top5% 3.64)', items: stack },
-      { key: 'conf', label: '⭐ CONFLUENCIA · máxima prioridad', hint: 'cruce EMA + setup-9 reciente debajo (encima de la 200)', items: conf },
-      { key: 'p1', label: '🎯 PRIORIDAD 1 · ENTRAR AHORA — anticipada', hint: 'entra ANTES del cruce = más barato (el backtest gana aquí, PF 2.52)', items: p1 },
-      { key: 'p2', label: '🎯 PRIORIDAD 2 · ENTRAR AHORA — cruzada FUERTE', hint: 'ya cruzó pero merece la pena por fuerza (ext ≥15%)', items: p2 },
-      { key: 'p3', label: 'También válidas · fuerza media', hint: 'cruzadas con fuerza 8-15%', items: p3 },
-      { key: 'vigilar', label: 'VIGILAR · anticipación temprana', hint: 'convergiendo (banda 2%) — pueden pasar a Prioridad 1 cualquier día', items: vigilar },
+      { key: 'stack', label: '⭐⭐ STACK · PRIORIDAD ABSOLUTA', hint: 'confluencia + DEBAJO EMA200 = reversión profunda, lo más robusto (sin-top5% 3.64)', items: stackT },
+      { key: 'conf', label: '⭐ CONFLUENCIA · máxima prioridad', hint: 'cruce EMA + setup-9 reciente debajo (encima de la 200)', items: confT },
+      { key: 'p1', label: '🎯 PRIORIDAD 1 · ENTRAR AHORA — anticipada', hint: 'entra ANTES del cruce = más barato (el backtest gana aquí, PF 2.52)', items: p1T },
+      { key: 'p2', label: '🎯 PRIORIDAD 2 · ENTRAR AHORA — cruzada FUERTE', hint: 'ya cruzó pero merece la pena por fuerza (ext ≥15%)', items: p2T },
+      { key: 'p3', label: 'También válidas · fuerza media', hint: 'cruzadas con fuerza 8-15%', items: p3T },
+      { key: 'vigilar', label: 'VIGILAR · anticipación temprana', hint: 'convergiendo (banda 2%) — pueden pasar a Prioridad 1 cualquier día', items: vigilarT },
     ],
     pegadas: pegadas.map(t => t.ticker),   // cruzadas pegadas (ext<8%) — se muestran como nota, NO como señal
+    sectorGuard,   // sectores ya al límite (≥2) con posiciones reales → aviso de concentración
     lastRun: beats.radar?.at || null,
   };
 
@@ -205,6 +231,10 @@ h1{font-size:23px;font-weight:600;margin:0 0 6px}
 .chip .m b{color:var(--tx);font-weight:600}
 .badge{font-size:11px;padding:1px 6px;border-radius:5px;white-space:nowrap}
 .badge.frontera{background:rgba(210,153,34,.15);color:var(--warn);border:1px solid rgba(210,153,34,.35)}
+.chip .sec{color:var(--mut);font-size:11px;opacity:.8}
+.badge.sec-cap{background:rgba(210,153,34,.15);color:var(--warn);border:1px solid rgba(210,153,34,.35)}
+.badge.sec-breach{background:rgba(248,81,73,.15);color:#f85149;border:1px solid rgba(248,81,73,.4)}
+.banner.sect{background:rgba(248,81,73,.09);border:1px solid rgba(248,81,73,.35)}
 @media(max-width:640px){.wrap{padding:14px 10px 40px}.hd,.chips,.gh,.foot,.banner,.key{padding-left:14px;padding-right:14px}.banner,.key{margin-left:0;margin-right:0}.gh .rule{max-width:100%;margin-left:0;text-align:left;width:100%}}
 </style></head><body><div class="wrap">
 <h1>📊 Acciones</h1>
@@ -272,6 +302,10 @@ async function load(){
     const banner = (s.id==='EMACross' && d.definitive!=null) ? (d.definitive===false
       ? '<div class="banner prov">⚠️<div><b>PROVISIONAL — semana en curso.</b> Cada corrida recalcula los estados con el <b>precio EN VIVO</b>. Un ticker cerca de un umbral (el cruce, la EMA200 o la ventana de 8 velas) <b>puede cambiar de grupo el mismo día</b> — es normal, no un fallo. Solo el <b>cierre del viernes</b> es firme; ahí se disparan las entradas reales.</div></div>'
       : '<div class="banner def">✅<div><b>DEFINITIVO — cierre del viernes.</b> Los estados de esta corrida son firmes: no cambian hasta el próximo cierre semanal.</div></div>') : '';
+    // ── BANNER de concentración por sector (regla del manual: máx 2/sector) ──
+    const sg = (s.id==='EMACross' && s.sectorGuard) ? s.sectorGuard : [];
+    const sectorBanner = sg.length ? '<div class="banner sect">🚫<div><b>Concentración por sector.</b> Ya tienes al límite (o pasado) el máximo de 2 posiciones por sector del manual en: '+
+      sg.map(g=>'<b>'+esc(g.sector)+'</b> ('+g.count+')').join(', ')+'. Las candidatas de esos sectores salen marcadas 🚫 abajo — evita añadir más ahí.</div></div>' : '';
     // ── CLAVE de criterios (desplegable) ──
     const keyRows = s.id==='EMACross' ? [
       ['⭐⭐ STACK','Cruce/anticipación EMA 8/21 <b>+ setup-9 DeMark</b> (≤8 velas) <b>+ precio DEBAJO de la EMA200</b>. Reversión profunda = el cubo más robusto del backtest.'],
@@ -304,6 +338,9 @@ async function load(){
         if(cross&&t.extPct!=null) m.push('<span class="m">'+fdot(t.extPct)+' fuerza <b>+'+t.extPct+'%</b></span>');
         if(t.conf9&&t.bars9!=null) m.push('<span class="m">9 hace <b>'+t.bars9+'v</b></span>');
         if(d2!=null) m.push('<span class="m"><b>'+(d2>=0?'+':'')+d2.toFixed(1)+'%</b> vs 200</span>');
+        if(t.sector) m.push('<span class="sec">'+esc(t.sector)+'</span>');
+        if(t.sectorWarn==='breach') m.push('<span class="badge sec-breach" title="Ya tienes 2+ posiciones en '+esc(t.sector)+' → entrar aquí ROMPE el cap de 2/sector del manual">🚫 sector lleno</span>');
+        else if(t.sectorWarn==='cap') m.push('<span class="badge sec-cap" title="Sería la 2ª posición en '+esc(t.sector)+' (límite del manual: máx 2/sector)">⚠ 2º en sector</span>');
         if(frontera) m.push('<span class="badge frontera" title="A menos de 1.5% de la EMA200 → puede saltar entre STACK ⭐⭐ y CONFLUENCIA ⭐">⚠ frontera</span>');
         return '<div class="chip'+(prime?' big':'')+(t.conf9?' conf':'')+(isStack?' stack':'')+'">'+
           (star?'<span class="star">'+star+'</span>':'')+
@@ -333,7 +370,7 @@ async function load(){
       '<div class="hd"><h2>'+s.emoji+' '+esc(s.name)+'</h2><div class="st">'+esc(s.subtitle)+'</div>'+
       '<div class="tvline">📈 <b>En TradingView:</b> gráfico <b>'+esc(s.tv.tf)+'</b> + indicador <b>'+esc(s.tv.ind)+'</b><br><span class="k">→ mira '+esc(s.tv.mira)+'</span></div>'+
       '<div class="rl"><span>📍 Entra: <b>'+esc(s.entrada)+'</b></span><span>🚪 Sale: <b>'+esc(s.salida)+'</b></span><span>🛑 Stop: <b>'+esc(s.stop)+'</b></span></div>'+
-      banner+keyBox+
+      banner+sectorBanner+keyBox+
       '</div>'+grupos+pegNote+enCurso+
       '<div class="foot">Última revisión: '+hace(s.lastRun)+(s.older?' · '+s.older+' señales antiguas ocultas (ya no operables)':'')+'</div>'+
     '</div>';
