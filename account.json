@@ -1,0 +1,8 @@
+{
+  "_nota": "Estado de la cuenta REAL (eToro) para el sizing mecánico. Actualízalo con los números del extracto cuando cambien. valorTotal = base de sizing; disponible = caja libre para entrar.",
+  "broker": "eToro",
+  "valorTotal": 963.58,
+  "invertido": 705.97,
+  "disponible": 266.42,
+  "actualizado": "2026-08-26"
+}
