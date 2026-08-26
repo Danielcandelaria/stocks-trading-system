@@ -701,3 +701,19 @@ CONFIRMADO OOS en AMBAS mitades: -25% bate a -18% en mediana, PF-sin5%, WR. Mese
 **Caveat sizing:** con stop -25%, la pérdida por trade fallido sube 39% (de $18 a $25 sobre $100). Para mantener riesgo constante por operación, el tamaño por posición debe bajar de ~$100 a ~$72 (= $18 de riesgo / 0.25). O mantener $100 y aceptar riesgo de $25/trade.
 
 ⇒ APLICADO en `scanner_weekly.mjs` (CAT=0.25) y `CARTERA_ASIMETRICA.md`.
+
+---
+
+## A/B Histéresis de salida — EMACross (2026-08-26) — REFUTADO
+
+**Hipótesis:** en lateral, salir "al primer roce" del cruce contrario provoca whipsaw. Probada banda de histéresis H (salir solo cuando EMA8 esté H% por debajo de EMA21) = 0 (actual), 0.5%, 1.0%. Entrada y stop idénticos. 180 acciones, 10y semanal, coste 0.06%/lado. Desglose en 2 mitades (frontera 2021) para cazar overfit. Script: `backtest_exit_hysteresis_ab.mjs`.
+
+**MODO ANTICIPADO (el que se opera) — H=0 GANA en ambas mitades:**
+- H=0 (actual): PF **2.55**, mediana **−2.82%**, WR 39%, dur 20w · mitades PF 3.32/2.09.
+- H=0.5%: PF 2.42 (↓), mediana −4.15% (peor), maxDD peor.
+- H=1.0%: PF 2.38 (↓), mediana −5.04% (peor).
+⇒ La histéresis BAJA el PF y empeora la mediana en las DOS mitades. No reduce whipsaw (la entrada anticipada convergente ya filtra; duración mediana 20w, no hay flip-flop semanal). **NO tocar la salida.**
+
+**MODO CONFIRMADO (no se opera):** H sube PF (2.67→2.97) y baja maxDD, PERO empeora la mediana (−4.38→−5.81) alargando trades (17w→25w) = más dependencia de cola, no un win limpio. Irrelevante porque se opera anticipado.
+
+**Veredicto:** mismo patrón que los filtros de tendencia/momentum/ADX ya refutados — la "mejora obvia" no aporta. Salida se queda como está (cruce contrario al primer roce). Regla de proceso cumplida: A/B en 2 mitades antes de tocar nada; el óptimo (H=0) NO salta entre mitades.
