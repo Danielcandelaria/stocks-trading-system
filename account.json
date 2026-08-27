@@ -1,8 +1,11 @@
 {
   "_nota": "Estado de la cuenta REAL (eToro) para el sizing mecánico. Actualízalo con los números del extracto cuando cambien. valorTotal = base de sizing; disponible = caja libre para entrar.",
   "broker": "eToro",
-  "valorTotal": 963.58,
+  "cuenta": "lahabana (real 8117329)",
+  "valorTotal": 937.45,
   "invertido": 705.97,
-  "disponible": 266.42,
-  "actualizado": "2026-08-26"
+  "disponible": 252.17,
+  "pnlNoRealizado": -20.69,
+  "actualizado": "2026-08-27",
+  "fuente": "eToro API (get-my-portfolio-summary)"
 }
