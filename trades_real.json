@@ -161,16 +161,16 @@
       "entryPrice": 162.37,
       "shares": 0.713801,
       "amountUsd": 115.9,
-      "stop": 133.14,
+      "stop": 132.0,
       "stopPct": -18,
-      "riskUsd": 20.86,
-      "stopSetOnBroker": false,
+      "riskUsd": 21.66,
+      "stopSetOnBroker": true,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
       "status": "open",
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Séptima posición real. Tier ⭐ CONFLUENCIA. RECONCILIADO 2026-08-27 con eToro API (pos 3554329216): entrada real 162.37 (no 161.25), tamaño real $115.90 (no $100). 1x confirmado. 🔴 SIN STOP-LOSS puesto en eToro (solo take-profit) — está sin red. Poner stop −18% a 133.14. stopSetOnBroker=false hasta confirmarlo."
+      "notas": "Séptima posición real. Tier ⭐ CONFLUENCIA. RECONCILIADO 2026-08-27 con eToro API (pos 3554329216): entrada real 162.37 (no 161.25), tamaño real $115.90 (no $100). 1x confirmado. STOP-LOSS puesto en eToro a 132.00 (−18.7%) — verificado por API 2026-08-27. stopSetOnBroker=true."
     },
     {
       "id": "REAL-2026-08-24-DOW",
