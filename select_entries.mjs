@@ -1,148 +1,50 @@
 #!/usr/bin/env node
 // ─────────────────────────────────────────────────────────────────────────────
-// SELECTOR MECÁNICO DE ENTRADAS + SIZING  (elimina la intuición de la entrada)
-//
-// Regla 100% mecánica, sin "feeling":
-//   1. Candidatas = radar EMACross reorganizado por la escalera VALIDADA:
-//      ⭐⭐ STACK  →  ⭐ CONFLUENCIA  →  🎯 P1 (anticipada <0.4%)  →  🎯 P2 (cruzada ext≥15%).
-//      (P3/pegadas/vigilar NO son "entrar ahora" → fuera.)
-//   2. Desempate dentro de cada nivel: por fuerza (ext sobre EMA21).
-//   3. Excluir las que ya tienes (abiertas o cerradas en este ciclo).
-//   4. GUARDARRAÍL DE SECTOR: máx 2 posiciones por sector (cuenta las reales abiertas).
-//   5. LÍMITE DE CARTERA: máx 8 posiciones abiertas (rango del manual 6-8).
-//   6. SIZING ¼ Kelly: cada posición = 2.5% de riesgo con stop 18%  → ~13.9% del capital.
-//      Recorta al efectivo disponible y a no pasar del 100% invertido.
-//   7. Apalancamiento SIEMPRE 1x. Stop catástrofe −18%.
+// SELECTOR MECÁNICO DE ENTRADAS + SIZING  (CLI). Lógica en entry_engine.mjs (compartida
+// con el dashboard). Aquí: lee ficheros, persiste el estado del freno, imprime el informe.
 //
 // NO ejecuta órdenes: imprime QUÉ entrar, CUÁNTO y con qué stop. Tú lo pones en eToro a 1x.
-// Uso:  node select_entries.mjs            (usa account.json)
-//       node select_entries.mjs --json     (salida JSON para el dashboard/telegram)
+// Uso:  node select_entries.mjs         ·  node select_entries.mjs --json
 // ─────────────────────────────────────────────────────────────────────────────
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { selectEntries, frenoState } from './entry_engine.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const rd = f => { try { return JSON.parse(readFileSync(join(ROOT, f), 'utf8')); } catch { return null; } };
 
-// ── Parámetros del manual (NO son de edge; son las reglas de gestión validadas) ──
-const SL_PCT      = 0.18;   // stop catástrofe −18%
-const RISK_FRAC   = 0.025;  // 2.5% de riesgo por trade (¼ Kelly)
-const POS_MIN     = 0.13;   // banda inferior de posición (13%)
-const POS_MAX     = 0.16;   // banda superior (16%)
-const MAX_OPEN    = 8;      // tope de posiciones abiertas (rango 6-8)
-const SECT_CAP    = 2;      // máx posiciones por sector
-const DD_PAUSE    = -25;    // freno de cartera: pausa entradas nuevas al caer -25% desde el pico
-const DD_RESUME   = -15;    // reactiva al recuperar por encima de -15% (histéresis, base Monte Carlo p99)
-
-const acc   = rd('account.json') || {};
-const cap   = +acc.valorTotal || 0;
-const cash  = +acc.disponible || 0;
-
-// ── FRENO DE CARTERA (circuit-breaker por drawdown, con histéresis y estado persistente) ──
-let peak = Math.max(+acc.peakValue || 0, cap);   // el pico nunca baja; sube con nuevos máximos
-let frenoActivo = !!acc.frenoActivo;
-const ddPct = peak > 0 ? +(((cap / peak) - 1) * 100).toFixed(2) : 0;
-if (cap >= peak) frenoActivo = false;                       // nuevo máximo → limpia el freno
-else if (!frenoActivo && ddPct <= DD_PAUSE) frenoActivo = true;   // cae por debajo de -25% → activa
-else if (frenoActivo && ddPct >= DD_RESUME) frenoActivo = false;  // recupera por encima de -15% → desactiva
-// Persistir estado (pico y freno) sin tocar el resto del fichero.
-if (acc && (acc.peakValue !== peak || acc.frenoActivo !== frenoActivo)) {
-  try { writeFileSync(join(ROOT, 'account.json'), JSON.stringify({ ...acc, peakValue: peak, frenoActivo }, null, 2) + '\n'); } catch {}
-}
+const acc = rd('account.json') || {};
 const radar = rd('radar_live.json');
-const uniRaw = rd('universe.json');
-const uni   = Array.isArray(uniRaw) ? uniRaw : (uniRaw?.universe || []);
-const SECT  = Object.fromEntries(uni.filter(u => u && u.ticker).map(u => [u.ticker.toUpperCase(), u.sector || null]));
+if (!acc.valorTotal || !radar) { console.error('Faltan account.json o radar_live.json'); process.exit(1); }
 
-if (!cap || !radar) { console.error('Faltan account.json o radar_live.json'); process.exit(1); }
-
-// ── Posiciones reales: held (excluir) + conteo por sector + nº abiertas ──
-const trades   = (rd('trades_real.json') || {}).trades || [];
-const held     = new Set(trades.filter(t => ['open', 'closed'].includes(t.status)).map(t => t.ticker.toUpperCase()));
-const openReal = trades.filter(t => t.status === 'open');
-const nOpen    = openReal.length;
-const sectCount = {};
-for (const t of openReal) { const s = t.sector || SECT[t.ticker.toUpperCase()]; if (s) sectCount[s] = (sectCount[s] || 0) + 1; }
-
-// ── Reconstruir la escalera EXACTA del dashboard ──
-const lv = i => (radar?.levels?.[i]?.tickers || [])
-  .filter(t => !held.has(t.ticker.toUpperCase()))
-  .map(t => ({ ...t, sector: SECT[t.ticker.toUpperCase()] || null, stop: +(t.price * (1 - SL_PCT)).toFixed(2) }));
-const cross0 = lv(0).filter(t => t.weeks === 0);
-const confAll = [
-  ...cross0.filter(t => t.conf9).sort((a, b) => b.extPct - a.extPct),
-  ...lv(1).concat(lv(2)).filter(t => t.conf9).sort((a, b) => a.gapPct - b.gapPct),
-];
-const stack = confAll.filter(t => t.conf9 && t.below200 === true);
-const conf  = confAll.filter(t => !(t.conf9 && t.below200 === true));
-const inConf = new Set(confAll.map(t => t.ticker.toUpperCase()));
-const noC = arr => arr.filter(t => !inConf.has(t.ticker.toUpperCase()));
-const p1 = noC(lv(1)).sort((a, b) => a.gapPct - b.gapPct);
-const p2 = noC(cross0.filter(t => (t.extPct ?? 0) >= 15)).sort((a, b) => b.extPct - a.extPct);
-
-// Flujo de candidatas EN ORDEN DE PRIORIDAD (solo "entrar ahora").
-const ladder = [
-  ...stack.map(t => ({ ...t, tier: '⭐⭐ STACK' })),
-  ...conf .map(t => ({ ...t, tier: '⭐ CONFLUENCIA' })),
-  ...p1   .map(t => ({ ...t, tier: '🎯 P1 anticipada' })),
-  ...p2   .map(t => ({ ...t, tier: '🎯 P2 cruzada fuerte' })),
-];
-
-// ── Sizing ¼ Kelly ──
-const riskUsd  = +(cap * RISK_FRAC).toFixed(2);       // 2.5% del capital
-const posByRisk = riskUsd / SL_PCT;                    // tamaño que arriesga eso con stop 18%
-const posUsd   = +Math.min(Math.max(posByRisk, cap * POS_MIN), cap * POS_MAX).toFixed(2);
-
-// ── Cupos disponibles ──
-const slotsByCount = Math.max(0, MAX_OPEN - nOpen);    // no pasar de 8 abiertas
-const slotsByCash  = Math.floor(cash / posUsd);        // lo que da la caja
-const slots        = frenoActivo ? 0 : Math.min(slotsByCount, slotsByCash);   // freno → 0 entradas nuevas
-
-// ── Selección: baja la escalera saltando sector lleno, hasta llenar cupos ──
-const picks = [];
-const runSect = { ...sectCount };
-const skipped = [];
-for (const c of ladder) {
-  if (picks.length >= slots) break;
-  const s = c.sector;
-  if (s && (runSect[s] || 0) >= SECT_CAP) { skipped.push({ ...c, reason: `sector lleno (${s}: ${runSect[s]})` }); continue; }
-  const shares = +(posUsd / c.price).toFixed(4);
-  picks.push({ ticker: c.ticker, tv: c.tv, tier: c.tier, sector: s, price: c.price, amountUsd: posUsd,
-    shares, stop: c.stop, stopPct: -18, riskUsd, leverage: 1,
-    extPct: c.extPct ?? null, gapPct: c.gapPct ?? null });
-  if (s) runSect[s] = (runSect[s] || 0) + 1;
+// Persistir el estado del freno (pico + on/off) sin tocar el resto del fichero. Solo el CLI escribe.
+const fr = frenoState(acc);
+if (acc.peakValue !== fr.peak || acc.frenoActivo !== fr.frenoActivo) {
+  try { writeFileSync(join(ROOT, 'account.json'), JSON.stringify({ ...acc, peakValue: fr.peak, frenoActivo: fr.frenoActivo }, null, 2) + '\n'); } catch {}
 }
 
-const out = {
-  generatedAt: new Date().toISOString(),
-  account: { valorTotal: cap, disponible: cash, invertido: +acc.invertido || null },
-  sizing: { posUsd, riskUsd, pctCapital: +(posUsd / cap * 100).toFixed(1), leverage: 1, stopPct: -18 },
-  limits: { maxOpen: MAX_OPEN, openNow: nOpen, slotsByCount, slotsByCash, slotsUsable: slots, sectorCap: SECT_CAP },
-  freno: { activo: frenoActivo, peak, ddPct, pausaEn: DD_PAUSE, reactivaEn: DD_RESUME },
-  picks, skipped,
-};
+const out = selectEntries({ radar, trades: (rd('trades_real.json') || {}).trades || [], universe: rd('universe.json'), account: acc });
+out.generatedAt = new Date().toISOString();
 
 if (process.argv.includes('--json')) { console.log(JSON.stringify(out, null, 2)); process.exit(0); }
 
-// ── Informe legible ──
 const eur = n => '$' + (+n).toFixed(2);
+const { picks, skipped, freno, limits, sizing, account } = out;
 console.log('\n═══ SELECTOR MECÁNICO DE ENTRADAS ═══');
-console.log(`Capital ${eur(cap)} · disponible ${eur(cash)} · abiertas ${nOpen}/${MAX_OPEN}`);
-console.log(`Freno de cartera: pico ${eur(peak)} · drawdown ${ddPct}% · ` + (frenoActivo ? `🚨 ACTIVO (pausa <${DD_PAUSE}%, reactiva ≥${DD_RESUME}%)` : `✅ inactivo (pausa en ${DD_PAUSE}%)`));
-console.log(`Sizing ¼ Kelly: ${eur(posUsd)} por posición (${out.sizing.pctCapital}% del capital) · riesgo ${eur(riskUsd)} (2.5%) · stop −18% · 1x`);
-console.log(`Cupos: por conteo ${slotsByCount} · por caja ${slotsByCash} · USABLES ${slots}`);
-if (frenoActivo) {
-  console.log(`\n🚨 FRENO DE CARTERA ACTIVO — drawdown ${ddPct}% desde el pico ${eur(peak)}. CERO entradas nuevas hasta recuperar por encima de ${DD_RESUME}%. Sigue gestionando las abiertas con su cruce/stop normal.`);
-} else if (!slots) {
-  console.log('\n⛔ SIN CUPO para entradas nuevas ahora (' + (slotsByCount === 0 ? `ya tienes ${nOpen} abiertas = tope ${MAX_OPEN}` : 'caja insuficiente') + ').');
+console.log(`Capital ${eur(account.valorTotal)} · disponible ${eur(account.disponible)} · abiertas ${limits.openNow}/${limits.maxOpen}`);
+console.log(`Freno de cartera: pico ${eur(freno.peak)} · drawdown ${freno.ddPct}% · ` + (freno.activo ? `🚨 ACTIVO (pausa <${freno.pausaEn}%, reactiva ≥${freno.reactivaEn}%)` : `✅ inactivo (pausa en ${freno.pausaEn}%)`));
+console.log(`Sizing ¼ Kelly: ${eur(sizing.posUsd)} por posición (${sizing.pctCapital}% del capital) · riesgo ${eur(sizing.riskUsd)} (2.5%) · stop −18% · 1x`);
+console.log(`Cupos: por conteo ${limits.slotsByCount} · por caja ${limits.slotsByCash} · USABLES ${limits.slotsUsable}`);
+if (freno.activo) {
+  console.log(`\n🚨 FRENO DE CARTERA ACTIVO — drawdown ${freno.ddPct}% desde el pico ${eur(freno.peak)}. CERO entradas nuevas hasta recuperar por encima de ${freno.reactivaEn}%. Sigue gestionando las abiertas con su cruce/stop normal.`);
+} else if (!limits.slotsUsable) {
+  console.log('\n⛔ SIN CUPO para entradas nuevas ahora (' + (limits.slotsByCount === 0 ? `ya tienes ${limits.openNow} abiertas = tope ${limits.maxOpen}` : 'caja insuficiente') + ').');
 } else if (!picks.length) {
   console.log('\n⚠️ Hay cupo pero ninguna candidata pasa el filtro (todas en sector lleno o vacío el radar).');
 } else {
   console.log(`\n✅ ENTRAR (${picks.length}) — en este orden, a 1x, stop −18%:`);
-  for (const p of picks) {
-    console.log(`  • ${p.ticker.padEnd(6)} ${p.tier.padEnd(20)} ${eur(p.amountUsd)}  ${p.shares} acc  @ ${eur(p.price)}  🛑 ${eur(p.stop)}  [${p.sector || '?'}]`);
-  }
+  for (const p of picks) console.log(`  • ${p.ticker.padEnd(6)} ${p.tier.padEnd(20)} ${eur(p.amountUsd)}  ${p.shares} acc  @ ${eur(p.price)}  🛑 ${eur(p.stop)}  [${p.sector || '?'}]`);
 }
 if (skipped.length) {
   console.log(`\n↳ Saltadas por guardarraíl (${skipped.length}):`);

@@ -11,6 +11,7 @@ import { createServer } from 'node:http';
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { selectEntries } from './entry_engine.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const F = n => join(ROOT, n);
@@ -153,9 +154,16 @@ function snapshot() {
   emacross.open = openFor('EMACross');
   weekly.open = openFor('WeeklySwing');
 
+  // ── ENTRAR HOY: recomendación mecánica del motor (misma lógica que select_entries.mjs) ──
+  let entryToday = null;
+  try {
+    entryToday = selectEntries({ radar, trades: (rd('trades_real.json') || {}).trades || [], universe: rd('universe.json'), account: rd('account.json') || {} });
+  } catch { entryToday = null; }
+
   return {
     ts: new Date().toISOString(),
     real,
+    entryToday,
     health: rd('dashboard_health.json'),   // auditor diario de bugs (check_dashboard.mjs)
     radarAt: radar?.updatedAt || null,
     definitive: radar?.definitive ?? null,
@@ -235,10 +243,22 @@ h1{font-size:23px;font-weight:600;margin:0 0 6px}
 .badge.sec-cap{background:rgba(210,153,34,.15);color:var(--warn);border:1px solid rgba(210,153,34,.35)}
 .badge.sec-breach{background:rgba(248,81,73,.15);color:#f85149;border:1px solid rgba(248,81,73,.4)}
 .banner.sect{background:rgba(248,81,73,.09);border:1px solid rgba(248,81,73,.35)}
+.entry{background:linear-gradient(180deg,rgba(88,166,255,.12),rgba(88,166,255,.05));border:1px solid rgba(88,166,255,.5);border-radius:14px;margin-bottom:22px;overflow:hidden}
+.entry .eh{padding:14px 20px;font-weight:600;font-size:16px;border-bottom:1px solid rgba(88,166,255,.25);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.entry .esub{color:var(--mut);font-weight:400;font-size:12.5px}
+.entry .erow{padding:14px 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.entry .pick{background:rgba(88,166,255,.1);border:1px solid rgba(88,166,255,.45);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:3px;min-width:150px}
+.entry .pick .pt{font-weight:700;font-size:16px}.entry .pick .pt a{color:var(--tx);text-decoration:none}
+.entry .pick .pd{color:var(--mut);font-size:12.5px}
+.entry .pick .pd b{color:var(--tx)}
+.entry .foot{padding:10px 20px;border-top:1px solid rgba(88,166,255,.2);color:var(--mut);font-size:12px}
+.entry.frenoon{background:rgba(248,81,73,.08);border-color:rgba(248,81,73,.5)}
+.entry .none{padding:14px 20px;color:var(--mut);font-size:13.5px}
 @media(max-width:640px){.wrap{padding:14px 10px 40px}.hd,.chips,.gh,.foot,.banner,.key{padding-left:14px;padding-right:14px}.banner,.key{margin-left:0;margin-right:0}.gh .rule{max-width:100%;margin-left:0;text-align:left;width:100%}}
 </style></head><body><div class="wrap">
 <h1>📊 Acciones</h1>
 <div class="live" id="live">cargando…</div>
+<div id="entry"></div>
 <div id="real"></div>
 <div id="systems"></div>
 <div class="ft" id="ft"></div>
@@ -264,6 +284,29 @@ async function load(){
       (d.health.ok?'<span class="dot">●</span> Auditoría bugs: <b style="color:var(--go)">OK</b>':
        '<span style="color:#f85149">●</span> Auditoría bugs: <b style="color:#f85149">'+d.health.failCount+' FALLO(S)</b>')+
       ' <span style="color:var(--mut)">('+hace(d.health.at)+')</span></span>'):'');
+
+  // ── ENTRAR HOY: recomendación mecánica (selector: escalera + sector + sizing + freno) ──
+  const E = d.entryToday;
+  if (E) {
+    const fr = E.freno || {}, lim = E.limits || {}, sz = E.sizing || {};
+    const head = '<div class="eh">🎯 ENTRAR HOY <span class="esub">recomendación mecánica · '+sz.pctCapital+'% ('+(sz.posUsd!=null?'$'+sz.posUsd:'?')+') por posición · 1x · stop −18% · abiertas '+lim.openNow+'/'+lim.maxOpen+'</span></div>';
+    let body;
+    if (fr.activo) {
+      body = '<div class="none">🚨 <b style="color:#f85149">Freno de cartera ACTIVO</b> — drawdown '+fr.ddPct+'% desde el pico $'+fr.peak+'. CERO entradas nuevas hasta recuperar por encima de '+fr.reactivaEn+'%. Gestiona las abiertas con su cruce/stop normal.</div>';
+    } else if (!(E.picks||[]).length) {
+      const why = lim.slotsUsable===0 ? (lim.slotsByCount===0 ? 'ya tienes '+lim.openNow+' abiertas (tope '+lim.maxOpen+')' : 'caja insuficiente para una posición') : 'ninguna candidata pasa el filtro (sector lleno o radar vacío)';
+      body = '<div class="none">Hoy no toca entrar: '+esc(why)+'.</div>';
+    } else {
+      body = '<div class="erow">'+E.picks.map(p=>'<div class="pick">'+
+        '<span class="pt"><a href="'+tvUrl(p.tv)+'" target="_blank">'+esc(p.ticker)+'</a> <span style="font-size:12px;color:var(--mut)">'+esc(p.tier)+'</span></span>'+
+        '<span class="pd"><b>$'+p.amountUsd+'</b> · '+p.shares+' acc @ $'+p.price+'</span>'+
+        '<span class="pd">🛑 stop <b>$'+p.stop+'</b> · '+esc(p.sector||'?')+(p.gapPct!=null&&p.extPct==null?' · falta '+p.gapPct+'%':'')+'</span>'+
+      '</div>').join('')+'</div>';
+    }
+    const skip = (E.skipped||[]).length ? '<div class="foot">↳ Saltadas por guardarraíl: '+E.skipped.slice(0,6).map(s=>'<b>'+esc(s.ticker)+'</b> ('+esc(s.reason)+')').join(' · ')+'</div>' : '';
+    const foot = '<div class="foot">Cupos usables: '+lim.slotsUsable+' · No ejecuto órdenes: ponlas en eToro a 1x y verifica el apalancamiento.</div>';
+    document.getElementById('entry').innerHTML = '<div class="entry'+(fr.activo?' frenoon':'')+'">'+head+body+skip+foot+'</div>';
+  } else { document.getElementById('entry').innerHTML = ''; }
 
   // ── MIS POSICIONES REALES ── (SOLO abiertas en la tabla; las cerradas van aparte, atenuadas)
   const Rall=d.real||[]; const R=Rall.filter(t=>t.status!=='closed'); const Rclosed=Rall.filter(t=>t.status==='closed');
