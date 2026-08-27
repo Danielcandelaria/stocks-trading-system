@@ -717,3 +717,16 @@ CONFIRMADO OOS en AMBAS mitades: -25% bate a -18% en mediana, PF-sin5%, WR. Mese
 **MODO CONFIRMADO (no se opera):** H sube PF (2.67→2.97) y baja maxDD, PERO empeora la mediana (−4.38→−5.81) alargando trades (17w→25w) = más dependencia de cola, no un win limpio. Irrelevante porque se opera anticipado.
 
 **Veredicto:** mismo patrón que los filtros de tendencia/momentum/ADX ya refutados — la "mejora obvia" no aporta. Salida se queda como está (cruce contrario al primer roce). Regla de proceso cumplida: A/B en 2 mitades antes de tocar nada; el óptimo (H=0) NO salta entre mitades.
+
+---
+
+## Interruptor de exposición por AMPLITUD de mercado (2026-08-26) — REFUTADO (y al revés)
+
+**Pregunta:** ¿reducir entradas cuando el mercado está "roto" (baja amplitud = pocas acciones sobre EMA200) mejora EMACross anticipado? Trades etiquetados por amplitud en la entrada, terciles, 2 mitades. Script: `backtest_breadth_gate.mjs` (200 tickers, 10y).
+
+**Resultado (contraintuitivo pero consistente en ambas mitades):**
+- Amplitud BAJA (≤77%): PF **4.18**, exp +13.7% — la MEJOR.
+- Amplitud MEDIA (≤86%): PF 2.37, exp +8.1%.
+- Amplitud ALTA (>86%): PF **1.15**, exp +0.85% — la PEOR (breakeven). ALTA es la peor en las DOS mitades.
+
+**Veredicto:** vetar/reducir entradas en baja amplitud = el filtro SPY>EMA200 ya REFUTADO, y encima al revés (quitaría las mejores entradas). El momentum rinde mejor comprando el reseteo, no la euforia. NO montar gate de amplitud. Caveat: cortes altos (77-86%) por sesgo de supervivencia → nivel absoluto no fiable como umbral en vivo; es pista de investigación, no interruptor. El "interruptor de cartera" real debe ser un circuit-breaker por DRAWDOWN realizado + regla de caja (reactivo, no filtro predictivo).
