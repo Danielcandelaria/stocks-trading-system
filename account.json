@@ -7,5 +7,8 @@
   "disponible": 252.17,
   "pnlNoRealizado": -20.69,
   "actualizado": "2026-08-27",
-  "fuente": "eToro API (get-my-portfolio-summary)"
+  "fuente": "eToro API (get-my-portfolio-summary)",
+  "_freno": "Circuit-breaker de cartera: peakValue = máximo histórico de valorTotal (el selector lo actualiza). frenoActivo se pone true al caer -25% desde el pico y false al recuperar -15%. Semilla del pico = 963.58 (máximo observado 26-ago); trackea desde aquí.",
+  "peakValue": 963.58,
+  "frenoActivo": false
 }

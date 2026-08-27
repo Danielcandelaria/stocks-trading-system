@@ -18,7 +18,7 @@
 // Uso:  node select_entries.mjs            (usa account.json)
 //       node select_entries.mjs --json     (salida JSON para el dashboard/telegram)
 // ─────────────────────────────────────────────────────────────────────────────
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -32,10 +32,24 @@ const POS_MIN     = 0.13;   // banda inferior de posición (13%)
 const POS_MAX     = 0.16;   // banda superior (16%)
 const MAX_OPEN    = 8;      // tope de posiciones abiertas (rango 6-8)
 const SECT_CAP    = 2;      // máx posiciones por sector
+const DD_PAUSE    = -25;    // freno de cartera: pausa entradas nuevas al caer -25% desde el pico
+const DD_RESUME   = -15;    // reactiva al recuperar por encima de -15% (histéresis, base Monte Carlo p99)
 
 const acc   = rd('account.json') || {};
 const cap   = +acc.valorTotal || 0;
 const cash  = +acc.disponible || 0;
+
+// ── FRENO DE CARTERA (circuit-breaker por drawdown, con histéresis y estado persistente) ──
+let peak = Math.max(+acc.peakValue || 0, cap);   // el pico nunca baja; sube con nuevos máximos
+let frenoActivo = !!acc.frenoActivo;
+const ddPct = peak > 0 ? +(((cap / peak) - 1) * 100).toFixed(2) : 0;
+if (cap >= peak) frenoActivo = false;                       // nuevo máximo → limpia el freno
+else if (!frenoActivo && ddPct <= DD_PAUSE) frenoActivo = true;   // cae por debajo de -25% → activa
+else if (frenoActivo && ddPct >= DD_RESUME) frenoActivo = false;  // recupera por encima de -15% → desactiva
+// Persistir estado (pico y freno) sin tocar el resto del fichero.
+if (acc && (acc.peakValue !== peak || acc.frenoActivo !== frenoActivo)) {
+  try { writeFileSync(join(ROOT, 'account.json'), JSON.stringify({ ...acc, peakValue: peak, frenoActivo }, null, 2) + '\n'); } catch {}
+}
 const radar = rd('radar_live.json');
 const uniRaw = rd('universe.json');
 const uni   = Array.isArray(uniRaw) ? uniRaw : (uniRaw?.universe || []);
@@ -83,7 +97,7 @@ const posUsd   = +Math.min(Math.max(posByRisk, cap * POS_MIN), cap * POS_MAX).to
 // ── Cupos disponibles ──
 const slotsByCount = Math.max(0, MAX_OPEN - nOpen);    // no pasar de 8 abiertas
 const slotsByCash  = Math.floor(cash / posUsd);        // lo que da la caja
-const slots        = Math.min(slotsByCount, slotsByCash);
+const slots        = frenoActivo ? 0 : Math.min(slotsByCount, slotsByCash);   // freno → 0 entradas nuevas
 
 // ── Selección: baja la escalera saltando sector lleno, hasta llenar cupos ──
 const picks = [];
@@ -105,6 +119,7 @@ const out = {
   account: { valorTotal: cap, disponible: cash, invertido: +acc.invertido || null },
   sizing: { posUsd, riskUsd, pctCapital: +(posUsd / cap * 100).toFixed(1), leverage: 1, stopPct: -18 },
   limits: { maxOpen: MAX_OPEN, openNow: nOpen, slotsByCount, slotsByCash, slotsUsable: slots, sectorCap: SECT_CAP },
+  freno: { activo: frenoActivo, peak, ddPct, pausaEn: DD_PAUSE, reactivaEn: DD_RESUME },
   picks, skipped,
 };
 
@@ -114,9 +129,12 @@ if (process.argv.includes('--json')) { console.log(JSON.stringify(out, null, 2))
 const eur = n => '$' + (+n).toFixed(2);
 console.log('\n═══ SELECTOR MECÁNICO DE ENTRADAS ═══');
 console.log(`Capital ${eur(cap)} · disponible ${eur(cash)} · abiertas ${nOpen}/${MAX_OPEN}`);
+console.log(`Freno de cartera: pico ${eur(peak)} · drawdown ${ddPct}% · ` + (frenoActivo ? `🚨 ACTIVO (pausa <${DD_PAUSE}%, reactiva ≥${DD_RESUME}%)` : `✅ inactivo (pausa en ${DD_PAUSE}%)`));
 console.log(`Sizing ¼ Kelly: ${eur(posUsd)} por posición (${out.sizing.pctCapital}% del capital) · riesgo ${eur(riskUsd)} (2.5%) · stop −18% · 1x`);
 console.log(`Cupos: por conteo ${slotsByCount} · por caja ${slotsByCash} · USABLES ${slots}`);
-if (!slots) {
+if (frenoActivo) {
+  console.log(`\n🚨 FRENO DE CARTERA ACTIVO — drawdown ${ddPct}% desde el pico ${eur(peak)}. CERO entradas nuevas hasta recuperar por encima de ${DD_RESUME}%. Sigue gestionando las abiertas con su cruce/stop normal.`);
+} else if (!slots) {
   console.log('\n⛔ SIN CUPO para entradas nuevas ahora (' + (slotsByCount === 0 ? `ya tienes ${nOpen} abiertas = tope ${MAX_OPEN}` : 'caja insuficiente') + ').');
 } else if (!picks.length) {
   console.log('\n⚠️ Hay cupo pero ninguna candidata pasa el filtro (todas en sector lleno o vacío el radar).');
