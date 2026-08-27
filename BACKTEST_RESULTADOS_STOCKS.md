@@ -730,3 +730,14 @@ CONFIRMADO OOS en AMBAS mitades: -25% bate a -18% en mediana, PF-sin5%, WR. Mese
 - Amplitud ALTA (>86%): PF **1.15**, exp +0.85% — la PEOR (breakeven). ALTA es la peor en las DOS mitades.
 
 **Veredicto:** vetar/reducir entradas en baja amplitud = el filtro SPY>EMA200 ya REFUTADO, y encima al revés (quitaría las mejores entradas). El momentum rinde mejor comprando el reseteo, no la euforia. NO montar gate de amplitud. Caveat: cortes altos (77-86%) por sesgo de supervivencia → nivel absoluto no fiable como umbral en vivo; es pista de investigación, no interruptor. El "interruptor de cartera" real debe ser un circuit-breaker por DRAWDOWN realizado + regla de caja (reactivo, no filtro predictivo).
+
+---
+
+## Monte Carlo de DRAWDOWN — base del freno de cartera (2026-08-27)
+
+20.000 simulaciones, EMACross anticipado, ¼ Kelly (7 pos × 13.9%, 1x), 1868 trades empíricos. Script: `mc_drawdown.mjs`. Peor drawdown en 1 año:
+- Mediana −9.7% · p75 −13.0% · **p95 −18.1%** · p99 −21.9% · peor −30.5%.
+
+**Lectura:** DD "normal" del sistema = −10 a −13%. Hasta −18% (p95) es mala racha esperable, NO rota. El freno debe ir POR ENCIMA del p95. Con ¼ Kelly sin apalancar no hay ruina (equity no llega a 0); el riesgo real es el ABANDONO por drawdown hondo. Sesgos (supervivencia + marca a cierre) → DD real ≥ simulado, ser conservador.
+
+**RECOMENDACIÓN:** freno de cartera = pausar entradas nuevas en **−25%** del valor total desde el pico, reactivar en **−15%**. Coincide con el DD esperado del manual y el stop −25% de WeeklySwing. Pendiente de cablear en select_entries.mjs (requiere trackear el pico de equity).
