@@ -157,7 +157,7 @@ function snapshot() {
   // ── ENTRAR HOY: recomendación mecánica del motor (misma lógica que select_entries.mjs) ──
   let entryToday = null;
   try {
-    entryToday = selectEntries({ radar, trades: (rd('trades_real.json') || {}).trades || [], universe: rd('universe.json'), account: rd('account.json') || {} });
+    entryToday = selectEntries({ radar, trades: (rd('trades_real.json') || {}).trades || [], universe: rd('universe.json'), account: rd('account.json') || {}, weeklyJournal: rd('journal_weekly.json') || [], nowMs: Date.now() });
   } catch { entryToday = null; }
 
   return {

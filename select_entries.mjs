@@ -24,7 +24,7 @@ if (acc.peakValue !== fr.peak || acc.frenoActivo !== fr.frenoActivo) {
   try { writeFileSync(join(ROOT, 'account.json'), JSON.stringify({ ...acc, peakValue: fr.peak, frenoActivo: fr.frenoActivo }, null, 2) + '\n'); } catch {}
 }
 
-const out = selectEntries({ radar, trades: (rd('trades_real.json') || {}).trades || [], universe: rd('universe.json'), account: acc });
+const out = selectEntries({ radar, trades: (rd('trades_real.json') || {}).trades || [], universe: rd('universe.json'), account: acc, weeklyJournal: rd('journal_weekly.json') || [], nowMs: Date.now() });
 out.generatedAt = new Date().toISOString();
 
 if (process.argv.includes('--json')) { console.log(JSON.stringify(out, null, 2)); process.exit(0); }
@@ -43,8 +43,8 @@ if (freno.activo) {
 } else if (!picks.length) {
   console.log('\n⚠️ Hay cupo pero ninguna candidata pasa el filtro (todas en sector lleno o vacío el radar).');
 } else {
-  console.log(`\n✅ ENTRAR (${picks.length}) — en este orden, a 1x, stop −18%:`);
-  for (const p of picks) console.log(`  • ${p.ticker.padEnd(6)} ${p.tier.padEnd(20)} ${eur(p.amountUsd)}  ${p.shares} acc  @ ${eur(p.price)}  🛑 ${eur(p.stop)}  [${p.sector || '?'}]`);
+  console.log(`\n✅ ENTRAR (${picks.length}) — en este orden, a 1x:`);
+  for (const p of picks) console.log(`  • ${p.ticker.padEnd(6)} ${(p.tier||'').padEnd(28)} ${eur(p.amountUsd)}  ${p.shares} acc  @ ${eur(p.price)}  🛑 ${eur(p.stop)}  [${p.sector || '?'}]`);
 }
 if (skipped.length) {
   console.log(`\n↳ Saltadas por guardarraíl (${skipped.length}):`);

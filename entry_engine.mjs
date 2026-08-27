@@ -24,8 +24,18 @@ export function frenoState(account) {
   return { peak, frenoActivo, ddPct };
 }
 
-// radar = radar_live.json · tradesArr = trades_real.json.trades · universeRaw = universe.json · account = account.json
-export function selectEntries({ radar, trades: tradesArr = [], universe, account = {} }) {
+// Frescura de una señal WeeklySwing (semanas desde el cierre de la vela). Igual que el dashboard.
+export function weeklyWk(signalT, nowMs) {
+  const dt = new Date(nowMs); const dow = dt.getUTCDay();
+  const monday = Date.UTC(dt.getUTCFullYear(), dt.getUTCMonth(), dt.getUTCDate() - ((dow + 6) % 7)) / 1000;
+  const weekClosed = dow === 0 || dow === 6 || (dow === 5 && dt.getUTCHours() >= 20);
+  const anchor = monday - (weekClosed ? 0 : 7 * 86400);
+  return Math.max(0, Math.round((anchor - signalT) / (7 * 86400)));
+}
+
+// radar = radar_live.json · tradesArr = trades_real.json.trades · universeRaw = universe.json
+// account = account.json · weeklyJournal = journal_weekly.json (array) · nowMs = Date.now()
+export function selectEntries({ radar, trades: tradesArr = [], universe, account = {}, weeklyJournal = [], nowMs = 0 }) {
   const P = PARAMS;
   const uni = Array.isArray(universe) ? universe : (universe?.universe || []);
   const SECT = Object.fromEntries(uni.filter(u => u && u.ticker).map(u => [u.ticker.toUpperCase(), u.sector || null]));
@@ -53,11 +63,27 @@ export function selectEntries({ radar, trades: tradesArr = [], universe, account
   const noC = arr => arr.filter(t => !inConf.has(t.ticker.toUpperCase()));
   const p1 = noC(lv(1)).sort((a, b) => a.gapPct - b.gapPct);
   const p2 = noC(cross0.filter(t => (t.extPct ?? 0) >= 15)).sort((a, b) => b.extPct - a.extPct);
+
+  // ── WeeklySwing (reversión DeMark-9): señales frescas (wk≤1), no en cartera. Complementa EMACross (ρ 0.47). ──
+  const ws = (weeklyJournal || [])
+    .filter(p => p.status === 'open' && p.ticker && !held.has(p.ticker.toUpperCase()))
+    .map(p => ({ ticker: p.ticker, tv: p.tv || p.ticker, sector: p.sector || SECT[p.ticker.toUpperCase()] || null,
+      price: +(+p.entryPx).toFixed(2), stop: p.stop != null ? +(+p.stop).toFixed(2) : null,
+      weeks: nowMs ? weeklyWk(p.signalT, nowMs) : 0, system: 'WeeklySwing', tier: '🟣 WeeklySwing (suelo DeMark)' }))
+    .filter(p => p.weeks <= 1)
+    .sort((a, b) => a.weeks - b.weeks);
+  const wsFresh = ws.filter(p => p.weeks === 0), wsValid = ws.filter(p => p.weeks >= 1);
+
+  // Escalera COMBINada. La confluencia EMACross (cruce+setup9) manda; luego WeeklySwing fresco
+  // (PF 3.98 > P1/P2 de EMACross); luego los tramos anticipados de EMACross. Diversifica momentum+reversión.
+  const tag = (arr, system, tier) => arr.map(t => ({ ...t, system: t.system || system, tier: t.tier || tier }));
   const ladder = [
-    ...stack.map(t => ({ ...t, tier: '⭐⭐ STACK' })),
-    ...conf.map(t => ({ ...t, tier: '⭐ CONFLUENCIA' })),
-    ...p1.map(t => ({ ...t, tier: '🎯 P1 anticipada' })),
-    ...p2.map(t => ({ ...t, tier: '🎯 P2 cruzada fuerte' })),
+    ...tag(stack, 'EMACross', '⭐⭐ STACK'),
+    ...tag(conf, 'EMACross', '⭐ CONFLUENCIA'),
+    ...wsFresh,
+    ...tag(p1, 'EMACross', '🎯 P1 anticipada'),
+    ...tag(p2, 'EMACross', '🎯 P2 cruzada fuerte'),
+    ...wsValid,
   ];
 
   const riskUsd = +(cap * P.RISK_FRAC).toFixed(2);
@@ -70,8 +96,8 @@ export function selectEntries({ radar, trades: tradesArr = [], universe, account
   for (const c of ladder) {
     if (picks.length >= slots) break;
     const s = c.sector;
-    if (s && (runSect[s] || 0) >= P.SECT_CAP) { skipped.push({ ticker: c.ticker, tier: c.tier, sector: s, reason: `sector lleno (${s}: ${runSect[s]})` }); continue; }
-    picks.push({ ticker: c.ticker, tv: c.tv, tier: c.tier, sector: s, price: c.price, amountUsd: posUsd,
+    if (s && (runSect[s] || 0) >= P.SECT_CAP) { skipped.push({ ticker: c.ticker, tier: c.tier, system: c.system || 'EMACross', sector: s, reason: `sector lleno (${s}: ${runSect[s]})` }); continue; }
+    picks.push({ ticker: c.ticker, tv: c.tv, system: c.system || 'EMACross', tier: c.tier, sector: s, price: c.price, amountUsd: posUsd,
       shares: posUsd > 0 && c.price ? +(posUsd / c.price).toFixed(4) : 0, stop: c.stop, stopPct: -18, riskUsd, leverage: 1,
       extPct: c.extPct ?? null, gapPct: c.gapPct ?? null });
     if (s) runSect[s] = (runSect[s] || 0) + 1;
