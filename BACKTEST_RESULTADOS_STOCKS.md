@@ -741,3 +741,13 @@ CONFIRMADO OOS en AMBAS mitades: -25% bate a -18% en mediana, PF-sin5%, WR. Mese
 **Lectura:** DD "normal" del sistema = −10 a −13%. Hasta −18% (p95) es mala racha esperable, NO rota. El freno debe ir POR ENCIMA del p95. Con ¼ Kelly sin apalancar no hay ruina (equity no llega a 0); el riesgo real es el ABANDONO por drawdown hondo. Sesgos (supervivencia + marca a cierre) → DD real ≥ simulado, ser conservador.
 
 **RECOMENDACIÓN:** freno de cartera = pausar entradas nuevas en **−25%** del valor total desde el pico, reactivar en **−15%**. Coincide con el DD esperado del manual y el stop −25% de WeeklySwing. Pendiente de cablear en select_entries.mjs (requiere trackear el pico de equity).
+
+---
+
+## A/B Guardarraíl de sector (máx 2/sector) (2026-08-27) — NO CONFIRMABLE con estos datos
+
+Simulación de cartera 10y (220 tickers, 7 pos × 13.9%, ¼ Kelly), señales EMACross anticipado en orden temporal, cap ON vs OFF. Script: `backtest_sector_cap_ab.mjs`.
+- SIN cap: +900%, maxDD −18.9%, Calmar 47.7.
+- CON cap: +1033%, maxDD −20.0%, Calmar 51.5. **El cap solo saltó 10 de 2068 señales.**
+
+**Veredicto:** el backtest NO puede validar el cap. (1) Casi nunca se activa con selección neutral (first-come) y universo diverso → diferencia = ruido. (2) La protección del cap (desplome sectorial correlacionado) NO está en la muestra (10y alcista + survivors) → sesgo esconde el riesgo de cola que el cap cubre. (3) En uso real el cap SÍ muerde porque se rellena por prioridad/fuerza (un sector caliente da muchas señales fuertes juntas), no first-come. CONCLUSIÓN: regla prudente de cola, coste ≈0 en normal, se mantiene por fundamento teórico (correlación/papers), no por backtest. No confirmable ni refutable aquí.
