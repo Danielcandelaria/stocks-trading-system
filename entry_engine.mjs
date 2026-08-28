@@ -80,19 +80,20 @@ export function selectEntries({ radar, trades: tradesArr = [], universe, account
   // Escalera COMBINada. EMACross manda en sus tramos; WeeklySwing va AL FONDO (solo relleno de slots
   // ociosos, backtest_combined_ladder: EMACross solo Calmar 52.8 vs combinar 17.1). Y las PARABÓLICAS
   // (dist200>30%) se degradan al final de EMACross (backtest_momentum_health: extendido PF 1.59 < sano 1.98).
-  const tag = (arr, system, tier) => arr.map(t => ({ ...t, system: t.system || system, tier: t.tier || tier }));
+  const tag = (arr, system, tier, rank) => arr.map(t => ({ ...t, system: t.system || system, tier: t.tier || tier, _rank: rank }));
   const emaTiers = [
-    ...tag(stack, 'EMACross', '⭐⭐ STACK'),
-    ...tag(conf, 'EMACross', '⭐ CONFLUENCIA'),
-    ...tag(p1, 'EMACross', '🎯 P1 anticipada'),
-    ...tag(p2, 'EMACross', '🎯 P2 cruzada fuerte'),
+    ...tag(stack, 'EMACross', '⭐⭐ STACK', 0),
+    ...tag(conf, 'EMACross', '⭐ CONFLUENCIA', 1),
+    ...tag(p1, 'EMACross', '🎯 P1 anticipada', 2),
+    ...tag(p2, 'EMACross', '🎯 P2 cruzada fuerte', 3),
   ];
   // Dos filtros de CALIDAD (validados): (1) no parabólicas (>30% s/EMA200); (2) FLOOR = confluencia
   // setup-9 O cruce fuerte (ext≥8% s/EMA21). Lo que no pasa NO llena slots: mejor caja que trade marginal.
   const isPara = t => t.dist200 != null && t.dist200 > P.EXT_MAX;
   const isQuality = t => t.conf9 === true || (t.extPct ?? 0) >= P.STRONG_EXT;
   const passes = t => !isPara(t) && isQuality(t);
-  const emaGood = emaTiers.filter(passes);
+  // Dentro de cada tramo, prioriza MOMENTUM PREVIO alto (predice fuerza del cruce; backtest_prior_momentum).
+  const emaGood = emaTiers.filter(passes).sort((a, b) => a._rank - b._rank || ((b.mom26 ?? -999) - (a.mom26 ?? -999)));
   const belowFloor = emaTiers.filter(t => !passes(t)).map(t => ({
     ...t, system: 'EMACross',
     tier: t.tier + (isPara(t) ? ' ⚠️parabólica' : ' ⚠️bajo-floor'),
@@ -114,7 +115,7 @@ export function selectEntries({ radar, trades: tradesArr = [], universe, account
     if (s && (runSect[s] || 0) >= P.SECT_CAP) { skipped.push({ ticker: c.ticker, tier: c.tier, system: c.system || 'EMACross', sector: s, reason: `sector lleno (${s}: ${runSect[s]})` }); continue; }
     picks.push({ ticker: c.ticker, tv: c.tv, system: c.system || 'EMACross', tier: c.tier, sector: s, price: c.price, amountUsd: posUsd,
       shares: posUsd > 0 && c.price ? +(posUsd / c.price).toFixed(4) : 0, stop: c.stop, stopPct: -18, riskUsd, leverage: 1,
-      extPct: c.extPct ?? null, gapPct: c.gapPct ?? null });
+      extPct: c.extPct ?? null, gapPct: c.gapPct ?? null, mom26: c.mom26 ?? null });
     if (s) runSect[s] = (runSect[s] || 0) + 1;
   }
 

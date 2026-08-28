@@ -85,7 +85,10 @@ function analyze(bars) {
   // distancia % a la EMA200 (negativa = por debajo). Cuando |dist200| es pequeña el ticker está
   // EN LA FRONTERA → salta entre STACK ⭐⭐ y CONFLUENCIA ⭐ con cualquier movimiento pequeño.
   const dist200 = e200 ? ((liveClose - e200[n]) / e200[n]) * 100 : null;
-  return { px: liveClose, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200, dist200 };
+  // Momentum PREVIO 26 semanas (~6 meses antes de la señal). Predice qué cruce será fuerte:
+  // backtest_prior_momentum (2026-08-28): tercil ALTO PF 3.27 vs BAJO 2.33 (sin parabólicas, 2 mitades).
+  const mom26 = cl.length > 26 ? ((liveClose / cl[n - 26]) - 1) * 100 : null;
+  return { px: liveClose, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200, dist200, mom26 };
 }
 
 (async () => {
@@ -95,7 +98,7 @@ function analyze(bars) {
     let bars; try { bars = await getWeekly(u.ticker); await sleep(120); } catch { errs++; continue; }
     if (!bars) continue;
     const a = analyze(bars); if (!a) continue;
-    const { px, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200, dist200 } = a;
+    const { px, gapC, gapL, vel, ext, weeksSinceCross, conf9, bars9, below200, dist200, mom26 } = a;
 
     // dirección del cruce que se aproxima (según el signo del hueco al cierre)
     const longSide = gapC < 0;   // EMA8 debajo → cruce alcista pendiente
@@ -119,7 +122,7 @@ function analyze(bars) {
     else if (converging && gLive < GAPMAX) level = 2;     // ⏳ acercándose
     else continue;
 
-    hits.push({ ticker: u.ticker, tv: u.tv, dir: 'LONG', px, level, gLive: gLive * 100, ext, weeks, conf9: !!conf9, bars9, below200, dist200 });
+    hits.push({ ticker: u.ticker, tv: u.tv, dir: 'LONG', px, level, gLive: gLive * 100, ext, weeks, conf9: !!conf9, bars9, below200, dist200, mom26 });
     if (++done % 60 === 0) process.stderr.write(`  …revisadas ${done}\n`);
   }
 
@@ -150,6 +153,7 @@ function analyze(bars) {
         ticker: h.ticker, tv: h.tv, price: +h.px.toFixed(2), extPct: +h.ext.toFixed(1),
         gapPct: +h.gLive.toFixed(2), tvCrossed: h.tvCrossed ?? null, weeks: h.weeks ?? null,
         conf9: !!h.conf9, bars9: h.bars9 ?? null, below200: h.below200 ?? null, dist200: h.dist200 ?? null,   // ⭐ confluencia + ⭐⭐ debajo-200 (+ distancia a la 200)
+        mom26: h.mom26 != null ? +h.mom26.toFixed(1) : null,   // momentum previo 26 sem (predice fuerza del cruce)
       }));
       // anticipación (nivel 1 y 2): ordenar por CERCANÍA al cruce (menos hueco que cerrar, primero)
       if (lv >= 1) tk = tk.sort((a, b) => a.gapPct - b.gapPct);

@@ -821,3 +821,12 @@ Cartera EMACross 10y (220 tickers, 7 pos × 13.9%). Script: `backtest_ext_penalt
 - C) FLOOR (confluencia O cruce fuerte ext≥8%): **+209%, maxDD −10.9%, Calmar 19.3, 66 trades**.
 
 **Veredicto:** filtrar por calidad TRIPLICA el retorno con DD igual/menor y 3× Calmar, en 2 mitades, perdiendo solo 17 trades (tail apenas sufre). Rellenar huecos con señales marginales DESTRUYE rendimiento. APLICADO en entry_engine.mjs (STRONG_EXT=8): solo entran confluencia (setup-9) O cruce fuerte (ext≥8% s/EMA21); el resto va a belowFloor (NO recomendado). Si no hay calidad → MANTENER CAJA (pólvora seca), no rellenar. Efecto hoy: en vez de VRSK (naked <EMA200, spread ancho) recomienda CRM (cruce fuerte +31.9%).
+
+---
+
+## Momentum previo (26 sem) como predictor de fuerza del cruce (2026-08-28) — VALIDADO ✅
+
+`backtest_prior_momentum.mjs` (220 tickers, 10y). Trades EMACross anticipado por tercil de retorno de las 26 semanas ANTES de la señal.
+- SIN parabólicas: BAJO PF 2.33 (+7.2%) · MEDIO 2.41 (+5.9%) · **ALTO PF 3.27 (+11.0%)**. Orden ALTO>MEDIO>BAJO se mantiene en la 2ª mitad (2.41/2.07/1.92).
+
+**Veredicto:** el momentum previo alto (acción ya subiendo, PERO no parabólica) predice qué cruce anticipado será fuerte → capturar la fuerza ANTES de que se complete el cruce. APLICADO: radar_emacross emite `mom26`; entry_engine prioriza, dentro de cada tramo de calidad, las de mom26 alto (sort `_rank` luego mom26 desc). Caveat: inflado por supervivencia (orden relativo es lo fiable); no arregla la mediana negativa, mejora el acierto.
