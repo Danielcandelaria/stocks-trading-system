@@ -9,6 +9,7 @@
 export const PARAMS = {
   SL_PCT: 0.18, RISK_FRAC: 0.025, POS_MIN: 0.13, POS_MAX: 0.16,
   MAX_OPEN: 8, SECT_CAP: 2, DD_PAUSE: -25, DD_RESUME: -15,
+  EXT_MAX: 30,   // dist a EMA200 > 30% = parabólica → se degrada (backtest_momentum_health: PF 1.59 < 1.98 sano)
 };
 
 // Calcula el estado del freno (puro). Devuelve {peak, frenoActivo, ddPct}.
@@ -74,18 +75,20 @@ export function selectEntries({ radar, trades: tradesArr = [], universe, account
     .sort((a, b) => a.weeks - b.weeks);
   const wsFresh = ws.filter(p => p.weeks === 0), wsValid = ws.filter(p => p.weeks >= 1);
 
-  // Escalera COMBINada. EMACross manda en TODOS sus tramos; WeeklySwing va AL FONDO (solo relleno
-  // de slots ociosos). Backtest 2026-08-28 (backtest_combined_ladder.mjs): EMACross solo Calmar 52.8
-  // vs WeeklySwing 7.4; combinar diluye. WeeklySwing solo aporta con capacidad sobrante, no como coequal.
+  // Escalera COMBINada. EMACross manda en sus tramos; WeeklySwing va AL FONDO (solo relleno de slots
+  // ociosos, backtest_combined_ladder: EMACross solo Calmar 52.8 vs combinar 17.1). Y las PARABÓLICAS
+  // (dist200>30%) se degradan al final de EMACross (backtest_momentum_health: extendido PF 1.59 < sano 1.98).
   const tag = (arr, system, tier) => arr.map(t => ({ ...t, system: t.system || system, tier: t.tier || tier }));
-  const ladder = [
+  const emaTiers = [
     ...tag(stack, 'EMACross', '⭐⭐ STACK'),
     ...tag(conf, 'EMACross', '⭐ CONFLUENCIA'),
     ...tag(p1, 'EMACross', '🎯 P1 anticipada'),
     ...tag(p2, 'EMACross', '🎯 P2 cruzada fuerte'),
-    ...wsFresh,
-    ...wsValid,
   ];
+  const isPara = t => t.dist200 != null && t.dist200 > P.EXT_MAX;
+  const emaNormal = emaTiers.filter(t => !isPara(t));
+  const emaPara = emaTiers.filter(isPara).map(t => ({ ...t, tier: t.tier + ' ⚠️parabólica', parabolic: true }));
+  const ladder = [...emaNormal, ...emaPara, ...wsFresh, ...wsValid];
 
   const riskUsd = +(cap * P.RISK_FRAC).toFixed(2);
   const posUsd = +Math.min(Math.max(riskUsd / P.SL_PCT, cap * P.POS_MIN), cap * P.POS_MAX).toFixed(2);

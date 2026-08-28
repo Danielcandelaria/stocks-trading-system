@@ -774,3 +774,13 @@ EMACross anticipado, trades por bin de dist200. Script: `backtest_momentum_healt
 - EXTENDIDO (>30%): PF 1.59, exp +4.1%, med −4.26% — PEOR en AMBAS mitades. ✅ FIABLE (no lo esconde la supervivencia).
 
 **Veredicto:** la parte robusta es que lo EXTENDIDO (>30% s/EMA200, parabólico) rinde peor de forma consistente → penalizar extensión en la escalera. NO "preferir pullbacks" (trampa de supervivencia). Ajuste aplicado: degradar candidatas EMACross con dist200>30% al fondo de la sección EMACross.
+
+---
+
+## A/B Cap de extensión a nivel CARTERA (2026-08-28) — VALIDADO ✅
+
+Cartera EMACross 10y (220 tickers, 7 pos × 13.9%). Script: `backtest_ext_penalty_portfolio.mjs`. Parabólicas = 17% de señales.
+- A) TODAS (actual): +56%, maxDD −18.0%, Calmar 3.11.
+- B) SKIP parabólicas (>30% s/EMA200): **+71%, maxDD −11.4%, Calmar 6.25**.
+
+**Veredicto:** penalizar parabólicas MEJORA retorno Y drawdown Y Calmar, consistente en 2 mitades. Con slots limitados, la parabólica ocupa un hueco que rinde más con una entrada sana (coste de oportunidad > su expectancy +4%). APLICADO en entry_engine.mjs (EXT_MAX=30): las candidatas EMACross con dist200>30% se DEGRADAN al fondo de EMACross (más suave que skip, ≥ igual de bueno; transparente). Efecto real hoy: EQX(+51%) y AU(+124%) degradadas → CEG(+25%) pasa a #1 mecánica.
