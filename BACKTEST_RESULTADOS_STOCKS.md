@@ -798,3 +798,15 @@ Cartera EMACross 10y (220 tickers, 7 pos × 13.9%). Script: `backtest_ext_penalt
 - Cap de extensión confirmado a escala: sin parabólicas PF 1.97 > 1.84.
 
 **VEREDICTO:** el sistema es extremadamente TAIL-DEPENDENT (intrínseco al momentum, no un bug). Riesgo real para cuenta pequeña = SUBMUESTREO del tail (pocos trades → puede no pillar los monstruos). Supervivencia adelgaza el tail en vivo → PF real < 1.84, quizá ~breakeven. Mitigación (NO cura): ¼ Kelly sin apalancar (sobrevivir), tomar suficientes trades, no cortar ganadoras, no abandonar en frío, cap de extensión. NO se puede hacer la mediana positiva sin matar el edge. El forward es el juez.
+
+---
+
+## Segundo motor (reversión RSI-2) — EXPLORADO, APLAZADO (2026-08-28)
+
+`backtest_meanrev_sleeve.mjs` + `backtest_two_engine_blend.mjs`. RSI-2 (RSI(2)<10 + close>EMA200 diario).
+- RSI-2 amplio: PF 1.41, WR 66%, MEDIANA +0.92% (perfil opuesto al momentum) PERO breakeven a coste 0.30%/lado → los spreads de eToro lo matan.
+- RSI-2 en mega-caps líquidas top-50 (coste 0.10%/lado): PF 1.56, WR 66%, mediana +0.88% → VIABLE.
+- Correlación momentum↔reversión: ρ = 0.12 (diversificador real).
+- Blend baja maxDD (−21.8%→−17.8%) y sube Calmar — diversificación robusta. PERO el CAGR del blend está inflado por la ventana (2021-2026 = peor tramo del momentum); NO gana más a largo plazo, solo suaviza.
+
+**DECISIÓN DEL USUARIO: MOMENTUM PURO es el foco.** Razón: cuenta pequeña + ejecución MANUAL en eToro. La reversión exige operativa diaria (RSI-2 sale en 2-5 días), solo funciona en líquidas, y tiene riesgo de cola propio (sin stop, skew negativo, correlacionado en crash). Aporta suavidad, no más retorno. Se APLAZA a "fase 2" (si se automatiza la ejecución o crece el capital). No montar ahora.
