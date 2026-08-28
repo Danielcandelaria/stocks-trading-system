@@ -784,3 +784,17 @@ Cartera EMACross 10y (220 tickers, 7 pos × 13.9%). Script: `backtest_ext_penalt
 - B) SKIP parabólicas (>30% s/EMA200): **+71%, maxDD −11.4%, Calmar 6.25**.
 
 **Veredicto:** penalizar parabólicas MEJORA retorno Y drawdown Y Calmar, consistente en 2 mitades. Con slots limitados, la parabólica ocupa un hueco que rinde más con una entrada sana (coste de oportunidad > su expectancy +4%). APLICADO en entry_engine.mjs (EXT_MAX=30): las candidatas EMACross con dist200>30% se DEGRADAN al fondo de EMACross (más suave que skip, ≥ igual de bueno; transparente). Efecto real hoy: EQX(+51%) y AU(+124%) degradadas → CEG(+25%) pasa a #1 mecánica.
+
+---
+
+## INFORME DE ROBUSTEZ — universo COMPLETO (2026-08-28) — CRÍTICO
+
+`backtest_robustness.mjs`, 470/495 tickers, 2780 trades, 10y.
+- Base: PF 1.84, WR 34%, media +4.84%, MEDIANA −3.63%, ΣR +13464% (PF baja de ~2.5 en muestra de 220 a 1.84 en el universo completo).
+- **DEPENDENCIA DE COLA (crítica):** sin top-1% PF 1.42 · **sin top-5% PF 0.83 (PIERDE, ΣR −2650%)** · sin top-10% PF 0.46. El top-1% (27 trades) = 51% del ΣR; top-5% (139) = 120% del ΣR. El 95% de trades juntos pierde.
+- Costes: robusto (PF 1.84→1.62 a 0.50%/lado). NO es el problema.
+- Régimen: pierde 2022 (−4%) y 2026 (−8% parcial); resto +2..+10%/año.
+- Walk-forward 5 ventanas: 4/5 positivas pero V2 pierde (PF 0.58) y decae V1 4.88→V5 1.20.
+- Cap de extensión confirmado a escala: sin parabólicas PF 1.97 > 1.84.
+
+**VEREDICTO:** el sistema es extremadamente TAIL-DEPENDENT (intrínseco al momentum, no un bug). Riesgo real para cuenta pequeña = SUBMUESTREO del tail (pocos trades → puede no pillar los monstruos). Supervivencia adelgaza el tail en vivo → PF real < 1.84, quizá ~breakeven. Mitigación (NO cura): ¼ Kelly sin apalancar (sobrevivir), tomar suficientes trades, no cortar ganadoras, no abandonar en frío, cap de extensión. NO se puede hacer la mediana positiva sin matar el edge. El forward es el juez.
