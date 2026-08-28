@@ -196,6 +196,31 @@
       "retPct": -5.24,
       "netProfit": -6.07,
       "notas": "RECONCILIADO 2026-08-27 con eToro API (pos 3553514767). ⚠️ ERROR DE EJECUCIÓN: el stop se puso en eToro a 31.00 (−4.5%) en vez del −18% del sistema (~26.60). Cerró el MISMO día (24-ago, abrió 06:22 cerró 20:00) al saltar ese stop demasiado ajustado: −$6.07 (−5.24%). Con el stop correcto −18% la posición seguiría viva (DOW ~30.7, solo −5% desde entrada). Entrada real 32.44 / $115.90 (no 32.35/$100). LECCIÓN: al poner la orden en eToro, fijar el stop al −18% real, no un valor tenso. 1x confirmado."
+    },
+    {
+      "id": "REAL-2026-08-28-CEG",
+      "ticker": "CEG",
+      "tv": "NASDAQ:CEG",
+      "leverage": 1,
+      "sector": "Utilities",
+      "direction": "LONG",
+      "system": "Confluencia",
+      "signalDate": "2026-08-28",
+      "signalPrice": 282.41,
+      "entryDate": "2026-08-28",
+      "entryPrice": 284.71,
+      "shares": 0.4574,
+      "amountUsd": 130.22,
+      "stop": 233.46,
+      "stopPct": -18,
+      "riskUsd": 23.44,
+      "stopSetOnBroker": false,
+      "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
+      "status": "open",
+      "exitDate": null,
+      "exitPrice": null,
+      "retPct": null,
+      "notas": "Novena posición real. Tier ⭐ CONFLUENCIA (cruce+setup-9, ENCIMA de EMA200). PRIMERA entrada elegida por la escalera con CAP DE EXTENSIÓN validado (2026-08-28): EQX(+51%) y AU(+124%) degradadas por parabólicas → CEG(+25% s/EMA200, sana) pasó a #1 mecánica. Sector Utilities = diversifica (no había nada). Valores PROVISIONALES (ask 284.71 al registrar); ⚠️ PENDIENTE reconciliar precio real y 1x con eToro API, y PONER stop -18% a ~233.46 en eToro (stopSetOnBroker=false)."
     }
   ]
 }
