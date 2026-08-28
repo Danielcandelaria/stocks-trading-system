@@ -763,3 +763,14 @@ Simulación 10y (200 tickers, 7 pos × 13.9%, ¼ Kelly), señales por orden temp
 - Correlación A↔B: ρ = −0.02 (diversificación real, incluso mejor que el 0.47 del manual).
 
 **Veredicto:** combinar NO mejora sobre EMACross solo; empeora Calmar y DD porque WeeklySwing es más débil y le quita slots. La ρ≈0 es buena pero diversificar hacia un activo peor no ayuda al retorno ajustado a riesgo. CONTRADICE la nota del manual (−25→−17); método distinto. ACCIÓN: WeeklySwing degradado al FONDO de la escalera (solo relleno de slots ociosos), no coequal. Caveat: sim reparte por orden temporal (sobrepondera WeeklySwing); la escalera real le da menos peso → combinada real más cerca de EMACross solo.
+
+---
+
+## Salud del momentum (dist a EMA200 en la entrada) (2026-08-28)
+
+EMACross anticipado, trades por bin de dist200. Script: `backtest_momentum_health.mjs` (220 tickers, 10y).
+- DEBAJO (<0%): PF 4.44, exp +18.6% — 🔴 INFLADO POR SUPERVIVENCIA (los que caen bajo EMA200 y no rebotan desaparecen del universo; espejismo "comprar el hundimiento"). NO actuar sobre esto.
+- SANO (0-30%): PF 1.98, exp +4.5%.
+- EXTENDIDO (>30%): PF 1.59, exp +4.1%, med −4.26% — PEOR en AMBAS mitades. ✅ FIABLE (no lo esconde la supervivencia).
+
+**Veredicto:** la parte robusta es que lo EXTENDIDO (>30% s/EMA200, parabólico) rinde peor de forma consistente → penalizar extensión en la escalera. NO "preferir pullbacks" (trampa de supervivencia). Ajuste aplicado: degradar candidatas EMACross con dist200>30% al fondo de la sección EMACross.
