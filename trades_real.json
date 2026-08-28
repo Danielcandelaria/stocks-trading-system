@@ -208,19 +208,19 @@
       "signalDate": "2026-08-28",
       "signalPrice": 282.41,
       "entryDate": "2026-08-28",
-      "entryPrice": 284.71,
-      "shares": 0.4574,
-      "amountUsd": 130.22,
-      "stop": 233.46,
+      "entryPrice": 284.74,
+      "shares": 0.351197,
+      "amountUsd": 100.0,
+      "stop": 233.0,
       "stopPct": -18,
-      "riskUsd": 23.44,
-      "stopSetOnBroker": false,
+      "riskUsd": 18.0,
+      "stopSetOnBroker": true,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
       "status": "open",
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Novena posición real. Tier ⭐ CONFLUENCIA (cruce+setup-9, ENCIMA de EMA200). PRIMERA entrada elegida por la escalera con CAP DE EXTENSIÓN validado (2026-08-28): EQX(+51%) y AU(+124%) degradadas por parabólicas → CEG(+25% s/EMA200, sana) pasó a #1 mecánica. Sector Utilities = diversifica (no había nada). Valores PROVISIONALES (ask 284.71 al registrar); ⚠️ PENDIENTE reconciliar precio real y 1x con eToro API, y PONER stop -18% a ~233.46 en eToro (stopSetOnBroker=false)."
+      "notas": "Novena posición real. Tier ⭐ CONFLUENCIA (cruce+setup-9, ENCIMA de EMA200). PRIMERA entrada elegida por la escalera con CAP DE EXTENSIÓN validado (2026-08-28): EQX(+51%) y AU(+124%) degradadas por parabólicas → CEG(+25% s/EMA200, sana) pasó a #1 mecánica. Sector Utilities = diversifica. RECONCILIADO 2026-08-28 con eToro API (pos 3561423587): entrada real 284.74, tamaño $100 (el usuario usó su tamaño estándar, no el ¼ Kelly $130), 1x, STOP puesto en eToro a 233.00 (−18.2%). stopSetOnBroker=true."
     }
   ]
 }
