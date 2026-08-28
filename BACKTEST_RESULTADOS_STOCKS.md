@@ -810,3 +810,14 @@ Cartera EMACross 10y (220 tickers, 7 pos × 13.9%). Script: `backtest_ext_penalt
 - Blend baja maxDD (−21.8%→−17.8%) y sube Calmar — diversificación robusta. PERO el CAGR del blend está inflado por la ventana (2021-2026 = peor tramo del momentum); NO gana más a largo plazo, solo suaviza.
 
 **DECISIÓN DEL USUARIO: MOMENTUM PURO es el foco.** Razón: cuenta pequeña + ejecución MANUAL en eToro. La reversión exige operativa diaria (RSI-2 sale en 2-5 días), solo funciona en líquidas, y tiene riesgo de cola propio (sin stop, skew negativo, correlacionado en crash). Aporta suavidad, no más retorno. Se APLAZA a "fase 2" (si se automatiza la ejecución o crece el capital). No montar ahora.
+
+---
+
+## Floor de CALIDAD (no rellenar con lo que sobra) (2026-08-28) — VALIDADO ✅
+
+`backtest_quality_gate.mjs` (220 tickers, 10y, 7 pos, ex-parabólicas). Políticas de relleno de slots:
+- A) TODAS (rellenar con la mejor disponible, sea marginal): +71%, maxDD −11.4%, Calmar 6.25, 83 trades.
+- B) SOLO confluencia (setup-9): +162%, maxDD −7.7%, Calmar 21.1, 54 trades.
+- C) FLOOR (confluencia O cruce fuerte ext≥8%): **+209%, maxDD −10.9%, Calmar 19.3, 66 trades**.
+
+**Veredicto:** filtrar por calidad TRIPLICA el retorno con DD igual/menor y 3× Calmar, en 2 mitades, perdiendo solo 17 trades (tail apenas sufre). Rellenar huecos con señales marginales DESTRUYE rendimiento. APLICADO en entry_engine.mjs (STRONG_EXT=8): solo entran confluencia (setup-9) O cruce fuerte (ext≥8% s/EMA21); el resto va a belowFloor (NO recomendado). Si no hay calidad → MANTENER CAJA (pólvora seca), no rellenar. Efecto hoy: en vez de VRSK (naked <EMA200, spread ancho) recomienda CRM (cruce fuerte +31.9%).

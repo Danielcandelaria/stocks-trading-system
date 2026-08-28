@@ -41,13 +41,17 @@ if (freno.activo) {
 } else if (!limits.slotsUsable) {
   console.log('\n⛔ SIN CUPO para entradas nuevas ahora (' + (limits.slotsByCount === 0 ? `ya tienes ${limits.openNow} abiertas = tope ${limits.maxOpen}` : 'caja insuficiente') + ').');
 } else if (!picks.length) {
-  console.log('\n⚠️ Hay cupo pero ninguna candidata pasa el filtro (todas en sector lleno o vacío el radar).');
+  console.log('\n💰 CUPO LIBRE pero NINGUNA señal de calidad hoy → MANTENER CAJA (pólvora seca). Mejor esperar una entrada de convicción (confluencia setup-9 o cruce fuerte) que rellenar con una marginal. El backtest lo confirma: rellenar con lo que sobra destruye rendimiento.');
 } else {
   console.log(`\n✅ ENTRAR (${picks.length}) — en este orden, a 1x:`);
   for (const p of picks) console.log(`  • ${p.ticker.padEnd(6)} ${(p.tier||'').padEnd(28)} ${eur(p.amountUsd)}  ${p.shares} acc  @ ${eur(p.price)}  🛑 ${eur(p.stop)}  [${p.sector || '?'}]`);
 }
 if (skipped.length) {
-  console.log(`\n↳ Saltadas por guardarraíl (${skipped.length}):`);
-  for (const s of skipped.slice(0, 8)) console.log(`  – ${s.ticker.padEnd(6)} ${s.tier.padEnd(20)} ${s.reason}`);
+  console.log(`\n↳ Saltadas por guardarraíl de sector (${skipped.length}):`);
+  for (const s of skipped.slice(0, 8)) console.log(`  – ${s.ticker.padEnd(6)} ${(s.tier||'').padEnd(20)} ${s.reason}`);
+}
+if (out.belowFloor && out.belowFloor.length) {
+  console.log(`\n↳ NO recomendadas — no pasan el floor de calidad (${out.belowFloor.length}):`);
+  for (const s of out.belowFloor.slice(0, 8)) console.log(`  – ${s.ticker.padEnd(6)} ${s.reason}`);
 }
 console.log('\nNo ejecuto órdenes: pon estas entradas en eToro a 1x. Verifica apalancamiento 1x antes de confirmar.\n');

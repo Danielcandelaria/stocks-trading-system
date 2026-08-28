@@ -294,8 +294,8 @@ async function load(){
     if (fr.activo) {
       body = '<div class="none">🚨 <b style="color:#f85149">Freno de cartera ACTIVO</b> — drawdown '+fr.ddPct+'% desde el pico $'+fr.peak+'. CERO entradas nuevas hasta recuperar por encima de '+fr.reactivaEn+'%. Gestiona las abiertas con su cruce/stop normal.</div>';
     } else if (!(E.picks||[]).length) {
-      const why = lim.slotsUsable===0 ? (lim.slotsByCount===0 ? 'ya tienes '+lim.openNow+' abiertas (tope '+lim.maxOpen+')' : 'caja insuficiente para una posición') : 'ninguna candidata pasa el filtro (sector lleno o radar vacío)';
-      body = '<div class="none">Hoy no toca entrar: '+esc(why)+'.</div>';
+      const why = lim.slotsUsable===0 ? (lim.slotsByCount===0 ? 'ya tienes '+lim.openNow+' abiertas (tope '+lim.maxOpen+')' : 'caja insuficiente para una posición') : '<b>ninguna señal de calidad hoy → MANTENER CAJA</b> (pólvora seca). Mejor esperar convicción (confluencia o cruce fuerte) que rellenar con una marginal';
+      body = '<div class="none">💰 '+why+'.</div>';
     } else {
       body = '<div class="erow">'+E.picks.map(p=>'<div class="pick">'+
         '<span class="pt"><a href="'+tvUrl(p.tv)+'" target="_blank">'+esc(p.ticker)+'</a> <span style="font-size:12px;color:var(--mut)">'+esc(p.tier)+'</span></span>'+
@@ -303,9 +303,10 @@ async function load(){
         '<span class="pd">🛑 stop <b>$'+p.stop+'</b> · '+esc(p.sector||'?')+(p.gapPct!=null&&p.extPct==null?' · falta '+p.gapPct+'%':'')+'</span>'+
       '</div>').join('')+'</div>';
     }
-    const skip = (E.skipped||[]).length ? '<div class="foot">↳ Saltadas por guardarraíl: '+E.skipped.slice(0,6).map(s=>'<b>'+esc(s.ticker)+'</b> ('+esc(s.reason)+')').join(' · ')+'</div>' : '';
+    const skip = (E.skipped||[]).length ? '<div class="foot">↳ Saltadas por sector: '+E.skipped.slice(0,6).map(s=>'<b>'+esc(s.ticker)+'</b> ('+esc(s.reason)+')').join(' · ')+'</div>' : '';
+    const floor = (E.belowFloor||[]).length ? '<div class="foot">↳ NO recomendadas (sin convicción/parabólicas): '+E.belowFloor.slice(0,8).map(s=>'<b>'+esc(s.ticker)+'</b>').join(' · ')+'</div>' : '';
     const foot = '<div class="foot">Cupos usables: '+lim.slotsUsable+' · No ejecuto órdenes: ponlas en eToro a 1x y verifica el apalancamiento.</div>';
-    document.getElementById('entry').innerHTML = '<div class="entry'+(fr.activo?' frenoon':'')+'">'+head+body+skip+foot+'</div>';
+    document.getElementById('entry').innerHTML = '<div class="entry'+(fr.activo?' frenoon':'')+'">'+head+body+skip+floor+foot+'</div>';
   } else { document.getElementById('entry').innerHTML = ''; }
 
   // ── MIS POSICIONES REALES ── (SOLO abiertas en la tabla; las cerradas van aparte, atenuadas)

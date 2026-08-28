@@ -9,7 +9,9 @@
 export const PARAMS = {
   SL_PCT: 0.18, RISK_FRAC: 0.025, POS_MIN: 0.13, POS_MAX: 0.16,
   MAX_OPEN: 8, SECT_CAP: 2, DD_PAUSE: -25, DD_RESUME: -15,
-  EXT_MAX: 30,   // dist a EMA200 > 30% = parabólica → se degrada (backtest_momentum_health: PF 1.59 < 1.98 sano)
+  EXT_MAX: 30,      // dist a EMA200 > 30% = parabólica → fuera (backtest_momentum_health: PF 1.59 < 1.98 sano)
+  STRONG_EXT: 8,    // FLOOR DE CALIDAD: solo entra confluencia (setup-9) O cruce fuerte (ext≥8% s/EMA21).
+                    // backtest_quality_gate: floor +209% vs rellenar-todo +71%, Calmar 19 vs 6. Mejor caja que trade marginal.
 };
 
 // Calcula el estado del freno (puro). Devuelve {peak, frenoActivo, ddPct}.
@@ -85,10 +87,19 @@ export function selectEntries({ radar, trades: tradesArr = [], universe, account
     ...tag(p1, 'EMACross', '🎯 P1 anticipada'),
     ...tag(p2, 'EMACross', '🎯 P2 cruzada fuerte'),
   ];
+  // Dos filtros de CALIDAD (validados): (1) no parabólicas (>30% s/EMA200); (2) FLOOR = confluencia
+  // setup-9 O cruce fuerte (ext≥8% s/EMA21). Lo que no pasa NO llena slots: mejor caja que trade marginal.
   const isPara = t => t.dist200 != null && t.dist200 > P.EXT_MAX;
-  const emaNormal = emaTiers.filter(t => !isPara(t));
-  const emaPara = emaTiers.filter(isPara).map(t => ({ ...t, tier: t.tier + ' ⚠️parabólica', parabolic: true }));
-  const ladder = [...emaNormal, ...emaPara, ...wsFresh, ...wsValid];
+  const isQuality = t => t.conf9 === true || (t.extPct ?? 0) >= P.STRONG_EXT;
+  const passes = t => !isPara(t) && isQuality(t);
+  const emaGood = emaTiers.filter(passes);
+  const belowFloor = emaTiers.filter(t => !passes(t)).map(t => ({
+    ...t, system: 'EMACross',
+    tier: t.tier + (isPara(t) ? ' ⚠️parabólica' : ' ⚠️bajo-floor'),
+    reason: isPara(t) ? `parabólica (+${(t.dist200 ?? 0).toFixed(0)}% s/EMA200)` : `sin convicción (ni setup-9 ni cruce ≥${P.STRONG_EXT}%)`,
+  }));
+  // Solo CALIDAD llena slots. WeeklySwing (reversión DeMark, confluencia por diseño) va al fondo como relleno.
+  const ladder = [...emaGood, ...wsFresh, ...wsValid];
 
   const riskUsd = +(cap * P.RISK_FRAC).toFixed(2);
   const posUsd = +Math.min(Math.max(riskUsd / P.SL_PCT, cap * P.POS_MIN), cap * P.POS_MAX).toFixed(2);
@@ -112,6 +123,6 @@ export function selectEntries({ radar, trades: tradesArr = [], universe, account
     sizing: { posUsd, riskUsd, pctCapital: cap ? +(posUsd / cap * 100).toFixed(1) : 0, leverage: 1, stopPct: -18 },
     limits: { maxOpen: P.MAX_OPEN, openNow: nOpen, slotsByCount, slotsByCash, slotsUsable: slots, sectorCap: P.SECT_CAP },
     freno: { activo: frenoActivo, peak, ddPct, pausaEn: P.DD_PAUSE, reactivaEn: P.DD_RESUME },
-    picks, skipped,
+    picks, skipped, belowFloor,
   };
 }
