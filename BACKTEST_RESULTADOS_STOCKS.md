@@ -751,3 +751,15 @@ Simulación de cartera 10y (220 tickers, 7 pos × 13.9%, ¼ Kelly), señales EMA
 - CON cap: +1033%, maxDD −20.0%, Calmar 51.5. **El cap solo saltó 10 de 2068 señales.**
 
 **Veredicto:** el backtest NO puede validar el cap. (1) Casi nunca se activa con selección neutral (first-come) y universo diverso → diferencia = ruido. (2) La protección del cap (desplome sectorial correlacionado) NO está en la muestra (10y alcista + survivors) → sesgo esconde el riesgo de cola que el cap cubre. (3) En uso real el cap SÍ muerde porque se rellena por prioridad/fuerza (un sector caliente da muchas señales fuertes juntas), no first-come. CONCLUSIÓN: regla prudente de cola, coste ≈0 en normal, se mantiene por fundamento teórico (correlación/papers), no por backtest. No confirmable ni refutable aquí.
+
+---
+
+## Backtest ESCALERA COMBINADA (EMACross + WeeklySwing) (2026-08-28)
+
+Simulación 10y (200 tickers, 7 pos × 13.9%, ¼ Kelly), señales por orden temporal. Script: `backtest_combined_ladder.mjs`.
+- A) EMACross solo: **+1012%, maxDD −19.2%, Calmar 52.8** — DOMINA.
+- B) WeeklySwing solo: +178%, maxDD −24.0%, Calmar 7.4 — sistema mucho más débil.
+- C) Combinada: +368%, maxDD −21.5%, Calmar 17.1 — en medio (diluye al fuerte).
+- Correlación A↔B: ρ = −0.02 (diversificación real, incluso mejor que el 0.47 del manual).
+
+**Veredicto:** combinar NO mejora sobre EMACross solo; empeora Calmar y DD porque WeeklySwing es más débil y le quita slots. La ρ≈0 es buena pero diversificar hacia un activo peor no ayuda al retorno ajustado a riesgo. CONTRADICE la nota del manual (−25→−17); método distinto. ACCIÓN: WeeklySwing degradado al FONDO de la escalera (solo relleno de slots ociosos), no coequal. Caveat: sim reparte por orden temporal (sobrepondera WeeklySwing); la escalera real le da menos peso → combinada real más cerca de EMACross solo.

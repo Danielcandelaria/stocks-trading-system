@@ -74,15 +74,16 @@ export function selectEntries({ radar, trades: tradesArr = [], universe, account
     .sort((a, b) => a.weeks - b.weeks);
   const wsFresh = ws.filter(p => p.weeks === 0), wsValid = ws.filter(p => p.weeks >= 1);
 
-  // Escalera COMBINada. La confluencia EMACross (cruce+setup9) manda; luego WeeklySwing fresco
-  // (PF 3.98 > P1/P2 de EMACross); luego los tramos anticipados de EMACross. Diversifica momentum+reversión.
+  // Escalera COMBINada. EMACross manda en TODOS sus tramos; WeeklySwing va AL FONDO (solo relleno
+  // de slots ociosos). Backtest 2026-08-28 (backtest_combined_ladder.mjs): EMACross solo Calmar 52.8
+  // vs WeeklySwing 7.4; combinar diluye. WeeklySwing solo aporta con capacidad sobrante, no como coequal.
   const tag = (arr, system, tier) => arr.map(t => ({ ...t, system: t.system || system, tier: t.tier || tier }));
   const ladder = [
     ...tag(stack, 'EMACross', '⭐⭐ STACK'),
     ...tag(conf, 'EMACross', '⭐ CONFLUENCIA'),
-    ...wsFresh,
     ...tag(p1, 'EMACross', '🎯 P1 anticipada'),
     ...tag(p2, 'EMACross', '🎯 P2 cruzada fuerte'),
+    ...wsFresh,
     ...wsValid,
   ];
 
