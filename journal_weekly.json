@@ -244,5 +244,33 @@
     "stop": 38.83,
     "riskPct": 18,
     "setupLow": 46.39
+  },
+  {
+    "id": "W:MAR:1787544000",
+    "ticker": "MAR",
+    "tv": "NASDAQ:MAR",
+    "sector": "Consumer Services",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1787544000,
+    "entryT": 1787544000,
+    "entryPx": 354.0469,
+    "stop": 290.3185,
+    "riskPct": 18,
+    "setupLow": 340.81
+  },
+  {
+    "id": "W:DOV:1787544000",
+    "ticker": "DOV",
+    "tv": "NYSE:DOV",
+    "sector": "Producer Manufacturing",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1787544000,
+    "entryT": 1787544000,
+    "entryPx": 201.9209,
+    "stop": 165.5751,
+    "riskPct": 18,
+    "setupLow": 193.75
   }
 ]
