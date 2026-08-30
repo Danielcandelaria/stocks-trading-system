@@ -110,7 +110,7 @@
     "tv": "NASDAQ:ASTS",
     "sector": "Communications",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785729600,
     "entryT": 1785729600,
     "entryPx": 71.6458,
@@ -118,7 +118,12 @@
     "riskPct": 18,
     "recovered": true,
     "setupLow_old": 52.8,
-    "migratedTo18": true
+    "migratedTo18": true,
+    "exitT": 1787544000,
+    "exitPx": 58.7202,
+    "exitReason": "STOP",
+    "retPct": -18.04,
+    "weeksHeld": 2
   },
   {
     "id": "W:NXT:1785729600",
