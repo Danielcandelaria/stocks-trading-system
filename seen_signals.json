@@ -960,5 +960,11 @@
   "RSI2:HST:1786368600": true,
   "RSI2:KIM:1786368600": true,
   "SPG:1786541400": true,
-  "PPG:1787232600": true
+  "PPG:1787232600": true,
+  "GEV:1787923800": true,
+  "KLAC:1787923800": true,
+  "NBIS:1787923800": true,
+  "JBL:1787923800": true,
+  "TSEM:1787923800": true,
+  "PNFP:1787923800": true
 }

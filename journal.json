@@ -222,5 +222,35 @@
     "exitPx": 235.1324,
     "exitReason": "TP",
     "r": 3.03
+  },
+  {
+    "id": "NBIS:1787923800:TP2",
+    "ticker": "NBIS",
+    "tv": "NASDAQ:NBIS",
+    "sector": "Technology Services",
+    "variant": "TP2",
+    "status": "open",
+    "signalT": 1787923800,
+    "entryT": 1787923800,
+    "entryPx": 209.2846,
+    "sl": 201.891,
+    "tp": 224.0717,
+    "risk": 7.3936,
+    "riskPct": 3.53
+  },
+  {
+    "id": "NBIS:1787923800:TP3",
+    "ticker": "NBIS",
+    "tv": "NASDAQ:NBIS",
+    "sector": "Technology Services",
+    "variant": "TP3",
+    "status": "open",
+    "signalT": 1787923800,
+    "entryT": 1787923800,
+    "entryPx": 209.2846,
+    "sl": 201.891,
+    "tp": 231.4653,
+    "risk": 7.3936,
+    "riskPct": 3.53
   }
 ]
