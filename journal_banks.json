@@ -47,14 +47,20 @@
     "tv": "NYSE:V",
     "sector": "Finance",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1782705600,
     "entryT": 1782705600,
     "entryPx": 362.13,
     "stop": 325.86,
     "target": 375.51,
     "riskPct": 10,
-    "theme": null
+    "theme": null,
+    "exitT": 1787544000,
+    "exitPx": 375.3222,
+    "exitReason": "siguiente SUPPLY (target)",
+    "retPct": 3.64,
+    "r": 0.36,
+    "weeksHeld": 7
   },
   {
     "id": "BK:ABBV:1782705600",
@@ -119,14 +125,20 @@
     "tv": "NYSE:V",
     "sector": "Finance",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785124800,
     "entryT": 1785124800,
     "entryPx": 366.13,
     "stop": 348.5,
     "target": 375.51,
     "riskPct": 4.8,
-    "theme": null
+    "theme": null,
+    "exitT": 1787544000,
+    "exitPx": 375.3222,
+    "exitReason": "siguiente SUPPLY (target)",
+    "retPct": 2.51,
+    "r": 0.52,
+    "weeksHeld": 3
   },
   {
     "id": "BK:RTX:1785124800",
@@ -177,6 +189,36 @@
     "stop": 375.96,
     "target": 629.44,
     "riskPct": 14.4,
+    "theme": null
+  },
+  {
+    "id": "BK:V:1787544000",
+    "ticker": "V",
+    "tv": "NYSE:V",
+    "sector": "Finance",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1787544000,
+    "entryT": 1787544000,
+    "entryPx": 381.6,
+    "stop": 358.05,
+    "target": 452.2501,
+    "riskPct": 6.2,
+    "theme": null
+  },
+  {
+    "id": "BK:IBKR:1787544000",
+    "ticker": "IBKR",
+    "tv": "NASDAQ:IBKR",
+    "sector": "Finance",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1787544000,
+    "entryT": 1787544000,
+    "entryPx": 95.84,
+    "stop": 88.92,
+    "target": 116.6,
+    "riskPct": 7.2,
     "theme": null
   }
 ]
