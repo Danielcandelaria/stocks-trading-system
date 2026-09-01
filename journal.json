@@ -229,14 +229,18 @@
     "tv": "NASDAQ:NBIS",
     "sector": "Technology Services",
     "variant": "TP2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1787923800,
     "entryT": 1787923800,
     "entryPx": 209.2846,
     "sl": 201.891,
     "tp": 224.0717,
     "risk": 7.3936,
-    "riskPct": 3.53
+    "riskPct": 3.53,
+    "exitT": 1788183000,
+    "exitPx": 201.7901,
+    "exitReason": "SL",
+    "r": -1.01
   },
   {
     "id": "NBIS:1787923800:TP3",
@@ -244,13 +248,17 @@
     "tv": "NASDAQ:NBIS",
     "sector": "Technology Services",
     "variant": "TP3",
-    "status": "open",
+    "status": "closed",
     "signalT": 1787923800,
     "entryT": 1787923800,
     "entryPx": 209.2846,
     "sl": 201.891,
     "tp": 231.4653,
     "risk": 7.3936,
-    "riskPct": 3.53
+    "riskPct": 3.53,
+    "exitT": 1788183000,
+    "exitPx": 201.7901,
+    "exitReason": "SL",
+    "r": -1.01
   }
 ]
