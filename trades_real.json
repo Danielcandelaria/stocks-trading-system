@@ -234,19 +234,18 @@
       "signalPrice": 32.47,
       "entryDate": "2026-09-02",
       "entryPrice": 32.47,
-      "shares": null,
-      "amountEur": 123,
-      "amountUsd": null,
+      "shares": 3.7881,
+      "amountUsd": 123,
       "stop": 26.63,
       "stopPct": -18,
-      "riskUsd": null,
+      "riskUsd": 22.14,
       "stopSetOnBroker": false,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
       "status": "open",
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Décima posición real. Tier ⭐⭐ STACK (máxima convicción: cruce EMA + setup-9 DeMark + DEBAJO EMA200 = compra de suelo). Elegida por la escalera con floor de calidad. Tamaño 123 EUR (≈$144 a 1.17). ⚠️ PROVISIONAL: colocada 2026-09-02 pre-market (US abre 13:30 UTC); NO visible aún en eToro API al registrar. PENDIENTE reconciliar precio real, tamaño USD, 1x y PONER stop -18% (~26.63) en eToro. stopSetOnBroker=false."
+      "notas": "Décima posición real. Tier ⭐⭐ STACK (máxima convicción: cruce EMA + setup-9 DeMark + DEBAJO EMA200 = compra de suelo). Elegida por la escalera con floor de calidad. Tamaño $123 USD. ⚠️ PROVISIONAL: colocada 2026-09-02 pre-market (US abre 13:30 UTC); NO visible aún en eToro API al registrar (entryPrice 32.47 estimado del radar). PENDIENTE reconciliar precio real de ejecución, shares, 1x y PONER stop -18% (~26.63) en eToro. stopSetOnBroker=false."
     }
   ]
 }
