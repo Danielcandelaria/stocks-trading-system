@@ -137,7 +137,7 @@
       "shares": 0.907588,
       "amountUsd": 174.03,
       "leverage": 1,
-      "stop": 156.50,
+      "stop": 156.5,
       "stopPct": -18,
       "riskUsd": 31.33,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
@@ -186,7 +186,7 @@
       "entryPrice": 32.44,
       "shares": 3.572749,
       "amountUsd": 115.9,
-      "stop": 26.60,
+      "stop": 26.6,
       "stopPct": -18,
       "riskUsd": 20.86,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
@@ -236,16 +236,16 @@
       "entryPrice": 32.74,
       "shares": 3.756872,
       "amountUsd": 123,
-      "stop": 26.85,
+      "stop": 26.83,
       "stopPct": -18,
       "riskUsd": 22.14,
-      "stopSetOnBroker": false,
+      "stopSetOnBroker": true,
       "exitRule": "Cruce contrario: EMA8 cruza BAJO la EMA21 (semanal). Sin toma de beneficios. Red: stop -18%.",
       "status": "open",
       "exitDate": null,
       "exitPrice": null,
       "retPct": null,
-      "notas": "Décima posición real. Tier ⭐⭐ STACK (máxima convicción: cruce EMA + setup-9 DeMark + DEBAJO EMA200 = compra de suelo). Elegida por la escalera con floor de calidad. RECONCILIADO 2026-09-02 con eToro API (pos 3566107899): entrada real 32.74, $123, 3.756872 acc, 1x. 🔴 SIN STOP-LOSS puesto en eToro (solo take-profit) — poner stop −18% a 26.85. stopSetOnBroker=false hasta confirmarlo."
+      "notas": "Décima posición real. Tier ⭐⭐ STACK (máxima convicción: cruce EMA + setup-9 DeMark + DEBAJO EMA200 = compra de suelo). Elegida por la escalera con floor de calidad. RECONCILIADO 2026-09-02 con eToro API (pos 3566107899): entrada real 32.74, $123, 3.756872 acc, 1x. STOP −18% puesto en eToro a 26.83, verificado por API 2026-09-02. stopSetOnBroker=true."
     }
   ]
 }
