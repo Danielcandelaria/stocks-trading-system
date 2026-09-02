@@ -55,7 +55,7 @@ function line(label, rs) { const w = rs.filter(x => x > 0); return `${label.padE
   let list = (uni.universe || uni).map(u => u.ticker);
   if (process.argv[2]) list = list.slice(0, +process.argv[2]);
   console.log(`\n════════ INFORME DE ROBUSTEZ — EMACross anticipado ════════`);
-  console.log(`  Universo: ${list.length} acciones · 10 años semanal · stop -18%\n`);
+  console.log(`  Universo: ${list.length} acciones · ~6a (2020-2026, EMA200 valida) semanal · stop -18%\n`);
   const bars = (await mapLimit(list, CONC, getW)).filter(Boolean);
   const raw = [];
   for (const b of bars) for (const x of rawTrades(b)) raw.push(x);

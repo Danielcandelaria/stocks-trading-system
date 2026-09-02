@@ -830,3 +830,17 @@ Cartera EMACross 10y (220 tickers, 7 pos × 13.9%). Script: `backtest_ext_penalt
 - SIN parabólicas: BAJO PF 2.33 (+7.2%) · MEDIO 2.41 (+5.9%) · **ALTO PF 3.27 (+11.0%)**. Orden ALTO>MEDIO>BAJO se mantiene en la 2ª mitad (2.41/2.07/1.92).
 
 **Veredicto:** el momentum previo alto (acción ya subiendo, PERO no parabólica) predice qué cruce anticipado será fuerte → capturar la fuerza ANTES de que se complete el cruce. APLICADO: radar_emacross emite `mom26`; entry_engine prioriza, dentro de cada tramo de calidad, las de mom26 alto (sort `_rank` luego mom26 desc). Caveat: inflado por supervivencia (orden relativo es lo fiable); no arregla la mediana negativa, mejora el acierto.
+
+---
+
+## ⚠️ CORRECCIÓN DE VENTANA (2026-08-29) — leer antes de interpretar lo anterior
+
+**Hallazgo (auditoría del usuario contra TV):** los backtests que usan **EMA200 o momentum previo en la entrada** (robustez, salud-del-momentum, cap-de-extensión, floor-de-calidad, momentum-previo) NO cubren 10 años: cubren **~6 años (2020-2026)**. Motivo: la EMA200 necesita 200 velas semanales de historia; con datos de 10 años solo es válida desde ~2020-06. Estaban etiquetados como "10y" — ERROR de etiqueta.
+
+**Intento de arreglo con `range=max` (backtest_verify_fullhistory.mjs): FALLÓ como validación.** Solo ~70 acciones tienen histórico tan largo (survivors desde 2008) → muestra minúscula (127 trades) y supervivencia EXTREMA → números no fiables (PF 5.96, Calmar 475, y el floor invertido por ruido). No usar esos números.
+
+**Qué SÍ es fiable:**
+- El registro de operaciones EXPORTADO (`export_backtest_data.mjs`, PDF) SÍ cubre 10 años reales (2017-2026, 4482 ops) porque no gatea a bar 200; las columnas EMA200/momentum van en blanco antes de tener 200 velas. Base: PF 1.99, WR 34.8%, mediana −3.7%, **sin top-5% PF 0.85 (pierde)** — la tail-dependence confirmada en 10 años.
+- Las mejoras (cap extensión, floor calidad, momentum previo) están validadas en **2020-2026** con desglose en 2 mitades DE ESA ventana, y son económicamente coherentes — pero NO sobre 10 años. Tratarlas como "válidas en el régimen reciente", pendientes de confirmación forward.
+
+**Regla:** no volver a etiquetar como "10 años" un backtest que gatea a bar 200 (EMA200). Es 2020-2026. La corrección de supervivencia de fondo sigue sin solución con datos gratis.

@@ -32,7 +32,7 @@ function stat(rs) { const n = rs.length; if (!n) return { n: 0, pf: 0, wr: 0, me
   const uni = JSON.parse(readFileSync(join(ROOT, 'universe.json'), 'utf8'));
   const list = (uni.universe || uni).map(u => u.ticker).slice(0, SAMPLE);
   console.log(`\n════ ¿EL MOMENTUM PREVIO (${LOOKBACK} sem) PREDICE LA FUERZA DEL CRUCE? ════`);
-  console.log(`  ${list.length} acc · 10y semanal · EMACross anticipado\n`);
+  console.log(`  ${list.length} acc · ~6a (2020-2026, EMA200 valida) semanal · EMACross anticipado\n`);
   const bars = (await mapLimit(list, CONC, getW)).filter(Boolean);
   const trades = [];
   for (const b of bars) {

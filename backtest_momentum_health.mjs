@@ -34,7 +34,7 @@ function stat(rs) { const n = rs.length; if (!n) return { n: 0, pf: 0, wr: 0, me
   const uni = JSON.parse(readFileSync(join(ROOT, 'universe.json'), 'utf8'));
   const list = (uni.universe || uni).map(u => u.ticker).slice(0, SAMPLE);
   console.log(`\n════ SALUD DEL MOMENTUM (dist a EMA200) — EMACross anticipado ════`);
-  console.log(`  ${list.length} acciones · 10y semanal · bins: DEBAJO<0% · SANO 0-30% · EXTENDIDO>30%\n`);
+  console.log(`  ${list.length} acciones · ~6a (2020-2026, EMA200 valida) semanal · bins: DEBAJO<0% · SANO 0-30% · EXTENDIDO>30%\n`);
   const bars = (await mapLimit(list, CONC, getW)).filter(Boolean);
 
   const trades = [];
