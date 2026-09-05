@@ -277,5 +277,61 @@
     "stop": 165.5751,
     "riskPct": 18,
     "setupLow": 193.75
+  },
+  {
+    "id": "W:KLAC:1788148800",
+    "ticker": "KLAC",
+    "tv": "NASDAQ:KLAC",
+    "sector": "Electronic Technology",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1788148800,
+    "entryT": 1788148800,
+    "entryPx": 185.6928,
+    "stop": 152.2681,
+    "riskPct": 18,
+    "setupLow": 167.05
+  },
+  {
+    "id": "W:CARR:1788148800",
+    "ticker": "CARR",
+    "tv": "NYSE:CARR",
+    "sector": "Producer Manufacturing",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1788148800,
+    "entryT": 1788148800,
+    "entryPx": 59.7399,
+    "stop": 48.9867,
+    "riskPct": 18,
+    "setupLow": 56.438
+  },
+  {
+    "id": "W:AMRZ:1788148800",
+    "ticker": "AMRZ",
+    "tv": "NYSE:AMRZ",
+    "sector": "Non-Energy Minerals",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1788148800,
+    "entryT": 1788148800,
+    "entryPx": 43.8419,
+    "stop": 35.9504,
+    "riskPct": 18,
+    "setupLow": 41.61
+  },
+  {
+    "id": "W:NI:1788148800",
+    "ticker": "NI",
+    "tv": "NYSE:NI",
+    "sector": "Utilities",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1788148800,
+    "entryT": 1788148800,
+    "entryPx": 41.4107,
+    "stop": 33.9568,
+    "riskPct": 18,
+    "setupLow": 40.09
   }
 ]
