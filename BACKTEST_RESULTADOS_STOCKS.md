@@ -844,3 +844,37 @@ Cartera EMACross 10y (220 tickers, 7 pos × 13.9%). Script: `backtest_ext_penalt
 - Las mejoras (cap extensión, floor calidad, momentum previo) están validadas en **2020-2026** con desglose en 2 mitades DE ESA ventana, y son económicamente coherentes — pero NO sobre 10 años. Tratarlas como "válidas en el régimen reciente", pendientes de confirmación forward.
 
 **Regla:** no volver a etiquetar como "10 años" un backtest que gatea a bar 200 (EMA200). Es 2020-2026. La corrección de supervivencia de fondo sigue sin solución con datos gratis.
+
+---
+
+## Material DeMark de Carlos Mantilla — 5 tests (2026-09-12)
+
+Revisión del indicador "Mantilla PB DeMARK 9-13" (= nuestro `demark_calc.mjs` ya verificado) y su capa de estrategia Pine. Todo con la lupa escéptica de siempre (2 mitades OOS, PF-sin-top5%, coste 0.06%/lado, 250 large-caps 10y semanal).
+
+**Semántica DeMark (corrección del usuario, confirmada con imagen Symbolik):** un **SELL Setup cuenta una TENDENCIA ALCISTA en marcha** (9 cierres > cierre de hace 4 barras, precio SUBIENDO); se llama "sell" porque al agotarse la subida (Sell Countdown 13 = techo) se sugiere vender. Un **BUY Setup cuenta una tendencia BAJISTA** (precio bajando), "buy" por el suelo al agotarse. `demark_calc`: `bearSetup`=SELL Setup (sube) · `bullSetup`=BUY Setup (baja). NO confundir el nombre con la dirección del precio durante el conteo.
+
+1. **Veto de agotamiento TD sobre EMACross (`backtest_td_exhaust_veto.mjs`) — REFUTADO/inerte.** Vetar la entrada del cruce si `bearSetup`≥9 apenas toca operaciones (~1%): el cruce anticipado (giro al alza temprano) y la TD Sell Setup madura viven en fases opuestas. Standalone PF 2.58→2.61 (ruido). Encima del extension cap ya no aporta (BOTH PF 2.76 vs EXTcap 2.69, bump dentro del ruido). Redundante con el extension cap (dist EMA200), que mide mejor la madurez. No aplicar.
+
+2. **Trailing ratcheting `low[i-4]` (sección 14 MPB) en WeeklySwing (`backtest_ws_trail_demark.mjs`) — REFUTADO.** Sube el PF ópticamente (4.71→6.54) pero BAJA la expectativa/trade (+13.6%→+11.4%) y el PF-sin-top5% (1.72→1.54), y sube stops a 86%: corta el cuerpo de los ganadores = más tail-dependence, no menos. Mismo pecado que un TP. **Byproduct reconfirmado (3ª vez): el stop −18% FIJO domina al setupLow ceñido** (WR 53% vs 22%, mediana +3.6% vs −2.5%, 39% stops vs 77%). El WeeklySwing en vivo YA migró a −18% (journal `migratedTo18:true`).
+
+3. **Estrategia Pine de Carlos (flip `sellSetup1`→`buySetup1`, 100% compuesto) (`backtest_carlos_flip_strategy.mjs`) — REFUTADA vs comprar-y-mantener.** Réplica fiel (comisión 0 = TV). Multiplicador mediana: semanal 1.77x vs B&H 3.36x; diario 1.67x vs 3.57x. **Bate a B&H solo en 9-12% de símbolos** (3% en diario con coste). El brillo en TV es supervivencia + deriva alcista + compounding 100% en un símbolo, no edge del flip. A nivel trade mediana NEGATIVA. Es una forma peor, cara y de alta rotación de estar largo.
+
+4. **¿Se puede mejorar la estrategia de Carlos? SÍ — el fallo es la SALIDA, no la entrada (`backtest_carlos_trend_ride.mjs`).** Con la semántica correcta, Carlos es un TREND-FOLLOWER que cabalga la subida (Sell Setup). Su entrada es válida; su error es vender al primer flip contrario (whipsaw). Escalera (trade-level, 1 pos/vez):
+   - K0 Carlos base (flip→flip): PF 1.66, exp +1.8%, **sin-top5% 0.86** (pierde sin la cola).
+   - K1 +stop −18%: sin cambio (el flip sale antes de que el stop actúe — no puedes gestionar riesgo de ruido).
+   - K2 +dejar correr (techo o ruptura): PF 3.37, exp +16.5%, sin-top5% 1.95, OOS 3.46/3.28.
+   - **K3 +correr hasta el techo (Sell Countdown 13): PF 3.57, exp +18.4%, sin-top5% 2.12, OOS 3.64/3.50** (más estable que WeeklySwing 2.38/5.99).
+   - REF WeeklySwing (comprar el suelo, filosofía OPUESTA): PF 3.88, exp +21.5%.
+   **Conclusión:** solo con arreglar la salida (dejar correr hasta el agotamiento del countdown-13 + stop), la idea de Carlos pasa de "sin edge robusto" a PF 3.57 robusto. Es *trend-following* (cabalga la subida) mientras el nuestro es *reversión* (compra el suelo) → posible diversificador (pendiente medir correlación K3↔WeeklySwing). Piezas nuestras que lo arreglan: stop −18%, salida por countdown-13 (no cortar ganadores), y capa de riesgo (¼ Kelly + 8 pos + 1x en vez de 100% all-in).
+
+**Regla de Carlos en una frase:** cambia la SALIDA del flip contrario al agotamiento del Sell Countdown 13, añade stop −18%, y reparte en 8 posiciones con ¼ Kelly.
+
+---
+
+## Monitor de salud — cobertura extendida a WeeklySwing y EMACross (2026-09-12)
+
+`monitor_health.mjs` cubría solo los sistemas diarios (DeMark-9 TP2, RSI-2). Se añadieron:
+- **WeeklySwing** (`journal_weekly.json`): bt WR 53%, banda racha p95=6, NO tail-dependent (reversión-suelo, mediana positiva → media<0 SÍ es degradación). Estado hoy: 🟡 muestra pequeña (2 cerradas, ambas −18/−15%, sin juicio).
+- **EMACross** (`journal_emacross.json`, 57 cerradas): bt WR 34.8%, ret medio +5.2%. **tailDependent=true** → una media negativa NO dispara 🔴 (el edge vive en el top-5%, que puede no haber caído); solo es 🔴 si ADEMÁS la WR se hunde. Banda de racha p95=**12** (baja WR ⇒ rachas largas normales). Estado hoy: **🟢 dentro de lo esperado** (WR 39% > backtest, racha 8 < 12, media −2.94% marcada ℹ️ como tail no materializada, no alarma).
+
+**Pendiente:** las bandas Monte Carlo de maxDD en % para WeeklySwing y EMACross NO están computadas (marcadas `null`/PENDIENTE en el código); el control provisional es racha + WR + signo de expectativa. Correr una MC propia para fijarlas.
