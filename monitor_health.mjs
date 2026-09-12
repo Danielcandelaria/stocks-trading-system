@@ -42,16 +42,20 @@ const SPEC = {
   WeeklySwing: {
     label: 'WeeklySwing (DeMark-9 sem)', unit: '%',
     bt: { wr: 53, perTrade: null },            // WR 53% documentado; perTrade backtest = cota superior (superv.), solo referencia
-    mc: { worstStreak: 6, maxDD: null },        // WR media→racha similar a DeMark; banda maxDD% pendiente de MC
-    tailDependent: false,                       // reversión-suelo: mediana POSITIVA → media<0 SÍ es señal de degradación
+    // Bandas Monte Carlo (mc_health_bands.mjs, 817 trades, 5000 iters). Escalables con n:
+    //   maxDD p95 ≈ 19.0·√n  ·  racha p95 ≈ 1.95·ln(n)
+    mc: { streakCoef: 1.95, maxDDcoef: 19.0 },
+    tailDependent: false,                       // reversión-suelo: mediana POSITIVA → media<0 y maxDD>banda SÍ son degradación
     closed: () => journalWeekly.filter(p => p.status === 'closed'),
     val: p => p.retPct,
   },
   EMACross: {
     label: 'EMACross (forward paper)', unit: '%',
     bt: { wr: 34.8, perTrade: 5.2 },           // documentado (base 10y): PF 1.99, WR 34.8%, ret medio +5.2%, mediana −3.7%
-    mc: { worstStreak: 12, maxDD: null },       // baja WR ⇒ rachas largas NORMALES (p95 ≈ 12); banda maxDD% pendiente de MC
-    tailDependent: true,                        // convexo: la media puede ser negativa hasta que caiga un pelotazo del top-5%
+    // Bandas Monte Carlo (mc_health_bands.mjs, 2320 trades, 5000 iters). Escalables con n:
+    //   maxDD p95 ≈ 20.7·√n  ·  racha p95 ≈ 2.98·ln(n)  (baja WR ⇒ rachas largas normales)
+    mc: { streakCoef: 2.98, maxDDcoef: 20.7 },
+    tailDependent: true,                        // convexo: media<0 Y maxDD>banda son NORMALES hasta que caiga el top-5% → nota, no 🔴
     closed: () => journalEma.filter(p => p.status === 'closed'),
     val: p => p.retPct,
   },
@@ -72,12 +76,23 @@ function analyze(s) {
   const ddAbs = -dd;
 
   const flags = [], infos = [];
-  // banda 1: racha de pérdidas supera el p95 Monte Carlo (calibrada por WR de cada sistema)
-  if (worst > s.mc.worstStreak) flags.push(`racha ${worst} pérdidas > p95 MC (${s.mc.worstStreak})`);
-  // banda 2: drawdown supera el p95 (solo si hay banda MC computada en esa unidad)
-  if (s.mc.maxDD != null && ddAbs > s.mc.maxDD) flags.push(`drawdown ${ddAbs.toFixed(1)}${s.unit} > p95 MC (${s.mc.maxDD}${s.unit})`);
-  // banda 3: WR muy por debajo del backtest con muestra suficiente
   const wrGap = s.bt.wr - wr;
+  // Bandas Monte Carlo ESCALABLES con n (p95 crece con la muestra):
+  //   maxDD ≈ coef·√n  ·  racha ≈ coef·ln(n).  Compat: si el spec trae valores fijos (worstStreak/maxDD), se usan.
+  const streakBand = s.mc.streakCoef != null ? Math.round(s.mc.streakCoef * Math.log(Math.max(n, 10))) : s.mc.worstStreak;
+  const maxDDBand  = s.mc.maxDDcoef  != null ? s.mc.maxDDcoef * Math.sqrt(Math.max(n, 1))            : s.mc.maxDD;
+  // Las bandas solo se juzgan con muestra suficiente (n<10 → 🟡, sin veredicto).
+  if (n >= 10) {
+    // banda 1: racha de pérdidas > p95 MC. WR-driven (no tail) → 🔴 dura para TODOS los sistemas.
+    if (streakBand != null && worst > streakBand) flags.push(`racha ${worst} pérdidas > p95 MC (${streakBand} a n=${n})`);
+    // banda 2: drawdown > p95 MC. En tail-dependent es NORMAL hasta que caiga el top-5% → NOTA; en no-tail → 🔴.
+    if (maxDDBand != null && ddAbs > maxDDBand) {
+      const msg = `maxDD ${ddAbs.toFixed(0)}${s.unit} > p95 MC (${maxDDBand.toFixed(0)}${s.unit} a n=${n})`;
+      if (s.tailDependent) infos.push(`${msg} — coherente con media negativa (tail no materializada); vigila WR/racha`);
+      else flags.push(msg);
+    }
+  }
+  // banda 3: WR muy por debajo del backtest con muestra suficiente (aplica a todos).
   if (n >= 15 && wrGap > 15) flags.push(`WR ${wr.toFixed(0)}% << backtest ${s.bt.wr}% (−${wrGap.toFixed(0)}pts)`);
   // banda 4: expectativa real negativa con muestra suficiente.
   //   En sistemas tail-dependent (convexos) una media negativa NO es alarma: el edge vive en el top-5%,
@@ -111,7 +126,7 @@ function analyze(s) {
 const results = Object.values(SPEC).map(analyze);
 const header = `🩺 <b>SALUD FORWARD vs BACKTEST</b> — ${new Date().toISOString().slice(0, 10)}`;
 const body = [header, '', ...results.flatMap(r => r.lines), '',
-  `<i>Bandas p95 (racha): DeMark/RSI2/WeeklySwing=6, EMACross=12 (baja WR ⇒ rachas largas normales). maxDD MC: DeMark 7R; WeeklySwing/EMACross en % PENDIENTE de MC. 🔴 = cruzó banda → decisión humana.</i>`].join('\n');
+  `<i>Bandas Monte Carlo p95 ESCALABLES con n (maxDD≈coef·√n, racha≈coef·ln n): WeeklySwing maxDD 19·√n/racha 1.95·ln n · EMACross 20.7·√n/2.98·ln n (maxDD = nota, es tail-dependent). DeMark 7R/racha 6 fijos. 🔴 = cruzó banda → decisión humana.</i>`].join('\n');
 
 console.log(body.replace(/<[^>]+>/g, ''));
 
