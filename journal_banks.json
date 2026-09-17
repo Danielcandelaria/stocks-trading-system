@@ -194,14 +194,20 @@
     "tv": "NASDAQ:AMGN",
     "sector": "Health Technology",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1786939200,
     "entryT": 1786939200,
     "entryPx": 439.33,
     "stop": 375.96,
     "target": 629.44,
     "riskPct": 14.4,
-    "theme": null
+    "theme": null,
+    "exitT": 1788753600,
+    "exitPx": 377.1613,
+    "exitReason": "cierre < EMA8 (trailing)",
+    "retPct": -14.15,
+    "r": -0.98,
+    "weeksHeld": 2
   },
   {
     "id": "BK:V:1787544000",
@@ -282,6 +288,21 @@
     "stop": 91.44,
     "target": 139.75,
     "riskPct": 25.1,
+    "theme": null
+  },
+  {
+    "id": "BK:ELV:1788753600",
+    "ticker": "ELV",
+    "tv": "NYSE:ELV",
+    "sector": "Health Services",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1788753600,
+    "entryT": 1788753600,
+    "entryPx": 418.72,
+    "stop": 390.8,
+    "target": 458.75,
+    "riskPct": 6.7,
     "theme": null
   }
 ]
