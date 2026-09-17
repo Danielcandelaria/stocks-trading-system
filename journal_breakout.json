@@ -139,7 +139,7 @@
     "tv": "NASDAQ:MSFT",
     "sector": "Technology Services",
     "strategy": "BreakoutRetest",
-    "status": "pending",
+    "status": "cancelled",
     "signalT": 1785729600,
     "level": 466.84,
     "entryPx": 466.84,
@@ -148,6 +148,7 @@
     "breakClose": 499.99,
     "riskPct": 8,
     "theme": null,
-    "themeStrength": null
+    "themeStrength": null,
+    "exitT": 1789669728.026
   }
 ]
