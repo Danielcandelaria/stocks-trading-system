@@ -266,14 +266,20 @@
     "tv": "NYSE:WFC",
     "sector": "Finance",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1788148800,
     "entryT": 1788148800,
     "entryPx": 89.97,
     "stop": 83.72,
     "target": 95.09,
     "riskPct": 6.9,
-    "theme": null
+    "theme": null,
+    "exitT": 1789358400,
+    "exitPx": 86.0769,
+    "exitReason": "cierre < EMA8 (trailing)",
+    "retPct": -4.33,
+    "r": -0.62,
+    "weeksHeld": 1
   },
   {
     "id": "BK:HOOD:1788148800",
@@ -303,6 +309,21 @@
     "stop": 390.8,
     "target": 458.75,
     "riskPct": 6.7,
+    "theme": null
+  },
+  {
+    "id": "BK:CRWD:1789358400",
+    "ticker": "CRWD",
+    "tv": "NASDAQ:CRWD",
+    "sector": "Technology Services",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1789358400,
+    "entryT": 1789358400,
+    "entryPx": 237.65,
+    "stop": 204.27,
+    "target": 337.79,
+    "riskPct": 14,
     "theme": null
   }
 ]
