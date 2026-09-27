@@ -176,14 +176,18 @@
     "tv": "NASDAQ:GOOG",
     "sector": "Technology Services",
     "variant": "TP3",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785245400,
     "entryT": 1785245400,
     "entryPx": 332.7663,
     "sl": 314.89,
     "tp": 386.3952,
     "risk": 17.8763,
-    "riskPct": 5.37
+    "riskPct": 5.37,
+    "exitT": 1790256600,
+    "exitPx": 338.8405,
+    "exitReason": "TIME",
+    "r": 0.34
   },
   {
     "id": "TWLO:1785159000:TP2",
