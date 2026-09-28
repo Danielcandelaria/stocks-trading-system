@@ -215,14 +215,20 @@
     "tv": "NYSE:V",
     "sector": "Finance",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1787544000,
     "entryT": 1787544000,
     "entryPx": 381.6,
     "stop": 358.05,
     "target": 452.2501,
     "riskPct": 6.2,
-    "theme": null
+    "theme": null,
+    "exitT": 1789963200,
+    "exitPx": 367.1963,
+    "exitReason": "cierre < EMA8 (trailing)",
+    "retPct": -3.77,
+    "r": -0.61,
+    "weeksHeld": 3
   },
   {
     "id": "BK:IBKR:1787544000",
@@ -302,14 +308,20 @@
     "tv": "NYSE:ELV",
     "sector": "Health Services",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1788753600,
     "entryT": 1788753600,
     "entryPx": 418.72,
     "stop": 390.8,
     "target": 458.75,
     "riskPct": 6.7,
-    "theme": null
+    "theme": null,
+    "exitT": 1789963200,
+    "exitPx": 395.892,
+    "exitReason": "cierre < EMA8 (trailing)",
+    "retPct": -5.45,
+    "r": -0.82,
+    "weeksHeld": 1
   },
   {
     "id": "BK:CRWD:1789358400",
@@ -324,6 +336,36 @@
     "stop": 204.27,
     "target": 337.79,
     "riskPct": 14,
+    "theme": null
+  },
+  {
+    "id": "BK:PLTR:1789963200",
+    "ticker": "PLTR",
+    "tv": "NASDAQ:PLTR",
+    "sector": "Technology Services",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1789963200,
+    "entryT": 1789963200,
+    "entryPx": 189.67,
+    "stop": 166.42,
+    "target": 198.88,
+    "riskPct": 12.3,
+    "theme": null
+  },
+  {
+    "id": "BK:HPE:1789963200",
+    "ticker": "HPE",
+    "tv": "NYSE:HPE",
+    "sector": "Electronic Technology",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1789963200,
+    "entryT": 1789963200,
+    "entryPx": 62.94,
+    "stop": 55.02,
+    "target": 86.7,
+    "riskPct": 12.6,
     "theme": null
   }
 ]
