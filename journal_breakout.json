@@ -150,5 +150,22 @@
     "theme": null,
     "themeStrength": null,
     "exitT": 1789669728.026
+  },
+  {
+    "id": "B:QCOM:1789963200",
+    "ticker": "QCOM",
+    "tv": "NASDAQ:QCOM",
+    "sector": "Electronic Technology",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1789963200,
+    "level": 192.12,
+    "entryPx": 192.12,
+    "stop": 176.7504,
+    "tp": 222.8592,
+    "breakClose": 201.97,
+    "riskPct": 8,
+    "theme": null,
+    "themeStrength": null
   }
 ]
