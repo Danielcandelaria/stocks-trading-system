@@ -271,14 +271,18 @@
     "tv": "NASDAQ:ZM",
     "sector": "Technology Services",
     "variant": "TP2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1790170200,
     "entryT": 1790170200,
     "entryPx": 91.946,
     "sl": 87.81,
     "tp": 100.2179,
     "risk": 4.136,
-    "riskPct": 4.5
+    "riskPct": 4.5,
+    "exitT": 1790602200,
+    "exitPx": 87.7661,
+    "exitReason": "SL",
+    "r": -1.01
   },
   {
     "id": "ZM:1790170200:TP3",
@@ -286,14 +290,18 @@
     "tv": "NASDAQ:ZM",
     "sector": "Technology Services",
     "variant": "TP3",
-    "status": "open",
+    "status": "closed",
     "signalT": 1790170200,
     "entryT": 1790170200,
     "entryPx": 91.946,
     "sl": 87.81,
     "tp": 104.3538,
     "risk": 4.136,
-    "riskPct": 4.5
+    "riskPct": 4.5,
+    "exitT": 1790602200,
+    "exitPx": 87.7661,
+    "exitReason": "SL",
+    "r": -1.01
   },
   {
     "id": "CDE:1789997400:TP2",
@@ -301,14 +309,18 @@
     "tv": "NYSE:CDE",
     "sector": "Non-Energy Minerals",
     "variant": "TP2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1789997400,
     "entryT": 1790170200,
     "entryPx": 19.95,
     "sl": 18.48,
     "tp": 22.8899,
     "risk": 1.47,
-    "riskPct": 7.37
+    "riskPct": 7.37,
+    "exitT": 1790602200,
+    "exitPx": 18.1609,
+    "exitReason": "SL",
+    "r": -1.22
   },
   {
     "id": "CDE:1789997400:TP3",
@@ -316,13 +328,17 @@
     "tv": "NYSE:CDE",
     "sector": "Non-Energy Minerals",
     "variant": "TP3",
-    "status": "open",
+    "status": "closed",
     "signalT": 1789997400,
     "entryT": 1790170200,
     "entryPx": 19.95,
     "sl": 18.48,
     "tp": 24.3599,
     "risk": 1.47,
-    "riskPct": 7.37
+    "riskPct": 7.37,
+    "exitT": 1790602200,
+    "exitPx": 18.1609,
+    "exitReason": "SL",
+    "r": -1.22
   }
 ]
