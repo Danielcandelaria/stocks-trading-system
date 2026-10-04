@@ -879,5 +879,47 @@
     "stop": 16.6626,
     "riskPct": 18,
     "setupLow": 19.95
+  },
+  {
+    "id": "W:PLD:1790568000",
+    "ticker": "PLD",
+    "tv": "NYSE:PLD",
+    "sector": "Finance",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1790568000,
+    "entryT": 1790568000,
+    "entryPx": 128.9745,
+    "stop": 105.7591,
+    "riskPct": 18,
+    "setupLow": 127.29
+  },
+  {
+    "id": "W:O:1790568000",
+    "ticker": "O",
+    "tv": "NYSE:O",
+    "sector": "Finance",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1790568000,
+    "entryT": 1790568000,
+    "entryPx": 54.1571,
+    "stop": 44.4088,
+    "riskPct": 18,
+    "setupLow": 53.33
+  },
+  {
+    "id": "W:KIM:1790568000",
+    "ticker": "KIM",
+    "tv": "NYSE:KIM",
+    "sector": "Finance",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1790568000,
+    "entryT": 1790568000,
+    "entryPx": 22.2511,
+    "stop": 18.2459,
+    "riskPct": 18,
+    "setupLow": 21.86
   }
 ]
