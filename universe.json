@@ -1,3974 +1,3974 @@
 {
-  "generatedAt": "2026-10-06T09:05:26.081Z",
-  "totalCount": 1089,
+  "generatedAt": "2026-10-13T19:00:12.401Z",
+  "totalCount": 1073,
   "universe": [
     {
       "tv": "NASDAQ:NVDA",
       "ticker": "NVDA",
       "sector": "Electronic Technology",
-      "ema50_tv": 220.2264451437719,
-      "ema200_tv": 202.5624804787525,
+      "ema50_tv": 222.59741476735118,
+      "ema200_tv": 204.25190366446105,
       "nextEarnings": 1795608000
     },
     {
       "tv": "NASDAQ:AAPL",
       "ticker": "AAPL",
       "sector": "Electronic Technology",
-      "ema50_tv": 323.908110377565,
-      "ema200_tv": 294.9113878844137,
-      "nextEarnings": 1793275200
+      "ema50_tv": 327.04776544373226,
+      "ema200_tv": 297.4492123544593,
+      "nextEarnings": 1793655000
     },
     {
       "tv": "NASDAQ:GOOG",
       "ticker": "GOOG",
       "sector": "Technology Services",
-      "ema50_tv": 342.47912560277535,
-      "ema200_tv": 327.54889698815356,
+      "ema50_tv": 343.5042929824268,
+      "ema200_tv": 328.69348747552493,
       "nextEarnings": 1793102400
     },
     {
       "tv": "NASDAQ:MSFT",
       "ticker": "MSFT",
       "sector": "Technology Services",
-      "ema50_tv": 484.9872976999605,
-      "ema200_tv": 450.2838845628907,
-      "nextEarnings": 1793102400
+      "ema50_tv": 495.53214450901555,
+      "ema200_tv": 455.16334786829356,
+      "nextEarnings": 1793217600
     },
     {
       "tv": "NASDAQ:AMZN",
       "ticker": "AMZN",
       "sector": "Retail Trade",
-      "ema50_tv": 253.32281510932896,
-      "ema200_tv": 243.84976347393606,
+      "ema50_tv": 254.44369577946722,
+      "ema200_tv": 244.70447759735984,
       "nextEarnings": 1793275200
     },
     {
       "tv": "NASDAQ:META",
       "ticker": "META",
       "sector": "Technology Services",
-      "ema50_tv": 656.0370390122796,
-      "ema200_tv": 633.8251385273479,
-      "nextEarnings": 1793188800
+      "ema50_tv": 672.864788022502,
+      "ema200_tv": 639.6830094954076,
+      "nextEarnings": 1792612860
     },
     {
       "tv": "NASDAQ:AVGO",
       "ticker": "AVGO",
       "sector": "Electronic Technology",
-      "ema50_tv": 366.980117160545,
-      "ema200_tv": 363.5900752643847,
+      "ema50_tv": 366.30135532959,
+      "ema200_tv": 363.62487814641565,
       "nextEarnings": 1796904000
     },
     {
       "tv": "NASDAQ:TSLA",
       "ticker": "TSLA",
       "sector": "Consumer Durables",
-      "ema50_tv": 362.5441449392539,
-      "ema200_tv": 377.7416106410701,
-      "nextEarnings": 1801656000
-    },
-    {
-      "tv": "NASDAQ:MU",
-      "ticker": "MU",
-      "sector": "Electronic Technology",
-      "ema50_tv": 984.8335905802317,
-      "ema200_tv": 733.9296224462612,
-      "nextEarnings": 1798027200
+      "ema50_tv": 365.8173649503938,
+      "ema200_tv": 377.75382378438593,
+      "nextEarnings": 1792612800
     },
     {
       "tv": "NYSE:LLY",
       "ticker": "LLY",
       "sector": "Health Technology",
-      "ema50_tv": 1161.9831931358724,
-      "ema200_tv": 1075.5771627066279,
+      "ema50_tv": 1164.398361172927,
+      "ema200_tv": 1081.2670475980565,
       "nextEarnings": 1793270700
+    },
+    {
+      "tv": "NASDAQ:MU",
+      "ticker": "MU",
+      "sector": "Electronic Technology",
+      "ema50_tv": 991.8929653233794,
+      "ema200_tv": 750.5927689062776,
+      "nextEarnings": 1798027200
     },
     {
       "tv": "NASDAQ:AMD",
       "ticker": "AMD",
       "sector": "Electronic Technology",
-      "ema50_tv": 537.5165736347097,
-      "ema200_tv": 410.7455871862962,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:JPM",
-      "ticker": "JPM",
-      "sector": "Finance",
-      "ema50_tv": 344.9452387359695,
-      "ema200_tv": 325.2254771826959,
-      "nextEarnings": 1791889200
+      "ema50_tv": 554.6332452729813,
+      "ema200_tv": 422.86169438563275,
+      "nextEarnings": 1793740500
     },
     {
       "tv": "NASDAQ:WMT",
       "ticker": "WMT",
       "sector": "Retail Trade",
-      "ema50_tv": 108.83237441483742,
-      "ema200_tv": 113.01995114043885,
+      "ema50_tv": 109.24533791006724,
+      "ema200_tv": 112.8820891897632,
       "nextEarnings": 1795093200
+    },
+    {
+      "tv": "NYSE:JPM",
+      "ticker": "JPM",
+      "sector": "Finance",
+      "ema50_tv": 342.2950206770441,
+      "ema200_tv": 325.64566610871555,
+      "nextEarnings": 1799927100
     },
     {
       "tv": "NYSE:V",
       "ticker": "V",
       "sector": "Finance",
-      "ema50_tv": 364.68839216530955,
-      "ema200_tv": 345.81479111199366,
-      "nextEarnings": 1793707200
+      "ema50_tv": 368.2829718254867,
+      "ema200_tv": 347.86943882743276,
+      "nextEarnings": 1793131500
     },
     {
       "tv": "NYSE:XOM",
       "ticker": "XOM",
       "sector": "Energy Minerals",
-      "ema50_tv": 159.738542323084,
-      "ema200_tv": 147.89719919007254,
+      "ema50_tv": 161.71448293313688,
+      "ema200_tv": 149.11518695126372,
       "nextEarnings": 1792756800
-    },
-    {
-      "tv": "NASDAQ:INTC",
-      "ticker": "INTC",
-      "sector": "Electronic Technology",
-      "ema50_tv": 106.74297803268963,
-      "ema200_tv": 85.65626014035462,
-      "nextEarnings": 1792670400
     },
     {
       "tv": "NYSE:JNJ",
       "ticker": "JNJ",
       "sector": "Health Technology",
-      "ema50_tv": 263.53970513496597,
-      "ema200_tv": 240.65520384592006,
-      "nextEarnings": 1791888300
+      "ema50_tv": 262.17989581798713,
+      "ema200_tv": 241.6188185733806,
+      "nextEarnings": 1800973800
+    },
+    {
+      "tv": "NASDAQ:INTC",
+      "ticker": "INTC",
+      "sector": "Electronic Technology",
+      "ema50_tv": 106.692425200401,
+      "ema200_tv": 86.88347350352298,
+      "nextEarnings": 1793304000
     },
     {
       "tv": "NYSE:MA",
       "ticker": "MA",
       "sector": "Finance",
-      "ema50_tv": 561.8167489875375,
-      "ema200_tv": 541.8405918331365,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NYSE:ABBV",
-      "ticker": "ABBV",
-      "sector": "Health Technology",
-      "ema50_tv": 257.1437864255739,
-      "ema200_tv": 236.36611113306205,
-      "nextEarnings": 1793367000
+      "ema50_tv": 566.5527250914594,
+      "ema200_tv": 544.2567511268074,
+      "nextEarnings": 1793280600
     },
     {
       "tv": "NASDAQ:PLTR",
       "ticker": "PLTR",
       "sector": "Technology Services",
-      "ema50_tv": 171.73096623488004,
-      "ema200_tv": 154.10876917185837,
-      "nextEarnings": 1794225600
+      "ema50_tv": 178.24786637133602,
+      "ema200_tv": 156.89412000136218,
+      "nextEarnings": 1793653500
+    },
+    {
+      "tv": "NYSE:ABBV",
+      "ticker": "ABBV",
+      "sector": "Health Technology",
+      "ema50_tv": 260.74223645498296,
+      "ema200_tv": 238.547775562665,
+      "nextEarnings": 1793367000
     },
     {
       "tv": "NASDAQ:CSCO",
       "ticker": "CSCO",
       "sector": "Electronic Technology",
-      "ema50_tv": 110.69630658266422,
-      "ema200_tv": 100.24646018432855,
+      "ema50_tv": 111.91752761811186,
+      "ema200_tv": 101.19087665499565,
       "nextEarnings": 1795003200
-    },
-    {
-      "tv": "NASDAQ:LRCX",
-      "ticker": "LRCX",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 312.40069391589486,
-      "ema200_tv": 273.04210602567036,
-      "nextEarnings": 1792613100
     },
     {
       "tv": "NYSE:ORCL",
       "ticker": "ORCL",
       "sector": "Technology Services",
-      "ema50_tv": 146.11425945250014,
-      "ema200_tv": 165.295875640137,
+      "ema50_tv": 145.01619661014112,
+      "ema200_tv": 163.88178542409227,
       "nextEarnings": 1797249600
-    },
-    {
-      "tv": "NASDAQ:AMAT",
-      "ticker": "AMAT",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 490.7459241016447,
-      "ema200_tv": 431.5697511157903,
-      "nextEarnings": 1794517260
-    },
-    {
-      "tv": "NASDAQ:COST",
-      "ticker": "COST",
-      "sector": "Retail Trade",
-      "ema50_tv": 927.7219750894194,
-      "ema200_tv": 951.1654057267923,
-      "nextEarnings": 1796937300
     },
     {
       "tv": "NYSE:CVX",
       "ticker": "CVX",
       "sector": "Energy Minerals",
-      "ema50_tv": 202.39129327954717,
-      "ema200_tv": 187.08954557554495,
+      "ema50_tv": 204.40789214549443,
+      "ema200_tv": 188.51888801509676,
       "nextEarnings": 1793355300
     },
     {
-      "tv": "NYSE:CAT",
-      "ticker": "CAT",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 831.0077313300433,
-      "ema200_tv": 778.8973413345788,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:BAC",
-      "ticker": "BAC",
-      "sector": "Finance",
-      "ema50_tv": 58.81325944640382,
-      "ema200_tv": 55.87672719244226,
-      "nextEarnings": 1791974700
+      "tv": "NASDAQ:COST",
+      "ticker": "COST",
+      "sector": "Retail Trade",
+      "ema50_tv": 932.2522805636942,
+      "ema200_tv": 951.0127692387333,
+      "nextEarnings": 1796937300
     },
     {
       "tv": "NYSE:KO",
       "ticker": "KO",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 86.95716980128277,
-      "ema200_tv": 81.11433054601919,
+      "ema50_tv": 87.19837754292134,
+      "ema200_tv": 81.51564960405315,
       "nextEarnings": 1793098500
+    },
+    {
+      "tv": "NYSE:BAC",
+      "ticker": "BAC",
+      "sector": "Finance",
+      "ema50_tv": 57.798923543506305,
+      "ema200_tv": 55.77030836015956,
+      "nextEarnings": 1791974700
+    },
+    {
+      "tv": "NASDAQ:LRCX",
+      "ticker": "LRCX",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 313.4540307076576,
+      "ema200_tv": 275.6579279580054,
+      "nextEarnings": 1792613100
     },
     {
       "tv": "NYSE:DELL",
       "ticker": "DELL",
       "sector": "Electronic Technology",
-      "ema50_tv": 497.9995885266648,
-      "ema200_tv": 344.44383361507477,
+      "ema50_tv": 514.8666477143853,
+      "ema200_tv": 357.9903415841869,
       "nextEarnings": 1796126400
+    },
+    {
+      "tv": "NASDAQ:AMAT",
+      "ticker": "AMAT",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 493.15964874460013,
+      "ema200_tv": 435.7396919146048,
+      "nextEarnings": 1794517260
+    },
+    {
+      "tv": "NYSE:PG",
+      "ticker": "PG",
+      "sector": "Consumer Non-Durables",
+      "ema50_tv": 147.14367571823445,
+      "ema200_tv": 148.23740713258982,
+      "nextEarnings": 1792666800
+    },
+    {
+      "tv": "NYSE:CAT",
+      "ticker": "CAT",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 825.4846617194548,
+      "ema200_tv": 780.4993445311882,
+      "nextEarnings": 1793793600
     },
     {
       "tv": "NYSE:MRK",
       "ticker": "MRK",
       "sector": "Health Technology",
-      "ema50_tv": 141.9694817069319,
-      "ema200_tv": 124.30160304185111,
+      "ema50_tv": 142.27830679110295,
+      "ema200_tv": 125.41313259492067,
       "nextEarnings": 1793269800
     },
     {
       "tv": "NYSE:UNH",
       "ticker": "UNH",
       "sector": "Health Services",
-      "ema50_tv": 387.7624477098873,
-      "ema200_tv": 374.35100848306723,
-      "nextEarnings": 1791898200
-    },
-    {
-      "tv": "NYSE:PG",
-      "ticker": "PG",
-      "sector": "Consumer Non-Durables",
-      "ema50_tv": 146.12704822136712,
-      "ema200_tv": 148.07965998713127,
-      "nextEarnings": 1792666800
+      "ema50_tv": 385.3644708028508,
+      "ema200_tv": 374.4742928729806,
+      "nextEarnings": 1800446400
     },
     {
       "tv": "NASDAQ:PANW",
       "ticker": "PANW",
       "sector": "Technology Services",
-      "ema50_tv": 361.01837583496615,
-      "ema200_tv": 282.15217081483837,
+      "ema50_tv": 370.9829191921401,
+      "ema200_tv": 289.4755965318675,
       "nextEarnings": 1794484800
     },
     {
       "tv": "NYSE:GE",
       "ticker": "GE",
       "sector": "Electronic Technology",
-      "ema50_tv": 331.23988830837106,
-      "ema200_tv": 320.88824407304884,
-      "nextEarnings": 1792492200
-    },
-    {
-      "tv": "NYSE:MS",
-      "ticker": "MS",
-      "sector": "Finance",
-      "ema50_tv": 205.54158177551093,
-      "ema200_tv": 194.01072334049064,
-      "nextEarnings": 1791977400
+      "ema50_tv": 326.17598523482144,
+      "ema200_tv": 320.10657031076977,
+      "nextEarnings": 1792503000
     },
     {
       "tv": "NYSE:PM",
       "ticker": "PM",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 188.826686300547,
-      "ema200_tv": 178.94456144475723,
+      "ema50_tv": 190.8335855687772,
+      "ema200_tv": 180.05608386076202,
       "nextEarnings": 1792503000
     },
     {
       "tv": "NASDAQ:NFLX",
       "ticker": "NFLX",
       "sector": "Technology Services",
-      "ema50_tv": 74.85613171778269,
-      "ema200_tv": 84.23069636700943,
+      "ema50_tv": 73.88817199751743,
+      "ema200_tv": 83.41889615936002,
       "nextEarnings": 1792526460
+    },
+    {
+      "tv": "NYSE:MS",
+      "ticker": "MS",
+      "sector": "Finance",
+      "ema50_tv": 202.04995833976324,
+      "ema200_tv": 193.73164953320435,
+      "nextEarnings": 1791977400
     },
     {
       "tv": "NYSE:HD",
       "ticker": "HD",
       "sector": "Retail Trade",
-      "ema50_tv": 312.99383061218583,
-      "ema200_tv": 335.93004191583293,
+      "ema50_tv": 308.23331256198065,
+      "ema200_tv": 333.28859429160696,
       "nextEarnings": 1794913200
     },
     {
       "tv": "NASDAQ:CRWD",
       "ticker": "CRWD",
       "sector": "Technology Services",
-      "ema50_tv": 226.30135109509166,
-      "ema200_tv": 172.15658949751287,
+      "ema50_tv": 235.1134144538973,
+      "ema200_tv": 177.72616963965305,
       "nextEarnings": 1796126400
-    },
-    {
-      "tv": "NASDAQ:KLAC",
-      "ticker": "KLAC",
-      "sector": "Electronic Technology",
-      "ema50_tv": 191.36145785141096,
-      "ema200_tv": 176.31278683208905,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NASDAQ:TXN",
-      "ticker": "TXN",
-      "sector": "Electronic Technology",
-      "ema50_tv": 274.13314237459684,
-      "ema200_tv": 253.89543545121106,
-      "nextEarnings": 1792614600
     },
     {
       "tv": "NYSE:GEV",
       "ticker": "GEV",
       "sector": "Producer Manufacturing",
-      "ema50_tv": 967.6682383622198,
-      "ema200_tv": 901.6208242706815,
+      "ema50_tv": 975.2814788240703,
+      "ema200_tv": 907.5677083167392,
       "nextEarnings": 1793194200
     },
     {
-      "tv": "NYSE:ANET",
-      "ticker": "ANET",
+      "tv": "NASDAQ:TXN",
+      "ticker": "TXN",
       "sector": "Electronic Technology",
-      "ema50_tv": 193.55417602172017,
-      "ema200_tv": 165.70791165007202,
-      "nextEarnings": 1793620800
+      "ema50_tv": 277.0312025489902,
+      "ema200_tv": 255.87519996025054,
+      "nextEarnings": 1792612860
     },
     {
       "tv": "NYSE:GS",
       "ticker": "GS",
       "sector": "Finance",
-      "ema50_tv": 983.3839450404887,
-      "ema200_tv": 946.4079584655408,
-      "nextEarnings": 1791891000
+      "ema50_tv": 964.0058636676588,
+      "ema200_tv": 943.2669540608493,
+      "nextEarnings": 1800361800
     },
     {
-      "tv": "NYSE:TMO",
-      "ticker": "TMO",
-      "sector": "Health Technology",
-      "ema50_tv": 619.0708785964547,
-      "ema200_tv": 554.1985295781983,
-      "nextEarnings": 1792576800
-    },
-    {
-      "tv": "NASDAQ:SNDK",
-      "ticker": "SNDK",
+      "tv": "NYSE:ANET",
+      "ticker": "ANET",
       "sector": "Electronic Technology",
-      "ema50_tv": 1630.9759367533472,
-      "ema200_tv": 1218.700274086695,
-      "nextEarnings": 1793304000
+      "ema50_tv": 197.51322755695685,
+      "ema200_tv": 168.41963230170998,
+      "nextEarnings": 1793739600
     },
     {
       "tv": "NYSE:RTX",
       "ticker": "RTX",
       "sector": "Electronic Technology",
-      "ema50_tv": 197.8922570764761,
-      "ema200_tv": 190.75031026062248,
+      "ema50_tv": 194.93277622244264,
+      "ema200_tv": 190.35567067998707,
       "nextEarnings": 1792503000
     },
     {
       "tv": "NYSE:WFC",
       "ticker": "WFC",
       "sector": "Finance",
-      "ema50_tv": 84.93309853250706,
-      "ema200_tv": 83.82094979522992,
-      "nextEarnings": 1791889200
+      "ema50_tv": 84.32392010282463,
+      "ema200_tv": 83.71791414607584,
+      "nextEarnings": 1799928000
+    },
+    {
+      "tv": "NYSE:TMO",
+      "ticker": "TMO",
+      "sector": "Health Technology",
+      "ema50_tv": 627.7017810103214,
+      "ema200_tv": 560.3243551821115,
+      "nextEarnings": 1792576800
+    },
+    {
+      "tv": "NASDAQ:KLAC",
+      "ticker": "KLAC",
+      "sector": "Electronic Technology",
+      "ema50_tv": 191.69267516995046,
+      "ema200_tv": 177.29363832357288,
+      "nextEarnings": 1793188800
     },
     {
       "tv": "NASDAQ:MRVL",
       "ticker": "MRVL",
       "sector": "Electronic Technology",
-      "ema50_tv": 237.4975581544508,
-      "ema200_tv": 184.5079172580863,
+      "ema50_tv": 245.51289520113556,
+      "ema200_tv": 189.80447666206956,
       "nextEarnings": 1795694400
-    },
-    {
-      "tv": "NASDAQ:LIN",
-      "ticker": "LIN",
-      "sector": "Process Industries",
-      "ema50_tv": 480.5120715689664,
-      "ema200_tv": 484.13805848294106,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NASDAQ:AMGN",
-      "ticker": "AMGN",
-      "sector": "Health Technology",
-      "ema50_tv": 401.83484858855763,
-      "ema200_tv": 367.4997837728673,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:C",
-      "ticker": "C",
-      "sector": "Finance",
-      "ema50_tv": 133.2522385721222,
-      "ema200_tv": 124.6936456346834,
-      "nextEarnings": 1791892800
-    },
-    {
-      "tv": "NYSE:APH",
-      "ticker": "APH",
-      "sector": "Electronic Technology",
-      "ema50_tv": 81.28448820192945,
-      "ema200_tv": 73.91151823415005,
-      "nextEarnings": 1793194200
-    },
-    {
-      "tv": "NYSE:IBM",
-      "ticker": "IBM",
-      "sector": "Technology Services",
-      "ema50_tv": 233.99424705089302,
-      "ema200_tv": 249.4749870632923,
-      "nextEarnings": 1792613280
     },
     {
       "tv": "NASDAQ:SHOP",
       "ticker": "SHOP",
       "sector": "Commercial Services",
-      "ema50_tv": 139.23830082436288,
-      "ema200_tv": 130.99091270760695,
-      "nextEarnings": 1792670400
+      "ema50_tv": 146.0009351476907,
+      "ema200_tv": 133.29994733873193,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NASDAQ:LIN",
+      "ticker": "LIN",
+      "sector": "Process Industries",
+      "ema50_tv": 481.85202456323816,
+      "ema200_tv": 484.28788504350496,
+      "nextEarnings": 1793268000
+    },
+    {
+      "tv": "NASDAQ:AMGN",
+      "ticker": "AMGN",
+      "sector": "Health Technology",
+      "ema50_tv": 403.947242021641,
+      "ema200_tv": 370.0651126467208,
+      "nextEarnings": 1793739600
+    },
+    {
+      "tv": "NYSE:IBM",
+      "ticker": "IBM",
+      "sector": "Technology Services",
+      "ema50_tv": 232.28770145926578,
+      "ema200_tv": 248.09704770291427,
+      "nextEarnings": 1792613280
+    },
+    {
+      "tv": "NYSE:C",
+      "ticker": "C",
+      "sector": "Finance",
+      "ema50_tv": 132.26700945980474,
+      "ema200_tv": 124.92268640656069,
+      "nextEarnings": 1799931600
+    },
+    {
+      "tv": "NYSE:APH",
+      "ticker": "APH",
+      "sector": "Electronic Technology",
+      "ema50_tv": 82.43527231059363,
+      "ema200_tv": 74.6574933053061,
+      "nextEarnings": 1793194200
+    },
+    {
+      "tv": "NASDAQ:SNDK",
+      "ticker": "SNDK",
+      "sector": "Electronic Technology",
+      "ema50_tv": 1618.8408207652633,
+      "ema200_tv": 1239.648148735582,
+      "nextEarnings": 1793304000
     },
     {
       "tv": "NYSE:AXP",
       "ticker": "AXP",
       "sector": "Finance",
-      "ema50_tv": 321.8142646918873,
-      "ema200_tv": 327.5230651444431,
+      "ema50_tv": 318.83171691325106,
+      "ema200_tv": 326.3699405949964,
       "nextEarnings": 1792753200
     },
     {
       "tv": "NASDAQ:ADI",
       "ticker": "ADI",
       "sector": "Electronic Technology",
-      "ema50_tv": 382.3897891344785,
-      "ema200_tv": 355.34372545679423,
+      "ema50_tv": 388.3374618827443,
+      "ema200_tv": 358.5481815896749,
       "nextEarnings": 1796126400
-    },
-    {
-      "tv": "NASDAQ:STX",
-      "ticker": "STX",
-      "sector": "Electronic Technology",
-      "ema50_tv": 863.5177355651524,
-      "ema200_tv": 684.3783449907396,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NYSE:VZ",
-      "ticker": "VZ",
-      "sector": "Communications",
-      "ema50_tv": 47.68982812059259,
-      "ema200_tv": 46.326215807406605,
-      "nextEarnings": 1793012400
-    },
-    {
-      "tv": "NASDAQ:QCOM",
-      "ticker": "QCOM",
-      "sector": "Electronic Technology",
-      "ema50_tv": 179.3334192861579,
-      "ema200_tv": 173.22845227400833,
-      "nextEarnings": 1794398400
     },
     {
       "tv": "NYSE:CRM",
       "ticker": "CRM",
       "sector": "Technology Services",
-      "ema50_tv": 222.58315822972108,
-      "ema200_tv": 209.73314097632922,
+      "ema50_tv": 224.234311309165,
+      "ema200_tv": 210.91709097987402,
       "nextEarnings": 1796731200
     },
     {
-      "tv": "NYSE:DE",
-      "ticker": "DE",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 656.220158824523,
-      "ema200_tv": 593.9410459117628,
-      "nextEarnings": 1795608000
-    },
-    {
-      "tv": "NASDAQ:GILD",
-      "ticker": "GILD",
-      "sector": "Health Technology",
-      "ema50_tv": 144.25986745715966,
-      "ema200_tv": 134.9510648698963,
-      "nextEarnings": 1792670400
+      "tv": "NASDAQ:QCOM",
+      "ticker": "QCOM",
+      "sector": "Electronic Technology",
+      "ema50_tv": 178.7905616909973,
+      "ema200_tv": 173.4397165796192,
+      "nextEarnings": 1794398400
     },
     {
       "tv": "NYSE:DIS",
       "ticker": "DIS",
       "sector": "Consumer Services",
-      "ema50_tv": 104.11885827789808,
-      "ema200_tv": 104.09409304282588,
-      "nextEarnings": 1794484800
+      "ema50_tv": 104.72818503280989,
+      "ema200_tv": 104.25662340485977,
+      "nextEarnings": 1794925800
     },
     {
-      "tv": "NASDAQ:TMUS",
-      "ticker": "TMUS",
+      "tv": "NASDAQ:GILD",
+      "ticker": "GILD",
+      "sector": "Health Technology",
+      "ema50_tv": 145.07707075689925,
+      "ema200_tv": 135.71136600208274,
+      "nextEarnings": 1792670400
+    },
+    {
+      "tv": "NYSE:VZ",
+      "ticker": "VZ",
       "sector": "Communications",
-      "ema50_tv": 174.83282248702494,
-      "ema200_tv": 190.60893623758398,
-      "nextEarnings": 1793217900
-    },
-    {
-      "tv": "NYSE:SCCO",
-      "ticker": "SCCO",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 196.85868883783453,
-      "ema200_tv": 176.52892189440084,
-      "nextEarnings": 1793102400
+      "ema50_tv": 46.95682393650331,
+      "ema200_tv": 46.20933599630441,
+      "nextEarnings": 1793012400
     },
     {
       "tv": "NYSE:ABT",
       "ticker": "ABT",
       "sector": "Health Technology",
-      "ema50_tv": 103.33686828523344,
-      "ema200_tv": 105.61540608465981,
+      "ema50_tv": 102.63896729227885,
+      "ema200_tv": 105.2872331719637,
       "nextEarnings": 1792582200
+    },
+    {
+      "tv": "NYSE:DE",
+      "ticker": "DE",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 654.4927952398809,
+      "ema200_tv": 597.135431289938,
+      "nextEarnings": 1795608000
+    },
+    {
+      "tv": "NYSE:SCCO",
+      "ticker": "SCCO",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 198.56731008271035,
+      "ema200_tv": 178.1721069969177,
+      "nextEarnings": 1793102400
     },
     {
       "tv": "NASDAQ:PEP",
       "ticker": "PEP",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 135.17127356181712,
-      "ema200_tv": 143.31732382415075,
-      "nextEarnings": 1791453600
+      "ema50_tv": 133.27882486531902,
+      "ema200_tv": 142.3245329624069,
+      "nextEarnings": 1802347200
     },
     {
-      "tv": "NYSE:SCHW",
-      "ticker": "SCHW",
-      "sector": "Finance",
-      "ema50_tv": 103.30677238852651,
-      "ema200_tv": 98.5620501914642,
-      "nextEarnings": 1792063800
-    },
-    {
-      "tv": "NYSE:ETN",
-      "ticker": "ETN",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 421.10454577596346,
-      "ema200_tv": 396.6095875198551,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:T",
-      "ticker": "T",
-      "sector": "Communications",
-      "ema50_tv": 24.823601278690848,
-      "ema200_tv": 24.983469278201405,
-      "nextEarnings": 1792589400
-    },
-    {
-      "tv": "NYSE:MCD",
-      "ticker": "MCD",
-      "sector": "Consumer Services",
-      "ema50_tv": 254.50535877189103,
-      "ema200_tv": 279.7009361405784,
-      "nextEarnings": 1792670400
+      "tv": "NYSE:COP",
+      "ticker": "COP",
+      "sector": "Energy Minerals",
+      "ema50_tv": 128.91282006891305,
+      "ema200_tv": 118.2398288069708,
+      "nextEarnings": 1793880000
     },
     {
       "tv": "NYSE:UNP",
       "ticker": "UNP",
       "sector": "Transportation",
-      "ema50_tv": 284.0466856050261,
-      "ema200_tv": 268.5740425041002,
+      "ema50_tv": 282.9535616733488,
+      "ema200_tv": 269.1689899434197,
       "nextEarnings": 1792669500
+    },
+    {
+      "tv": "NYSE:MCD",
+      "ticker": "MCD",
+      "sector": "Consumer Services",
+      "ema50_tv": 250.2819275858438,
+      "ema200_tv": 277.076329642508,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NASDAQ:STX",
+      "ticker": "STX",
+      "sector": "Electronic Technology",
+      "ema50_tv": 844.6076322248854,
+      "ema200_tv": 689.7242111128019,
+      "nextEarnings": 1793188800
+    },
+    {
+      "tv": "NYSE:SCHW",
+      "ticker": "SCHW",
+      "sector": "Finance",
+      "ema50_tv": 101.87827142340247,
+      "ema200_tv": 98.4480510845944,
+      "nextEarnings": 1792063800
     },
     {
       "tv": "NYSE:WELL",
       "ticker": "WELL",
       "sector": "Finance",
-      "ema50_tv": 232.52451859054975,
-      "ema200_tv": 215.3319505465042,
+      "ema50_tv": 231.1958817471283,
+      "ema200_tv": 215.96229270290846,
       "nextEarnings": 1793044800
     },
     {
-      "tv": "NASDAQ:WDC",
-      "ticker": "WDC",
-      "sector": "Electronic Technology",
-      "ema50_tv": 466.557311502007,
-      "ema200_tv": 402.0271065488449,
-      "nextEarnings": 1792670400
+      "tv": "NYSE:ETN",
+      "ticker": "ETN",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 423.13556658152334,
+      "ema200_tv": 398.6034031867458,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NASDAQ:TMUS",
+      "ticker": "TMUS",
+      "sector": "Communications",
+      "ema50_tv": 171.56603058480079,
+      "ema200_tv": 188.81727763519132,
+      "nextEarnings": 1793217900
     },
     {
       "tv": "NYSE:NEE",
       "ticker": "NEE",
       "sector": "Utilities",
-      "ema50_tv": 81.79703024737618,
-      "ema200_tv": 84.80975578231134,
-      "nextEarnings": 1792670400
+      "ema50_tv": 80.94007496165969,
+      "ema200_tv": 84.39943732632206,
+      "nextEarnings": 1792589400
     },
     {
       "tv": "NYSE:PFE",
       "ticker": "PFE",
       "sector": "Health Technology",
-      "ema50_tv": 27.433995386657838,
-      "ema200_tv": 26.417486203540406,
+      "ema50_tv": 27.568849290147515,
+      "ema200_tv": 26.51268200281843,
       "nextEarnings": 1793706300
     },
     {
       "tv": "NYSE:DHR",
       "ticker": "DHR",
       "sector": "Health Technology",
-      "ema50_tv": 209.66440336319678,
-      "ema200_tv": 202.49497926571686,
+      "ema50_tv": 211.84406909996227,
+      "ema200_tv": 203.49853193823355,
       "nextEarnings": 1792576800
     },
     {
-      "tv": "NYSE:COP",
-      "ticker": "COP",
-      "sector": "Energy Minerals",
-      "ema50_tv": 127.37620780294525,
-      "ema200_tv": 117.2420546089706,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NYSE:BA",
-      "ticker": "BA",
-      "sector": "Electronic Technology",
-      "ema50_tv": 206.8965263915796,
-      "ema200_tv": 214.63693343732356,
-      "nextEarnings": 1793100600
-    },
-    {
-      "tv": "NASDAQ:IBKR",
-      "ticker": "IBKR",
-      "sector": "Finance",
-      "ema50_tv": 90.04198584366779,
-      "ema200_tv": 82.26123996341362,
-      "nextEarnings": 1792094400
+      "tv": "NYSE:T",
+      "ticker": "T",
+      "sector": "Communications",
+      "ema50_tv": 24.542682825237613,
+      "ema200_tv": 24.899837320075477,
+      "nextEarnings": 1792589400
     },
     {
       "tv": "NYSE:TJX",
       "ticker": "TJX",
       "sector": "Retail Trade",
-      "ema50_tv": 138.05994767571207,
-      "ema200_tv": 146.79695519069256,
+      "ema50_tv": 138.3842360993066,
+      "ema200_tv": 146.3719668965331,
       "nextEarnings": 1795003200
     },
     {
       "tv": "NASDAQ:ISRG",
       "ticker": "ISRG",
       "sector": "Health Technology",
-      "ema50_tv": 389.28107769538167,
-      "ema200_tv": 429.59323616357216,
+      "ema50_tv": 395.56771611129733,
+      "ema200_tv": 428.94102643248516,
       "nextEarnings": 1792497600
+    },
+    {
+      "tv": "NYSE:BA",
+      "ticker": "BA",
+      "sector": "Electronic Technology",
+      "ema50_tv": 203.00778160958768,
+      "ema200_tv": 213.12649494144182,
+      "nextEarnings": 1793100600
+    },
+    {
+      "tv": "NASDAQ:IBKR",
+      "ticker": "IBKR",
+      "sector": "Finance",
+      "ema50_tv": 89.56380251154896,
+      "ema200_tv": 82.58641967637278,
+      "nextEarnings": 1792094400
     },
     {
       "tv": "NYSE:UBER",
       "ticker": "UBER",
       "sector": "Transportation",
-      "ema50_tv": 72.12162335596449,
-      "ema200_tv": 75.39755415314976,
-      "nextEarnings": 1793275200
+      "ema50_tv": 71.75291062047864,
+      "ema200_tv": 75.10315016377264,
+      "nextEarnings": 1793793300
     },
     {
       "tv": "NYSE:NOW",
       "ticker": "NOW",
       "sector": "Technology Services",
-      "ema50_tv": 129.38991403571188,
-      "ema200_tv": 126.2607607465594,
+      "ema50_tv": 131.5231990618138,
+      "ema200_tv": 127.02306428767243,
+      "nextEarnings": 1793218200
+    },
+    {
+      "tv": "NASDAQ:WDC",
+      "ticker": "WDC",
+      "sector": "Electronic Technology",
+      "ema50_tv": 451.15827635770097,
+      "ema200_tv": 401.61513149000575,
+      "nextEarnings": 1792699200
+    },
+    {
+      "tv": "NASDAQ:FTNT",
+      "ticker": "FTNT",
+      "sector": "Technology Services",
+      "ema50_tv": 170.70677588626833,
+      "ema200_tv": 135.25572323295637,
       "nextEarnings": 1793188800
     },
     {
       "tv": "NYSE:BX",
       "ticker": "BX",
       "sector": "Finance",
-      "ema50_tv": 126.45021999403251,
-      "ema200_tv": 130.85451317215353,
-      "nextEarnings": 1792065600
+      "ema50_tv": 123.54801606868628,
+      "ema200_tv": 129.80682365173269,
+      "nextEarnings": 1792675800
+    },
+    {
+      "tv": "NYSE:CB",
+      "ticker": "CB",
+      "sector": "Finance",
+      "ema50_tv": 339.1860933677708,
+      "ema200_tv": 328.7633955207016,
+      "nextEarnings": 1792526400
+    },
+    {
+      "tv": "NYSE:MPC",
+      "ticker": "MPC",
+      "sector": "Energy Minerals",
+      "ema50_tv": 388.5806938471172,
+      "ema200_tv": 295.04784576913806,
+      "nextEarnings": 1793716200
+    },
+    {
+      "tv": "NYSE:ACN",
+      "ticker": "ACN",
+      "sector": "Technology Services",
+      "ema50_tv": 185.8609058301387,
+      "ema200_tv": 195.74388465595786,
+      "nextEarnings": 1797507540
+    },
+    {
+      "tv": "NYSE:VLO",
+      "ticker": "VLO",
+      "sector": "Energy Minerals",
+      "ema50_tv": 376.8402844589552,
+      "ema200_tv": 287.3457723580865,
+      "nextEarnings": 1792665000
+    },
+    {
+      "tv": "NYSE:PGR",
+      "ticker": "PGR",
+      "sector": "Finance",
+      "ema50_tv": 214.15915762247442,
+      "ema200_tv": 214.85441849143194,
+      "nextEarnings": 1791892800
+    },
+    {
+      "tv": "NYSE:PLD",
+      "ticker": "PLD",
+      "sector": "Finance",
+      "ema50_tv": 135.4598263600194,
+      "ema200_tv": 135.52757219461046,
+      "nextEarnings": 1792071000
     },
     {
       "tv": "NYSE:GLW",
       "ticker": "GLW",
       "sector": "Electronic Technology",
-      "ema50_tv": 158.05690708173657,
-      "ema200_tv": 146.8208444286579,
+      "ema50_tv": 157.51031159795627,
+      "ema200_tv": 147.3482384823033,
       "nextEarnings": 1793107800
     },
     {
-      "tv": "NASDAQ:FTNT",
-      "ticker": "FTNT",
+      "tv": "NYSE:SNOW",
+      "ticker": "SNOW",
       "sector": "Technology Services",
-      "ema50_tv": 165.05257255675696,
-      "ema200_tv": 131.7775247960538,
-      "nextEarnings": 1793275200
+      "ema50_tv": 324.75984126865853,
+      "ema200_tv": 259.6948098829034,
+      "nextEarnings": 1796212800
     },
     {
       "tv": "NYSE:NET",
       "ticker": "NET",
       "sector": "Technology Services",
-      "ema50_tv": 312.4134241875754,
-      "ema200_tv": 252.75326245767587,
+      "ema50_tv": 320.45170705562566,
+      "ema200_tv": 258.4196607674373,
       "nextEarnings": 1793275200
     },
     {
       "tv": "NASDAQ:VRTX",
       "ticker": "VRTX",
       "sector": "Health Technology",
-      "ema50_tv": 514.0282018072683,
-      "ema200_tv": 479.977420844865,
-      "nextEarnings": 1794225600
-    },
-    {
-      "tv": "NYSE:CB",
-      "ticker": "CB",
-      "sector": "Finance",
-      "ema50_tv": 338.60707360530773,
-      "ema200_tv": 328.00120800809924,
-      "nextEarnings": 1792526400
-    },
-    {
-      "tv": "NYSE:PLD",
-      "ticker": "PLD",
-      "sector": "Finance",
-      "ema50_tv": 136.85471293884814,
-      "ema200_tv": 135.8562084868793,
-      "nextEarnings": 1792071000
-    },
-    {
-      "tv": "NYSE:PGR",
-      "ticker": "PGR",
-      "sector": "Finance",
-      "ema50_tv": 213.13241694186866,
-      "ema200_tv": 214.67491485380407,
-      "nextEarnings": 1791460800
+      "ema50_tv": 511.58972137965975,
+      "ema200_tv": 481.303911087535,
+      "nextEarnings": 1793653260
     },
     {
       "tv": "NYSE:NEM",
       "ticker": "NEM",
       "sector": "Non-Energy Minerals",
-      "ema50_tv": 117.73448674928086,
-      "ema200_tv": 106.82937979689208,
+      "ema50_tv": 117.3866020329128,
+      "ema200_tv": 107.3679455315289,
       "nextEarnings": 1792699500
-    },
-    {
-      "tv": "NYSE:MPC",
-      "ticker": "MPC",
-      "sector": "Energy Minerals",
-      "ema50_tv": 370.6094304150825,
-      "ema200_tv": 285.204732545738,
-      "nextEarnings": 1793716200
-    },
-    {
-      "tv": "NYSE:VLO",
-      "ticker": "VLO",
-      "sector": "Energy Minerals",
-      "ema50_tv": 360.8505480046171,
-      "ema200_tv": 278.1977094203463,
-      "nextEarnings": 1792665000
-    },
-    {
-      "tv": "NYSE:BMY",
-      "ticker": "BMY",
-      "sector": "Health Technology",
-      "ema50_tv": 63.004731524055096,
-      "ema200_tv": 59.1564730691221,
-      "nextEarnings": 1793271540
-    },
-    {
-      "tv": "NYSE:COF",
-      "ticker": "COF",
-      "sector": "Finance",
-      "ema50_tv": 205.3935937404964,
-      "ema200_tv": 204.4529913272864,
-      "nextEarnings": 1792526700
-    },
-    {
-      "tv": "NYSE:SNOW",
-      "ticker": "SNOW",
-      "sector": "Technology Services",
-      "ema50_tv": 317.8593266680951,
-      "ema200_tv": 254.12993023588606,
-      "nextEarnings": 1796212800
-    },
-    {
-      "tv": "NYSE:ACN",
-      "ticker": "ACN",
-      "sector": "Technology Services",
-      "ema50_tv": 180.17510617861788,
-      "ema200_tv": 195.08428822064786,
-      "nextEarnings": 1797507540
-    },
-    {
-      "tv": "NASDAQ:BKNG",
-      "ticker": "BKNG",
-      "sector": "Consumer Services",
-      "ema50_tv": 178.87657099893676,
-      "ema200_tv": 184.3976593732557,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:LMT",
-      "ticker": "LMT",
-      "sector": "Electronic Technology",
-      "ema50_tv": 537.8310299021293,
-      "ema200_tv": 542.0135076277007,
-      "nextEarnings": 1792675800
     },
     {
       "tv": "NYSE:SPGI",
       "ticker": "SPGI",
       "sector": "Commercial Services",
-      "ema50_tv": 412.03635255444476,
-      "ema200_tv": 424.93092254533985,
+      "ema50_tv": 410.51532755867487,
+      "ema200_tv": 423.7447773962451,
       "nextEarnings": 1793099700
+    },
+    {
+      "tv": "NYSE:COF",
+      "ticker": "COF",
+      "sector": "Finance",
+      "ema50_tv": 203.8470331353855,
+      "ema200_tv": 204.08277444542753,
+      "nextEarnings": 1792526700
     },
     {
       "tv": "NYSE:MO",
       "ticker": "MO",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 68.79168190142329,
-      "ema200_tv": 67.39825358225181,
+      "ema50_tv": 69.2269722487283,
+      "ema200_tv": 67.59482620662729,
       "nextEarnings": 1793271600
+    },
+    {
+      "tv": "NASDAQ:BKNG",
+      "ticker": "BKNG",
+      "sector": "Consumer Services",
+      "ema50_tv": 174.4757809594701,
+      "ema200_tv": 182.87442392770134,
+      "nextEarnings": 1793739600
     },
     {
       "tv": "NYSE:MDT",
       "ticker": "MDT",
       "sector": "Health Technology",
-      "ema50_tv": 88.92072879771625,
-      "ema200_tv": 88.09250083052106,
+      "ema50_tv": 88.9377939797651,
+      "ema200_tv": 88.1386144172854,
       "nextEarnings": 1795521600
     },
     {
-      "tv": "NYSE:CVS",
-      "ticker": "CVS",
-      "sector": "Retail Trade",
-      "ema50_tv": 92.8627324407924,
-      "ema200_tv": 88.82624033032764,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:SYK",
-      "ticker": "SYK",
-      "sector": "Health Technology",
-      "ema50_tv": 298.7816272278389,
-      "ema200_tv": 325.7226263907555,
-      "nextEarnings": 1793304300
-    },
-    {
-      "tv": "NASDAQ:SBUX",
-      "ticker": "SBUX",
-      "sector": "Consumer Services",
-      "ema50_tv": 100.0544904984922,
-      "ema200_tv": 98.79123108986894,
-      "nextEarnings": 1793275200
+      "tv": "NYSE:LMT",
+      "ticker": "LMT",
+      "sector": "Electronic Technology",
+      "ema50_tv": 531.373286711335,
+      "ema200_tv": 540.0046298439969,
+      "nextEarnings": 1792675800
     },
     {
       "tv": "NYSE:PSX",
       "ticker": "PSX",
       "sector": "Energy Minerals",
-      "ema50_tv": 242.47279468247058,
-      "ema200_tv": 195.0341657291038,
+      "ema50_tv": 250.34419640320024,
+      "ema200_tv": 199.92571991202217,
       "nextEarnings": 1793185200
     },
     {
-      "tv": "NYSE:MCK",
-      "ticker": "MCK",
-      "sector": "Distribution Services",
-      "ema50_tv": 871.6811722809055,
-      "ema200_tv": 833.1879458142439,
-      "nextEarnings": 1793826600
+      "tv": "NYSE:BMY",
+      "ticker": "BMY",
+      "sector": "Health Technology",
+      "ema50_tv": 62.069559655368074,
+      "ema200_tv": 59.12858846405487,
+      "nextEarnings": 1793271540
     },
     {
-      "tv": "NYSE:FCX",
-      "ticker": "FCX",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 70.39098198185894,
-      "ema200_tv": 62.92216074880671,
-      "nextEarnings": 1792065600
-    },
-    {
-      "tv": "NYSE:TT",
-      "ticker": "TT",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 452.91698072011417,
-      "ema200_tv": 448.3658043358908,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NASDAQ:ADP",
-      "ticker": "ADP",
-      "sector": "Technology Services",
-      "ema50_tv": 264.7965801547696,
-      "ema200_tv": 251.60693265927304,
-      "nextEarnings": 1793185200
-    },
-    {
-      "tv": "NYSE:PWR",
-      "ticker": "PWR",
-      "sector": "Industrial Services",
-      "ema50_tv": 646.9209871883359,
-      "ema200_tv": 602.335094144986,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NASDAQ:HOOD",
-      "ticker": "HOOD",
-      "sector": "Finance",
-      "ema50_tv": 108.97868834477941,
-      "ema200_tv": 98.43311431518413,
-      "nextEarnings": 1793131500
-    },
-    {
-      "tv": "NYSE:LOW",
-      "ticker": "LOW",
+      "tv": "NYSE:CVS",
+      "ticker": "CVS",
       "sector": "Retail Trade",
-      "ema50_tv": 200.51017419626837,
-      "ema200_tv": 221.7458162903247,
-      "nextEarnings": 1794999600
+      "ema50_tv": 91.67626660576391,
+      "ema200_tv": 88.73696388525747,
+      "nextEarnings": 1793791800
     },
     {
       "tv": "NYSE:SPOT",
       "ticker": "SPOT",
       "sector": "Technology Services",
-      "ema50_tv": 510.2831858630762,
-      "ema200_tv": 516.7518918920321,
+      "ema50_tv": 512.4769526717876,
+      "ema200_tv": 516.9349654760554,
       "nextEarnings": 1792663200
     },
     {
-      "tv": "NASDAQ:DDOG",
-      "ticker": "DDOG",
+      "tv": "NASDAQ:ADP",
+      "ticker": "ADP",
       "sector": "Technology Services",
-      "ema50_tv": 245.12280003042963,
-      "ema200_tv": 203.57564216652779,
-      "nextEarnings": 1793880000
+      "ema50_tv": 265.90296711518204,
+      "ema200_tv": 252.66270763661933,
+      "nextEarnings": 1793185200
     },
     {
-      "tv": "NASDAQ:ABNB",
-      "ticker": "ABNB",
-      "sector": "Consumer Services",
-      "ema50_tv": 164.60689895957017,
-      "ema200_tv": 148.39867879339252,
-      "nextEarnings": 1793912400
+      "tv": "NYSE:SYK",
+      "ticker": "SYK",
+      "sector": "Health Technology",
+      "ema50_tv": 294.6275044578762,
+      "ema200_tv": 323.01221203761764,
+      "nextEarnings": 1793304300
     },
     {
-      "tv": "NASDAQ:LITE",
-      "ticker": "LITE",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 910.2501434493118,
-      "ema200_tv": 735.5382358429205,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NYSE:VRT",
-      "ticker": "VRT",
-      "sector": "Electronic Technology",
-      "ema50_tv": 262.76550609897384,
-      "ema200_tv": 256.10226067040395,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NYSE:BNY",
-      "ticker": "BNY",
-      "sector": "Finance",
-      "ema50_tv": 153.65385048646704,
-      "ema200_tv": 138.83118326970174,
-      "nextEarnings": 1792060200
-    },
-    {
-      "tv": "NASDAQ:CDNS",
-      "ticker": "CDNS",
-      "sector": "Technology Services",
-      "ema50_tv": 322.72719937043905,
-      "ema200_tv": 328.60184330205266,
-      "nextEarnings": 1793016000
-    },
-    {
-      "tv": "NASDAQ:CME",
-      "ticker": "CME",
-      "sector": "Finance",
-      "ema50_tv": 268.81650735870636,
-      "ema200_tv": 271.6436869195393,
-      "nextEarnings": 1792589400
-    },
-    {
-      "tv": "NYSE:SO",
-      "ticker": "SO",
-      "sector": "Utilities",
-      "ema50_tv": 88.04722515024217,
-      "ema200_tv": 91.35920435248234,
-      "nextEarnings": 1793881800
-    },
-    {
-      "tv": "NYSE:JCI",
-      "ticker": "JCI",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 145.8905495970725,
-      "ema200_tv": 136.54765347458988,
-      "nextEarnings": 1793098500
+      "tv": "NYSE:LOW",
+      "ticker": "LOW",
+      "sector": "Retail Trade",
+      "ema50_tv": 197.36890170599338,
+      "ema200_tv": 219.6470969607954,
+      "nextEarnings": 1794999600
     },
     {
       "tv": "NASDAQ:CEG",
       "ticker": "CEG",
       "sector": "Utilities",
-      "ema50_tv": 269.0106093831091,
-      "ema200_tv": 283.140364269525,
+      "ema50_tv": 274.71050980024256,
+      "ema200_tv": 283.875303772587,
       "nextEarnings": 1794225600
     },
     {
-      "tv": "NASDAQ:APP",
-      "ticker": "APP",
+      "tv": "NYSE:TT",
+      "ticker": "TT",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 457.5455585523052,
+      "ema200_tv": 449.88672516936464,
+      "nextEarnings": 1793269800
+    },
+    {
+      "tv": "NASDAQ:SBUX",
+      "ticker": "SBUX",
+      "sector": "Consumer Services",
+      "ema50_tv": 98.52977595901599,
+      "ema200_tv": 98.45249114266439,
+      "nextEarnings": 1793304000
+    },
+    {
+      "tv": "NYSE:FCX",
+      "ticker": "FCX",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 70.83888727741694,
+      "ema200_tv": 63.478551499834246,
+      "nextEarnings": 1793107800
+    },
+    {
+      "tv": "NYSE:PWR",
+      "ticker": "PWR",
+      "sector": "Industrial Services",
+      "ema50_tv": 657.7527050160014,
+      "ema200_tv": 607.9136653765161,
+      "nextEarnings": 1793275200
+    },
+    {
+      "tv": "NASDAQ:DDOG",
+      "ticker": "DDOG",
       "sector": "Technology Services",
-      "ema50_tv": 337.5384223688159,
-      "ema200_tv": 421.58188687866465,
-      "nextEarnings": 1794398400
+      "ema50_tv": 252.9202207466354,
+      "ema200_tv": 208.10910754421312,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NYSE:SO",
+      "ticker": "SO",
+      "sector": "Utilities",
+      "ema50_tv": 87.70872583168783,
+      "ema200_tv": 91.07124658240653,
+      "nextEarnings": 1793881800
     },
     {
       "tv": "NYSE:HCA",
       "ticker": "HCA",
       "sector": "Health Services",
-      "ema50_tv": 419.0437122463071,
-      "ema200_tv": 425.6084493854337,
+      "ema50_tv": 425.3866315761413,
+      "ema200_tv": 426.9259599627316,
       "nextEarnings": 1793107800
     },
     {
-      "tv": "NASDAQ:SNPS",
-      "ticker": "SNPS",
-      "sector": "Technology Services",
-      "ema50_tv": 420.51997401302594,
-      "ema200_tv": 441.5974827565593,
-      "nextEarnings": 1796212800
+      "tv": "NASDAQ:CME",
+      "ticker": "CME",
+      "sector": "Finance",
+      "ema50_tv": 270.2844811505436,
+      "ema200_tv": 271.8703449569622,
+      "nextEarnings": 1792589400
     },
     {
-      "tv": "NASDAQ:ADBE",
-      "ticker": "ADBE",
-      "sector": "Technology Services",
-      "ema50_tv": 250.32711708317882,
-      "ema200_tv": 267.9064632340772,
-      "nextEarnings": 1796850300
+      "tv": "NASDAQ:HOOD",
+      "ticker": "HOOD",
+      "sector": "Finance",
+      "ema50_tv": 109.10776960896804,
+      "ema200_tv": 99.0830133578974,
+      "nextEarnings": 1793131500
+    },
+    {
+      "tv": "NASDAQ:ABNB",
+      "ticker": "ABNB",
+      "sector": "Consumer Services",
+      "ema50_tv": 164.29918037799428,
+      "ema200_tv": 149.25389215149974,
+      "nextEarnings": 1793912400
     },
     {
       "tv": "NASDAQ:MAR",
       "ticker": "MAR",
       "sector": "Consumer Services",
-      "ema50_tv": 352.2472945549277,
-      "ema200_tv": 343.3055209177775,
+      "ema50_tv": 354.869800186217,
+      "ema200_tv": 344.52822634180603,
+      "nextEarnings": 1793620800
+    },
+    {
+      "tv": "NYSE:BNY",
+      "ticker": "BNY",
+      "sector": "Finance",
+      "ema50_tv": 151.33204371835814,
+      "ema200_tv": 139.0626605362011,
+      "nextEarnings": 1792060200
+    },
+    {
+      "tv": "NASDAQ:SNPS",
+      "ticker": "SNPS",
+      "sector": "Technology Services",
+      "ema50_tv": 438.0516125597001,
+      "ema200_tv": 445.15768139376013,
+      "nextEarnings": 1796212800
+    },
+    {
+      "tv": "NYSE:JCI",
+      "ticker": "JCI",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 148.07370608561433,
+      "ema200_tv": 137.68957963263708,
+      "nextEarnings": 1793098500
+    },
+    {
+      "tv": "NASDAQ:CDNS",
+      "ticker": "CDNS",
+      "sector": "Technology Services",
+      "ema50_tv": 328.5662967777855,
+      "ema200_tv": 329.87224407117174,
+      "nextEarnings": 1793044920
+    },
+    {
+      "tv": "NYSE:ELV",
+      "ticker": "ELV",
+      "sector": "Health Services",
+      "ema50_tv": 400.9681758564902,
+      "ema200_tv": 379.1906416817751,
+      "nextEarnings": 1792576800
+    },
+    {
+      "tv": "NASDAQ:ADBE",
+      "ticker": "ADBE",
+      "sector": "Technology Services",
+      "ema50_tv": 247.7941067769946,
+      "ema200_tv": 266.18909234732416,
+      "nextEarnings": 1796850300
+    },
+    {
+      "tv": "NYSE:DUK",
+      "ticker": "DUK",
+      "sector": "Utilities",
+      "ema50_tv": 118.82002694229048,
+      "ema200_tv": 122.31915769440705,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NYSE:HPE",
+      "ticker": "HPE",
+      "sector": "Electronic Technology",
+      "ema50_tv": 59.72043990789708,
+      "ema200_tv": 43.40064329208665,
+      "nextEarnings": 1796299200
+    },
+    {
+      "tv": "NYSE:VRT",
+      "ticker": "VRT",
+      "sector": "Electronic Technology",
+      "ema50_tv": 258.62182484045366,
+      "ema200_tv": 255.37463741025505,
+      "nextEarnings": 1793188800
+    },
+    {
+      "tv": "NYSE:EMR",
+      "ticker": "EMR",
+      "sector": "Electronic Technology",
+      "ema50_tv": 154.7279588778475,
+      "ema200_tv": 145.6818100721404,
+      "nextEarnings": 1794312000
+    },
+    {
+      "tv": "NYSE:WMB",
+      "ticker": "WMB",
+      "sector": "Industrial Services",
+      "ema50_tv": 72.17405262026062,
+      "ema200_tv": 70.50025751880814,
+      "nextEarnings": 1793620800
+    },
+    {
+      "tv": "NASDAQ:APP",
+      "ticker": "APP",
+      "sector": "Technology Services",
+      "ema50_tv": 324.4482103669102,
+      "ema200_tv": 413.12633329103613,
+      "nextEarnings": 1793826300
+    },
+    {
+      "tv": "NYSE:GD",
+      "ticker": "GD",
+      "sector": "Electronic Technology",
+      "ema50_tv": 351.8497144351074,
+      "ema200_tv": 351.00500789422335,
+      "nextEarnings": 1793358000
+    },
+    {
+      "tv": "NYSE:BN",
+      "ticker": "BN",
+      "sector": "Finance",
+      "ema50_tv": 39.052800325411354,
+      "ema200_tv": 42.00002358954492,
+      "nextEarnings": 1794484800
+    },
+    {
+      "tv": "NYSE:USB",
+      "ticker": "USB",
+      "sector": "Finance",
+      "ema50_tv": 59.90540098468006,
+      "ema200_tv": 57.5010572124085,
+      "nextEarnings": 1792061100
+    },
+    {
+      "tv": "NASDAQ:CSX",
+      "ticker": "CSX",
+      "sector": "Transportation",
+      "ema50_tv": 48.19530886554531,
+      "ema200_tv": 45.035528049040956,
+      "nextEarnings": 1792612800
+    },
+    {
+      "tv": "NASDAQ:LITE",
+      "ticker": "LITE",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 941.7098818426034,
+      "ema200_tv": 754.4559471924239,
+      "nextEarnings": 1793912580
+    },
+    {
+      "tv": "NYSE:ICE",
+      "ticker": "ICE",
+      "sector": "Finance",
+      "ema50_tv": 153.87004981166615,
+      "ema200_tv": 154.31792488351863,
+      "nextEarnings": 1793273400
+    },
+    {
+      "tv": "NYSE:PNC",
+      "ticker": "PNC",
+      "sector": "Finance",
+      "ema50_tv": 232.58387821382735,
+      "ema200_tv": 226.79915781231597,
+      "nextEarnings": 1792060200
+    },
+    {
+      "tv": "NASDAQ:MRNA",
+      "ticker": "MRNA",
+      "sector": "Health Technology",
+      "ema50_tv": 153.93917945174704,
+      "ema200_tv": 89.21329415246862,
       "nextEarnings": 1793275200
     },
     {
       "tv": "NYSE:HWM",
       "ticker": "HWM",
       "sector": "Electronic Technology",
-      "ema50_tv": 247.77340187243016,
-      "ema200_tv": 242.93497495113863,
+      "ema50_tv": 242.5075980964513,
+      "ema200_tv": 241.7906640555448,
       "nextEarnings": 1793271600
-    },
-    {
-      "tv": "NYSE:HPE",
-      "ticker": "HPE",
-      "sector": "Electronic Technology",
-      "ema50_tv": 56.659651821058475,
-      "ema200_tv": 41.69201902146407,
-      "nextEarnings": 1796299200
-    },
-    {
-      "tv": "NYSE:EMR",
-      "ticker": "EMR",
-      "sector": "Electronic Technology",
-      "ema50_tv": 152.96015994094373,
-      "ema200_tv": 144.7227798500875,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NYSE:BN",
-      "ticker": "BN",
-      "sector": "Finance",
-      "ema50_tv": 39.61381652530488,
-      "ema200_tv": 42.30983212724983,
-      "nextEarnings": 1794484800
-    },
-    {
-      "tv": "NYSE:GD",
-      "ticker": "GD",
-      "sector": "Electronic Technology",
-      "ema50_tv": 357.3798920186892,
-      "ema200_tv": 352.21931105081023,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NYSE:USB",
-      "ticker": "USB",
-      "sector": "Finance",
-      "ema50_tv": 60.694646398323016,
-      "ema200_tv": 57.53260372449642,
-      "nextEarnings": 1792061100
-    },
-    {
-      "tv": "NYSE:DUK",
-      "ticker": "DUK",
-      "sector": "Utilities",
-      "ema50_tv": 119.35751958873016,
-      "ema200_tv": 122.66108543498342,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:PNC",
-      "ticker": "PNC",
-      "sector": "Finance",
-      "ema50_tv": 236.0899539017195,
-      "ema200_tv": 227.2419000229035,
-      "nextEarnings": 1792060200
-    },
-    {
-      "tv": "NASDAQ:CSX",
-      "ticker": "CSX",
-      "sector": "Transportation",
-      "ema50_tv": 48.401199780366575,
-      "ema200_tv": 44.88779119225956,
-      "nextEarnings": 1792612800
-    },
-    {
-      "tv": "NYSE:WMB",
-      "ticker": "WMB",
-      "sector": "Industrial Services",
-      "ema50_tv": 71.96880412919943,
-      "ema200_tv": 70.35271176051288,
-      "nextEarnings": 1793620800
-    },
-    {
-      "tv": "NYSE:ELV",
-      "ticker": "ELV",
-      "sector": "Health Services",
-      "ema50_tv": 397.9981556900194,
-      "ema200_tv": 377.19836352319686,
-      "nextEarnings": 1792584000
-    },
-    {
-      "tv": "NYSE:ICE",
-      "ticker": "ICE",
-      "sector": "Finance",
-      "ema50_tv": 153.4331792137418,
-      "ema200_tv": 154.25123365554057,
-      "nextEarnings": 1793273400
     },
     {
       "tv": "NASDAQ:MNST",
       "ticker": "MNST",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 44.64942695208622,
-      "ema200_tv": 42.27129011879277,
+      "ema50_tv": 44.39253760572006,
+      "ema200_tv": 42.339180623332176,
       "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:BE",
-      "ticker": "BE",
-      "sector": "Electronic Technology",
-      "ema50_tv": 253.51787962995382,
-      "ema200_tv": 208.6189715475456,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:MMM",
-      "ticker": "MMM",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 168.32338439287986,
-      "ema200_tv": 162.09900409151118,
-      "nextEarnings": 1793102400
-    },
-    {
-      "tv": "NASDAQ:DASH",
-      "ticker": "DASH",
-      "sector": "Transportation",
-      "ema50_tv": 198.04290641852467,
-      "ema200_tv": 193.60076520076896,
-      "nextEarnings": 1793793600
     },
     {
       "tv": "NYSE:WM",
       "ticker": "WM",
       "sector": "Industrial Services",
-      "ema50_tv": 216.32902757105978,
-      "ema200_tv": 222.14879290839218,
+      "ema50_tv": 214.9841176819557,
+      "ema200_tv": 221.43854857603108,
       "nextEarnings": 1793131200
     },
     {
       "tv": "NYSE:MRSH",
       "ticker": "MRSH",
       "sector": "Finance",
-      "ema50_tv": 178.28871014903936,
-      "ema200_tv": 180.73949399552964,
+      "ema50_tv": 177.69382833896327,
+      "ema200_tv": 180.42889900462836,
       "nextEarnings": 1792062000
-    },
-    {
-      "tv": "NASDAQ:MRNA",
-      "ticker": "MRNA",
-      "sector": "Health Technology",
-      "ema50_tv": 139.57083016197944,
-      "ema200_tv": 81.97064851014105,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:KKR",
-      "ticker": "KKR",
-      "sector": "Finance",
-      "ema50_tv": 99.88910444273891,
-      "ema200_tv": 104.60117975881724,
-      "nextEarnings": 1794225000
-    },
-    {
-      "tv": "NYSE:UPS",
-      "ticker": "UPS",
-      "sector": "Transportation",
-      "ema50_tv": 100.49342999683289,
-      "ema200_tv": 103.29491526699765,
-      "nextEarnings": 1793095200
-    },
-    {
-      "tv": "NASDAQ:CTAS",
-      "ticker": "CTAS",
-      "sector": "Commercial Services",
-      "ema50_tv": 197.33883296885114,
-      "ema200_tv": 191.78889362212954,
-      "nextEarnings": 1797508800
-    },
-    {
-      "tv": "NASDAQ:WBD",
-      "ticker": "WBD",
-      "sector": "Consumer Services",
-      "ema50_tv": 28.806981715452764,
-      "ema200_tv": 26.26134415434507,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NYSE:ECL",
-      "ticker": "ECL",
-      "sector": "Process Industries",
-      "ema50_tv": 276.41078665892843,
-      "ema200_tv": 272.5464832329242,
-      "nextEarnings": 1793102400
-    },
-    {
-      "tv": "NYSE:SHW",
-      "ticker": "SHW",
-      "sector": "Process Industries",
-      "ema50_tv": 331.1777099510587,
-      "ema200_tv": 333.71559047829953,
-      "nextEarnings": 1793098800
-    },
-    {
-      "tv": "NASDAQ:CMCSA",
-      "ticker": "CMCSA",
-      "sector": "Consumer Services",
-      "ema50_tv": 24.006493842256504,
-      "ema200_tv": 26.14126237908394,
-      "nextEarnings": 1792675800
-    },
-    {
-      "tv": "NASDAQ:INTU",
-      "ticker": "INTU",
-      "sector": "Technology Services",
-      "ema50_tv": 311.26689285396964,
-      "ema200_tv": 392.3413763429687,
-      "nextEarnings": 1796126400
     },
     {
       "tv": "NYSE:AMT",
       "ticker": "AMT",
       "sector": "Finance",
-      "ema50_tv": 171.8738623105105,
-      "ema200_tv": 178.13464490072187,
+      "ema50_tv": 172.4248600528005,
+      "ema200_tv": 177.89906218625376,
       "nextEarnings": 1793098800
+    },
+    {
+      "tv": "NYSE:MMM",
+      "ticker": "MMM",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 166.97013786508433,
+      "ema200_tv": 162.09438430316592,
+      "nextEarnings": 1792492200
+    },
+    {
+      "tv": "NASDAQ:DASH",
+      "ticker": "DASH",
+      "sector": "Transportation",
+      "ema50_tv": 197.0087635127204,
+      "ema200_tv": 193.57662738664214,
+      "nextEarnings": 1793826000
+    },
+    {
+      "tv": "NASDAQ:INTU",
+      "ticker": "INTU",
+      "sector": "Technology Services",
+      "ema50_tv": 309.24846331296413,
+      "ema200_tv": 387.05181431548755,
+      "nextEarnings": 1796126400
+    },
+    {
+      "tv": "NASDAQ:CTAS",
+      "ticker": "CTAS",
+      "sector": "Commercial Services",
+      "ema50_tv": 198.23302736824652,
+      "ema200_tv": 192.34532738329108,
+      "nextEarnings": 1797508800
+    },
+    {
+      "tv": "NYSE:UPS",
+      "ticker": "UPS",
+      "sector": "Transportation",
+      "ema50_tv": 99.13297039191298,
+      "ema200_tv": 102.75781611427182,
+      "nextEarnings": 1793095200
+    },
+    {
+      "tv": "NYSE:ECL",
+      "ticker": "ECL",
+      "sector": "Process Industries",
+      "ema50_tv": 277.6685516901172,
+      "ema200_tv": 273.10806356133094,
+      "nextEarnings": 1793102400
     },
     {
       "tv": "NYSE:EOG",
       "ticker": "EOG",
       "sector": "Energy Minerals",
-      "ema50_tv": 142.97676906371987,
-      "ema200_tv": 134.63358204455153,
+      "ema50_tv": 144.10818109161585,
+      "ema200_tv": 135.41931947473927,
       "nextEarnings": 1793913300
-    },
-    {
-      "tv": "NYSE:ITW",
-      "ticker": "ITW",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 272.22842760830076,
-      "ema200_tv": 268.12388911888445,
-      "nextEarnings": 1793102400
-    },
-    {
-      "tv": "NYSE:TRV",
-      "ticker": "TRV",
-      "sector": "Finance",
-      "ema50_tv": 362.99511177193915,
-      "ema200_tv": 328.312278259875,
-      "nextEarnings": 1792148220
     },
     {
       "tv": "NASDAQ:MDLZ",
       "ticker": "MDLZ",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 61.07153730503852,
-      "ema200_tv": 60.720468941084725,
+      "ema50_tv": 60.98005362942823,
+      "ema200_tv": 60.71345815007937,
       "nextEarnings": 1793707200
     },
     {
-      "tv": "NYSE:SLB",
-      "ticker": "SLB",
-      "sector": "Industrial Services",
-      "ema50_tv": 52.261571697573025,
-      "ema200_tv": 49.5580976874755,
-      "nextEarnings": 1792753200
+      "tv": "NYSE:KKR",
+      "ticker": "KKR",
+      "sector": "Finance",
+      "ema50_tv": 97.76565217918001,
+      "ema200_tv": 103.74867165159964,
+      "nextEarnings": 1794225000
     },
     {
-      "tv": "NYSE:RCL",
-      "ticker": "RCL",
-      "sector": "Consumer Services",
-      "ema50_tv": 271.76894177860765,
-      "ema200_tv": 282.2614223594081,
-      "nextEarnings": 1793707200
+      "tv": "NYSE:SHW",
+      "ticker": "SHW",
+      "sector": "Process Industries",
+      "ema50_tv": 328.81196818184895,
+      "ema200_tv": 332.918488242242,
+      "nextEarnings": 1793098800
+    },
+    {
+      "tv": "NYSE:TRV",
+      "ticker": "TRV",
+      "sector": "Finance",
+      "ema50_tv": 364.0350390380771,
+      "ema200_tv": 330.60208879602135,
+      "nextEarnings": 1792148220
+    },
+    {
+      "tv": "NYSE:BE",
+      "ticker": "BE",
+      "sector": "Electronic Technology",
+      "ema50_tv": 258.3658849451196,
+      "ema200_tv": 212.5942840252708,
+      "nextEarnings": 1792699200
     },
     {
       "tv": "NYSE:NU",
       "ticker": "NU",
       "sector": "Finance",
-      "ema50_tv": 14.01519504051136,
-      "ema200_tv": 14.24715592531219,
+      "ema50_tv": 14.386560621077818,
+      "ema200_tv": 14.33464637269063,
       "nextEarnings": 1794484800
     },
     {
-      "tv": "NYSE:BAM",
-      "ticker": "BAM",
-      "sector": "Finance",
-      "ema50_tv": 47.63209997208577,
-      "ema200_tv": 49.05726627941998,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NASDAQ:ROST",
-      "ticker": "ROST",
-      "sector": "Retail Trade",
-      "ema50_tv": 232.8247120886974,
-      "ema200_tv": 216.0721603999224,
-      "nextEarnings": 1794484800
-    },
-    {
-      "tv": "NYSE:CMI",
-      "ticker": "CMI",
+      "tv": "NYSE:ITW",
+      "ticker": "ITW",
       "sector": "Producer Manufacturing",
-      "ema50_tv": 569.1279348074,
-      "ema200_tv": 577.205322044097,
-      "nextEarnings": 1793275200
+      "ema50_tv": 270.6242038591779,
+      "ema200_tv": 267.92426795723486,
+      "nextEarnings": 1793102400
+    },
+    {
+      "tv": "NYSE:RCL",
+      "ticker": "RCL",
+      "sector": "Consumer Services",
+      "ema50_tv": 274.0776110323843,
+      "ema200_tv": 282.28656940766024,
+      "nextEarnings": 1793097000
     },
     {
       "tv": "NYSE:CI",
       "ticker": "CI",
       "sector": "Health Services",
-      "ema50_tv": 277.87464887894913,
-      "ema200_tv": 282.3826853291994,
-      "nextEarnings": 1793275200
+      "ema50_tv": 278.48708265342816,
+      "ema200_tv": 282.2784170872168,
+      "nextEarnings": 1793878200
     },
     {
-      "tv": "NYSE:HLT",
-      "ticker": "HLT",
+      "tv": "NASDAQ:CMCSA",
+      "ticker": "CMCSA",
       "sector": "Consumer Services",
-      "ema50_tv": 317.33408270137704,
-      "ema200_tv": 311.31591166328644,
-      "nextEarnings": 1793095200
+      "ema50_tv": 23.36108446012739,
+      "ema200_tv": 25.841445707755494,
+      "nextEarnings": 1792675800
     },
     {
-      "tv": "NYSE:NSC",
-      "ticker": "NSC",
-      "sector": "Transportation",
-      "ema50_tv": 323.91335220787215,
-      "ema200_tv": 312.12522797316177,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NYSE:GM",
-      "ticker": "GM",
-      "sector": "Consumer Durables",
-      "ema50_tv": 83.2046979906616,
-      "ema200_tv": 78.57280067752846,
-      "nextEarnings": 1792492200
-    },
-    {
-      "tv": "NYSE:CVNA",
-      "ticker": "CVNA",
-      "sector": "Retail Trade",
-      "ema50_tv": 67.65877083451129,
-      "ema200_tv": 68.93537495785567,
-      "nextEarnings": 1793217900
+      "tv": "NYSE:BAM",
+      "ticker": "BAM",
+      "sector": "Finance",
+      "ema50_tv": 47.14027669805633,
+      "ema200_tv": 48.83933240278398,
+      "nextEarnings": 1793880000
     },
     {
       "tv": "NYSE:KMI",
       "ticker": "KMI",
       "sector": "Industrial Services",
-      "ema50_tv": 31.41017056802721,
-      "ema200_tv": 31.031809914218094,
+      "ema50_tv": 31.651501590833284,
+      "ema200_tv": 31.118306972617162,
       "nextEarnings": 1792584000
     },
     {
-      "tv": "NYSE:TGT",
-      "ticker": "TGT",
-      "sector": "Retail Trade",
-      "ema50_tv": 153.73387196808258,
-      "ema200_tv": 133.81885532678177,
-      "nextEarnings": 1795003200
+      "tv": "NYSE:GM",
+      "ticker": "GM",
+      "sector": "Consumer Durables",
+      "ema50_tv": 83.05442748489772,
+      "ema200_tv": 78.79913898094239,
+      "nextEarnings": 1792492200
     },
     {
-      "tv": "NASDAQ:TER",
-      "ticker": "TER",
-      "sector": "Electronic Technology",
-      "ema50_tv": 381.6539750805086,
-      "ema200_tv": 329.3201199100775,
-      "nextEarnings": 1793102400
+      "tv": "NYSE:HLT",
+      "ticker": "HLT",
+      "sector": "Consumer Services",
+      "ema50_tv": 318.98322821023885,
+      "ema200_tv": 312.1084015514252,
+      "nextEarnings": 1793095200
+    },
+    {
+      "tv": "NYSE:CMI",
+      "ticker": "CMI",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 559.8322671148114,
+      "ema200_tv": 574.1972124531628,
+      "nextEarnings": 1793881800
+    },
+    {
+      "tv": "NYSE:NSC",
+      "ticker": "NSC",
+      "sector": "Transportation",
+      "ema50_tv": 322.57550647981276,
+      "ema200_tv": 312.4400982057374,
+      "nextEarnings": 1792670400
+    },
+    {
+      "tv": "NYSE:SLB",
+      "ticker": "SLB",
+      "sector": "Industrial Services",
+      "ema50_tv": 51.53389926266934,
+      "ema200_tv": 49.51764488355164,
+      "nextEarnings": 1792753200
+    },
+    {
+      "tv": "NASDAQ:ROST",
+      "ticker": "ROST",
+      "sector": "Retail Trade",
+      "ema50_tv": 231.09742739868406,
+      "ema200_tv": 216.5759597559897,
+      "nextEarnings": 1794484800
     },
     {
       "tv": "NYSE:CL",
       "ticker": "CL",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 88.4644328189365,
-      "ema200_tv": 88.39338562317525,
+      "ema50_tv": 88.48642494100682,
+      "ema200_tv": 88.40017347213221,
       "nextEarnings": 1793357700
-    },
-    {
-      "tv": "NYSE:FDX",
-      "ticker": "FDX",
-      "sector": "Transportation",
-      "ema50_tv": 307.4396998349738,
-      "ema200_tv": 292.684897467817,
-      "nextEarnings": 1793217600
-    },
-    {
-      "tv": "NYSE:APO",
-      "ticker": "APO",
-      "sector": "Finance",
-      "ema50_tv": 125.71269986209383,
-      "ema200_tv": 127.42583699440473,
-      "nextEarnings": 1793705400
     },
     {
       "tv": "NASDAQ:ORLY",
       "ticker": "ORLY",
       "sector": "Retail Trade",
-      "ema50_tv": 87.16870590218923,
-      "ema200_tv": 90.26179855285511,
+      "ema50_tv": 86.90637514108735,
+      "ema200_tv": 90.00814376709911,
       "nextEarnings": 1793219400
     },
     {
-      "tv": "NASDAQ:HON",
-      "ticker": "HON",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 217.19881015430212,
-      "ema200_tv": 224.73056126195553,
-      "nextEarnings": 1792663200
+      "tv": "NYSE:TGT",
+      "ticker": "TGT",
+      "sector": "Retail Trade",
+      "ema50_tv": 153.60996726784748,
+      "ema200_tv": 134.94569656734242,
+      "nextEarnings": 1795001400
     },
     {
-      "tv": "NYSE:DLR",
-      "ticker": "DLR",
-      "sector": "Finance",
-      "ema50_tv": 184.5242770622325,
-      "ema200_tv": 181.94613122609084,
-      "nextEarnings": 1793304300
-    },
-    {
-      "tv": "NYSE:KEYS",
-      "ticker": "KEYS",
-      "sector": "Electronic Technology",
-      "ema50_tv": 340.82959710014813,
-      "ema200_tv": 302.23574073816104,
-      "nextEarnings": 1795435200
-    },
-    {
-      "tv": "NYSE:COHR",
-      "ticker": "COHR",
-      "sector": "Electronic Technology",
-      "ema50_tv": 304.62069873324924,
-      "ema200_tv": 279.22636020666124,
-      "nextEarnings": 1794398400
+      "tv": "NYSE:FDX",
+      "ticker": "FDX",
+      "sector": "Transportation",
+      "ema50_tv": 303.901378243642,
+      "ema200_tv": 292.57578145008796,
+      "nextEarnings": 1793217600
     },
     {
       "tv": "NASDAQ:AEP",
       "ticker": "AEP",
       "sector": "Utilities",
-      "ema50_tv": 123.3283292542898,
-      "ema200_tv": 124.72717535741049,
+      "ema50_tv": 123.30612505721402,
+      "ema200_tv": 124.63567188140748,
       "nextEarnings": 1793194200
+    },
+    {
+      "tv": "NYSE:APO",
+      "ticker": "APO",
+      "sector": "Finance",
+      "ema50_tv": 123.80257425906113,
+      "ema200_tv": 126.80299249830584,
+      "nextEarnings": 1793705400
     },
     {
       "tv": "NYSE:RSG",
       "ticker": "RSG",
       "sector": "Industrial Services",
-      "ema50_tv": 216.0257246090695,
-      "ema200_tv": 216.4068560503737,
+      "ema50_tv": 216.38521879216418,
+      "ema200_tv": 216.47659353893422,
       "nextEarnings": 1793304600
+    },
+    {
+      "tv": "NYSE:CVNA",
+      "ticker": "CVNA",
+      "sector": "Retail Trade",
+      "ema50_tv": 66.49750616640662,
+      "ema200_tv": 68.5477910179568,
+      "nextEarnings": 1793217900
+    },
+    {
+      "tv": "NYSE:DLR",
+      "ticker": "DLR",
+      "sector": "Finance",
+      "ema50_tv": 183.52218210045442,
+      "ema200_tv": 181.82621831749637,
+      "nextEarnings": 1793304300
+    },
+    {
+      "tv": "NASDAQ:HON",
+      "ticker": "HON",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 215.3677940455522,
+      "ema200_tv": 223.79543116370718,
+      "nextEarnings": 1792663200
     },
     {
       "tv": "NYSE:SPG",
       "ticker": "SPG",
       "sector": "Finance",
-      "ema50_tv": 210.3822910556934,
-      "ema200_tv": 204.20523308080948,
-      "nextEarnings": 1793620800
-    },
-    {
-      "tv": "NYSE:TEL",
-      "ticker": "TEL",
-      "sector": "Electronic Technology",
-      "ema50_tv": 209.69259859599785,
-      "ema200_tv": 209.355128525527,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NASDAQ:NBIS",
-      "ticker": "NBIS",
-      "sector": "Technology Services",
-      "ema50_tv": 223.27118144454613,
-      "ema200_tv": 179.40091571799556,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NASDAQ:MSTR",
-      "ticker": "MSTR",
-      "sector": "Technology Services",
-      "ema50_tv": 134.72950843831137,
-      "ema200_tv": 153.00969311965414,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NASDAQ:ALAB",
-      "ticker": "ALAB",
-      "sector": "Electronic Technology",
-      "ema50_tv": 320.9736604498752,
-      "ema200_tv": 262.56282454300054,
-      "nextEarnings": 1794312000
+      "ema50_tv": 208.19409257149331,
+      "ema200_tv": 203.96672364033975,
+      "nextEarnings": 1793912700
     },
     {
       "tv": "NYSE:APD",
       "ticker": "APD",
       "sector": "Process Industries",
-      "ema50_tv": 291.061566150547,
-      "ema200_tv": 288.101959275437,
-      "nextEarnings": 1793880000
+      "ema50_tv": 289.1654213078417,
+      "ema200_tv": 287.7477397225593,
+      "nextEarnings": 1793876400
     },
     {
-      "tv": "NYSE:TRGP",
-      "ticker": "TRGP",
-      "sector": "Utilities",
-      "ema50_tv": 281.36760618441406,
-      "ema200_tv": 251.45913885571153,
-      "nextEarnings": 1793275200
+      "tv": "NASDAQ:MSTR",
+      "ticker": "MSTR",
+      "sector": "Technology Services",
+      "ema50_tv": 138.95284974783988,
+      "ema200_tv": 153.10648242315767,
+      "nextEarnings": 1793304000
     },
     {
       "tv": "NYSE:MET",
       "ticker": "MET",
       "sector": "Finance",
-      "ema50_tv": 95.13004166857543,
-      "ema200_tv": 87.07231146992495,
-      "nextEarnings": 1793793600
+      "ema50_tv": 95.8474610638911,
+      "ema200_tv": 87.73303394785802,
+      "nextEarnings": 1793826000
     },
     {
       "tv": "NYSE:BSX",
       "ticker": "BSX",
       "sector": "Health Technology",
-      "ema50_tv": 45.964395519274504,
-      "ema200_tv": 59.6111226687624,
+      "ema50_tv": 45.27408450893442,
+      "ema200_tv": 58.625803590881674,
       "nextEarnings": 1793183400
-    },
-    {
-      "tv": "NASDAQ:NTRA",
-      "ticker": "NTRA",
-      "sector": "Health Technology",
-      "ema50_tv": 343.5606192555442,
-      "ema200_tv": 264.61755837475806,
-      "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NASDAQ:NXPI",
-      "ticker": "NXPI",
-      "sector": "Electronic Technology",
-      "ema50_tv": 238.833799132252,
-      "ema200_tv": 243.96274114710525,
-      "nextEarnings": 1793131800
     },
     {
       "tv": "NYSE:COR",
       "ticker": "COR",
       "sector": "Distribution Services",
-      "ema50_tv": 313.2713992978122,
-      "ema200_tv": 311.06085159905734,
-      "nextEarnings": 1794398400
+      "ema50_tv": 315.297758487164,
+      "ema200_tv": 311.72828089383177,
+      "nextEarnings": 1793802600
+    },
+    {
+      "tv": "NYSE:TRGP",
+      "ticker": "TRGP",
+      "sector": "Utilities",
+      "ema50_tv": 282.79198805105915,
+      "ema200_tv": 253.58245947053217,
+      "nextEarnings": 1793275200
+    },
+    {
+      "tv": "NYSE:KEYS",
+      "ticker": "KEYS",
+      "sector": "Electronic Technology",
+      "ema50_tv": 348.8229963490409,
+      "ema200_tv": 306.6802724563308,
+      "nextEarnings": 1795435200
+    },
+    {
+      "tv": "NYSE:TEL",
+      "ticker": "TEL",
+      "sector": "Electronic Technology",
+      "ema50_tv": 211.21695968722955,
+      "ema200_tv": 209.79207243084295,
+      "nextEarnings": 1793181600
     },
     {
       "tv": "NYSE:OXY",
       "ticker": "OXY",
       "sector": "Energy Minerals",
-      "ema50_tv": 57.97343356585601,
-      "ema200_tv": 54.52347080115821,
+      "ema50_tv": 58.41640771923497,
+      "ema200_tv": 54.84155522155064,
       "nextEarnings": 1794258000
     },
     {
       "tv": "NYSE:AJG",
       "ticker": "AJG",
       "sector": "Finance",
-      "ema50_tv": 242.15944577576798,
-      "ema200_tv": 242.90459979065957,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NASDAQ:FAST",
-      "ticker": "FAST",
-      "sector": "Distribution Services",
-      "ema50_tv": 49.45122574777034,
-      "ema200_tv": 46.80206747835337,
-      "nextEarnings": 1791975600
-    },
-    {
-      "tv": "NYSE:AME",
-      "ticker": "AME",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 242.49466961851897,
-      "ema200_tv": 228.81253418434318,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:AON",
-      "ticker": "AON",
-      "sector": "Finance",
-      "ema50_tv": 313.3464586646087,
-      "ema200_tv": 332.06900033100493,
-      "nextEarnings": 1792756800
-    },
-    {
-      "tv": "NASDAQ:PCAR",
-      "ticker": "PCAR",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 119.91909631548678,
-      "ema200_tv": 118.41956817323465,
-      "nextEarnings": 1793102400
-    },
-    {
-      "tv": "NYSE:NUE",
-      "ticker": "NUE",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 249.30764709794192,
-      "ema200_tv": 219.94754039017025,
-      "nextEarnings": 1793044800
-    },
-    {
-      "tv": "NASDAQ:BKR",
-      "ticker": "BKR",
-      "sector": "Industrial Services",
-      "ema50_tv": 59.33644304510785,
-      "ema200_tv": 57.9440526538578,
-      "nextEarnings": 1793134800
+      "ema50_tv": 240.02236490026368,
+      "ema200_tv": 242.27193272064343,
+      "nextEarnings": 1793304900
     },
     {
       "tv": "NYSE:ALL",
       "ticker": "ALL",
       "sector": "Finance",
-      "ema50_tv": 243.97554348666057,
-      "ema200_tv": 230.026107201968,
-      "nextEarnings": 1793826000
+      "ema50_tv": 240.97277088789215,
+      "ema200_tv": 230.0062632448428,
+      "nextEarnings": 1793826900
     },
     {
       "tv": "NYSE:LNG",
       "ticker": "LNG",
       "sector": "Industrial Services",
-      "ema50_tv": 270.60767176425094,
-      "ema200_tv": 252.4755902711123,
+      "ema50_tv": 272.37470657946676,
+      "ema200_tv": 254.0015442282012,
       "nextEarnings": 1793273400
     },
     {
-      "tv": "NYSE:TFC",
-      "ticker": "TFC",
-      "sector": "Finance",
-      "ema50_tv": 49.33322496422415,
-      "ema200_tv": 49.04068486732728,
-      "nextEarnings": 1792157400
+      "tv": "NASDAQ:FAST",
+      "ticker": "FAST",
+      "sector": "Distribution Services",
+      "ema50_tv": 49.74055918802058,
+      "ema200_tv": 47.034152847999984,
+      "nextEarnings": 1791975600
     },
     {
-      "tv": "NYSE:AFL",
-      "ticker": "AFL",
-      "sector": "Finance",
-      "ema50_tv": 116.6572414942581,
-      "ema200_tv": 115.25325009448622,
-      "nextEarnings": 1793826300
+      "tv": "NASDAQ:TER",
+      "ticker": "TER",
+      "sector": "Electronic Technology",
+      "ema50_tv": 385.4420386562145,
+      "ema200_tv": 333.4524958265186,
+      "nextEarnings": 1793102400
     },
     {
       "tv": "NYSE:OKE",
       "ticker": "OKE",
       "sector": "Energy Minerals",
-      "ema50_tv": 91.45760977510697,
-      "ema200_tv": 87.76343539569666,
+      "ema50_tv": 91.24935642814455,
+      "ema200_tv": 87.91735850636238,
       "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NYSE:AFL",
+      "ticker": "AFL",
+      "sector": "Finance",
+      "ema50_tv": 116.26240706094035,
+      "ema200_tv": 115.22375018680987,
+      "nextEarnings": 1793826300
+    },
+    {
+      "tv": "NYSE:AON",
+      "ticker": "AON",
+      "sector": "Finance",
+      "ema50_tv": 305.0045837818122,
+      "ema200_tv": 328.69982926063994,
+      "nextEarnings": 1793183400
+    },
+    {
+      "tv": "NYSE:AME",
+      "ticker": "AME",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 244.05446889814883,
+      "ema200_tv": 230.03630851645264,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NYSE:NUE",
+      "ticker": "NUE",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 249.44723075038596,
+      "ema200_tv": 221.69067596702192,
+      "nextEarnings": 1793044800
+    },
+    {
+      "tv": "NASDAQ:NTRA",
+      "ticker": "NTRA",
+      "sector": "Health Technology",
+      "ema50_tv": 354.9494619823716,
+      "ema200_tv": 272.3235994096549,
+      "nextEarnings": 1794398400
+    },
+    {
+      "tv": "NASDAQ:NXPI",
+      "ticker": "NXPI",
+      "sector": "Electronic Technology",
+      "ema50_tv": 237.20353945704625,
+      "ema200_tv": 243.23696244073417,
+      "nextEarnings": 1793131800
+    },
+    {
+      "tv": "NASDAQ:PCAR",
+      "ticker": "PCAR",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 117.42768581767886,
+      "ema200_tv": 117.82794078781245,
+      "nextEarnings": 1793102400
+    },
+    {
+      "tv": "NYSE:COHR",
+      "ticker": "COHR",
+      "sector": "Electronic Technology",
+      "ema50_tv": 305.5997039250267,
+      "ema200_tv": 281.0283104328308,
+      "nextEarnings": 1794398400
+    },
+    {
+      "tv": "NYSE:TFC",
+      "ticker": "TFC",
+      "sector": "Finance",
+      "ema50_tv": 48.65478139802217,
+      "ema200_tv": 48.8722187753863,
+      "nextEarnings": 1792157400
     },
     {
       "tv": "NYSE:CIEN",
       "ticker": "CIEN",
       "sector": "Electronic Technology",
-      "ema50_tv": 378.29647042171666,
-      "ema200_tv": 367.1455610937542,
+      "ema50_tv": 388.65978450195394,
+      "ema200_tv": 370.6722838409552,
       "nextEarnings": 1796904000
     },
     {
-      "tv": "NYSE:CRH",
-      "ticker": "CRH",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 91.52277789450115,
-      "ema200_tv": 102.58992188809533,
-      "nextEarnings": 1793880000
+      "tv": "NASDAQ:NBIS",
+      "ticker": "NBIS",
+      "sector": "Technology Services",
+      "ema50_tv": 223.23506969026906,
+      "ema200_tv": 181.98860097924535,
+      "nextEarnings": 1792670400
     },
     {
-      "tv": "NYSE:DAL",
-      "ticker": "DAL",
-      "sector": "Transportation",
-      "ema50_tv": 82.8258988037282,
-      "ema200_tv": 76.43606772247385,
-      "nextEarnings": 1791541800
+      "tv": "NASDAQ:BKR",
+      "ticker": "BKR",
+      "sector": "Industrial Services",
+      "ema50_tv": 58.69141876048568,
+      "ema200_tv": 57.8493812609238,
+      "nextEarnings": 1793134800
+    },
+    {
+      "tv": "NASDAQ:ALAB",
+      "ticker": "ALAB",
+      "sector": "Electronic Technology",
+      "ema50_tv": 327.00814015582074,
+      "ema200_tv": 267.6872324642115,
+      "nextEarnings": 1793739900
     },
     {
       "tv": "NYSE:CAH",
       "ticker": "CAH",
       "sector": "Distribution Services",
-      "ema50_tv": 229.78573010728468,
-      "ema200_tv": 214.6461002811312,
+      "ema50_tv": 231.28477564321977,
+      "ema200_tv": 215.9299746630501,
       "nextEarnings": 1793879100
-    },
-    {
-      "tv": "NYSE:D",
-      "ticker": "D",
-      "sector": "Utilities",
-      "ema50_tv": 64.68309576032594,
-      "ema200_tv": 64.37911983663855,
-      "nextEarnings": 1793361600
-    },
-    {
-      "tv": "NYSE:DVN",
-      "ticker": "DVN",
-      "sector": "Energy Minerals",
-      "ema50_tv": 47.11704827556057,
-      "ema200_tv": 44.26224052587182,
-      "nextEarnings": 1794312000
     },
     {
       "tv": "NASDAQ:FANG",
       "ticker": "FANG",
       "sector": "Energy Minerals",
-      "ema50_tv": 194.1986158832662,
-      "ema200_tv": 185.15959743961187,
+      "ema50_tv": 193.59468026561905,
+      "ema200_tv": 185.50698053680716,
       "nextEarnings": 1793653200
     },
     {
-      "tv": "NASDAQ:NDAQ",
-      "ticker": "NDAQ",
-      "sector": "Finance",
-      "ema50_tv": 93.25787696802819,
-      "ema200_tv": 90.58237785260647,
-      "nextEarnings": 1792666800
+      "tv": "NYSE:DVN",
+      "ticker": "DVN",
+      "sector": "Energy Minerals",
+      "ema50_tv": 47.457131862317496,
+      "ema200_tv": 44.51948298886255,
+      "nextEarnings": 1793912700
     },
     {
-      "tv": "NYSE:SRE",
-      "ticker": "SRE",
+      "tv": "NYSE:D",
+      "ticker": "D",
       "sector": "Utilities",
-      "ema50_tv": 83.39684744985287,
-      "ema200_tv": 87.75415880655184,
-      "nextEarnings": 1793361600
-    },
-    {
-      "tv": "NYSE:O",
-      "ticker": "O",
-      "sector": "Finance",
-      "ema50_tv": 59.15424011077724,
-      "ema200_tv": 60.87932177130301,
-      "nextEarnings": 1793653500
-    },
-    {
-      "tv": "NYSE:NKE",
-      "ticker": "NKE",
-      "sector": "Consumer Non-Durables",
-      "ema50_tv": 38.28776822964179,
-      "ema200_tv": 47.40516865987146,
-      "nextEarnings": 1797508800
-    },
-    {
-      "tv": "NYSE:EW",
-      "ticker": "EW",
-      "sector": "Health Technology",
-      "ema50_tv": 87.85879208152849,
-      "ema200_tv": 85.37232476357302,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NASDAQ:TEAM",
-      "ticker": "TEAM",
-      "sector": "Technology Services",
-      "ema50_tv": 165.85478456362782,
-      "ema200_tv": 133.48269133240206,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:BDX",
-      "ticker": "BDX",
-      "sector": "Health Technology",
-      "ema50_tv": 177.56626813145675,
-      "ema200_tv": 164.7357338977194,
-      "nextEarnings": 1793880000
+      "ema50_tv": 64.10613067792121,
+      "ema200_tv": 64.23866377906943,
+      "nextEarnings": 1793359800
     },
     {
       "tv": "NYSE:VST",
       "ticker": "VST",
       "sector": "Utilities",
-      "ema50_tv": 144.0840329212042,
-      "ema200_tv": 153.95906778941088,
+      "ema50_tv": 147.66640705386962,
+      "ema200_tv": 154.36306116207294,
       "nextEarnings": 1793966400
     },
     {
-      "tv": "NYSE:HUM",
-      "ticker": "HUM",
-      "sector": "Health Services",
-      "ema50_tv": 383.73953880031274,
-      "ema200_tv": 324.6831800239815,
-      "nextEarnings": 1793962800
-    },
-    {
-      "tv": "NYSE:F",
-      "ticker": "F",
-      "sector": "Consumer Durables",
-      "ema50_tv": 13.436871207463247,
-      "ema200_tv": 13.343752975568304,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NYSE:STT",
-      "ticker": "STT",
-      "sector": "Finance",
-      "ema50_tv": 182.37660049028239,
-      "ema200_tv": 159.6528661627591,
-      "nextEarnings": 1791977400
-    },
-    {
-      "tv": "NYSE:A",
-      "ticker": "A",
-      "sector": "Health Technology",
-      "ema50_tv": 154.3177069953357,
-      "ema200_tv": 138.04216211733103,
-      "nextEarnings": 1796040000
-    },
-    {
-      "tv": "NASDAQ:COIN",
-      "ticker": "COIN",
-      "sector": "Finance",
-      "ema50_tv": 178.8962291860258,
-      "ema200_tv": 193.72902043561518,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NASDAQ:CRWV",
-      "ticker": "CRWV",
-      "sector": "Technology Services",
-      "ema50_tv": 87.98934519135555,
-      "ema200_tv": 93.8999473892708,
-      "nextEarnings": 1794830400
-    },
-    {
-      "tv": "NYSE:ETR",
-      "ticker": "ETR",
+      "tv": "NYSE:SRE",
+      "ticker": "SRE",
       "sector": "Utilities",
-      "ema50_tv": 104.79852395438891,
-      "ema200_tv": 104.63821185276768,
-      "nextEarnings": 1793793600
+      "ema50_tv": 82.876497535037,
+      "ema200_tv": 87.35548375876145,
+      "nextEarnings": 1793361600
+    },
+    {
+      "tv": "NYSE:CRH",
+      "ticker": "CRH",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 89.41342631525957,
+      "ema200_tv": 101.37214449096757,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NASDAQ:TEAM",
+      "ticker": "TEAM",
+      "sector": "Technology Services",
+      "ema50_tv": 173.87046428197795,
+      "ema200_tv": 137.53799713178546,
+      "nextEarnings": 1793912400
+    },
+    {
+      "tv": "NYSE:NKE",
+      "ticker": "NKE",
+      "sector": "Consumer Non-Durables",
+      "ema50_tv": 37.56610147388583,
+      "ema200_tv": 46.676165515262525,
+      "nextEarnings": 1797508800
+    },
+    {
+      "tv": "NASDAQ:NDAQ",
+      "ticker": "NDAQ",
+      "sector": "Finance",
+      "ema50_tv": 93.22387605419294,
+      "ema200_tv": 90.72660786808598,
+      "nextEarnings": 1792666800
+    },
+    {
+      "tv": "NYSE:DAL",
+      "ticker": "DAL",
+      "sector": "Transportation",
+      "ema50_tv": 82.56831426468861,
+      "ema200_tv": 76.74235030181279,
+      "nextEarnings": 1799409600
+    },
+    {
+      "tv": "NYSE:O",
+      "ticker": "O",
+      "sector": "Finance",
+      "ema50_tv": 58.117487252102364,
+      "ema200_tv": 60.49479494119123,
+      "nextEarnings": 1793653500
     },
     {
       "tv": "NYSE:P",
       "ticker": "P",
       "sector": "Electronic Technology",
-      "ema50_tv": 105.70371197854287,
-      "ema200_tv": 84.98200927635219,
+      "ema50_tv": 115.74568837608977,
+      "ema200_tv": 88.92166322705286,
       "nextEarnings": 1796212800
-    },
-    {
-      "tv": "NYSE:AU",
-      "ticker": "AU",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 98.79719954700359,
-      "ema200_tv": 91.33973719983977,
-      "nextEarnings": 1793880000
     },
     {
       "tv": "NASDAQ:EBAY",
       "ticker": "EBAY",
       "sector": "Retail Trade",
-      "ema50_tv": 107.42923275405005,
-      "ema200_tv": 101.7343254949938,
+      "ema50_tv": 108.34834597764107,
+      "ema200_tv": 102.3074692801164,
+      "nextEarnings": 1793217900
+    },
+    {
+      "tv": "NYSE:BDX",
+      "ticker": "BDX",
+      "sector": "Health Technology",
+      "ema50_tv": 178.9755794661401,
+      "ema200_tv": 165.85804688293427,
+      "nextEarnings": 1793878200
+    },
+    {
+      "tv": "NYSE:HUM",
+      "ticker": "HUM",
+      "sector": "Health Services",
+      "ema50_tv": 390.19984209330175,
+      "ema200_tv": 329.84708534908384,
+      "nextEarnings": 1793962800
+    },
+    {
+      "tv": "NYSE:ETR",
+      "ticker": "ETR",
+      "sector": "Utilities",
+      "ema50_tv": 104.51191926248575,
+      "ema200_tv": 104.56733474043186,
       "nextEarnings": 1793793600
     },
     {
-      "tv": "NASDAQ:MDLN",
-      "ticker": "MDLN",
+      "tv": "NYSE:EW",
+      "ticker": "EW",
       "sector": "Health Technology",
-      "ema50_tv": 35.29981185984457,
-      "ema200_tv": 40.308425,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NASDAQ:PYPL",
-      "ticker": "PYPL",
-      "sector": "Commercial Services",
-      "ema50_tv": 54.146515383487746,
-      "ema200_tv": 53.70705457714209,
-      "nextEarnings": 1793107800
-    },
-    {
-      "tv": "NYSE:VMRK",
-      "ticker": "VMRK",
-      "sector": "Finance",
-      "ema50_tv": 64.02286485139034,
-      "ema200_tv": 64.68673095286849,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NASDAQ:ADSK",
-      "ticker": "ADSK",
-      "sector": "Technology Services",
-      "ema50_tv": 224.7621773287818,
-      "ema200_tv": 240.26783378778146,
-      "nextEarnings": 1796126400
-    },
-    {
-      "tv": "NYSE:TWLO",
-      "ticker": "TWLO",
-      "sector": "Technology Services",
-      "ema50_tv": 246.67651272492677,
-      "ema200_tv": 190.88560311096208,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:FITB",
-      "ticker": "FITB",
-      "sector": "Finance",
-      "ema50_tv": 53.674102359989206,
-      "ema200_tv": 51.50015847245579,
-      "nextEarnings": 1792405800
-    },
-    {
-      "tv": "NYSE:CARR",
-      "ticker": "CARR",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 58.9208025594538,
-      "ema200_tv": 61.95077343371061,
-      "nextEarnings": 1792670400
+      "ema50_tv": 87.3840919923574,
+      "ema200_tv": 85.38767399138347,
+      "nextEarnings": 1793823300
     },
     {
       "tv": "NYSE:VEEV",
       "ticker": "VEEV",
       "sector": "Technology Services",
-      "ema50_tv": 252.33154207662693,
-      "ema200_tv": 220.71220032773553,
+      "ema50_tv": 260.7428406992176,
+      "ema200_tv": 224.8260860877855,
       "nextEarnings": 1796817600
     },
     {
-      "tv": "NYSE:XYZ",
-      "ticker": "XYZ",
-      "sector": "Commercial Services",
-      "ema50_tv": 77.7848831875427,
-      "ema200_tv": 73.3873471156038,
-      "nextEarnings": 1793880000
+      "tv": "NYSE:A",
+      "ticker": "A",
+      "sector": "Health Technology",
+      "ema50_tv": 157.7242392984436,
+      "ema200_tv": 139.91577931723614,
+      "nextEarnings": 1796040000
     },
     {
-      "tv": "NASDAQ:WDAY",
-      "ticker": "WDAY",
+      "tv": "NASDAQ:ADSK",
+      "ticker": "ADSK",
       "sector": "Technology Services",
-      "ema50_tv": 182.13282148413646,
-      "ema200_tv": 171.4547342635493,
+      "ema50_tv": 226.61281033498537,
+      "ema200_tv": 239.87004601133037,
       "nextEarnings": 1796126400
+    },
+    {
+      "tv": "NYSE:F",
+      "ticker": "F",
+      "sector": "Consumer Durables",
+      "ema50_tv": 13.16240942324915,
+      "ema200_tv": 13.274462280351349,
+      "nextEarnings": 1793217900
+    },
+    {
+      "tv": "NASDAQ:PYPL",
+      "ticker": "PYPL",
+      "sector": "Commercial Services",
+      "ema50_tv": 54.420760645395205,
+      "ema200_tv": 53.80577780481065,
+      "nextEarnings": 1793107800
+    },
+    {
+      "tv": "NASDAQ:COIN",
+      "ticker": "COIN",
+      "sector": "Finance",
+      "ema50_tv": 179.03278877720734,
+      "ema200_tv": 192.90339326099215,
+      "nextEarnings": 1793275200
+    },
+    {
+      "tv": "NYSE:STT",
+      "ticker": "STT",
+      "sector": "Finance",
+      "ema50_tv": 180.74537343938198,
+      "ema200_tv": 160.53228269007886,
+      "nextEarnings": 1791977400
+    },
+    {
+      "tv": "NYSE:VMRK",
+      "ticker": "VMRK",
+      "sector": "Finance",
+      "ema50_tv": 63.289375068091495,
+      "ema200_tv": 64.4462323751785,
+      "nextEarnings": 1793826000
+    },
+    {
+      "tv": "NASDAQ:MDLN",
+      "ticker": "MDLN",
+      "sector": "Health Technology",
+      "ema50_tv": 35.39420015897389,
+      "ema200_tv": 40.04223064593218,
+      "nextEarnings": 1793795400
     },
     {
       "tv": "NASDAQ:CCEP",
       "ticker": "CCEP",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 103.66064209747569,
-      "ema200_tv": 99.47492986468548,
+      "ema50_tv": 103.65928054043151,
+      "ema200_tv": 99.71347396087211,
       "nextEarnings": 1802952000
     },
     {
       "tv": "NASDAQ:XEL",
       "ticker": "XEL",
       "sector": "Utilities",
-      "ema50_tv": 74.74052070679028,
-      "ema200_tv": 76.97232589442001,
-      "nextEarnings": 1792670400
+      "ema50_tv": 74.48923657881366,
+      "ema200_tv": 76.7715737013577,
+      "nextEarnings": 1793268300
     },
     {
-      "tv": "NASDAQ:RVMD",
-      "ticker": "RVMD",
+      "tv": "NYSE:AU",
+      "ticker": "AU",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 97.42131374471167,
+      "ema200_tv": 91.39768895302521,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NYSE:XYZ",
+      "ticker": "XYZ",
+      "sector": "Commercial Services",
+      "ema50_tv": 77.50326170844464,
+      "ema200_tv": 73.56577564386416,
+      "nextEarnings": 1793739900
+    },
+    {
+      "tv": "NASDAQ:NTAP",
+      "ticker": "NTAP",
+      "sector": "Electronic Technology",
+      "ema50_tv": 200.78025480104964,
+      "ema200_tv": 158.1026744032038,
+      "nextEarnings": 1796158860
+    },
+    {
+      "tv": "NYSE:FITB",
+      "ticker": "FITB",
+      "sector": "Finance",
+      "ema50_tv": 53.012232487118126,
+      "ema200_tv": 51.44642721102424,
+      "nextEarnings": 1792405800
+    },
+    {
+      "tv": "NYSE:CARR",
+      "ticker": "CARR",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 58.17929738423559,
+      "ema200_tv": 61.57272050425703,
+      "nextEarnings": 1793268000
+    },
+    {
+      "tv": "NASDAQ:WDAY",
+      "ticker": "WDAY",
+      "sector": "Technology Services",
+      "ema50_tv": 183.10392148045295,
+      "ema200_tv": 172.34013809319435,
+      "nextEarnings": 1796126400
+    },
+    {
+      "tv": "NASDAQ:KDP",
+      "ticker": "KDP",
+      "sector": "Consumer Non-Durables",
+      "ema50_tv": 31.324680915940867,
+      "ema200_tv": 30.32057793459053,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NYSE:VTR",
+      "ticker": "VTR",
+      "sector": "Finance",
+      "ema50_tv": 87.41934767481965,
+      "ema200_tv": 85.14618969006544,
+      "nextEarnings": 1793131200
+    },
+    {
+      "tv": "NYSE:LHX",
+      "ticker": "LHX",
+      "sector": "Electronic Technology",
+      "ema50_tv": 254.97164639632646,
+      "ema200_tv": 285.7553728506406,
+      "nextEarnings": 1793280600
+    },
+    {
+      "tv": "NASDAQ:EXC",
+      "ticker": "EXC",
+      "sector": "Utilities",
+      "ema50_tv": 42.91176597841253,
+      "ema200_tv": 44.75642316295041,
+      "nextEarnings": 1793357400
+    },
+    {
+      "tv": "NYSE:TWLO",
+      "ticker": "TWLO",
+      "sector": "Technology Services",
+      "ema50_tv": 254.0185057977981,
+      "ema200_tv": 196.12944770749132,
+      "nextEarnings": 1793304300
+    },
+    {
+      "tv": "NYSE:IQV",
+      "ticker": "IQV",
       "sector": "Health Technology",
-      "ema50_tv": 198.64836481918036,
-      "ema200_tv": 153.3613734424201,
-      "nextEarnings": 1794398400
+      "ema50_tv": 253.52877672606058,
+      "ema200_tv": 218.31100025780364,
+      "nextEarnings": 1793098800
+    },
+    {
+      "tv": "NYSE:FERG",
+      "ticker": "FERG",
+      "sector": "Distribution Services",
+      "ema50_tv": 225.97325883775378,
+      "ema200_tv": 231.86642498201059,
+      "nextEarnings": 1794225600
+    },
+    {
+      "tv": "NASDAQ:CRWV",
+      "ticker": "CRWV",
+      "sector": "Technology Services",
+      "ema50_tv": 86.96962888151678,
+      "ema200_tv": 93.291485866459,
+      "nextEarnings": 1794830400
     },
     {
       "tv": "NASDAQ:ILMN",
       "ticker": "ILMN",
       "sector": "Health Technology",
-      "ema50_tv": 226.94111760480027,
-      "ema200_tv": 174.4296323235109,
+      "ema50_tv": 236.6150137925195,
+      "ema200_tv": 180.12270026244337,
+      "nextEarnings": 1793304000
+    },
+    {
+      "tv": "NYSE:AIG",
+      "ticker": "AIG",
+      "sector": "Finance",
+      "ema50_tv": 76.16721005205757,
+      "ema200_tv": 77.01673548090173,
+      "nextEarnings": 1793739600
+    },
+    {
+      "tv": "NASDAQ:FLEX",
+      "ticker": "FLEX",
+      "sector": "Electronic Technology",
+      "ema50_tv": 115.7841109666374,
+      "ema200_tv": 103.82542893499676,
+      "nextEarnings": 1793194200
+    },
+    {
+      "tv": "NYSE:YUM",
+      "ticker": "YUM",
+      "sector": "Consumer Services",
+      "ema50_tv": 144.82704838371427,
+      "ema200_tv": 150.1448935022589,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NASDAQ:RVMD",
+      "ticker": "RVMD",
+      "sector": "Health Technology",
+      "ema50_tv": 197.51849093683052,
+      "ema200_tv": 155.70086337528053,
+      "nextEarnings": 1794398400
+    },
+    {
+      "tv": "NYSE:LYV",
+      "ticker": "LYV",
+      "sector": "Consumer Services",
+      "ema50_tv": 173.368780244723,
+      "ema200_tv": 166.47954005772624,
       "nextEarnings": 1793275200
     },
     {
       "tv": "NASDAQ:MCHP",
       "ticker": "MCHP",
       "sector": "Electronic Technology",
-      "ema50_tv": 77.41013878910495,
-      "ema200_tv": 77.59646405771589,
+      "ema50_tv": 77.15320670977425,
+      "ema200_tv": 77.5224869812087,
       "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:LHX",
-      "ticker": "LHX",
-      "sector": "Electronic Technology",
-      "ema50_tv": 259.9475032027742,
-      "ema200_tv": 288.7938368028249,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NASDAQ:NTAP",
-      "ticker": "NTAP",
-      "sector": "Electronic Technology",
-      "ema50_tv": 191.6624984038312,
-      "ema200_tv": 153.39187160575946,
-      "nextEarnings": 1796158860
-    },
-    {
-      "tv": "NYSE:IQV",
-      "ticker": "IQV",
-      "sector": "Health Technology",
-      "ema50_tv": 251.6798553133666,
-      "ema200_tv": 215.7158676099017,
-      "nextEarnings": 1793098800
-    },
-    {
-      "tv": "NASDAQ:RKLB",
-      "ticker": "RKLB",
-      "sector": "Electronic Technology",
-      "ema50_tv": 72.17088389473608,
-      "ema200_tv": 74.83815835529522,
-      "nextEarnings": 1794830400
-    },
-    {
-      "tv": "NASDAQ:FLEX",
-      "ticker": "FLEX",
-      "sector": "Electronic Technology",
-      "ema50_tv": 115.49221730346872,
-      "ema200_tv": 103.01019202080707,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:FERG",
-      "ticker": "FERG",
-      "sector": "Distribution Services",
-      "ema50_tv": 227.64499508129398,
-      "ema200_tv": 232.61477278966746,
-      "nextEarnings": 1794225600
-    },
-    {
-      "tv": "NYSE:VTR",
-      "ticker": "VTR",
-      "sector": "Finance",
-      "ema50_tv": 88.80735709131874,
-      "ema200_tv": 85.32547725932272,
-      "nextEarnings": 1793131200
-    },
-    {
-      "tv": "NASDAQ:EXC",
-      "ticker": "EXC",
-      "sector": "Utilities",
-      "ema50_tv": 43.19587590477578,
-      "ema200_tv": 44.93604170289203,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NASDAQ:KDP",
-      "ticker": "KDP",
-      "sector": "Consumer Non-Durables",
-      "ema50_tv": 31.20846061739975,
-      "ema200_tv": 30.23438410797191,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NASDAQ:CBRS",
-      "ticker": "CBRS",
-      "sector": "Technology Services",
-      "ema50_tv": 199.44276000207356,
-      "ema200_tv": null,
-      "nextEarnings": 1796212800
-    },
-    {
-      "tv": "NYSE:LYV",
-      "ticker": "LYV",
-      "sector": "Consumer Services",
-      "ema50_tv": 174.02685980315277,
-      "ema200_tv": 166.2028712068923,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NASDAQ:CRDO",
-      "ticker": "CRDO",
-      "sector": "Technology Services",
-      "ema50_tv": 203.43221295270328,
-      "ema200_tv": 184.72179360086707,
-      "nextEarnings": 1796212800
     },
     {
       "tv": "NYSE:ADM",
       "ticker": "ADM",
       "sector": "Process Industries",
-      "ema50_tv": 81.90472405276412,
-      "ema200_tv": 75.27090077928796,
-      "nextEarnings": 1793102400
-    },
-    {
-      "tv": "NYSE:AIG",
-      "ticker": "AIG",
-      "sector": "Finance",
-      "ema50_tv": 75.98592180223521,
-      "ema200_tv": 77.0311306444718,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:PRU",
-      "ticker": "PRU",
-      "sector": "Finance",
-      "ema50_tv": 117.33253237836622,
-      "ema200_tv": 111.27619591886841,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:CMG",
-      "ticker": "CMG",
-      "sector": "Consumer Services",
-      "ema50_tv": 34.006449751488276,
-      "ema200_tv": 35.51760614657957,
-      "nextEarnings": 1793218200
-    },
-    {
-      "tv": "NASDAQ:OKTA",
-      "ticker": "OKTA",
-      "sector": "Technology Services",
-      "ema50_tv": 172.56488761467415,
-      "ema200_tv": 127.59198660002801,
-      "nextEarnings": 1796731200
+      "ema50_tv": 81.83418665900125,
+      "ema200_tv": 75.63799847012605,
+      "nextEarnings": 1793716200
     },
     {
       "tv": "NYSE:ED",
       "ticker": "ED",
       "sector": "Utilities",
-      "ema50_tv": 106.25662653605775,
-      "ema200_tv": 106.82463303522029,
+      "ema50_tv": 106.24841324323218,
+      "ema200_tv": 106.78618806945296,
       "nextEarnings": 1793275200
     },
     {
-      "tv": "NASDAQ:TTWO",
-      "ticker": "TTWO",
+      "tv": "NASDAQ:OKTA",
+      "ticker": "OKTA",
       "sector": "Technology Services",
-      "ema50_tv": 219.25509526953394,
-      "ema200_tv": 225.287648552716,
-      "nextEarnings": 1793880000
+      "ema50_tv": 183.56105060744926,
+      "ema200_tv": 133.20033388312612,
+      "nextEarnings": 1796731200
+    },
+    {
+      "tv": "NYSE:PRU",
+      "ticker": "PRU",
+      "sector": "Finance",
+      "ema50_tv": 116.45012230827622,
+      "ema200_tv": 111.38790099573276,
+      "nextEarnings": 1793740680
     },
     {
       "tv": "NYSE:SYY",
       "ticker": "SYY",
       "sector": "Distribution Services",
-      "ema50_tv": 80.32101623943738,
-      "ema200_tv": 79.68377272985788,
+      "ema50_tv": 79.84818047617975,
+      "ema200_tv": 79.5898322773342,
       "nextEarnings": 1793707200
     },
     {
-      "tv": "NYSE:CBRE",
-      "ticker": "CBRE",
-      "sector": "Finance",
-      "ema50_tv": 139.9017604395339,
-      "ema200_tv": 142.8211249273141,
-      "nextEarnings": 1792666500
+      "tv": "NYSE:CMG",
+      "ticker": "CMG",
+      "sector": "Consumer Services",
+      "ema50_tv": 33.396854185054735,
+      "ema200_tv": 35.263807983519804,
+      "nextEarnings": 1793218200
     },
     {
-      "tv": "NYSE:YUM",
-      "ticker": "YUM",
-      "sector": "Consumer Services",
-      "ema50_tv": 145.02269651003596,
-      "ema200_tv": 150.52834166522396,
-      "nextEarnings": 1793793600
+      "tv": "NASDAQ:RKLB",
+      "ticker": "RKLB",
+      "sector": "Electronic Technology",
+      "ema50_tv": 71.4196063497386,
+      "ema200_tv": 74.4884768304316,
+      "nextEarnings": 1794830400
     },
     {
       "tv": "NYSE:DHI",
       "ticker": "DHI",
       "sector": "Consumer Durables",
-      "ema50_tv": 142.77027624402274,
-      "ema200_tv": 147.2759483165503,
+      "ema50_tv": 141.16237183150776,
+      "ema200_tv": 146.5746519302652,
       "nextEarnings": 1793269800
     },
     {
       "tv": "NASDAQ:ODFL",
       "ticker": "ODFL",
       "sector": "Transportation",
-      "ema50_tv": 191.97081559942114,
-      "ema200_tv": 195.75681282732066,
+      "ema50_tv": 189.50118304783115,
+      "ema200_tv": 194.8564331291724,
       "nextEarnings": 1793185200
-    },
-    {
-      "tv": "NYSE:VIK",
-      "ticker": "VIK",
-      "sector": "Consumer Services",
-      "ema50_tv": 87.71167523431117,
-      "ema200_tv": 83.38297170498437,
-      "nextEarnings": 1795608000
-    },
-    {
-      "tv": "NASDAQ:UAL",
-      "ticker": "UAL",
-      "sector": "Transportation",
-      "ema50_tv": 113.41508303293358,
-      "ema200_tv": 108.82021877395977,
-      "nextEarnings": 1792526460
     },
     {
       "tv": "NASDAQ:PAYX",
       "ticker": "PAYX",
       "sector": "Technology Services",
-      "ema50_tv": 111.72734092457914,
-      "ema200_tv": 110.21030639302943,
+      "ema50_tv": 110.02058069066365,
+      "ema200_tv": 109.82796513907414,
       "nextEarnings": 1797508800
+    },
+    {
+      "tv": "NASDAQ:ZS",
+      "ticker": "ZS",
+      "sector": "Technology Services",
+      "ema50_tv": 190.4196569752356,
+      "ema200_tv": 182.06830681840637,
+      "nextEarnings": 1796126400
+    },
+    {
+      "tv": "NYSE:CBRE",
+      "ticker": "CBRE",
+      "sector": "Finance",
+      "ema50_tv": 137.7805027906527,
+      "ema200_tv": 142.07217281682355,
+      "nextEarnings": 1792666500
+    },
+    {
+      "tv": "NASDAQ:TTWO",
+      "ticker": "TTWO",
+      "sector": "Technology Services",
+      "ema50_tv": 216.4762797128551,
+      "ema200_tv": 224.17816831823922,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NASDAQ:CRDO",
+      "ticker": "CRDO",
+      "sector": "Technology Services",
+      "ema50_tv": 204.941471034924,
+      "ema200_tv": 186.24892630276187,
+      "nextEarnings": 1796212800
+    },
+    {
+      "tv": "NYSE:VIK",
+      "ticker": "VIK",
+      "sector": "Consumer Services",
+      "ema50_tv": 86.37332339584073,
+      "ema200_tv": 83.26996515764105,
+      "nextEarnings": 1795608000
     },
     {
       "tv": "NYSE:KR",
       "ticker": "KR",
       "sector": "Retail Trade",
-      "ema50_tv": 58.92411369248033,
-      "ema200_tv": 62.16135961360345,
+      "ema50_tv": 59.331085293408634,
+      "ema200_tv": 62.08043941548578,
       "nextEarnings": 1795694400
-    },
-    {
-      "tv": "NASDAQ:STLD",
-      "ticker": "STLD",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 237.84300576330682,
-      "ema200_tv": 217.79031543063834,
-      "nextEarnings": 1792440000
     },
     {
       "tv": "NYSE:CCL",
       "ticker": "CCL",
       "sector": "Consumer Services",
-      "ema50_tv": 24.68959376918671,
-      "ema200_tv": 26.458861523761875,
+      "ema50_tv": 25.058141984465905,
+      "ema200_tv": 26.456072451549392,
       "nextEarnings": 1797595200
-    },
-    {
-      "tv": "NYSE:PEG",
-      "ticker": "PEG",
-      "sector": "Utilities",
-      "ema50_tv": 72.32062327021886,
-      "ema200_tv": 77.54446740133864,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:HIG",
-      "ticker": "HIG",
-      "sector": "Finance",
-      "ema50_tv": 133.29105858903412,
-      "ema200_tv": 134.11551968876066,
-      "nextEarnings": 1792670400
     },
     {
       "tv": "NYSE:EL",
       "ticker": "EL",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 93.65292990400263,
-      "ema200_tv": 90.2540345134886,
+      "ema50_tv": 94.29150398154492,
+      "ema200_tv": 90.61938646880061,
       "nextEarnings": 1793617200
+    },
+    {
+      "tv": "NYSE:RBLX",
+      "ticker": "RBLX",
+      "sector": "Technology Services",
+      "ema50_tv": 45.33556275189582,
+      "ema200_tv": 55.97720016909664,
+      "nextEarnings": 1793304000
+    },
+    {
+      "tv": "NYSE:HIG",
+      "ticker": "HIG",
+      "sector": "Finance",
+      "ema50_tv": 132.38786102721912,
+      "ema200_tv": 133.81642989105515,
+      "nextEarnings": 1792670400
+    },
+    {
+      "tv": "NYSE:PEG",
+      "ticker": "PEG",
+      "sector": "Utilities",
+      "ema50_tv": 72.15622619162815,
+      "ema200_tv": 77.19625562433184,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NYSE:WEC",
+      "ticker": "WEC",
+      "sector": "Utilities",
+      "ema50_tv": 105.57449841877855,
+      "ema200_tv": 109.40048388665438,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NASDAQ:STLD",
+      "ticker": "STLD",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 237.7716684248695,
+      "ema200_tv": 218.93400505731574,
+      "nextEarnings": 1792440000
     },
     {
       "tv": "NYSE:VG",
       "ticker": "VG",
       "sector": "Industrial Services",
-      "ema50_tv": 13.653199444508214,
-      "ema200_tv": 12.714467968545156,
+      "ema50_tv": 13.582629990228918,
+      "ema200_tv": 12.74965473754914,
       "nextEarnings": 1794830400
     },
     {
-      "tv": "NYSE:TKO",
-      "ticker": "TKO",
-      "sector": "Consumer Services",
-      "ema50_tv": 187.38517196508283,
-      "ema200_tv": 190.39559332135343,
-      "nextEarnings": 1794398400
+      "tv": "NYSE:CNC",
+      "ticker": "CNC",
+      "sector": "Health Services",
+      "ema50_tv": 64.5129797503692,
+      "ema200_tv": 56.788156256006516,
+      "nextEarnings": 1793095200
     },
     {
-      "tv": "NASDAQ:AXON",
-      "ticker": "AXON",
-      "sector": "Electronic Technology",
-      "ema50_tv": 493.5124793312478,
-      "ema200_tv": 517.134063486766,
-      "nextEarnings": 1794312000
+      "tv": "NYSE:CCI",
+      "ticker": "CCI",
+      "sector": "Finance",
+      "ema50_tv": 73.84372405981972,
+      "ema200_tv": 81.7284367269217,
+      "nextEarnings": 1792613700
     },
     {
-      "tv": "NASDAQ:ON",
-      "ticker": "ON",
-      "sector": "Electronic Technology",
-      "ema50_tv": 78.97378582902712,
-      "ema200_tv": 79.27614227174269,
-      "nextEarnings": 1793620800
+      "tv": "NYSE:EQT",
+      "ticker": "EQT",
+      "sector": "Energy Minerals",
+      "ema50_tv": 52.44520834776056,
+      "ema200_tv": 54.07950523012219,
+      "nextEarnings": 1793131200
     },
     {
       "tv": "NYSE:IRM",
       "ticker": "IRM",
       "sector": "Finance",
-      "ema50_tv": 117.0906469907783,
-      "ema200_tv": 114.01079310122851,
+      "ema50_tv": 116.61158673489855,
+      "ema200_tv": 114.06089938914259,
       "nextEarnings": 1793275200
     },
     {
       "tv": "NYSE:KVUE",
       "ticker": "KVUE",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 18.26017479524153,
-      "ema200_tv": 18.366774432143444,
+      "ema50_tv": 18.137167930971906,
+      "ema200_tv": 18.3267984317791,
       "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NYSE:RKT",
-      "ticker": "RKT",
-      "sector": "Finance",
-      "ema50_tv": 13.100214682221846,
-      "ema200_tv": 14.683667142712808,
-      "nextEarnings": 1793275200
     },
     {
       "tv": "NASDAQ:BIIB",
       "ticker": "BIIB",
       "sector": "Health Technology",
-      "ema50_tv": 216.34702645900902,
-      "ema200_tv": 196.3152106015438,
+      "ema50_tv": 218.13117354420734,
+      "ema200_tv": 197.96023244279115,
       "nextEarnings": 1793194200
     },
     {
-      "tv": "NYSE:WEC",
-      "ticker": "WEC",
-      "sector": "Utilities",
-      "ema50_tv": 105.95894269478116,
-      "ema200_tv": 109.72767971416454,
-      "nextEarnings": 1793707200
+      "tv": "NASDAQ:UAL",
+      "ticker": "UAL",
+      "sector": "Transportation",
+      "ema50_tv": 112.08941544704028,
+      "ema200_tv": 108.73492952070043,
+      "nextEarnings": 1792526460
     },
     {
-      "tv": "NASDAQ:ZS",
-      "ticker": "ZS",
+      "tv": "NASDAQ:CBRS",
+      "ticker": "CBRS",
       "sector": "Technology Services",
-      "ema50_tv": 181.69898362462735,
-      "ema200_tv": 179.58625956158156,
-      "nextEarnings": 1796126400
-    },
-    {
-      "tv": "NASDAQ:DXCM",
-      "ticker": "DXCM",
-      "sector": "Health Technology",
-      "ema50_tv": 84.9945863869002,
-      "ema200_tv": 76.71412602636997,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NASDAQ:RPRX",
-      "ticker": "RPRX",
-      "sector": "Health Technology",
-      "ema50_tv": 58.60766506374514,
-      "ema200_tv": 52.139433597775785,
-      "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NYSE:HSY",
-      "ticker": "HSY",
-      "sector": "Consumer Non-Durables",
-      "ema50_tv": 172.89698055697284,
-      "ema200_tv": 183.2102516141687,
-      "nextEarnings": 1792670400
+      "ema50_tv": 191.5741287082001,
+      "ema200_tv": null,
+      "nextEarnings": 1796212800
     },
     {
       "tv": "NASDAQ:ACGL",
       "ticker": "ACGL",
       "sector": "Finance",
-      "ema50_tv": 96.83765558009705,
-      "ema200_tv": 96.05858486468439,
+      "ema50_tv": 96.63181978300625,
+      "ema200_tv": 96.04509988528898,
       "nextEarnings": 1793131200
     },
     {
-      "tv": "NYSE:EQT",
-      "ticker": "EQT",
-      "sector": "Energy Minerals",
-      "ema50_tv": 52.271299913373035,
-      "ema200_tv": 54.14292150324743,
-      "nextEarnings": 1793188800
+      "tv": "NYSE:RMD",
+      "ticker": "RMD",
+      "sector": "Health Technology",
+      "ema50_tv": 222.9390075028933,
+      "ema200_tv": 225.03237290201832,
+      "nextEarnings": 1793250000
     },
     {
-      "tv": "NYSE:RBLX",
-      "ticker": "RBLX",
-      "sector": "Technology Services",
-      "ema50_tv": 44.71447795342619,
-      "ema200_tv": 56.498938456785616,
-      "nextEarnings": 1794398400
+      "tv": "NYSE:JBL",
+      "ticker": "JBL",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 313.058950957722,
+      "ema200_tv": 299.367592048732,
+      "nextEarnings": 1796904000
     },
     {
-      "tv": "NYSE:VMC",
-      "ticker": "VMC",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 260.57356465517836,
-      "ema200_tv": 277.16439809730343,
-      "nextEarnings": 1793275200
+      "tv": "NYSE:HSY",
+      "ticker": "HSY",
+      "sector": "Consumer Non-Durables",
+      "ema50_tv": 170.6391585429351,
+      "ema200_tv": 181.9902238167705,
+      "nextEarnings": 1793270700
     },
     {
-      "tv": "NYSE:CNC",
-      "ticker": "CNC",
-      "sector": "Health Services",
-      "ema50_tv": 64.08236183403804,
-      "ema200_tv": 56.21722247821691,
-      "nextEarnings": 1793095200
+      "tv": "NASDAQ:EXPE",
+      "ticker": "EXPE",
+      "sector": "Consumer Services",
+      "ema50_tv": 279.6025823699314,
+      "ema200_tv": 260.6740432143764,
+      "nextEarnings": 1793826060
+    },
+    {
+      "tv": "NYSE:TKO",
+      "ticker": "TKO",
+      "sector": "Consumer Services",
+      "ema50_tv": 185.1103105005724,
+      "ema200_tv": 189.60504576220904,
+      "nextEarnings": 1793826300
     },
     {
       "tv": "NYSE:QSR",
       "ticker": "QSR",
       "sector": "Consumer Services",
-      "ema50_tv": 74.42716885175443,
-      "ema200_tv": 73.53791417187237,
+      "ema50_tv": 73.64356667360549,
+      "ema200_tv": 73.37388224851456,
       "nextEarnings": 1793269800
     },
     {
       "tv": "NASDAQ:KMB",
       "ticker": "KMB",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 102.35584556025914,
-      "ema200_tv": 105.89261524720406,
+      "ema50_tv": 101.34037830581217,
+      "ema200_tv": 105.40768518137543,
       "nextEarnings": 1793102400
+    },
+    {
+      "tv": "NASDAQ:RPRX",
+      "ticker": "RPRX",
+      "sector": "Health Technology",
+      "ema50_tv": 58.223854485994856,
+      "ema200_tv": 52.41068921302881,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NASDAQ:DXCM",
+      "ticker": "DXCM",
+      "sector": "Health Technology",
+      "ema50_tv": 84.93885821878192,
+      "ema200_tv": 77.1786206213973,
+      "nextEarnings": 1793304000
     },
     {
       "tv": "NYSE:SUNB",
       "ticker": "SUNB",
       "sector": "Finance",
-      "ema50_tv": 74.51857294735348,
+      "ema50_tv": 74.8403664225024,
       "ema200_tv": null,
       "nextEarnings": 1798632000
     },
     {
-      "tv": "NYSE:JBL",
-      "ticker": "JBL",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 314.75293541440624,
-      "ema200_tv": 298.9176600028629,
-      "nextEarnings": 1796904000
+      "tv": "NYSE:VMC",
+      "ticker": "VMC",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 257.3231330343377,
+      "ema200_tv": 275.3147660708345,
+      "nextEarnings": 1793275200
     },
     {
       "tv": "NYSE:MTB",
       "ticker": "MTB",
       "sector": "Finance",
-      "ema50_tv": 231.9019955491272,
-      "ema200_tv": 223.47183526848036,
+      "ema50_tv": 228.93606432853227,
+      "ema200_tv": 223.15274920836177,
       "nextEarnings": 1792143000
-    },
-    {
-      "tv": "NYSE:RMD",
-      "ticker": "RMD",
-      "sector": "Health Technology",
-      "ema50_tv": 221.25436527155034,
-      "ema200_tv": 224.79321488904606,
-      "nextEarnings": 1793250000
-    },
-    {
-      "tv": "NASDAQ:EXPE",
-      "ticker": "EXPE",
-      "sector": "Consumer Services",
-      "ema50_tv": 282.8124828766351,
-      "ema200_tv": 260.2500367631416,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NASDAQ:NTRS",
-      "ticker": "NTRS",
-      "sector": "Finance",
-      "ema50_tv": 178.90682985946808,
-      "ema200_tv": 164.3628379801201,
-      "nextEarnings": 1792582200
-    },
-    {
-      "tv": "NYSE:RJF",
-      "ticker": "RJF",
-      "sector": "Finance",
-      "ema50_tv": 167.30188048296736,
-      "ema200_tv": 162.52628156920895,
-      "nextEarnings": 1793218500
-    },
-    {
-      "tv": "NASDAQ:HBAN",
-      "ticker": "HBAN",
-      "sector": "Finance",
-      "ema50_tv": 16.420597720122146,
-      "ema200_tv": 16.71654172088017,
-      "nextEarnings": 1792675800
-    },
-    {
-      "tv": "NYSE:IR",
-      "ticker": "IR",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 77.19874082919831,
-      "ema200_tv": 79.95258841681328,
-      "nextEarnings": 1793793600
     },
     {
       "tv": "NASDAQ:GEHC",
       "ticker": "GEHC",
       "sector": "Health Technology",
-      "ema50_tv": 67.09988340989001,
-      "ema200_tv": 69.78946662274048,
-      "nextEarnings": 1793793600
+      "ema50_tv": 66.89174868797049,
+      "ema200_tv": 69.57134647813879,
+      "nextEarnings": 1793182800
+    },
+    {
+      "tv": "NYSE:RKT",
+      "ticker": "RKT",
+      "sector": "Finance",
+      "ema50_tv": 12.723180050851086,
+      "ema200_tv": 14.489317469033303,
+      "nextEarnings": 1793275200
     },
     {
       "tv": "NYSE:ZTS",
       "ticker": "ZTS",
       "sector": "Health Technology",
-      "ema50_tv": 74.26972899219912,
-      "ema200_tv": 94.95412643347736,
+      "ema50_tv": 74.13779292548548,
+      "ema200_tv": 93.70897775134662,
       "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NASDAQ:ALNY",
-      "ticker": "ALNY",
-      "sector": "Health Technology",
-      "ema50_tv": 248.95679808182368,
-      "ema200_tv": 292.8166980634764,
-      "nextEarnings": 1793275200
     },
     {
       "tv": "CBOE:CBOE",
       "ticker": "CBOE",
       "sector": "Finance",
-      "ema50_tv": 281.6352010840042,
-      "ema200_tv": 280.5431810008287,
+      "ema50_tv": 283.90184122332425,
+      "ema200_tv": 281.20501856541324,
       "nextEarnings": 1793359800
+    },
+    {
+      "tv": "NASDAQ:HBAN",
+      "ticker": "HBAN",
+      "sector": "Finance",
+      "ema50_tv": 16.183245916215533,
+      "ema200_tv": 16.634497582561263,
+      "nextEarnings": 1792675800
+    },
+    {
+      "tv": "NASDAQ:NTRS",
+      "ticker": "NTRS",
+      "sector": "Finance",
+      "ema50_tv": 176.69810838436288,
+      "ema200_tv": 164.60779341951817,
+      "nextEarnings": 1792589400
+    },
+    {
+      "tv": "NYSE:IR",
+      "ticker": "IR",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 77.47335903726952,
+      "ema200_tv": 79.86668944601041,
+      "nextEarnings": 1793304000
     },
     {
       "tv": "NYSE:RDDT",
       "ticker": "RDDT",
       "sector": "Technology Services",
-      "ema50_tv": 156.44097883714045,
-      "ema200_tv": 165.50015956739017,
+      "ema50_tv": 156.3926274344894,
+      "ema200_tv": 164.94942051355494,
       "nextEarnings": 1793793600
     },
     {
       "tv": "NASDAQ:MDB",
       "ticker": "MDB",
       "sector": "Technology Services",
-      "ema50_tv": 378.9134526769831,
-      "ema200_tv": 344.16081513536955,
+      "ema50_tv": 377.8092102460292,
+      "ema200_tv": 345.8617007753813,
       "nextEarnings": 1796644800
     },
     {
-      "tv": "NYSE:CCI",
-      "ticker": "CCI",
+      "tv": "NYSE:RJF",
+      "ticker": "RJF",
       "sector": "Finance",
-      "ema50_tv": 73.57054121706943,
-      "ema200_tv": 82.17010904133137,
-      "nextEarnings": 1792613700
+      "ema50_tv": 165.35959369946016,
+      "ema200_tv": 162.2755046490496,
+      "nextEarnings": 1793218500
     },
     {
-      "tv": "NASDAQ:ECHO",
-      "ticker": "ECHO",
-      "sector": "Communications",
-      "ema50_tv": 92.79256546922242,
-      "ema200_tv": 96.05100200596263,
-      "nextEarnings": 1794398400
+      "tv": "NASDAQ:ALNY",
+      "ticker": "ALNY",
+      "sector": "Health Technology",
+      "ema50_tv": 244.07125854636772,
+      "ema200_tv": 288.92739423525114,
+      "nextEarnings": 1793275200
     },
     {
-      "tv": "NYSE:HPQ",
-      "ticker": "HPQ",
-      "sector": "Technology Services",
-      "ema50_tv": 30.38768235625018,
-      "ema200_tv": 26.19787679922712,
-      "nextEarnings": 1796126400
-    },
-    {
-      "tv": "NASDAQ:SMCI",
-      "ticker": "SMCI",
+      "tv": "NASDAQ:ON",
+      "ticker": "ON",
       "sector": "Electronic Technology",
-      "ema50_tv": 37.68526209315018,
-      "ema200_tv": 35.00601079138504,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NASDAQ:TSEM",
-      "ticker": "TSEM",
-      "sector": "Electronic Technology",
-      "ema50_tv": 227.10395086133687,
-      "ema200_tv": 196.37587631830456,
-      "nextEarnings": 1794830400
-    },
-    {
-      "tv": "NYSE:WSM",
-      "ticker": "WSM",
-      "sector": "Retail Trade",
-      "ema50_tv": 229.25343512102393,
-      "ema200_tv": 212.43252883190817,
-      "nextEarnings": 1794484800
-    },
-    {
-      "tv": "NYSE:EXR",
-      "ticker": "EXR",
-      "sector": "Finance",
-      "ema50_tv": 139.52830829258616,
-      "ema200_tv": 142.19444140316529,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:AEE",
-      "ticker": "AEE",
-      "sector": "Utilities",
-      "ema50_tv": 104.80236233077778,
-      "ema200_tv": 106.5310537485642,
-      "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NYSE:FTI",
-      "ticker": "FTI",
-      "sector": "Industrial Services",
-      "ema50_tv": 72.81505901042229,
-      "ema200_tv": 65.80117610312539,
-      "nextEarnings": 1793270700
-    },
-    {
-      "tv": "NYSE:Q",
-      "ticker": "Q",
-      "sector": "Electronic Technology",
-      "ema50_tv": 128.28795933369608,
-      "ema200_tv": 120.76773617249346,
-      "nextEarnings": 1793790000
-    },
-    {
-      "tv": "NASDAQ:ZM",
-      "ticker": "ZM",
-      "sector": "Technology Services",
-      "ema50_tv": 94.63136346816282,
-      "ema200_tv": 91.46594955181199,
-      "nextEarnings": 1795435200
-    },
-    {
-      "tv": "NYSE:HAL",
-      "ticker": "HAL",
-      "sector": "Industrial Services",
-      "ema50_tv": 34.18829721618506,
-      "ema200_tv": 33.97224660835395,
-      "nextEarnings": 1792493100
+      "ema50_tv": 79.06918516135995,
+      "ema200_tv": 79.29491355935004,
+      "nextEarnings": 1793620800
     },
     {
       "tv": "NYSE:PCG",
       "ticker": "PCG",
       "sector": "Utilities",
-      "ema50_tv": 14.592358960166788,
-      "ema200_tv": 16.083842744563743,
+      "ema50_tv": 14.24030871089662,
+      "ema200_tv": 15.900105073737864,
       "nextEarnings": 1792663200
     },
     {
-      "tv": "NYSE:CFG",
-      "ticker": "CFG",
-      "sector": "Finance",
-      "ema50_tv": 68.06634524409279,
-      "ema200_tv": 64.42723465010265,
-      "nextEarnings": 1792146000
-    },
-    {
-      "tv": "NYSE:NVT",
-      "ticker": "NVT",
-      "sector": "Electronic Technology",
-      "ema50_tv": 158.75348716301914,
-      "ema200_tv": 142.19058379421708,
-      "nextEarnings": 1792756800
-    },
-    {
-      "tv": "NYSE:ATO",
-      "ticker": "ATO",
+      "tv": "NYSE:AEE",
+      "ticker": "AEE",
       "sector": "Utilities",
-      "ema50_tv": 164.8295463030511,
-      "ema200_tv": 170.61442474072587,
+      "ema50_tv": 104.31546045533783,
+      "ema200_tv": 106.29455570864717,
       "nextEarnings": 1794398400
     },
     {
-      "tv": "NASDAQ:GFS",
-      "ticker": "GFS",
-      "sector": "Electronic Technology",
-      "ema50_tv": 50.30416789135978,
-      "ema200_tv": 52.91960336120512,
-      "nextEarnings": 1793793600
+      "tv": "NASDAQ:ZM",
+      "ticker": "ZM",
+      "sector": "Technology Services",
+      "ema50_tv": 95.02024059738558,
+      "ema200_tv": 91.75130335204591,
+      "nextEarnings": 1795435200
+    },
+    {
+      "tv": "NYSE:EXR",
+      "ticker": "EXR",
+      "sector": "Finance",
+      "ema50_tv": 138.27045014005992,
+      "ema200_tv": 141.69442634274913,
+      "nextEarnings": 1793131200
+    },
+    {
+      "tv": "NYSE:WSM",
+      "ticker": "WSM",
+      "sector": "Retail Trade",
+      "ema50_tv": 231.59064487832094,
+      "ema200_tv": 214.0524028684236,
+      "nextEarnings": 1794484800
+    },
+    {
+      "tv": "NASDAQ:CTSH",
+      "ticker": "CTSH",
+      "sector": "Technology Services",
+      "ema50_tv": 58.17353972807979,
+      "ema200_tv": 59.720895861236535,
+      "nextEarnings": 1793269800
+    },
+    {
+      "tv": "NYSE:HPQ",
+      "ticker": "HPQ",
+      "sector": "Technology Services",
+      "ema50_tv": 30.557261720971166,
+      "ema200_tv": 26.490123013435795,
+      "nextEarnings": 1796126400
     },
     {
       "tv": "NYSE:DG",
       "ticker": "DG",
       "sector": "Retail Trade",
-      "ema50_tv": 122.75901622258806,
-      "ema200_tv": 120.82628486254436,
+      "ema50_tv": 123.22653999520246,
+      "ema200_tv": 121.06236608191638,
       "nextEarnings": 1796299200
     },
     {
-      "tv": "NYSE:ATI",
-      "ticker": "ATI",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 195.85288712114942,
-      "ema200_tv": 168.35567213300882,
+      "tv": "NYSE:ATO",
+      "ticker": "ATO",
+      "sector": "Utilities",
+      "ema50_tv": 164.09279047445423,
+      "ema200_tv": 170.07183201451153,
+      "nextEarnings": 1793826000
+    },
+    {
+      "tv": "NYSE:FTI",
+      "ticker": "FTI",
+      "sector": "Industrial Services",
+      "ema50_tv": 72.14006841714806,
+      "ema200_tv": 66.02435565940263,
+      "nextEarnings": 1793270700
+    },
+    {
+      "tv": "NYSE:WRB",
+      "ticker": "WRB",
+      "sector": "Finance",
+      "ema50_tv": 69.87580311083991,
+      "ema200_tv": 69.48653310502706,
+      "nextEarnings": 1792440000
+    },
+    {
+      "tv": "NYSE:HAL",
+      "ticker": "HAL",
+      "sector": "Industrial Services",
+      "ema50_tv": 33.82842456954972,
+      "ema200_tv": 33.88620670456561,
+      "nextEarnings": 1792493100
+    },
+    {
+      "tv": "NYSE:CPNG",
+      "ticker": "CPNG",
+      "sector": "Retail Trade",
+      "ema50_tv": 15.24116967111799,
+      "ema200_tv": 18.247834996020014,
+      "nextEarnings": 1794312000
+    },
+    {
+      "tv": "NYSE:DTE",
+      "ticker": "DTE",
+      "sector": "Utilities",
+      "ema50_tv": 131.85881707168076,
+      "ema200_tv": 138.37190250201812,
+      "nextEarnings": 1792670400
+    },
+    {
+      "tv": "NYSE:CFG",
+      "ticker": "CFG",
+      "sector": "Finance",
+      "ema50_tv": 67.12989275980465,
+      "ema200_tv": 64.38383609526502,
+      "nextEarnings": 1792146000
+    },
+    {
+      "tv": "NASDAQ:ECHO",
+      "ticker": "ECHO",
+      "sector": "Communications",
+      "ema50_tv": 93.32667723946504,
+      "ema200_tv": 96.01388371104824,
+      "nextEarnings": 1794398400
+    },
+    {
+      "tv": "NYSE:SN",
+      "ticker": "SN",
+      "sector": "Consumer Durables",
+      "ema50_tv": 174.33294946289521,
+      "ema200_tv": 144.49438997602155,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NYSE:KHC",
+      "ticker": "KHC",
+      "sector": "Consumer Non-Durables",
+      "ema50_tv": 23.903334279258537,
+      "ema200_tv": 24.449446228826492,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NASDAQ:AFRM",
+      "ticker": "AFRM",
+      "sector": "Finance",
+      "ema50_tv": 73.58016748504232,
+      "ema200_tv": 69.67083300462134,
+      "nextEarnings": 1793912400
+    },
+    {
+      "tv": "NYSE:NVT",
+      "ticker": "NVT",
+      "sector": "Electronic Technology",
+      "ema50_tv": 160.34288076177475,
+      "ema200_tv": 143.5986911926245,
+      "nextEarnings": 1792756800
+    },
+    {
+      "tv": "NYSE:FE",
+      "ticker": "FE",
+      "sector": "Utilities",
+      "ema50_tv": 45.52224453579219,
+      "ema200_tv": 46.45195525620025,
+      "nextEarnings": 1793132400
+    },
+    {
+      "tv": "NYSE:DOV",
+      "ticker": "DOV",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 195.1682701714735,
+      "ema200_tv": 202.350285913362,
+      "nextEarnings": 1792666800
+    },
+    {
+      "tv": "NYSE:PPL",
+      "ticker": "PPL",
+      "sector": "Utilities",
+      "ema50_tv": 34.11319159899354,
+      "ema200_tv": 35.41318623320528,
+      "nextEarnings": 1793275200
+    },
+    {
+      "tv": "NASDAQ:GFS",
+      "ticker": "GFS",
+      "sector": "Electronic Technology",
+      "ema50_tv": 49.87637994522441,
+      "ema200_tv": 52.65159519734677,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NYSE:CNP",
+      "ticker": "CNP",
+      "sector": "Utilities",
+      "ema50_tv": 39.19179818824399,
+      "ema200_tv": 40.444082922289965,
+      "nextEarnings": 1793107800
+    },
+    {
+      "tv": "NASDAQ:TW",
+      "ticker": "TW",
+      "sector": "Finance",
+      "ema50_tv": 104.58228496949165,
+      "ema200_tv": 108.00282377857867,
+      "nextEarnings": 1793271600
+    },
+    {
+      "tv": "NYSE:AWK",
+      "ticker": "AWK",
+      "sector": "Utilities",
+      "ema50_tv": 132.96660719352317,
+      "ema200_tv": 133.00088626522592,
+      "nextEarnings": 1793217600
+    },
+    {
+      "tv": "NYSE:OTIS",
+      "ticker": "OTIS",
+      "sector": "Industrial Services",
+      "ema50_tv": 68.78219167928583,
+      "ema200_tv": 75.95686541228402,
+      "nextEarnings": 1793194200
+    },
+    {
+      "tv": "NASDAQ:SMCI",
+      "ticker": "SMCI",
+      "sector": "Electronic Technology",
+      "ema50_tv": 38.57949979431858,
+      "ema200_tv": 35.41165786052101,
       "nextEarnings": 1793707200
     },
     {
       "tv": "NYSE:ARES",
       "ticker": "ARES",
       "sector": "Finance",
-      "ema50_tv": 128.18919943978355,
-      "ema200_tv": 132.72324343240783,
+      "ema50_tv": 125.70507635706818,
+      "ema200_tv": 131.78260048382708,
       "nextEarnings": 1793280600
     },
     {
-      "tv": "NASDAQ:CTSH",
-      "ticker": "CTSH",
-      "sector": "Technology Services",
-      "ema50_tv": 57.872462500220855,
-      "ema200_tv": 59.752669439622046,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:DTE",
-      "ticker": "DTE",
-      "sector": "Utilities",
-      "ema50_tv": 132.98410071339774,
-      "ema200_tv": 139.03189817877538,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NASDAQ:SYM",
-      "ticker": "SYM",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 42.70241186188295,
-      "ema200_tv": 47.153280377710395,
-      "nextEarnings": 1795435200
-    },
-    {
-      "tv": "NYSE:WRB",
-      "ticker": "WRB",
-      "sector": "Finance",
-      "ema50_tv": 69.37043910603053,
-      "ema200_tv": 69.35176361517291,
-      "nextEarnings": 1792440000
-    },
-    {
-      "tv": "NYSE:KHC",
-      "ticker": "KHC",
-      "sector": "Consumer Non-Durables",
-      "ema50_tv": 24.345415024634903,
-      "ema200_tv": 24.58442729395138,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NASDAQ:ROIV",
-      "ticker": "ROIV",
-      "sector": "Health Technology",
-      "ema50_tv": 36.447023658371926,
-      "ema200_tv": 30.459264238701024,
-      "nextEarnings": 1794830400
-    },
-    {
-      "tv": "NYSE:DOV",
-      "ticker": "DOV",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 196.47913008386837,
-      "ema200_tv": 203.09533793246783,
-      "nextEarnings": 1792666800
-    },
-    {
-      "tv": "NYSE:SN",
-      "ticker": "SN",
-      "sector": "Consumer Durables",
-      "ema50_tv": 171.02287114958787,
-      "ema200_tv": 141.9001946875531,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NASDAQ:CPRT",
-      "ticker": "CPRT",
-      "sector": "Retail Trade",
-      "ema50_tv": 29.913906908265723,
-      "ema200_tv": 33.811881600730025,
-      "nextEarnings": 1795003200
-    },
-    {
-      "tv": "NYSE:CPNG",
-      "ticker": "CPNG",
-      "sector": "Retail Trade",
-      "ema50_tv": 15.264826283056237,
-      "ema200_tv": 18.43990648264793,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NASDAQ:ENTG",
-      "ticker": "ENTG",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 145.2089645425074,
-      "ema200_tv": 132.14693732761094,
-      "nextEarnings": 1793271600
-    },
-    {
-      "tv": "NYSE:RBRK",
-      "ticker": "RBRK",
-      "sector": "Technology Services",
-      "ema50_tv": 99.17301805082077,
-      "ema200_tv": 80.13338957145733,
-      "nextEarnings": 1796299200
-    },
-    {
-      "tv": "NYSE:AWK",
-      "ticker": "AWK",
-      "sector": "Utilities",
-      "ema50_tv": 134.09311075737574,
-      "ema200_tv": 133.2628013621365,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NYSE:FE",
-      "ticker": "FE",
-      "sector": "Utilities",
-      "ema50_tv": 45.682414756167816,
-      "ema200_tv": 46.54719797757547,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NASDAQ:FOX",
-      "ticker": "FOX",
-      "sector": "Consumer Services",
-      "ema50_tv": 56.97341455173935,
-      "ema200_tv": 55.67724155865763,
-      "nextEarnings": 1793275200
+      "tv": "NYSE:ATI",
+      "ticker": "ATI",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 194.56972965749705,
+      "ema200_tv": 169.61169171459892,
+      "nextEarnings": 1793707200
     },
     {
       "tv": "NYSE:EXPD",
       "ticker": "EXPD",
       "sector": "Transportation",
-      "ema50_tv": 184.67666117368626,
-      "ema200_tv": 164.49170636225284,
+      "ema50_tv": 186.4979628668633,
+      "ema200_tv": 166.16030174985477,
       "nextEarnings": 1793707200
     },
     {
-      "tv": "NASDAQ:AFRM",
-      "ticker": "AFRM",
-      "sector": "Finance",
-      "ema50_tv": 72.50115041993323,
-      "ema200_tv": 69.18760474246729,
-      "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NASDAQ:GH",
-      "ticker": "GH",
-      "sector": "Health Technology",
-      "ema50_tv": 166.02990442389412,
-      "ema200_tv": 129.96286851479962,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:OTIS",
-      "ticker": "OTIS",
-      "sector": "Industrial Services",
-      "ema50_tv": 69.40940137408693,
-      "ema200_tv": 76.54490273931992,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NASDAQ:MTSI",
-      "ticker": "MTSI",
+      "tv": "NYSE:Q",
+      "ticker": "Q",
       "sector": "Electronic Technology",
-      "ema50_tv": 285.3290736498595,
-      "ema200_tv": 267.08054534213153,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NASDAQ:TW",
-      "ticker": "TW",
-      "sector": "Finance",
-      "ema50_tv": 103.21776233111423,
-      "ema200_tv": 107.90749484817906,
-      "nextEarnings": 1793271600
-    },
-    {
-      "tv": "NYSE:CNP",
-      "ticker": "CNP",
-      "sector": "Utilities",
-      "ema50_tv": 39.306176919172344,
-      "ema200_tv": 40.5484931915082,
-      "nextEarnings": 1793107800
-    },
-    {
-      "tv": "NYSE:IOT",
-      "ticker": "IOT",
-      "sector": "Technology Services",
-      "ema50_tv": 38.69660589587996,
-      "ema200_tv": 36.00868759296237,
-      "nextEarnings": 1795694400
+      "ema50_tv": 127.93218664478958,
+      "ema200_tv": 121.12023097668386,
+      "nextEarnings": 1793790000
     },
     {
       "tv": "NYSE:VICI",
       "ticker": "VICI",
       "sector": "Finance",
-      "ema50_tv": 24.93187874143251,
-      "ema200_tv": 27.222213402771953,
+      "ema50_tv": 24.48683605340025,
+      "ema200_tv": 26.967031019300745,
       "nextEarnings": 1793217600
     },
     {
-      "tv": "NYSE:PPL",
-      "ticker": "PPL",
-      "sector": "Utilities",
-      "ema50_tv": 34.10087913288981,
-      "ema200_tv": 35.49158962780606,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NASDAQ:FISV",
-      "ticker": "FISV",
-      "sector": "Commercial Services",
-      "ema50_tv": 49.6506959427726,
-      "ema200_tv": 64.1990577837423,
-      "nextEarnings": 1793102400
+      "tv": "NASDAQ:FOX",
+      "ticker": "FOX",
+      "sector": "Consumer Services",
+      "ema50_tv": 56.789950945370826,
+      "ema200_tv": 55.702355879379326,
+      "nextEarnings": 1793624400
     },
     {
       "tv": "NYSE:ES",
       "ticker": "ES",
       "sector": "Utilities",
-      "ema50_tv": 68.58609860894428,
-      "ema200_tv": 69.55684249686234,
+      "ema50_tv": 67.97260224963993,
+      "ema200_tv": 69.33188956584398,
       "nextEarnings": 1794225600
     },
     {
-      "tv": "NYSE:XYL",
-      "ticker": "XYL",
+      "tv": "NASDAQ:TSEM",
+      "ticker": "TSEM",
+      "sector": "Electronic Technology",
+      "ema50_tv": 228.22434366932043,
+      "ema200_tv": 198.51297020707642,
+      "nextEarnings": 1794830400
+    },
+    {
+      "tv": "NASDAQ:FISV",
+      "ticker": "FISV",
+      "sector": "Commercial Services",
+      "ema50_tv": 48.83849350435565,
+      "ema200_tv": 63.12912922981561,
+      "nextEarnings": 1793716200
+    },
+    {
+      "tv": "NYSE:RBRK",
+      "ticker": "RBRK",
+      "sector": "Technology Services",
+      "ema50_tv": 104.1011915645547,
+      "ema200_tv": 82.59314545389284,
+      "nextEarnings": 1796299200
+    },
+    {
+      "tv": "NASDAQ:CPRT",
+      "ticker": "CPRT",
+      "sector": "Retail Trade",
+      "ema50_tv": 29.262099773328995,
+      "ema200_tv": 33.40735773171638,
+      "nextEarnings": 1795003200
+    },
+    {
+      "tv": "NYSE:IOT",
+      "ticker": "IOT",
+      "sector": "Technology Services",
+      "ema50_tv": 39.27527410602134,
+      "ema200_tv": 36.32259081009267,
+      "nextEarnings": 1795694400
+    },
+    {
+      "tv": "NASDAQ:ENTG",
+      "ticker": "ENTG",
       "sector": "Producer Manufacturing",
-      "ema50_tv": 109.44557195068114,
-      "ema200_tv": 118.87549306222739,
-      "nextEarnings": 1793098500
+      "ema50_tv": 149.0693732861031,
+      "ema200_tv": 133.96865499977324,
+      "nextEarnings": 1793271600
     },
     {
-      "tv": "NASDAQ:PFG",
-      "ticker": "PFG",
-      "sector": "Finance",
-      "ema50_tv": 113.01433285478998,
-      "ema200_tv": 103.35002268455142,
-      "nextEarnings": 1793044800
+      "tv": "NASDAQ:SYM",
+      "ticker": "SYM",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 42.57640624425196,
+      "ema200_tv": 46.863539112863016,
+      "nextEarnings": 1795435200
     },
     {
-      "tv": "NYSE:LVS",
-      "ticker": "LVS",
-      "sector": "Consumer Services",
-      "ema50_tv": 42.643222808004424,
-      "ema200_tv": 48.767715537674455,
-      "nextEarnings": 1792584000
+      "tv": "NASDAQ:ROIV",
+      "ticker": "ROIV",
+      "sector": "Health Technology",
+      "ema50_tv": 36.06460420947439,
+      "ema200_tv": 30.704918831582837,
+      "nextEarnings": 1794830400
     },
     {
       "tv": "NYSE:VLTO",
       "ticker": "VLTO",
       "sector": "Producer Manufacturing",
-      "ema50_tv": 95.32411855556263,
-      "ema200_tv": 94.22272293852656,
-      "nextEarnings": 1793188800
+      "ema50_tv": 95.73820374915825,
+      "ema200_tv": 94.39656411322815,
+      "nextEarnings": 1793304000
     },
     {
-      "tv": "NYSE:PPG",
-      "ticker": "PPG",
-      "sector": "Process Industries",
-      "ema50_tv": 109.63675323585169,
-      "ema200_tv": 111.29645858039805,
-      "nextEarnings": 1793131500
+      "tv": "NYSE:XYL",
+      "ticker": "XYL",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 108.0047107420045,
+      "ema200_tv": 117.93404715903458,
+      "nextEarnings": 1793098500
     },
     {
       "tv": "NYSE:SYF",
       "ticker": "SYF",
       "sector": "Finance",
-      "ema50_tv": 75.06986088726525,
-      "ema200_tv": 73.94503122835019,
+      "ema50_tv": 74.62816391561219,
+      "ema200_tv": 73.88839878741663,
       "nextEarnings": 1792490400
     },
     {
-      "tv": "NYSE:TPR",
-      "ticker": "TPR",
-      "sector": "Retail Trade",
-      "ema50_tv": 125.38266835368674,
-      "ema200_tv": 130.45893599541535,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NASDAQ:INCY",
-      "ticker": "INCY",
-      "sector": "Health Technology",
-      "ema50_tv": 121.28115189702324,
-      "ema200_tv": 108.30778054997108,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:RF",
-      "ticker": "RF",
-      "sector": "Finance",
-      "ema50_tv": 29.1247725637423,
-      "ema200_tv": 28.468270998888503,
-      "nextEarnings": 1792144800
-    },
-    {
-      "tv": "NASDAQ:ROKU",
-      "ticker": "ROKU",
-      "sector": "Technology Services",
-      "ema50_tv": 151.22669352101553,
-      "ema200_tv": 129.07511886885936,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NASDAQ:ASTS",
-      "ticker": "ASTS",
-      "sector": "Communications",
-      "ema50_tv": 63.66150495596085,
-      "ema200_tv": 71.27868978957106,
-      "nextEarnings": 1794830400
+      "tv": "NYSE:LVS",
+      "ticker": "LVS",
+      "sector": "Consumer Services",
+      "ema50_tv": 41.27666442694683,
+      "ema200_tv": 48.03756487803123,
+      "nextEarnings": 1792584000
     },
     {
       "tv": "NYSE:CHD",
       "ticker": "CHD",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 97.01684294724956,
-      "ema200_tv": 96.3233997370331,
+      "ema50_tv": 97.28657824661211,
+      "ema200_tv": 96.43335070058063,
       "nextEarnings": 1793361600
     },
     {
-      "tv": "NASDAQ:INSM",
-      "ticker": "INSM",
-      "sector": "Health Technology",
-      "ema50_tv": 118.45536574853861,
-      "ema200_tv": 125.30895393812845,
-      "nextEarnings": 1792670400
+      "tv": "NASDAQ:MTSI",
+      "ticker": "MTSI",
+      "sector": "Electronic Technology",
+      "ema50_tv": 293.66907147345404,
+      "ema200_tv": 270.4624245765538,
+      "nextEarnings": 1793880000
     },
     {
       "tv": "NYSE:DRI",
       "ticker": "DRI",
       "sector": "Consumer Services",
-      "ema50_tv": 208.0743068443882,
-      "ema200_tv": 203.84635541472284,
+      "ema50_tv": 206.69467650070047,
+      "ema200_tv": 203.7142327603521,
       "nextEarnings": 1796990400
     },
     {
-      "tv": "NYSE:SW",
-      "ticker": "SW",
+      "tv": "NYSE:PPG",
+      "ticker": "PPG",
       "sector": "Process Industries",
-      "ema50_tv": 45.29141411752927,
-      "ema200_tv": 43.9274114066151,
-      "nextEarnings": 1793793600
+      "ema50_tv": 108.61634692744981,
+      "ema200_tv": 110.92343578099491,
+      "nextEarnings": 1793131500
     },
     {
-      "tv": "NASDAQ:TROW",
-      "ticker": "TROW",
+      "tv": "NYSE:TPR",
+      "ticker": "TPR",
+      "sector": "Retail Trade",
+      "ema50_tv": 123.34943629687749,
+      "ema200_tv": 129.60758306181646,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NASDAQ:PFG",
+      "ticker": "PFG",
       "sector": "Finance",
-      "ema50_tv": 107.97878749962726,
-      "ema200_tv": 105.95992207765283,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NYSE:AER",
-      "ticker": "AER",
-      "sector": "Finance",
-      "ema50_tv": 145.45618923112454,
-      "ema200_tv": 141.3550169997047,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:GPN",
-      "ticker": "GPN",
-      "sector": "Finance",
-      "ema50_tv": 85.04397922642194,
-      "ema200_tv": 80.17110988845486,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NASDAQ:JBHT",
-      "ticker": "JBHT",
-      "sector": "Transportation",
-      "ema50_tv": 253.83477214777756,
-      "ema200_tv": 240.83117102369894,
-      "nextEarnings": 1792094700
-    },
-    {
-      "tv": "NYSE:KEY",
-      "ticker": "KEY",
-      "sector": "Finance",
-      "ema50_tv": 21.440612286523663,
-      "ema200_tv": 21.195877064377456,
-      "nextEarnings": 1792492200
-    },
-    {
-      "tv": "NYSE:XPO",
-      "ticker": "XPO",
-      "sector": "Transportation",
-      "ema50_tv": 188.57794825199596,
-      "ema200_tv": 186.70780235921512,
-      "nextEarnings": 1793270700
-    },
-    {
-      "tv": "NYSE:PHM",
-      "ticker": "PHM",
-      "sector": "Consumer Durables",
-      "ema50_tv": 122.18760079644021,
-      "ema200_tv": 123.47289798374966,
-      "nextEarnings": 1792665000
+      "ema50_tv": 112.0363815794762,
+      "ema200_tv": 103.64820946441951,
+      "nextEarnings": 1793044800
     },
     {
       "tv": "NASDAQ:VRSK",
       "ticker": "VRSK",
       "sector": "Technology Services",
-      "ema50_tv": 179.17147365322896,
-      "ema200_tv": 194.9169717879301,
+      "ema50_tv": 178.03681887459294,
+      "ema200_tv": 193.677928391435,
       "nextEarnings": 1793880900
     },
     {
-      "tv": "NYSE:CRCL",
-      "ticker": "CRCL",
+      "tv": "NYSE:RF",
+      "ticker": "RF",
+      "sector": "Finance",
+      "ema50_tv": 28.680981784117627,
+      "ema200_tv": 28.385132823730792,
+      "nextEarnings": 1792144800
+    },
+    {
+      "tv": "NYSE:DINO",
+      "ticker": "DINO",
+      "sector": "Energy Minerals",
+      "ema50_tv": 104.9034979625342,
+      "ema200_tv": 79.92611656675561,
+      "nextEarnings": 1793183400
+    },
+    {
+      "tv": "NASDAQ:ROKU",
+      "ticker": "ROKU",
       "sector": "Technology Services",
-      "ema50_tv": 84.53350305399282,
-      "ema200_tv": 94.22218859273636,
-      "nextEarnings": 1795003200
+      "ema50_tv": 151.5895617040943,
+      "ema200_tv": 130.46345698686184,
+      "nextEarnings": 1793793600
     },
     {
       "tv": "NYSE:IFF",
       "ticker": "IFF",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 83.34231701756686,
-      "ema200_tv": 77.96338964024036,
+      "ema50_tv": 83.74677412186027,
+      "ema200_tv": 78.38309585852255,
       "nextEarnings": 1794225600
+    },
+    {
+      "tv": "NYSE:AER",
+      "ticker": "AER",
+      "sector": "Finance",
+      "ema50_tv": 145.32600518429643,
+      "ema200_tv": 141.55636126832422,
+      "nextEarnings": 1793185200
+    },
+    {
+      "tv": "NYSE:NRG",
+      "ticker": "NRG",
+      "sector": "Utilities",
+      "ema50_tv": 110.96393850122071,
+      "ema200_tv": 131.13308891634918,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NASDAQ:GH",
+      "ticker": "GH",
+      "sector": "Health Technology",
+      "ema50_tv": 166.10461339543642,
+      "ema200_tv": 132.09033796769836,
+      "nextEarnings": 1793912700
+    },
+    {
+      "tv": "NASDAQ:INCY",
+      "ticker": "INCY",
+      "sector": "Health Technology",
+      "ema50_tv": 119.26349076054674,
+      "ema200_tv": 108.51679536034926,
+      "nextEarnings": 1793271600
     },
     {
       "tv": "NASDAQ:DLTR",
       "ticker": "DLTR",
       "sector": "Retail Trade",
-      "ema50_tv": 119.72193617831402,
-      "ema200_tv": 115.29846578429242,
+      "ema50_tv": 119.2318516764354,
+      "ema200_tv": 115.42121820807971,
       "nextEarnings": 1795521600
     },
     {
-      "tv": "NASDAQ:RIVN",
-      "ticker": "RIVN",
-      "sector": "Consumer Durables",
-      "ema50_tv": 15.614604019823467,
-      "ema200_tv": 15.698286632354195,
-      "nextEarnings": 1803556800
+      "tv": "NYSE:OMC",
+      "ticker": "OMC",
+      "sector": "Commercial Services",
+      "ema50_tv": 78.80061757756214,
+      "ema200_tv": 78.63144168227316,
+      "nextEarnings": 1792497600
     },
     {
       "tv": "NYSE:THC",
       "ticker": "THC",
       "sector": "Health Services",
-      "ema50_tv": 252.13041312517956,
-      "ema200_tv": 218.93692101084184,
+      "ema50_tv": 254.59677611081264,
+      "ema200_tv": 221.53092885406502,
+      "nextEarnings": 1793280600
+    },
+    {
+      "tv": "NYSE:GPN",
+      "ticker": "GPN",
+      "sector": "Finance",
+      "ema50_tv": 84.38300229558651,
+      "ema200_tv": 80.27422399818715,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NASDAQ:TROW",
+      "ticker": "TROW",
+      "sector": "Finance",
+      "ema50_tv": 107.06452293758942,
+      "ema200_tv": 105.82963587809755,
+      "nextEarnings": 1793271600
+    },
+    {
+      "tv": "NYSE:STZ",
+      "ticker": "STZ",
+      "sector": "Consumer Non-Durables",
+      "ema50_tv": 124.38396808536193,
+      "ema200_tv": 139.07499200493268,
+      "nextEarnings": 1799323200
+    },
+    {
+      "tv": "NYSE:SW",
+      "ticker": "SW",
+      "sector": "Process Industries",
+      "ema50_tv": 44.47011571949843,
+      "ema200_tv": 43.783608457732264,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NYSE:BRO",
+      "ticker": "BRO",
+      "sector": "Finance",
+      "ema50_tv": 65.34193105070204,
+      "ema200_tv": 69.98455653854836,
+      "nextEarnings": 1793044800
+    },
+    {
+      "tv": "NYSE:CRCL",
+      "ticker": "CRCL",
+      "sector": "Technology Services",
+      "ema50_tv": 84.23247743857955,
+      "ema200_tv": 93.57377696132767,
+      "nextEarnings": 1793802600
+    },
+    {
+      "tv": "NASDAQ:JBHT",
+      "ticker": "JBHT",
+      "sector": "Transportation",
+      "ema50_tv": 248.17940059457794,
+      "ema200_tv": 240.04045991959873,
+      "nextEarnings": 1792094700
+    },
+    {
+      "tv": "NASDAQ:EXE",
+      "ticker": "EXE",
+      "sector": "Energy Minerals",
+      "ema50_tv": 90.8313830728484,
+      "ema200_tv": 96.06377438664076,
       "nextEarnings": 1793707200
     },
     {
       "tv": "NYSE:EIX",
       "ticker": "EIX",
       "sector": "Utilities",
-      "ema50_tv": 61.48816448076342,
-      "ema200_tv": 66.10021247012014,
+      "ema50_tv": 60.083772835439184,
+      "ema200_tv": 65.44689653929386,
       "nextEarnings": 1793304300
+    },
+    {
+      "tv": "NYSE:KEY",
+      "ticker": "KEY",
+      "sector": "Finance",
+      "ema50_tv": 21.135237565234533,
+      "ema200_tv": 21.12684678855369,
+      "nextEarnings": 1792492200
+    },
+    {
+      "tv": "NASDAQ:INSM",
+      "ticker": "INSM",
+      "sector": "Health Technology",
+      "ema50_tv": 114.62020083401232,
+      "ema200_tv": 123.87033653793937,
+      "nextEarnings": 1793271600
+    },
+    {
+      "tv": "NYSE:XPO",
+      "ticker": "XPO",
+      "sector": "Transportation",
+      "ema50_tv": 187.10886118685005,
+      "ema200_tv": 186.41760656881846,
+      "nextEarnings": 1793270700
+    },
+    {
+      "tv": "NYSE:USFD",
+      "ticker": "USFD",
+      "sector": "Distribution Services",
+      "ema50_tv": 97.9281655743748,
+      "ema200_tv": 92.71779641259337,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NYSE:PHM",
+      "ticker": "PHM",
+      "sector": "Consumer Durables",
+      "ema50_tv": 120.20533423396496,
+      "ema200_tv": 122.86026611810053,
+      "nextEarnings": 1792665000
     },
     {
       "tv": "NASDAQ:PTC",
       "ticker": "PTC",
       "sector": "Technology Services",
-      "ema50_tv": 141.58112435585372,
-      "ema200_tv": 147.1848214419705,
+      "ema50_tv": 152.75113568103697,
+      "ema200_tv": 149.90547205960758,
       "nextEarnings": 1793793600
     },
     {
-      "tv": "NYSE:OMC",
-      "ticker": "OMC",
-      "sector": "Commercial Services",
-      "ema50_tv": 79.40133597093639,
-      "ema200_tv": 78.76199289690854,
-      "nextEarnings": 1792497600
+      "tv": "NYSE:CMS",
+      "ticker": "CMS",
+      "sector": "Utilities",
+      "ema50_tv": 67.17377594071861,
+      "ema200_tv": 71.15522034768986,
+      "nextEarnings": 1793097000
     },
     {
       "tv": "NYSE:BG",
       "ticker": "BG",
       "sector": "Process Industries",
-      "ema50_tv": 114.02303149658144,
-      "ema200_tv": 112.32531417649648,
+      "ema50_tv": 112.2723795290641,
+      "ema200_tv": 111.94753089691838,
       "nextEarnings": 1793268000
     },
     {
       "tv": "NYSE:DOW",
       "ticker": "DOW",
       "sector": "Process Industries",
-      "ema50_tv": 29.631017254244036,
-      "ema200_tv": 31.0965892524766,
+      "ema50_tv": 29.337914629809603,
+      "ema200_tv": 30.930925800413974,
       "nextEarnings": 1792663200
-    },
-    {
-      "tv": "NASDAQ:SOFI",
-      "ticker": "SOFI",
-      "sector": "Finance",
-      "ema50_tv": 17.15823106235593,
-      "ema200_tv": 18.491479939258607,
-      "nextEarnings": 1793098800
-    },
-    {
-      "tv": "NYSE:DINO",
-      "ticker": "DINO",
-      "sector": "Energy Minerals",
-      "ema50_tv": 100.57466739300187,
-      "ema200_tv": 77.40887989865644,
-      "nextEarnings": 1793183400
-    },
-    {
-      "tv": "NYSE:LUV",
-      "ticker": "LUV",
-      "sector": "Transportation",
-      "ema50_tv": 42.08161008731012,
-      "ema200_tv": 41.79296691829779,
-      "nextEarnings": 1792612800
-    },
-    {
-      "tv": "NYSE:USFD",
-      "ticker": "USFD",
-      "sector": "Distribution Services",
-      "ema50_tv": 98.14324458568176,
-      "ema200_tv": 92.44638188176832,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NYSE:BRO",
-      "ticker": "BRO",
-      "sector": "Finance",
-      "ema50_tv": 65.99216883887428,
-      "ema200_tv": 70.42313918603615,
-      "nextEarnings": 1793044800
-    },
-    {
-      "tv": "NYSE:NRG",
-      "ticker": "NRG",
-      "sector": "Utilities",
-      "ema50_tv": 112.10859581181768,
-      "ema200_tv": 132.64321312808337,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NYSE:AMRZ",
-      "ticker": "AMRZ",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 42.58707706894821,
-      "ema200_tv": 48.961500211742205,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NASDAQ:VTRS",
-      "ticker": "VTRS",
-      "sector": "Health Technology",
-      "ema50_tv": 16.976523159990982,
-      "ema200_tv": 15.284898217592634,
-      "nextEarnings": 1794225600
     },
     {
       "tv": "NYSE:U",
       "ticker": "U",
       "sector": "Technology Services",
-      "ema50_tv": 40.49113200423248,
-      "ema200_tv": 34.250085142284476,
+      "ema50_tv": 41.69028897255444,
+      "ema200_tv": 34.938951722415936,
       "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NYSE:CMS",
-      "ticker": "CMS",
-      "sector": "Utilities",
-      "ema50_tv": 67.61283381305977,
-      "ema200_tv": 71.50287106230962,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NASDAQ:EXE",
-      "ticker": "EXE",
-      "sector": "Energy Minerals",
-      "ema50_tv": 91.27410738254035,
-      "ema200_tv": 96.49185112426017,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NASDAQ:NTNX",
-      "ticker": "NTNX",
-      "sector": "Technology Services",
-      "ema50_tv": 65.680715989964,
-      "ema200_tv": 57.2778194750644,
-      "nextEarnings": 1796212800
-    },
-    {
-      "tv": "NYSE:STZ",
-      "ticker": "STZ",
-      "sector": "Consumer Non-Durables",
-      "ema50_tv": 124.8509741929722,
-      "ema200_tv": 140.1025899837812,
-      "nextEarnings": 1791316800
-    },
-    {
-      "tv": "NYSE:AMCR",
-      "ticker": "AMCR",
-      "sector": "Process Industries",
-      "ema50_tv": 43.62918463065416,
-      "ema200_tv": 43.21695035714746,
-      "nextEarnings": null
-    },
-    {
-      "tv": "NYSE:LYB",
-      "ticker": "LYB",
-      "sector": "Process Industries",
-      "ema50_tv": 61.68667644218464,
-      "ema200_tv": 61.94061816645266,
-      "nextEarnings": 1792756800
-    },
-    {
-      "tv": "NASDAQ:MKSI",
-      "ticker": "MKSI",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 277.5869965826519,
-      "ema200_tv": 263.8097088081075,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:NI",
-      "ticker": "NI",
-      "sector": "Utilities",
-      "ema50_tv": 41.558059088778386,
-      "ema200_tv": 43.65281012406201,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NASDAQ:FSLR",
-      "ticker": "FSLR",
-      "sector": "Electronic Technology",
-      "ema50_tv": 202.5263275060749,
-      "ema200_tv": 217.29756764207946,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NASDAQ:CHTR",
-      "ticker": "CHTR",
-      "sector": "Consumer Services",
-      "ema50_tv": 133.8170834461696,
-      "ema200_tv": 174.22760910752004,
-      "nextEarnings": 1793361600
-    },
-    {
-      "tv": "NASDAQ:LSCC",
-      "ticker": "LSCC",
-      "sector": "Electronic Technology",
-      "ema50_tv": 122.60754585279031,
-      "ema200_tv": 112.33332051506459,
-      "nextEarnings": 1793620800
     },
     {
       "tv": "NYSE:PR",
       "ticker": "PR",
       "sector": "Energy Minerals",
-      "ema50_tv": 21.99237650252153,
-      "ema200_tv": 19.619013982559764,
+      "ema50_tv": 22.21978013834228,
+      "ema200_tv": 19.81729594466132,
       "nextEarnings": 1794312000
+    },
+    {
+      "tv": "NASDAQ:VTRS",
+      "ticker": "VTRS",
+      "sector": "Health Technology",
+      "ema50_tv": 17.09308187016924,
+      "ema200_tv": 15.415210620086398,
+      "nextEarnings": 1793879940
+    },
+    {
+      "tv": "NASDAQ:FSLR",
+      "ticker": "FSLR",
+      "sector": "Electronic Technology",
+      "ema50_tv": 197.84851282251591,
+      "ema200_tv": 215.15590284132966,
+      "nextEarnings": 1793275200
+    },
+    {
+      "tv": "NYSE:AMRZ",
+      "ticker": "AMRZ",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 41.28081725882392,
+      "ema200_tv": 48.23456214019672,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NYSE:NI",
+      "ticker": "NI",
+      "sector": "Utilities",
+      "ema50_tv": 41.41604674445732,
+      "ema200_tv": 43.49111214486766,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NASDAQ:NTNX",
+      "ticker": "NTNX",
+      "sector": "Technology Services",
+      "ema50_tv": 67.37992884408408,
+      "ema200_tv": 58.23059613671129,
+      "nextEarnings": 1796212800
+    },
+    {
+      "tv": "NYSE:LUV",
+      "ticker": "LUV",
+      "sector": "Transportation",
+      "ema50_tv": 41.925448638715864,
+      "ema200_tv": 41.76902386235401,
+      "nextEarnings": 1792612800
+    },
+    {
+      "tv": "NASDAQ:SOFI",
+      "ticker": "SOFI",
+      "sector": "Finance",
+      "ema50_tv": 16.810995837988976,
+      "ema200_tv": 18.31964880761901,
+      "nextEarnings": 1793098800
+    },
+    {
+      "tv": "NASDAQ:RIVN",
+      "ticker": "RIVN",
+      "sector": "Consumer Durables",
+      "ema50_tv": 15.268328649364745,
+      "ema200_tv": 15.600105828206214,
+      "nextEarnings": 1793304000
+    },
+    {
+      "tv": "NYSE:LYB",
+      "ticker": "LYB",
+      "sector": "Process Industries",
+      "ema50_tv": 61.22712266115648,
+      "ema200_tv": 61.79941162640259,
+      "nextEarnings": 1793356200
+    },
+    {
+      "tv": "NYSE:AMCR",
+      "ticker": "AMCR",
+      "sector": "Process Industries",
+      "ema50_tv": 43.21182280686769,
+      "ema200_tv": 43.126910992667604,
+      "nextEarnings": null
     },
     {
       "tv": "NASDAQ:SSNC",
       "ticker": "SSNC",
       "sector": "Technology Services",
-      "ema50_tv": 78.38166846803857,
-      "ema200_tv": 76.01712903002422,
-      "nextEarnings": 1792670400
-    },
-    {
-      "tv": "NYSE:GFL",
-      "ticker": "GFL",
-      "sector": "Industrial Services",
-      "ema50_tv": 41.40412917680384,
-      "ema200_tv": 41.230305134296984,
-      "nextEarnings": 1793217600
-    },
-    {
-      "tv": "NYSE:BBY",
-      "ticker": "BBY",
-      "sector": "Retail Trade",
-      "ema50_tv": 87.02639887081358,
-      "ema200_tv": 77.8238597599113,
-      "nextEarnings": 1795521600
-    },
-    {
-      "tv": "NASDAQ:EVRG",
-      "ticker": "EVRG",
-      "sector": "Utilities",
-      "ema50_tv": 81.06443721598686,
-      "ema200_tv": 80.42977757511156,
-      "nextEarnings": 1793880000
-    },
-    {
-      "tv": "NASDAQ:SMTC",
-      "ticker": "SMTC",
-      "sector": "Electronic Technology",
-      "ema50_tv": 156.7673851134784,
-      "ema200_tv": 123.1143955022838,
-      "nextEarnings": 1796212800
+      "ema50_tv": 78.77290223182783,
+      "ema200_tv": 76.25807572135876,
+      "nextEarnings": 1792699500
     },
     {
       "tv": "NYSE:BR",
       "ticker": "BR",
       "sector": "Technology Services",
-      "ema50_tv": 164.94244438307342,
-      "ema200_tv": 174.16127983389634,
+      "ema50_tv": 164.7980947500001,
+      "ema200_tv": 173.5752369312035,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NASDAQ:CHTR",
+      "ticker": "CHTR",
+      "sector": "Consumer Services",
+      "ema50_tv": 127.95310535271382,
+      "ema200_tv": 170.27766398470627,
+      "nextEarnings": 1793966400
+    },
+    {
+      "tv": "NASDAQ:EVRG",
+      "ticker": "EVRG",
+      "sector": "Utilities",
+      "ema50_tv": 81.04712194510024,
+      "ema200_tv": 80.46019050447795,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NASDAQ:CDW",
+      "ticker": "CDW",
+      "sector": "Technology Services",
+      "ema50_tv": 140.52296686338744,
+      "ema200_tv": 138.82456896327622,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NYSE:GFL",
+      "ticker": "GFL",
+      "sector": "Industrial Services",
+      "ema50_tv": 41.64060460086843,
+      "ema200_tv": 41.30442347751987,
+      "nextEarnings": 1793217600
+    },
+    {
+      "tv": "NYSE:DT",
+      "ticker": "DT",
+      "sector": "Technology Services",
+      "ema50_tv": 54.71145470379945,
+      "ema200_tv": 47.16221182104634,
       "nextEarnings": 1793793600
     },
     {
       "tv": "NYSE:TSN",
       "ticker": "TSN",
       "sector": "Consumer Non-Durables",
-      "ema50_tv": 54.28095698781677,
-      "ema200_tv": 57.89543485069059,
+      "ema50_tv": 53.978905821984846,
+      "ema200_tv": 57.60016081336587,
       "nextEarnings": 1794839400
     },
     {
-      "tv": "NYSE:APG",
-      "ticker": "APG",
-      "sector": "Industrial Services",
-      "ema50_tv": 39.66772128356883,
-      "ema200_tv": 40.16271680262683,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:LEN",
-      "ticker": "LEN",
-      "sector": "Consumer Durables",
-      "ema50_tv": 82.90761586401841,
-      "ema200_tv": 93.79063232317084,
-      "nextEarnings": 1797422400
-    },
-    {
-      "tv": "NYSE:DD",
-      "ticker": "DD",
-      "sector": "Process Industries",
-      "ema50_tv": 133.57918083294433,
-      "ema200_tv": 132.3268618786358,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NYSE:MTZ",
-      "ticker": "MTZ",
-      "sector": "Industrial Services",
-      "ema50_tv": 252.9612275017372,
-      "ema200_tv": 283.7043855367214,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:RVTY",
-      "ticker": "RVTY",
-      "sector": "Health Technology",
-      "ema50_tv": 132.1123650171941,
-      "ema200_tv": 111.8000402476589,
-      "nextEarnings": 1793620800
-    },
-    {
-      "tv": "NYSE:CF",
-      "ticker": "CF",
-      "sector": "Process Industries",
-      "ema50_tv": 122.76806438582683,
-      "ema200_tv": 113.50246616317585,
-      "nextEarnings": 1793827800
-    },
-    {
-      "tv": "NYSE:CDE",
-      "ticker": "CDE",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 18.83529627612966,
-      "ema200_tv": 17.94511488929867,
-      "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NYSE:ZBH",
-      "ticker": "ZBH",
-      "sector": "Health Technology",
-      "ema50_tv": 93.87552490778845,
-      "ema200_tv": 93.10540817323078,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:TOST",
-      "ticker": "TOST",
-      "sector": "Technology Services",
-      "ema50_tv": 31.442540535355086,
-      "ema200_tv": 31.156674978542753,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NYSE:IONQ",
-      "ticker": "IONQ",
-      "sector": "Electronic Technology",
-      "ema50_tv": 42.009563500893904,
-      "ema200_tv": 43.76768486402891,
-      "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NYSE:GPC",
-      "ticker": "GPC",
-      "sector": "Distribution Services",
-      "ema50_tv": 128.84245551609166,
-      "ema200_tv": 122.91711105662387,
-      "nextEarnings": 1792493700
-    },
-    {
-      "tv": "NYSE:DT",
-      "ticker": "DT",
-      "sector": "Technology Services",
-      "ema50_tv": 52.54630447695891,
-      "ema200_tv": 46.2075889265099,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NYSE:FTV",
-      "ticker": "FTV",
-      "sector": "Electronic Technology",
-      "ema50_tv": 57.670904361079685,
-      "ema200_tv": 57.757438056551095,
-      "nextEarnings": 1793187000
-    },
-    {
-      "tv": "NYSE:FIS",
-      "ticker": "FIS",
-      "sector": "Technology Services",
-      "ema50_tv": 38.259506159871066,
-      "ema200_tv": 46.682800663744,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NASDAQ:TPG",
-      "ticker": "TPG",
-      "sector": "Finance",
-      "ema50_tv": 46.93549272137535,
-      "ema200_tv": 47.854714840321215,
-      "nextEarnings": 1793280600
-    },
-    {
-      "tv": "NYSE:BURL",
-      "ticker": "BURL",
+      "tv": "NYSE:BBY",
+      "ticker": "BBY",
       "sector": "Retail Trade",
-      "ema50_tv": 285.1593103854973,
-      "ema200_tv": 301.73918091979556,
+      "ema50_tv": 86.97066522983057,
+      "ema200_tv": 78.34125462602137,
       "nextEarnings": 1795521600
     },
     {
-      "tv": "NYSE:IP",
-      "ticker": "IP",
-      "sector": "Process Industries",
-      "ema50_tv": 36.2884750161363,
-      "ema200_tv": 38.388128766093566,
-      "nextEarnings": 1793185200
-    },
-    {
-      "tv": "NYSE:GIS",
-      "ticker": "GIS",
-      "sector": "Consumer Non-Durables",
-      "ema50_tv": 36.13768178904945,
-      "ema200_tv": 39.271006097408495,
-      "nextEarnings": 1798027200
-    },
-    {
-      "tv": "NASDAQ:FTAI",
-      "ticker": "FTAI",
-      "sector": "Electronic Technology",
-      "ema50_tv": 194.63929042953396,
-      "ema200_tv": 212.60543670128808,
-      "nextEarnings": 1793707200
+      "tv": "NASDAQ:ASTS",
+      "ticker": "ASTS",
+      "sector": "Communications",
+      "ema50_tv": 61.753486331256504,
+      "ema200_tv": 70.3306404597853,
+      "nextEarnings": 1794830400
     },
     {
       "tv": "NYSE:OVV",
       "ticker": "OVV",
       "sector": "Energy Minerals",
-      "ema50_tv": 61.50601680936244,
-      "ema200_tv": 55.67235586821769,
+      "ema50_tv": 61.985362079132045,
+      "ema200_tv": 56.137554219541705,
+      "nextEarnings": 1793739600
+    },
+    {
+      "tv": "NYSE:FIS",
+      "ticker": "FIS",
+      "sector": "Technology Services",
+      "ema50_tv": 37.40348181911759,
+      "ema200_tv": 45.957060778910616,
+      "nextEarnings": 1793716200
+    },
+    {
+      "tv": "NASDAQ:SWKS",
+      "ticker": "SWKS",
+      "sector": "Electronic Technology",
+      "ema50_tv": 77.88753871996549,
+      "ema200_tv": 70.64970343107527,
+      "nextEarnings": 1793275200
+    },
+    {
+      "tv": "NYSE:TOST",
+      "ticker": "TOST",
+      "sector": "Technology Services",
+      "ema50_tv": 31.313957684417964,
+      "ema200_tv": 31.13729008120195,
       "nextEarnings": 1794312000
+    },
+    {
+      "tv": "NYSE:GPC",
+      "ticker": "GPC",
+      "sector": "Distribution Services",
+      "ema50_tv": 128.6767168062388,
+      "ema200_tv": 123.21311841508899,
+      "nextEarnings": 1792493700
+    },
+    {
+      "tv": "NYSE:LEN",
+      "ticker": "LEN",
+      "sector": "Consumer Durables",
+      "ema50_tv": 81.4741017445696,
+      "ema200_tv": 92.76819626202894,
+      "nextEarnings": 1797422400
+    },
+    {
+      "tv": "NYSE:ZBH",
+      "ticker": "ZBH",
+      "sector": "Health Technology",
+      "ema50_tv": 93.11375314919236,
+      "ema200_tv": 92.93827677931222,
+      "nextEarnings": 1793791800
+    },
+    {
+      "tv": "NYSE:CF",
+      "ticker": "CF",
+      "sector": "Process Industries",
+      "ema50_tv": 120.99512570184342,
+      "ema200_tv": 113.55790402840726,
+      "nextEarnings": 1793827800
+    },
+    {
+      "tv": "NYSE:APG",
+      "ticker": "APG",
+      "sector": "Industrial Services",
+      "ema50_tv": 39.831471834563025,
+      "ema200_tv": 40.17914989556553,
+      "nextEarnings": 1793275200
     },
     {
       "tv": "NYSE:EFX",
       "ticker": "EFX",
       "sector": "Commercial Services",
-      "ema50_tv": 165.49343279418582,
-      "ema200_tv": 183.59158004031013,
-      "nextEarnings": 1792584000
+      "ema50_tv": 161.23771748613223,
+      "ema200_tv": 181.3694526178049,
+      "nextEarnings": 1792492200
     },
     {
-      "tv": "NASDAQ:CDW",
-      "ticker": "CDW",
-      "sector": "Technology Services",
-      "ema50_tv": 140.15809674090235,
-      "ema200_tv": 138.65183826406593,
-      "nextEarnings": 1793793600
+      "tv": "NYSE:DD",
+      "ticker": "DD",
+      "sector": "Process Industries",
+      "ema50_tv": 132.99656557128148,
+      "ema200_tv": 132.24469476121848,
+      "nextEarnings": 1793703600
     },
     {
-      "tv": "NYSE:BEN",
-      "ticker": "BEN",
-      "sector": "Finance",
-      "ema50_tv": 33.21296990322105,
-      "ema200_tv": 30.20843055554595,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:FDXF",
-      "ticker": "FDXF",
-      "sector": "Transportation",
-      "ema50_tv": 129.39235122215703,
-      "ema200_tv": null,
-      "nextEarnings": 1796212800
-    },
-    {
-      "tv": "NASDAQ:LNT",
-      "ticker": "LNT",
-      "sector": "Utilities",
-      "ema50_tv": 67.54632787813887,
-      "ema200_tv": 69.33754791462076,
-      "nextEarnings": 1793275200
-    },
-    {
-      "tv": "NYSE:CNH",
-      "ticker": "CNH",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 12.448046735493113,
-      "ema200_tv": 11.42905264328091,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NASDAQ:CHRW",
-      "ticker": "CHRW",
-      "sector": "Transportation",
-      "ema50_tv": 155.33224971214707,
-      "ema200_tv": 161.59953234046415,
-      "nextEarnings": 1793793600
+      "tv": "NYSE:FTV",
+      "ticker": "FTV",
+      "sector": "Electronic Technology",
+      "ema50_tv": 57.57188116709966,
+      "ema200_tv": 57.724957063862874,
+      "nextEarnings": 1793187000
     },
     {
       "tv": "NASDAQ:TSCO",
       "ticker": "TSCO",
       "sector": "Retail Trade",
-      "ema50_tv": 32.964059544984124,
-      "ema200_tv": 38.57676790115129,
-      "nextEarnings": 1792670400
+      "ema50_tv": 33.00698164616594,
+      "ema200_tv": 38.26041674651555,
+      "nextEarnings": 1792666500
     },
     {
-      "tv": "NYSE:J",
-      "ticker": "J",
-      "sector": "Technology Services",
-      "ema50_tv": 140.29281378956205,
-      "ema200_tv": 135.4886147821747,
-      "nextEarnings": 1795521600
+      "tv": "NYSE:RVTY",
+      "ticker": "RVTY",
+      "sector": "Health Technology",
+      "ema50_tv": 136.82242829439835,
+      "ema200_tv": 114.26525237377683,
+      "nextEarnings": 1793703600
     },
     {
-      "tv": "NASDAQ:NWS",
-      "ticker": "NWS",
-      "sector": "Consumer Services",
-      "ema50_tv": 32.47704070320624,
-      "ema200_tv": 31.10296219295085,
-      "nextEarnings": 1793880000
+      "tv": "NASDAQ:LNT",
+      "ticker": "LNT",
+      "sector": "Utilities",
+      "ema50_tv": 67.2045543215148,
+      "ema200_tv": 69.13829731291897,
+      "nextEarnings": 1793311200
     },
     {
-      "tv": "NYSE:BMNR",
-      "ticker": "BMNR",
-      "sector": "Finance",
-      "ema50_tv": 23.489523918317648,
-      "ema200_tv": 22.969201955733237,
-      "nextEarnings": 1795176000
+      "tv": "NASDAQ:FTAI",
+      "ticker": "FTAI",
+      "sector": "Electronic Technology",
+      "ema50_tv": 189.65495882395402,
+      "ema200_tv": 210.21092643575022,
+      "nextEarnings": 1793280600
     },
     {
-      "tv": "NYSE:DOCN",
-      "ticker": "DOCN",
-      "sector": "Technology Services",
-      "ema50_tv": 129.80848972514394,
-      "ema200_tv": 108.94514660769993,
-      "nextEarnings": 1794225600
+      "tv": "NASDAQ:LSCC",
+      "ticker": "LSCC",
+      "sector": "Electronic Technology",
+      "ema50_tv": 123.39470230044728,
+      "ema200_tv": 113.16007654488021,
+      "nextEarnings": 1793653200
     },
     {
       "tv": "NYSE:AS",
       "ticker": "AS",
       "sector": "Consumer Durables",
-      "ema50_tv": 29.92680066822537,
-      "ema200_tv": 33.06640288801254,
+      "ema50_tv": 29.53068882119474,
+      "ema200_tv": 32.77365089133473,
       "nextEarnings": 1795521600
     },
     {
-      "tv": "NYSE:ONTO",
-      "ticker": "ONTO",
-      "sector": "Electronic Technology",
-      "ema50_tv": 286.94098825294395,
-      "ema200_tv": 253.93390525963065,
-      "nextEarnings": 1793275200
+      "tv": "NYSE:GIS",
+      "ticker": "GIS",
+      "sector": "Consumer Non-Durables",
+      "ema50_tv": 35.304315649131205,
+      "ema200_tv": 38.86100602170941,
+      "nextEarnings": 1798027200
     },
     {
-      "tv": "NASDAQ:IREN",
-      "ticker": "IREN",
-      "sector": "Technology Services",
-      "ema50_tv": 42.92622481011117,
-      "ema200_tv": 43.135301148429704,
-      "nextEarnings": 1796126400
+      "tv": "NYSE:CDE",
+      "ticker": "CDE",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 18.399815073971833,
+      "ema200_tv": 17.878532654312373,
+      "nextEarnings": 1794398400
     },
     {
-      "tv": "NYSE:CRBG",
-      "ticker": "CRBG",
-      "sector": "Finance",
-      "ema50_tv": 33.155562216173344,
-      "ema200_tv": 30.72501475481244,
-      "nextEarnings": 1793653200
-    },
-    {
-      "tv": "NASDAQ:AKAM",
-      "ticker": "AKAM",
-      "sector": "Technology Services",
-      "ema50_tv": 112.19361534951676,
-      "ema200_tv": 110.2414473144251,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NYSE:INVH",
-      "ticker": "INVH",
-      "sector": "Finance",
-      "ema50_tv": 28.08472324887373,
-      "ema200_tv": 28.564768275444617,
-      "nextEarnings": 1793188800
-    },
-    {
-      "tv": "NASDAQ:HST",
-      "ticker": "HST",
-      "sector": "Finance",
-      "ema50_tv": 22.6514378379724,
-      "ema200_tv": 21.484090260766795,
-      "nextEarnings": 1793826000
+      "tv": "NYSE:IP",
+      "ticker": "IP",
+      "sector": "Process Industries",
+      "ema50_tv": 35.352376023661265,
+      "ema200_tv": 38.010677139312605,
+      "nextEarnings": 1793185200
     },
     {
       "tv": "NASDAQ:APA",
       "ticker": "APA",
       "sector": "Energy Minerals",
-      "ema50_tv": 41.81100609957658,
-      "ema200_tv": 35.94423895803156,
+      "ema50_tv": 42.6572604209659,
+      "ema200_tv": 36.51261397232003,
       "nextEarnings": 1793793600
     },
     {
-      "tv": "NASDAQ:TIGO",
-      "ticker": "TIGO",
-      "sector": "Communications",
-      "ema50_tv": 92.5858637266183,
-      "ema200_tv": 80.81140757789443,
-      "nextEarnings": 1793876400
+      "tv": "NASDAQ:MKSI",
+      "ticker": "MKSI",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 274.15635907538484,
+      "ema200_tv": 263.71202844601464,
+      "nextEarnings": 1793827800
     },
     {
-      "tv": "NYSE:BALL",
-      "ticker": "BALL",
-      "sector": "Process Industries",
-      "ema50_tv": 60.208948363242556,
-      "ema200_tv": 59.2955537546564,
-      "nextEarnings": 1793275200
+      "tv": "NYSE:FDXF",
+      "ticker": "FDXF",
+      "sector": "Transportation",
+      "ema50_tv": 125.97222239777565,
+      "ema200_tv": null,
+      "nextEarnings": 1796212800
     },
     {
-      "tv": "NASDAQ:TEM",
-      "ticker": "TEM",
-      "sector": "Technology Services",
-      "ema50_tv": 67.36195969593889,
-      "ema200_tv": 59.936886304699456,
-      "nextEarnings": 1794312000
-    },
-    {
-      "tv": "NYSE:LDOS",
-      "ticker": "LDOS",
-      "sector": "Technology Services",
-      "ema50_tv": 127.21253984441644,
-      "ema200_tv": 140.4730855095686,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:SOLV",
-      "ticker": "SOLV",
-      "sector": "Health Services",
-      "ema50_tv": 87.1057823616441,
-      "ema200_tv": 79.93604765846521,
+      "tv": "NASDAQ:NWS",
+      "ticker": "NWS",
+      "sector": "Consumer Services",
+      "ema50_tv": 32.3790209495423,
+      "ema200_tv": 31.155058911603756,
       "nextEarnings": 1793880000
     },
     {
-      "tv": "NYSE:KIM",
-      "ticker": "KIM",
+      "tv": "NYSE:MTZ",
+      "ticker": "MTZ",
+      "sector": "Industrial Services",
+      "ema50_tv": 244.85701878145272,
+      "ema200_tv": 279.7267214292368,
+      "nextEarnings": 1793275200
+    },
+    {
+      "tv": "NYSE:BURL",
+      "ticker": "BURL",
+      "sector": "Retail Trade",
+      "ema50_tv": 282.3374282552279,
+      "ema200_tv": 300.01598574732407,
+      "nextEarnings": 1795521600
+    },
+    {
+      "tv": "NASDAQ:TPG",
+      "ticker": "TPG",
       "sector": "Finance",
-      "ema50_tv": 23.43482526156686,
-      "ema200_tv": 23.37191623863575,
-      "nextEarnings": 1793271000
-    },
-    {
-      "tv": "NYSE:EQH",
-      "ticker": "EQH",
-      "sector": "Finance",
-      "ema50_tv": 51.10321782076165,
-      "ema200_tv": 47.402731785397044,
-      "nextEarnings": 1793654100
-    },
-    {
-      "tv": "NASDAQ:VNOM",
-      "ticker": "VNOM",
-      "sector": "Miscellaneous",
-      "ema50_tv": 42.857407753192675,
-      "ema200_tv": 43.24043871098005,
-      "nextEarnings": 1793653200
-    },
-    {
-      "tv": "NASDAQ:NBIX",
-      "ticker": "NBIX",
-      "sector": "Health Technology",
-      "ema50_tv": 152.04178523292612,
-      "ema200_tv": 149.70538286868256,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:JHX",
-      "ticker": "JHX",
-      "sector": "Non-Energy Minerals",
-      "ema50_tv": 27.07601949808213,
-      "ema200_tv": 25.00790538190905,
-      "nextEarnings": 1794225600
-    },
-    {
-      "tv": "NYSE:PFGC",
-      "ticker": "PFGC",
-      "sector": "Transportation",
-      "ema50_tv": 98.17055139042456,
-      "ema200_tv": 98.20530197784113,
-      "nextEarnings": 1794398400
-    },
-    {
-      "tv": "NASDAQ:EXEL",
-      "ticker": "EXEL",
-      "sector": "Health Technology",
-      "ema50_tv": 56.29717849337133,
-      "ema200_tv": 50.33541255828628,
-      "nextEarnings": 1793707200
-    },
-    {
-      "tv": "NYSE:WPC",
-      "ticker": "WPC",
-      "sector": "Finance",
-      "ema50_tv": 68.91928573924439,
-      "ema200_tv": 70.089927824709,
-      "nextEarnings": 1793361600
-    },
-    {
-      "tv": "NYSE:ARMK",
-      "ticker": "ARMK",
-      "sector": "Consumer Services",
-      "ema50_tv": 56.390191545966964,
-      "ema200_tv": 50.50428196881472,
-      "nextEarnings": 1794916800
+      "ema50_tv": 46.43740716001212,
+      "ema200_tv": 47.66669909872696,
+      "nextEarnings": 1793280600
     },
     {
       "tv": "NASDAQ:XP",
       "ticker": "XP",
       "sector": "Finance",
-      "ema50_tv": 19.284714942423317,
-      "ema200_tv": 18.17628979730809,
+      "ema50_tv": 21.796113727257925,
+      "ema200_tv": 18.923218432766365,
       "nextEarnings": 1795521600
     },
     {
-      "tv": "NYSE:W",
-      "ticker": "W",
-      "sector": "Retail Trade",
-      "ema50_tv": 98.85311968856088,
-      "ema200_tv": 88.26494134801817,
-      "nextEarnings": 1793793600
+      "tv": "NASDAQ:SMTC",
+      "ticker": "SMTC",
+      "sector": "Electronic Technology",
+      "ema50_tv": 162.52340973929418,
+      "ema200_tv": 126.67426174672553,
+      "nextEarnings": 1796212800
     },
     {
-      "tv": "NYSE:PNFP",
-      "ticker": "PNFP",
+      "tv": "NASDAQ:VNOM",
+      "ticker": "VNOM",
+      "sector": "Miscellaneous",
+      "ema50_tv": 42.827213882770586,
+      "ema200_tv": 43.2069031615213,
+      "nextEarnings": 1793653200
+    },
+    {
+      "tv": "NASDAQ:CHRW",
+      "ticker": "CHRW",
+      "sector": "Transportation",
+      "ema50_tv": 151.76434091202307,
+      "ema200_tv": 160.25716139461792,
+      "nextEarnings": 1793194200
+    },
+    {
+      "tv": "NYSE:BALL",
+      "ticker": "BALL",
+      "sector": "Process Industries",
+      "ema50_tv": 59.842911699493584,
+      "ema200_tv": 59.246437354373604,
+      "nextEarnings": 1793703600
+    },
+    {
+      "tv": "NASDAQ:HST",
+      "ticker": "HST",
       "sector": "Finance",
-      "ema50_tv": 98.47691102612264,
-      "ema200_tv": 97.84033153779977,
+      "ema50_tv": 22.645850963583275,
+      "ema200_tv": 21.54991569950354,
+      "nextEarnings": 1793826000
+    },
+    {
+      "tv": "NYSE:BEN",
+      "ticker": "BEN",
+      "sector": "Finance",
+      "ema50_tv": 32.951241682284284,
+      "ema200_tv": 30.313408940227355,
+      "nextEarnings": 1793971800
+    },
+    {
+      "tv": "NYSE:INVH",
+      "ticker": "INVH",
+      "sector": "Finance",
+      "ema50_tv": 27.744653491429506,
+      "ema200_tv": 28.44341329973719,
+      "nextEarnings": 1793217600
+    },
+    {
+      "tv": "NYSE:CRBG",
+      "ticker": "CRBG",
+      "sector": "Finance",
+      "ema50_tv": 33.453338736828684,
+      "ema200_tv": 30.948138587370387,
+      "nextEarnings": 1793653200
+    },
+    {
+      "tv": "NYSE:ROL",
+      "ticker": "ROL",
+      "sector": "Commercial Services",
+      "ema50_tv": 34.56103304993384,
+      "ema200_tv": 44.773114530954885,
       "nextEarnings": 1792612800
     },
     {
       "tv": "NASDAQ:WMG",
       "ticker": "WMG",
       "sector": "Commercial Services",
-      "ema50_tv": 27.693882674294034,
-      "ema200_tv": 28.589391273598917,
+      "ema50_tv": 27.876982771867635,
+      "ema200_tv": 28.585964310572926,
       "nextEarnings": 1795089600
     },
     {
-      "tv": "NYSE:SGI",
-      "ticker": "SGI",
-      "sector": "Consumer Durables",
-      "ema50_tv": 65.8245213024747,
-      "ema200_tv": 72.28763723973802,
-      "nextEarnings": 1793275200
+      "tv": "NYSE:LDOS",
+      "ticker": "LDOS",
+      "sector": "Technology Services",
+      "ema50_tv": 125.47536987299722,
+      "ema200_tv": 139.2200023333721,
+      "nextEarnings": 1793703600
     },
     {
-      "tv": "NYSE:ROL",
-      "ticker": "ROL",
-      "sector": "Commercial Services",
-      "ema50_tv": 35.3530008322597,
-      "ema200_tv": 45.58693141409479,
-      "nextEarnings": 1793188800
+      "tv": "NYSE:DOCN",
+      "ticker": "DOCN",
+      "sector": "Technology Services",
+      "ema50_tv": 129.75653654221537,
+      "ema200_tv": 110.14421319855069,
+      "nextEarnings": 1794225600
     },
     {
-      "tv": "NYSE:UNM",
-      "ticker": "UNM",
+      "tv": "NYSE:KIM",
+      "ticker": "KIM",
       "sector": "Finance",
-      "ema50_tv": 91.00151083298263,
-      "ema200_tv": 84.7533567274479,
-      "nextEarnings": 1793740500
+      "ema50_tv": 23.1649774004385,
+      "ema200_tv": 23.301523315592615,
+      "nextEarnings": 1793271000
     },
     {
-      "tv": "NASDAQ:TTMI",
-      "ticker": "TTMI",
-      "sector": "Electronic Technology",
-      "ema50_tv": 128.15088303452643,
-      "ema200_tv": 121.0797186247184,
-      "nextEarnings": 1793793600
-    },
-    {
-      "tv": "NASDAQ:CG",
-      "ticker": "CG",
-      "sector": "Finance",
-      "ema50_tv": 43.631793026318796,
-      "ema200_tv": 47.91281940985576,
+      "tv": "NYSE:CNH",
+      "ticker": "CNH",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 12.38057854633351,
+      "ema200_tv": 11.471274867345869,
       "nextEarnings": 1794312000
     },
     {
-      "tv": "NYSE:MLI",
-      "ticker": "MLI",
-      "sector": "Producer Manufacturing",
-      "ema50_tv": 62.326441259603,
-      "ema200_tv": 60.611327024359106,
-      "nextEarnings": 1793102400
-    },
-    {
-      "tv": "NASDAQ:WSE",
-      "ticker": "WSE",
-      "sector": "Commercial Services",
-      "ema50_tv": 12.072594760832411,
-      "ema200_tv": 12.414028777180446,
-      "nextEarnings": 1796126400
+      "tv": "NYSE:PFGC",
+      "ticker": "PFGC",
+      "sector": "Transportation",
+      "ema50_tv": 97.35544729281484,
+      "ema200_tv": 97.97985750328328,
+      "nextEarnings": 1794398400
     },
     {
       "tv": "NYSE:YUMC",
       "ticker": "YUMC",
       "sector": "Consumer Services",
-      "ema50_tv": 43.27249550061274,
-      "ema200_tv": 45.56167486534214,
+      "ema50_tv": 43.01314482852843,
+      "ema200_tv": 45.35465704378881,
       "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NYSE:W",
+      "ticker": "W",
+      "sector": "Retail Trade",
+      "ema50_tv": 100.32172914614621,
+      "ema200_tv": 89.2802097051291,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NASDAQ:EXEL",
+      "ticker": "EXEL",
+      "sector": "Health Technology",
+      "ema50_tv": 56.90625639099667,
+      "ema200_tv": 50.847454223493905,
+      "nextEarnings": 1793707200
+    },
+    {
+      "tv": "NYSE:SOLV",
+      "ticker": "SOLV",
+      "sector": "Health Services",
+      "ema50_tv": 86.93532901850246,
+      "ema200_tv": 80.30792579404863,
+      "nextEarnings": 1793880000
+    },
+    {
+      "tv": "NYSE:EQH",
+      "ticker": "EQH",
+      "sector": "Finance",
+      "ema50_tv": 51.62094787485872,
+      "ema200_tv": 47.76008746631195,
+      "nextEarnings": 1793654100
+    },
+    {
+      "tv": "NYSE:UNM",
+      "ticker": "UNM",
+      "sector": "Finance",
+      "ema50_tv": 91.29503143066576,
+      "ema200_tv": 85.1973497296345,
+      "nextEarnings": 1793740500
+    },
+    {
+      "tv": "NASDAQ:WSE",
+      "ticker": "WSE",
+      "sector": "Commercial Services",
+      "ema50_tv": 12.035344217748243,
+      "ema200_tv": 12.383517262237191,
+      "nextEarnings": 1796126400
+    },
+    {
+      "tv": "NYSE:SGI",
+      "ticker": "SGI",
+      "sector": "Consumer Durables",
+      "ema50_tv": 65.10926446544852,
+      "ema200_tv": 71.71534822758862,
+      "nextEarnings": 1793275200
+    },
+    {
+      "tv": "NYSE:WPC",
+      "ticker": "WPC",
+      "sector": "Finance",
+      "ema50_tv": 67.77879589184694,
+      "ema200_tv": 69.70989817541684,
+      "nextEarnings": 1793131200
+    },
+    {
+      "tv": "NYSE:ARMK",
+      "ticker": "ARMK",
+      "sector": "Consumer Services",
+      "ema50_tv": 56.1244800283368,
+      "ema200_tv": 50.77534010429732,
+      "nextEarnings": 1794916800
+    },
+    {
+      "tv": "NASDAQ:AKAM",
+      "ticker": "AKAM",
+      "sector": "Technology Services",
+      "ema50_tv": 110.38112544705493,
+      "ema200_tv": 109.86689961335856,
+      "nextEarnings": 1793912460
+    },
+    {
+      "tv": "NYSE:ULS",
+      "ticker": "ULS",
+      "sector": "Commercial Services",
+      "ema50_tv": 72.66854308457954,
+      "ema200_tv": 79.65822112449553,
+      "nextEarnings": 1794312000
+    },
+    {
+      "tv": "NYSE:JHX",
+      "ticker": "JHX",
+      "sector": "Non-Energy Minerals",
+      "ema50_tv": 26.627504751756398,
+      "ema200_tv": 25.00645020162948,
+      "nextEarnings": 1794225600
+    },
+    {
+      "tv": "NASDAQ:GEN",
+      "ticker": "GEN",
+      "sector": "Technology Services",
+      "ema50_tv": 25.920214903423442,
+      "ema200_tv": 25.625407692415113,
+      "nextEarnings": 1793217900
+    },
+    {
+      "tv": "NYSE:BMNR",
+      "ticker": "BMNR",
+      "sector": "Finance",
+      "ema50_tv": 23.67408161985105,
+      "ema200_tv": 23.05203482899449,
+      "nextEarnings": 1795176000
+    },
+    {
+      "tv": "NYSE:PNFP",
+      "ticker": "PNFP",
+      "sector": "Finance",
+      "ema50_tv": 97.58631881032434,
+      "ema200_tv": 97.63565771128359,
+      "nextEarnings": 1792612800
+    },
+    {
+      "tv": "NYSE:IONQ",
+      "ticker": "IONQ",
+      "sector": "Electronic Technology",
+      "ema50_tv": 41.35787843447364,
+      "ema200_tv": 43.49590750404147,
+      "nextEarnings": 1794398400
+    },
+    {
+      "tv": "NASDAQ:TRMB",
+      "ticker": "TRMB",
+      "sector": "Technology Services",
+      "ema50_tv": 58.2308582888362,
+      "ema200_tv": 61.66433988657922,
+      "nextEarnings": 1793793600
+    },
+    {
+      "tv": "NASDAQ:CHKP",
+      "ticker": "CHKP",
+      "sector": "Technology Services",
+      "ema50_tv": 132.92997986914725,
+      "ema200_tv": 145.07462088755275,
+      "nextEarnings": 1793629800
+    },
+    {
+      "tv": "NYSE:JBS",
+      "ticker": "JBS",
+      "sector": "Consumer Non-Durables",
+      "ema50_tv": 12.541326224058086,
+      "ema200_tv": 13.534210173072715,
+      "nextEarnings": 1794258000
+    },
+    {
+      "tv": "NYSE:SUI",
+      "ticker": "SUI",
+      "sector": "Finance",
+      "ema50_tv": 116.19411323527629,
+      "ema200_tv": 121.88532272786615,
+      "nextEarnings": 1793016000
+    },
+    {
+      "tv": "NYSE:MAS",
+      "ticker": "MAS",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 70.6365415920329,
+      "ema200_tv": 70.69033608482364,
+      "nextEarnings": 1793185200
+    },
+    {
+      "tv": "NYSE:GME",
+      "ticker": "GME",
+      "sector": "Retail Trade",
+      "ema50_tv": 22.615826402686768,
+      "ema200_tv": 22.33618885413797,
+      "nextEarnings": 1796817600
+    },
+    {
+      "tv": "NASDAQ:INIO",
+      "ticker": "INIO",
+      "sector": "Producer Manufacturing",
+      "ema50_tv": 22.14860216356236,
+      "ema200_tv": null,
+      "nextEarnings": 1796212800
+    },
+    {
+      "tv": "NASDAQ:NBIX",
+      "ticker": "NBIX",
+      "sector": "Health Technology",
+      "ema50_tv": 149.76603191527622,
+      "ema200_tv": 149.22860188822975,
+      "nextEarnings": 1793653200
+    },
+    {
+      "tv": "NYSE:OHI",
+      "ticker": "OHI",
+      "sector": "Finance",
+      "ema50_tv": 46.404740898527855,
+      "ema200_tv": 45.96980942290485,
+      "nextEarnings": 1793740500
     }
   ]
 }
