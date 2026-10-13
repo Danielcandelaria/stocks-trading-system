@@ -157,7 +157,7 @@
     "tv": "NASDAQ:QCOM",
     "sector": "Electronic Technology",
     "strategy": "BreakoutRetest",
-    "status": "open",
+    "status": "closed",
     "signalT": 1789963200,
     "level": 192.12,
     "entryPx": 187.48,
@@ -167,6 +167,11 @@
     "riskPct": 5.7,
     "theme": null,
     "themeStrength": null,
-    "entryT": 1790602200
+    "entryT": 1790602200,
+    "exitT": 1791918372.027,
+    "exitPx": 176.662,
+    "exitReason": "STOP",
+    "retPct": -5.77,
+    "r": -1.01
   }
 ]
