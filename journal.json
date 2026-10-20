@@ -340,5 +340,35 @@
     "exitPx": 18.1609,
     "exitReason": "SL",
     "r": -1.22
+  },
+  {
+    "id": "STT:1792416600:TP2",
+    "ticker": "STT",
+    "tv": "NYSE:STT",
+    "sector": "Finance",
+    "variant": "TP2",
+    "status": "open",
+    "signalT": 1792416600,
+    "entryT": 1792416600,
+    "entryPx": 165.5127,
+    "sl": 156.5,
+    "tp": 183.5381,
+    "risk": 9.0127,
+    "riskPct": 5.45
+  },
+  {
+    "id": "STT:1792416600:TP3",
+    "ticker": "STT",
+    "tv": "NYSE:STT",
+    "sector": "Finance",
+    "variant": "TP3",
+    "status": "open",
+    "signalT": 1792416600,
+    "entryT": 1792416600,
+    "entryPx": 165.5127,
+    "sl": 156.5,
+    "tp": 192.5508,
+    "risk": 9.0127,
+    "riskPct": 5.45
   }
 ]
