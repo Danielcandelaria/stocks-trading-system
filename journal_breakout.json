@@ -173,5 +173,39 @@
     "exitReason": "STOP",
     "retPct": -5.77,
     "r": -1.01
+  },
+  {
+    "id": "B:PG:1791777600",
+    "ticker": "PG",
+    "tv": "NYSE:PG",
+    "sector": "Consumer Non-Durables",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1791777600,
+    "level": 151.6,
+    "entryPx": 151.6,
+    "stop": 139.472,
+    "tp": 175.856,
+    "breakClose": 159.35,
+    "riskPct": 8,
+    "theme": null,
+    "themeStrength": null
+  },
+  {
+    "id": "B:MAR:1791777600",
+    "ticker": "MAR",
+    "tv": "NASDAQ:MAR",
+    "sector": "Consumer Services",
+    "strategy": "BreakoutRetest",
+    "status": "pending",
+    "signalT": 1791777600,
+    "level": 366.38,
+    "entryPx": 366.38,
+    "stop": 337.0696,
+    "tp": 425.0008,
+    "breakClose": 388.05,
+    "riskPct": 8,
+    "theme": null,
+    "themeStrength": null
   }
 ]
