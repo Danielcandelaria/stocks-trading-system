@@ -1436,5 +1436,47 @@
     "stop": 154.5242,
     "riskPct": 18,
     "setupLow": 182.4
+  },
+  {
+    "id": "W:LVS:1792382400",
+    "ticker": "LVS",
+    "tv": "NYSE:LVS",
+    "sector": "Consumer Services",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1792382400,
+    "entryT": 1792382400,
+    "entryPx": 35.6978,
+    "stop": 29.2722,
+    "riskPct": 18,
+    "setupLow": 35.03
+  },
+  {
+    "id": "W:FSLR:1792382400",
+    "ticker": "FSLR",
+    "tv": "NASDAQ:FSLR",
+    "sector": "Electronic Technology",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1792382400,
+    "entryT": 1792382400,
+    "entryPx": 172.076,
+    "stop": 141.1023,
+    "riskPct": 18,
+    "setupLow": 168.6
+  },
+  {
+    "id": "W:WY:1792382400",
+    "ticker": "WY",
+    "tv": "NYSE:WY",
+    "sector": "Finance",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1792382400,
+    "entryT": 1792382400,
+    "entryPx": 19.4997,
+    "stop": 15.9898,
+    "riskPct": 18,
+    "setupLow": 18.26
   }
 ]
