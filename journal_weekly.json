@@ -284,13 +284,18 @@
     "tv": "NASDAQ:KLAC",
     "sector": "Electronic Technology",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1788148800,
     "entryT": 1788148800,
     "entryPx": 185.6928,
     "stop": 152.2681,
     "riskPct": 18,
-    "setupLow": 167.05
+    "setupLow": 167.05,
+    "exitT": 1792382400,
+    "exitPx": 152.192,
+    "exitReason": "STOP",
+    "retPct": -18.04,
+    "weeksHeld": 6
   },
   {
     "id": "W:CARR:1788148800",
@@ -359,13 +364,18 @@
     "tv": "NASDAQ:AMAT",
     "sector": "Producer Manufacturing",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1788753600,
     "entryT": 1788753600,
     "entryPx": 456.7182,
     "stop": 374.5089,
     "riskPct": 18,
-    "setupLow": 426.13
+    "setupLow": 426.13,
+    "exitT": 1792382400,
+    "exitPx": 374.3216,
+    "exitReason": "STOP",
+    "retPct": -18.04,
+    "weeksHeld": 5
   },
   {
     "id": "W:TXN:1788753600",
@@ -1412,5 +1422,19 @@
     "stop": 77.4385,
     "riskPct": 18,
     "setupLow": 91.4
+  },
+  {
+    "id": "W:BA:1792382400",
+    "ticker": "BA",
+    "tv": "NYSE:BA",
+    "sector": "Electronic Technology",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1792382400,
+    "entryT": 1792382400,
+    "entryPx": 188.4442,
+    "stop": 154.5242,
+    "riskPct": 18,
+    "setupLow": 182.4
   }
 ]
