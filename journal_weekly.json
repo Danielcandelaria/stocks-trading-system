@@ -1553,5 +1553,33 @@
     "stop": 135.8517,
     "riskPct": 18,
     "setupLow": 153.51
+  },
+  {
+    "id": "W:CBRE:1792987200",
+    "ticker": "CBRE",
+    "tv": "NYSE:CBRE",
+    "sector": "Finance",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1792987200,
+    "entryT": 1792987200,
+    "entryPx": 128.9144,
+    "stop": 105.7098,
+    "riskPct": 18,
+    "setupLow": 121.44
+  },
+  {
+    "id": "W:NLY:1792987200",
+    "ticker": "NLY",
+    "tv": "NYSE:NLY",
+    "sector": "Finance",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1792987200,
+    "entryT": 1792987200,
+    "entryPx": 18.2391,
+    "stop": 14.9561,
+    "riskPct": 18,
+    "setupLow": 17.7
   }
 ]
