@@ -404,14 +404,20 @@
     "tv": "NASDAQ:PLTR",
     "sector": "Technology Services",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1791172800,
     "entryT": 1791172800,
     "entryPx": 209.05,
     "stop": 166.42,
     "target": 336.94,
     "riskPct": 20.4,
-    "theme": null
+    "theme": null,
+    "exitT": 1792987200,
+    "exitPx": 184.0179,
+    "exitReason": "cierre < EMA8 (trailing)",
+    "retPct": -11.97,
+    "r": -0.59,
+    "weeksHeld": 2
   },
   {
     "id": "BK:SNPS:1791172800",
@@ -512,14 +518,20 @@
     "tv": "NYSE:ICE",
     "sector": "Finance",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1792382400,
     "entryT": 1792382400,
     "entryPx": 162.74,
     "stop": 154.82,
     "target": 164.37,
     "riskPct": 4.9,
-    "theme": null
+    "theme": null,
+    "exitT": 1792987200,
+    "exitPx": 154.7426,
+    "exitReason": "STOP (bajo pullback/8EMA)",
+    "retPct": -4.91,
+    "r": -1.01,
+    "weeksHeld": 0
   },
   {
     "id": "BK:CI:1792382400",
@@ -534,6 +546,36 @@
     "stop": 277.43,
     "target": 311.34,
     "riskPct": 9.6,
+    "theme": null
+  },
+  {
+    "id": "BK:PM:1792987200",
+    "ticker": "PM",
+    "tv": "NYSE:PM",
+    "sector": "Consumer Non-Durables",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1792987200,
+    "entryT": 1792987200,
+    "entryPx": 208.79,
+    "stop": 184,
+    "target": 283.16,
+    "riskPct": 11.9,
+    "theme": null
+  },
+  {
+    "id": "BK:ICE:1792987200",
+    "ticker": "ICE",
+    "tv": "NYSE:ICE",
+    "sector": "Finance",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1792987200,
+    "entryT": 1792987200,
+    "entryPx": 168.85,
+    "stop": 156.43,
+    "target": 176.05,
+    "riskPct": 7.4,
     "theme": null
   }
 ]
