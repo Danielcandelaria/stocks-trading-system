@@ -1713,5 +1713,19 @@
     "stop": 39.273,
     "riskPct": 18,
     "setupLow": 46.03
+  },
+  {
+    "id": "W:FTI:1793595600",
+    "ticker": "FTI",
+    "tv": "NYSE:FTI",
+    "sector": "Industrial Services",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1793595600,
+    "entryT": 1793595600,
+    "entryPx": 63.5518,
+    "stop": 52.1125,
+    "riskPct": 18,
+    "setupLow": 60.82
   }
 ]
