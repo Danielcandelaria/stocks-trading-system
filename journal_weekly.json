@@ -70,14 +70,19 @@
     "tv": "NASDAQ:CG",
     "sector": "Finance",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1783310400,
     "entryT": 1783310400,
     "entryPx": 44.7324,
     "stop": 36.6806,
     "riskPct": 18,
     "setupLow_old": 39.6,
-    "migratedTo18": true
+    "migratedTo18": true,
+    "exitT": 1791777600,
+    "exitPx": 36.6623,
+    "exitReason": "STOP",
+    "retPct": -18.04,
+    "weeksHeld": 13
   },
   {
     "id": "W:QCOM:1786334400",
@@ -136,7 +141,7 @@
     "tv": "NASDAQ:NXT",
     "sector": "Electronic Technology",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1785729600,
     "entryT": 1785729600,
     "entryPx": 104.6623,
@@ -144,7 +149,12 @@
     "riskPct": 18,
     "recovered": true,
     "setupLow_old": 87.25,
-    "migratedTo18": true
+    "migratedTo18": true,
+    "exitT": 1786939200,
+    "exitPx": 85.7802,
+    "exitReason": "STOP",
+    "retPct": -18.04,
+    "weeksHeld": 1
   },
   {
     "id": "W:LITE:1784520000",
