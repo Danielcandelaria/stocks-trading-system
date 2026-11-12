@@ -370,5 +370,35 @@
     "tp": 192.5508,
     "risk": 9.0127,
     "riskPct": 5.45
+  },
+  {
+    "id": "PLTR:1794321000:TP2",
+    "ticker": "PLTR",
+    "tv": "NASDAQ:PLTR",
+    "sector": "Technology Services",
+    "variant": "TP2",
+    "status": "open",
+    "signalT": 1794321000,
+    "entryT": 1794407400,
+    "entryPx": 173.6768,
+    "sl": 152.6,
+    "tp": 215.8304,
+    "risk": 21.0768,
+    "riskPct": 12.14
+  },
+  {
+    "id": "PLTR:1794321000:TP3",
+    "ticker": "PLTR",
+    "tv": "NASDAQ:PLTR",
+    "sector": "Technology Services",
+    "variant": "TP3",
+    "status": "open",
+    "signalT": 1794321000,
+    "entryT": 1794407400,
+    "entryPx": 173.6768,
+    "sl": 152.6,
+    "tp": 236.9071,
+    "risk": 21.0768,
+    "riskPct": 12.14
   }
 ]
