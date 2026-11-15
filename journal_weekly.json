@@ -1737,5 +1737,47 @@
     "stop": 52.1125,
     "riskPct": 18,
     "setupLow": 60.82
+  },
+  {
+    "id": "W:AU:1794200400",
+    "ticker": "AU",
+    "tv": "NYSE:AU",
+    "sector": "Non-Energy Minerals",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1794200400,
+    "entryT": 1794200400,
+    "entryPx": 86.3331,
+    "stop": 70.7931,
+    "riskPct": 18,
+    "setupLow": 78.2
+  },
+  {
+    "id": "W:RIVN:1794200400",
+    "ticker": "RIVN",
+    "tv": "NASDAQ:RIVN",
+    "sector": "Consumer Durables",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1794200400,
+    "entryT": 1794200400,
+    "entryPx": 12.1861,
+    "stop": 9.9926,
+    "riskPct": 18,
+    "setupLow": 11.375
+  },
+  {
+    "id": "W:CDE:1794200400",
+    "ticker": "CDE",
+    "tv": "NYSE:CDE",
+    "sector": "Non-Energy Minerals",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1794200400,
+    "entryT": 1794200400,
+    "entryPx": 13.987,
+    "stop": 11.4693,
+    "riskPct": 18,
+    "setupLow": 12.71
   }
 ]
