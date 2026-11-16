@@ -1779,5 +1779,19 @@
     "stop": 11.4693,
     "riskPct": 18,
     "setupLow": 12.71
+  },
+  {
+    "id": "W:ARMK:1793595600",
+    "ticker": "ARMK",
+    "tv": "NYSE:ARMK",
+    "sector": "Consumer Services",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1793595600,
+    "entryT": 1793595600,
+    "entryPx": 53.6368,
+    "stop": 43.9822,
+    "riskPct": 18,
+    "setupLow": 50.01
   }
 ]
