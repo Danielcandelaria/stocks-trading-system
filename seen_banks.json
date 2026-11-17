@@ -814,5 +814,14 @@
   "BK:SOLV:1793595600": true,
   "BK:PPG:1793595600": true,
   "BK:VRSK:1793595600": true,
-  "BK:U:1793595600": true
+  "BK:U:1793595600": true,
+  "BK:CME:1794200400": true,
+  "BK:ICE:1794200400": true,
+  "BK:FAST:1794200400": true,
+  "BK:BDX:1794200400": true,
+  "BK:FERG:1794200400": true,
+  "BK:CBOE:1794200400": true,
+  "BK:SN:1794200400": true,
+  "BK:BBY:1794200400": true,
+  "BK:BJ:1793595600": true
 }

@@ -608,14 +608,20 @@
     "tv": "NYSE:DIS",
     "sector": "Consumer Services",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1793595600,
     "entryT": 1793595600,
     "entryPx": 116.75,
     "stop": 108.75,
     "target": 119.78,
     "riskPct": 6.9,
-    "theme": null
+    "theme": null,
+    "exitT": 1794200400,
+    "exitPx": 119.7201,
+    "exitReason": "siguiente SUPPLY (target)",
+    "retPct": 2.54,
+    "r": 0.37,
+    "weeksHeld": 0
   },
   {
     "id": "BK:MDT:1793595600",
@@ -638,14 +644,20 @@
     "tv": "NYSE:ICE",
     "sector": "Finance",
     "strategy": "BanksSwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1793595600,
     "entryT": 1793595600,
     "entryPx": 172.27,
     "stop": 153.9,
     "target": 176.05,
     "riskPct": 10.7,
-    "theme": null
+    "theme": null,
+    "exitT": 1794200400,
+    "exitPx": 175.962,
+    "exitReason": "siguiente SUPPLY (target)",
+    "retPct": 2.14,
+    "r": 0.2,
+    "weeksHeld": 0
   },
   {
     "id": "BK:AJG:1793595600",
@@ -660,6 +672,36 @@
     "stop": 255.75,
     "target": 307.38,
     "riskPct": 9.2,
+    "theme": null
+  },
+  {
+    "id": "BK:CME:1794200400",
+    "ticker": "CME",
+    "tv": "NASDAQ:CME",
+    "sector": "Finance",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1794200400,
+    "entryT": 1794200400,
+    "entryPx": 317.97,
+    "stop": 276.38,
+    "target": 329.16,
+    "riskPct": 13.1,
+    "theme": null
+  },
+  {
+    "id": "BK:ICE:1794200400",
+    "ticker": "ICE",
+    "tv": "NYSE:ICE",
+    "sector": "Finance",
+    "strategy": "BanksSwing",
+    "status": "open",
+    "signalT": 1794200400,
+    "entryT": 1794200400,
+    "entryPx": 178.51,
+    "stop": 153.9,
+    "target": 189.35,
+    "riskPct": 13.8,
     "theme": null
   }
 ]
