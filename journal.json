@@ -347,14 +347,18 @@
     "tv": "NYSE:STT",
     "sector": "Finance",
     "variant": "TP2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1792416600,
     "entryT": 1792416600,
     "entryPx": 165.5127,
     "sl": 156.5,
     "tp": 183.5381,
     "risk": 9.0127,
-    "riskPct": 5.45
+    "riskPct": 5.45,
+    "exitT": 1795185000,
+    "exitPx": 156.4218,
+    "exitReason": "SL",
+    "r": -1.01
   },
   {
     "id": "STT:1792416600:TP3",
@@ -362,14 +366,18 @@
     "tv": "NYSE:STT",
     "sector": "Finance",
     "variant": "TP3",
-    "status": "open",
+    "status": "closed",
     "signalT": 1792416600,
     "entryT": 1792416600,
     "entryPx": 165.5127,
     "sl": 156.5,
     "tp": 192.5508,
     "risk": 9.0127,
-    "riskPct": 5.45
+    "riskPct": 5.45,
+    "exitT": 1795185000,
+    "exitPx": 156.4218,
+    "exitReason": "SL",
+    "r": -1.01
   },
   {
     "id": "PLTR:1794321000:TP2",
@@ -377,14 +385,18 @@
     "tv": "NASDAQ:PLTR",
     "sector": "Technology Services",
     "variant": "TP2",
-    "status": "open",
+    "status": "closed",
     "signalT": 1794321000,
     "entryT": 1794407400,
     "entryPx": 173.6768,
     "sl": 152.6,
     "tp": 215.8304,
     "risk": 21.0768,
-    "riskPct": 12.14
+    "riskPct": 12.14,
+    "exitT": 1795185000,
+    "exitPx": 149.6251,
+    "exitReason": "SL",
+    "r": -1.14
   },
   {
     "id": "PLTR:1794321000:TP3",
@@ -392,13 +404,17 @@
     "tv": "NASDAQ:PLTR",
     "sector": "Technology Services",
     "variant": "TP3",
-    "status": "open",
+    "status": "closed",
     "signalT": 1794321000,
     "entryT": 1794407400,
     "entryPx": 173.6768,
     "sl": 152.6,
     "tp": 236.9071,
     "risk": 21.0768,
-    "riskPct": 12.14
+    "riskPct": 12.14,
+    "exitT": 1795185000,
+    "exitPx": 149.6251,
+    "exitReason": "SL",
+    "r": -1.14
   }
 ]
