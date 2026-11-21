@@ -181,7 +181,7 @@
     "tv": "NASDAQ:MSTR",
     "sector": "Technology Services",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1783915200,
     "entryT": 1783915200,
     "entryPx": 95.6678,
@@ -189,7 +189,12 @@
     "riskPct": 18,
     "recovered": true,
     "setupLow_old": 81.81,
-    "migratedTo18": true
+    "migratedTo18": true,
+    "exitT": 1794805200,
+    "exitPx": 78.4084,
+    "exitReason": "STOP",
+    "retPct": -18.04,
+    "weeksHeld": 17
   },
   {
     "id": "W:DOW:1783915200",
@@ -248,13 +253,18 @@
     "tv": "NASDAQ:ON",
     "sector": "Electronic Technology",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1786939200,
     "entryT": 1786939200,
     "entryPx": 74.7474,
     "stop": 61.2929,
     "riskPct": 18,
-    "setupLow": 74.5
+    "setupLow": 74.5,
+    "exitT": 1794805200,
+    "exitPx": 61.2623,
+    "exitReason": "STOP",
+    "retPct": -18.04,
+    "weeksHeld": 12
   },
   {
     "id": "W:GFS:1786939200",
@@ -1492,13 +1502,18 @@
     "tv": "NASDAQ:FSLR",
     "sector": "Electronic Technology",
     "strategy": "WeeklySwing",
-    "status": "open",
+    "status": "closed",
     "signalT": 1792382400,
     "entryT": 1792382400,
     "entryPx": 172.076,
     "stop": 141.1023,
     "riskPct": 18,
-    "setupLow": 168.6
+    "setupLow": 168.6,
+    "exitT": 1794805200,
+    "exitPx": 141.0317,
+    "exitReason": "STOP",
+    "retPct": -18.04,
+    "weeksHeld": 3
   },
   {
     "id": "W:WY:1792382400",
@@ -1793,5 +1808,47 @@
     "stop": 43.9822,
     "riskPct": 18,
     "setupLow": 50.01
+  },
+  {
+    "id": "W:ORCL:1794805200",
+    "ticker": "ORCL",
+    "tv": "NYSE:ORCL",
+    "sector": "Technology Services",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1794805200,
+    "entryT": 1794805200,
+    "entryPx": 101.2406,
+    "stop": 83.0173,
+    "riskPct": 18,
+    "setupLow": 100.25
+  },
+  {
+    "id": "W:ADM:1794805200",
+    "ticker": "ADM",
+    "tv": "NYSE:ADM",
+    "sector": "Process Industries",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1794805200,
+    "entryT": 1794805200,
+    "entryPx": 66.9835,
+    "stop": 54.9265,
+    "riskPct": 18,
+    "setupLow": 66.64
+  },
+  {
+    "id": "W:BG:1794805200",
+    "ticker": "BG",
+    "tv": "NYSE:BG",
+    "sector": "Process Industries",
+    "strategy": "WeeklySwing",
+    "status": "open",
+    "signalT": 1794805200,
+    "entryT": 1794805200,
+    "entryPx": 90.9455,
+    "stop": 74.5753,
+    "riskPct": 18,
+    "setupLow": 90.7
   }
 ]
